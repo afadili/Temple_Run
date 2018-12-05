@@ -31,20 +31,12 @@ find_package(GLEW REQUIRED)
 # set(OPENGL_LIBRARIES /usr/lib/x86_64-linux-gnu/libGL.so.1)
 
 # lib include path
-include_directories(${SDL_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIR} src/glimac/include src/third-party/include)
-include_directories(src/Error/include src/Game/include src/Object/include)
+include_directories(${SDL_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIR} glimac/include third-party/include)
+include_directories(Error/include)
 
 set(ALL_LIBRARIES glimac Error Game ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY})
 
-add_subdirectory(src/glimac)
-add_subdirectory(src/Error)
+add_subdirectory(glimac)
+add_subdirectory(Error)
 
-#copy shaders and assets
-file(COPY src/shaders DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-file(COPY src/assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-
-# compile
-add_executable(Temple_Run src/main.cpp)
-
-
-
+add_subdirectory(TEMPLE_RUN)

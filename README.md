@@ -5,12 +5,12 @@ The goal of this project was to create a 3D arcade game looking like TEMPLE RUN 
 
 ## Compile and launch the game
 
-To compile the game, use the CMakeLists file in the build folder:
+To compile the game and the libreries, use the `CMakeLists` file in a build folder:
 ```
 cd build
 cmake ../
 ```
-Then, use the makefile to compile :
+Then, use the `makefile` to compile :
 ```
 make
 ```
@@ -24,4 +24,4 @@ Finally, to start the game, simply run the command:
 
 
 
-### A 3D arcade game created by Amina FADILI, Cécile ROUSSET and Nicolas SENECAL
+### A 3D arcade game created by Amina FADILI, CÃ©cile ROUSSET and Nicolas SENECAL
