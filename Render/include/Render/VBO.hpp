@@ -6,8 +6,7 @@
 #ifndef __VBO__HPP
 #define __VBO__HPP
 
-#include <iostream>
-#include "Render.hpp"
+#include "Render/Render.hpp"
 
 /**
 * \class VBO

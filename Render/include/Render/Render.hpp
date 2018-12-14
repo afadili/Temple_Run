@@ -1,23 +1,23 @@
 /**
 * \file Render.hpp
-* \brief description : Declaration of the class "Render"
+* \brief Declaration of the class "Render"
 */
 
-#ifndef __VAO__HPP
-#define __VAO__HPP
+#ifndef __RENDER__HPP
+#define __RENDER__HPP
 
+#include <GL/glew.h>
+#include <GL/gl.h>
 #include <iostream>
-#include <vector>
 
 /**
 * \class Render
-* \brief class 
+* \brief Mother class of rendering management
 */
-
 class Render {
 
 protected :
-	Gluint m_ID{}; /*!< id of the object (vao, vbo..) */
+	GLuint m_ID; /*!< id of the object (vao, vbo..) */
 
 public :
 	/**
@@ -26,16 +26,16 @@ public :
 	Render() = default;
 
 	/**
-	* \brief
+	* \brief getter of id of the object 
 	* \param 
 	*/
-	void setId(Gluint id);
+	const GLuint &id() const;
 
 	/**
-	* \brief
-	* \param  
+	* \brief setter of id of the object 
+	* \param 
 	*/
-	Gluint getId(Gluint id);
+	GLuint &id();
 
 	/**
 	* \brief 

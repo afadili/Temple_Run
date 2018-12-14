@@ -1,7 +1,6 @@
-#include "Buffer.hpp"
-#include "VAO.hpp"
+#include "Render/VAO.hpp"
 
-VAO::VAO(){
+VAO::VAO() : Render() {
 	glGenVertexArrays(1, &m_ID);
 }
 

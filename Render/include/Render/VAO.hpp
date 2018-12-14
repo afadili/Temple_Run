@@ -6,8 +6,7 @@
 #ifndef __VAO__HPP
 #define __VAO__HPP
 
-#include <iostream>
-#include "VBO.hpp"
+#include "Render/Render.hpp"
 //#include "IBO.hpp"
 
 /**

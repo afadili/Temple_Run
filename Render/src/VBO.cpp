@@ -1,7 +1,6 @@
-#include "Buffer.hpp"
-#include "VBO.hpp"
+#include "Render/VBO.hpp"
 
-VBO::VBO(){
+VBO::VBO() : Render(){
 	glGenBuffers(1, &m_ID);
 }
 
