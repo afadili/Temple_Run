@@ -10,7 +10,7 @@
  * \brief ============================== main ==================================
  */
 int main(int argc, char **argv) {
-  Error err("TEST ERROR !!! ", AT);
+  Error err = Error("TEST ERROR !!! ", ERROR_AT);
   std::cout << err.what() << std::endl;
   return (EXIT_SUCCESS);
 }

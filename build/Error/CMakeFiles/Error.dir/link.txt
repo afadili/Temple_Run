@@ -1,0 +1,2 @@
+/usr/bin/ar qc libError.a  CMakeFiles/Error.dir/src/Error.cpp.o
+/usr/bin/ranlib libError.a

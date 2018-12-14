@@ -1,8 +1,9 @@
 #include <Render/Render.hpp>
 
-void Render::setId(Gluint id) : m_ID(id)
-{}
+const GLuint &Render::id() const {
+	return m_ID;
+}
 
-Gluint Render::getId(Gluint id){
+GLuint &Render::id(){
 	return m_ID;
 }
