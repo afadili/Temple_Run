@@ -1,5 +1,5 @@
 /**
-* \file: Program.hpp
+* \file Program.hpp
 * \brief Declaration of class "Program"
 */
 
@@ -97,3 +97,5 @@ Program loadProgram(const FilePath& vsFile, const FilePath& fsFile);
 
 
 }
+
+#endif

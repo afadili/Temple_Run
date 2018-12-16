@@ -1,10 +1,10 @@
 /**
-* \file:  Camera.hpp
-* \brief Decalaration of the class "Mesh"
+* \file Camera.hpp
+* \brief Decalaration of the class "Camera"
 */
 
-#ifndef __MESH__HPP
-#define __MESH__HPP
+#ifndef __CAMERA__HPP
+#define __CAMERA__HPP
 
 #include <iostream>
 #include "Texture.hpp"
@@ -13,8 +13,7 @@
 #include <string>
 
 
-class Mesh
-{
+class Camera {
 private : 
 
 	glm::vec3 m_position;    /*!< position of the camera */
@@ -25,6 +24,11 @@ public:
 	* \brief constructor of Camera
 	*/
 	Camera();
+
+	/**
+	* \brief destructor of Camera
+	*/	
+	~Camera();
 
 	/**
 	* \brief method to move the camera with the character's view
@@ -60,10 +64,7 @@ public:
 	* \brief setter that reads the event and will set the camera depending on the event
 	*/
 	void readEvent(const SDL_Event &e);
-
-	/**
-	* \brief destructor of Camera
-	*/	
-	~Camera();
 	
 };
+
+#endif

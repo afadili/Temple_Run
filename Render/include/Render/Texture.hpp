@@ -1,5 +1,5 @@
 /**
-* \file:  Texture.hpp
+* \file Texture.hpp
 * \brief Decalaration of the class "Texture"
 */
 
@@ -81,3 +81,5 @@ public:
 	*/
 	void free();
 };
+
+#endif
