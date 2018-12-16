@@ -40,7 +40,7 @@ add_subdirectory(glimac)
 add_subdirectory(Error)
 add_subdirectory(Render)
 add_subdirectory(Game)
-add_subdirectory(Game)
+add_subdirectory(Object)
 add_subdirectory(Mesh)
 
 add_subdirectory(TEMPLE_RUN)
