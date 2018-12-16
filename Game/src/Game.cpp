@@ -14,7 +14,7 @@ void Game::loadMap(const FilePath &path, int nbFloor){
 }*/
 
 void loadFloor(/*const FilePath &file*/){
-	std::ifstream fileLevel("/mnt/c/Users/cecil/Documents/IMAC2/ProjetSyntheseImage/Temple_Run/Level/test1.ppm");  //Ouverture d'un fichier en lecture
+	std::ifstream fileLevel("/mnt/c/Users/cecil/Documents/IMAC2/ProjetSyntheseImage/Temple_Run/Level/test2.ppm");  //Ouverture d'un fichier en lecture
 
 	int w, h, i, j, r, g, b, max;
 	
@@ -53,13 +53,17 @@ void loadFloor(/*const FilePath &file*/){
 				if(r==0 && g==0 && b==max){
 					std::cout << "Blue" << std::endl;					
 				}
+
+				if(r==143 && g==94 && b==10){ //Brown : ground
+					std::cout << "Brown" << std::endl;					
+				}
 			}
 		}
 
 	}
 	//If we can't read it
 	else{
-	    std::cout << "ERREUR: Impossible d'ouvrir le fichier en lecture." << std::endl;
+	    std::cout << "ERREUR: Impossible d'ouvrir le fichier." << std::endl;
 	}
 }
 
