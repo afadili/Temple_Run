@@ -19,6 +19,8 @@ iostream
 -
 glimac/Shader.hpp
 -
+glimac/FilePath.hpp
+-
 vector
 -
 string
