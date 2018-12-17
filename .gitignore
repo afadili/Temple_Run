@@ -1,4 +1,5 @@
 # Ignored built files
+Build/*
 build/* 
 .vscode
 temp/*
