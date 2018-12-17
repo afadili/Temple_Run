@@ -10,7 +10,7 @@
 #include <vector>
 #include <fstream> //lire dans les fichiers
 
-#include "GameManager"
+#include "GameManager.hpp"
 
 /**
 * \class Game
@@ -30,9 +30,9 @@ protected :
 public :
 	/**
 	* \brief constructor
-	* \param GameManager :
+	* \param GameManager : manager oh the game
 	*/
-	Game(GameManager);
+	Game(GameManager manager);
 
 	/**
 	* \brief create the map from a ppm file
