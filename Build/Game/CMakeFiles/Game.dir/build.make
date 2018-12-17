@@ -81,17 +81,43 @@ Game/CMakeFiles/Game.dir/src/Game.cpp.o.provides: Game/CMakeFiles/Game.dir/src/G
 Game/CMakeFiles/Game.dir/src/Game.cpp.o.provides.build: Game/CMakeFiles/Game.dir/src/Game.cpp.o
 
 
+Game/CMakeFiles/Game.dir/src/GameManager.cpp.o: Game/CMakeFiles/Game.dir/flags.make
+Game/CMakeFiles/Game.dir/src/GameManager.cpp.o: ../Game/src/GameManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/amina/Desktop/Temple Run/Build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object Game/CMakeFiles/Game.dir/src/GameManager.cpp.o"
+	cd "/home/amina/Desktop/Temple Run/Build/Game" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Game.dir/src/GameManager.cpp.o -c "/home/amina/Desktop/Temple Run/Game/src/GameManager.cpp"
+
+Game/CMakeFiles/Game.dir/src/GameManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Game.dir/src/GameManager.cpp.i"
+	cd "/home/amina/Desktop/Temple Run/Build/Game" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/amina/Desktop/Temple Run/Game/src/GameManager.cpp" > CMakeFiles/Game.dir/src/GameManager.cpp.i
+
+Game/CMakeFiles/Game.dir/src/GameManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Game.dir/src/GameManager.cpp.s"
+	cd "/home/amina/Desktop/Temple Run/Build/Game" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/amina/Desktop/Temple Run/Game/src/GameManager.cpp" -o CMakeFiles/Game.dir/src/GameManager.cpp.s
+
+Game/CMakeFiles/Game.dir/src/GameManager.cpp.o.requires:
+
+.PHONY : Game/CMakeFiles/Game.dir/src/GameManager.cpp.o.requires
+
+Game/CMakeFiles/Game.dir/src/GameManager.cpp.o.provides: Game/CMakeFiles/Game.dir/src/GameManager.cpp.o.requires
+	$(MAKE) -f Game/CMakeFiles/Game.dir/build.make Game/CMakeFiles/Game.dir/src/GameManager.cpp.o.provides.build
+.PHONY : Game/CMakeFiles/Game.dir/src/GameManager.cpp.o.provides
+
+Game/CMakeFiles/Game.dir/src/GameManager.cpp.o.provides.build: Game/CMakeFiles/Game.dir/src/GameManager.cpp.o
+
+
 # Object files for target Game
 Game_OBJECTS = \
-"CMakeFiles/Game.dir/src/Game.cpp.o"
+"CMakeFiles/Game.dir/src/Game.cpp.o" \
+"CMakeFiles/Game.dir/src/GameManager.cpp.o"
 
 # External object files for target Game
 Game_EXTERNAL_OBJECTS =
 
 Game/libGame.a: Game/CMakeFiles/Game.dir/src/Game.cpp.o
+Game/libGame.a: Game/CMakeFiles/Game.dir/src/GameManager.cpp.o
 Game/libGame.a: Game/CMakeFiles/Game.dir/build.make
 Game/libGame.a: Game/CMakeFiles/Game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/amina/Desktop/Temple Run/Build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libGame.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/amina/Desktop/Temple Run/Build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libGame.a"
 	cd "/home/amina/Desktop/Temple Run/Build/Game" && $(CMAKE_COMMAND) -P CMakeFiles/Game.dir/cmake_clean_target.cmake
 	cd "/home/amina/Desktop/Temple Run/Build/Game" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Game.dir/link.txt --verbose=$(VERBOSE)
 
@@ -101,6 +127,7 @@ Game/CMakeFiles/Game.dir/build: Game/libGame.a
 .PHONY : Game/CMakeFiles/Game.dir/build
 
 Game/CMakeFiles/Game.dir/requires: Game/CMakeFiles/Game.dir/src/Game.cpp.o.requires
+Game/CMakeFiles/Game.dir/requires: Game/CMakeFiles/Game.dir/src/GameManager.cpp.o.requires
 
 .PHONY : Game/CMakeFiles/Game.dir/requires
 

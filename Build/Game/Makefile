@@ -152,6 +152,33 @@ src/Game.cpp.s:
 	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Game/CMakeFiles/Game.dir/build.make Game/CMakeFiles/Game.dir/src/Game.cpp.s
 .PHONY : src/Game.cpp.s
 
+src/GameManager.o: src/GameManager.cpp.o
+
+.PHONY : src/GameManager.o
+
+# target to build an object file
+src/GameManager.cpp.o:
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Game/CMakeFiles/Game.dir/build.make Game/CMakeFiles/Game.dir/src/GameManager.cpp.o
+.PHONY : src/GameManager.cpp.o
+
+src/GameManager.i: src/GameManager.cpp.i
+
+.PHONY : src/GameManager.i
+
+# target to preprocess a source file
+src/GameManager.cpp.i:
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Game/CMakeFiles/Game.dir/build.make Game/CMakeFiles/Game.dir/src/GameManager.cpp.i
+.PHONY : src/GameManager.cpp.i
+
+src/GameManager.s: src/GameManager.cpp.s
+
+.PHONY : src/GameManager.s
+
+# target to generate assembly for a file
+src/GameManager.cpp.s:
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Game/CMakeFiles/Game.dir/build.make Game/CMakeFiles/Game.dir/src/GameManager.cpp.s
+.PHONY : src/GameManager.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -164,6 +191,9 @@ help:
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"
+	@echo "... src/GameManager.o"
+	@echo "... src/GameManager.i"
+	@echo "... src/GameManager.s"
 .PHONY : help
 
 

@@ -39,6 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  include("/home/amina/Desktop/Temple Run/Build/dependencies/jsoncpp/cmake_install.cmake")
   include("/home/amina/Desktop/Temple Run/Build/glimac/cmake_install.cmake")
   include("/home/amina/Desktop/Temple Run/Build/Error/cmake_install.cmake")
   include("/home/amina/Desktop/Temple Run/Build/Render/cmake_install.cmake")

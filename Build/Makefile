@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named jsoncpp
+
+# Build rule for target.
+jsoncpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 jsoncpp
+.PHONY : jsoncpp
+
+# fast build rule for target.
+jsoncpp/fast:
+	$(MAKE) -f dependencies/jsoncpp/CMakeFiles/jsoncpp.dir/build.make dependencies/jsoncpp/CMakeFiles/jsoncpp.dir/build
+.PHONY : jsoncpp/fast
+
+#=============================================================================
 # Target rules for targets named glimac
 
 # Build rule for target.
@@ -189,17 +202,17 @@ Mesh/fast:
 .PHONY : Mesh/fast
 
 #=============================================================================
-# Target rules for targets named Temple_Run
+# Target rules for targets named TEMPLE_RUN_main
 
 # Build rule for target.
-Temple_Run: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Temple_Run
-.PHONY : Temple_Run
+TEMPLE_RUN_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 TEMPLE_RUN_main
+.PHONY : TEMPLE_RUN_main
 
 # fast build rule for target.
-Temple_Run/fast:
-	$(MAKE) -f TEMPLE_RUN/CMakeFiles/Temple_Run.dir/build.make TEMPLE_RUN/CMakeFiles/Temple_Run.dir/build
-.PHONY : Temple_Run/fast
+TEMPLE_RUN_main/fast:
+	$(MAKE) -f TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/build.make TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/build
+.PHONY : TEMPLE_RUN_main/fast
 
 # Help Target
 help:
@@ -209,13 +222,14 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... jsoncpp"
 	@echo "... glimac"
 	@echo "... Error"
 	@echo "... Render"
 	@echo "... Game"
 	@echo "... Element"
 	@echo "... Mesh"
-	@echo "... Temple_Run"
+	@echo "... TEMPLE_RUN_main"
 .PHONY : help
 
 

@@ -105,6 +105,7 @@ Render/CMakeFiles/Render.dir/src/Texture.cpp.o
 Render/CMakeFiles/Render.dir/src/VAO.cpp.o
  ../Render/include/Render/Render.hpp
  ../Render/include/Render/VAO.hpp
+ ../Render/include/Render/VBO.hpp
  /home/amina/Desktop/Temple Run/Render/src/VAO.cpp
 Render/CMakeFiles/Render.dir/src/VBO.cpp.o
  ../Render/include/Render/Render.hpp

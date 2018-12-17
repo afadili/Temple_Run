@@ -1,5 +1,8 @@
 /home/amina/Desktop/Temple Run/Build/CMakeFiles/rebuild_cache.dir
 /home/amina/Desktop/Temple Run/Build/CMakeFiles/edit_cache.dir
+/home/amina/Desktop/Temple Run/Build/dependencies/jsoncpp/CMakeFiles/rebuild_cache.dir
+/home/amina/Desktop/Temple Run/Build/dependencies/jsoncpp/CMakeFiles/jsoncpp.dir
+/home/amina/Desktop/Temple Run/Build/dependencies/jsoncpp/CMakeFiles/edit_cache.dir
 /home/amina/Desktop/Temple Run/Build/glimac/CMakeFiles/rebuild_cache.dir
 /home/amina/Desktop/Temple Run/Build/glimac/CMakeFiles/glimac.dir
 /home/amina/Desktop/Temple Run/Build/glimac/CMakeFiles/edit_cache.dir
@@ -19,5 +22,5 @@
 /home/amina/Desktop/Temple Run/Build/Mesh/CMakeFiles/Mesh.dir
 /home/amina/Desktop/Temple Run/Build/Mesh/CMakeFiles/edit_cache.dir
 /home/amina/Desktop/Temple Run/Build/TEMPLE_RUN/CMakeFiles/rebuild_cache.dir
-/home/amina/Desktop/Temple Run/Build/TEMPLE_RUN/CMakeFiles/Temple_Run.dir
+/home/amina/Desktop/Temple Run/Build/TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir
 /home/amina/Desktop/Temple Run/Build/TEMPLE_RUN/CMakeFiles/edit_cache.dir

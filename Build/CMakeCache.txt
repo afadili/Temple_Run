@@ -250,6 +250,9 @@ Temple_Run_SOURCE_DIR:STATIC=/home/amina/Desktop/Temple Run
 //Dependencies for target
 glimac_LIB_DEPENDS:STATIC=
 
+//Dependencies for target
+jsoncpp_LIB_DEPENDS:STATIC=
+
 
 ########################
 # INTERNAL cache entries
@@ -357,7 +360,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

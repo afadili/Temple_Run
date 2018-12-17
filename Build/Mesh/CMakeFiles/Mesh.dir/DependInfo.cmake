@@ -4,7 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/amina/Desktop/Temple Run/Mesh/include/Mesh/Sphere.cpp" "/home/amina/Desktop/Temple Run/Build/Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o"
+  "/home/amina/Desktop/Temple Run/Mesh/src/Mesh.cpp" "/home/amina/Desktop/Temple Run/Build/Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o"
+  "/home/amina/Desktop/Temple Run/Mesh/src/Sphere.cpp" "/home/amina/Desktop/Temple Run/Build/Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -13,6 +14,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/SDL"
   "../glimac/include"
   "../third-party/include"
+  "../dependencies/jsoncpp/include"
   "../Error/include"
   "../Render/include"
   "../Game/include"

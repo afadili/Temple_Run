@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/amina/Desktop/Temple Run/Game/src/Game.cpp" "/home/amina/Desktop/Temple Run/Build/Game/CMakeFiles/Game.dir/src/Game.cpp.o"
+  "/home/amina/Desktop/Temple Run/Game/src/GameManager.cpp" "/home/amina/Desktop/Temple Run/Build/Game/CMakeFiles/Game.dir/src/GameManager.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -13,6 +14,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/SDL"
   "../glimac/include"
   "../third-party/include"
+  "../dependencies/jsoncpp/include"
   "../Error/include"
   "../Render/include"
   "../Game/include"

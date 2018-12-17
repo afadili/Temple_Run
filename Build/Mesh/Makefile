@@ -125,32 +125,59 @@ Mesh/fast:
 	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/build
 .PHONY : Mesh/fast
 
-include/Mesh/Sphere.o: include/Mesh/Sphere.cpp.o
+src/Mesh.o: src/Mesh.cpp.o
 
-.PHONY : include/Mesh/Sphere.o
+.PHONY : src/Mesh.o
 
 # target to build an object file
-include/Mesh/Sphere.cpp.o:
-	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o
-.PHONY : include/Mesh/Sphere.cpp.o
+src/Mesh.cpp.o:
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o
+.PHONY : src/Mesh.cpp.o
 
-include/Mesh/Sphere.i: include/Mesh/Sphere.cpp.i
+src/Mesh.i: src/Mesh.cpp.i
 
-.PHONY : include/Mesh/Sphere.i
+.PHONY : src/Mesh.i
 
 # target to preprocess a source file
-include/Mesh/Sphere.cpp.i:
-	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.i
-.PHONY : include/Mesh/Sphere.cpp.i
+src/Mesh.cpp.i:
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.i
+.PHONY : src/Mesh.cpp.i
 
-include/Mesh/Sphere.s: include/Mesh/Sphere.cpp.s
+src/Mesh.s: src/Mesh.cpp.s
 
-.PHONY : include/Mesh/Sphere.s
+.PHONY : src/Mesh.s
 
 # target to generate assembly for a file
-include/Mesh/Sphere.cpp.s:
-	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.s
-.PHONY : include/Mesh/Sphere.cpp.s
+src/Mesh.cpp.s:
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.s
+.PHONY : src/Mesh.cpp.s
+
+src/Sphere.o: src/Sphere.cpp.o
+
+.PHONY : src/Sphere.o
+
+# target to build an object file
+src/Sphere.cpp.o:
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o
+.PHONY : src/Sphere.cpp.o
+
+src/Sphere.i: src/Sphere.cpp.i
+
+.PHONY : src/Sphere.i
+
+# target to preprocess a source file
+src/Sphere.cpp.i:
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.i
+.PHONY : src/Sphere.cpp.i
+
+src/Sphere.s: src/Sphere.cpp.s
+
+.PHONY : src/Sphere.s
+
+# target to generate assembly for a file
+src/Sphere.cpp.s:
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.s
+.PHONY : src/Sphere.cpp.s
 
 # Help Target
 help:
@@ -161,9 +188,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Mesh"
 	@echo "... edit_cache"
-	@echo "... include/Mesh/Sphere.o"
-	@echo "... include/Mesh/Sphere.i"
-	@echo "... include/Mesh/Sphere.s"
+	@echo "... src/Mesh.o"
+	@echo "... src/Mesh.i"
+	@echo "... src/Mesh.s"
+	@echo "... src/Sphere.o"
+	@echo "... src/Sphere.i"
+	@echo "... src/Sphere.s"
 .PHONY : help
 
 

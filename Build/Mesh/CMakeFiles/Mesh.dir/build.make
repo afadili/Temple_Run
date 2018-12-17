@@ -57,41 +57,67 @@ include Mesh/CMakeFiles/Mesh.dir/progress.make
 # Include the compile flags for this target's objects.
 include Mesh/CMakeFiles/Mesh.dir/flags.make
 
-Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o: Mesh/CMakeFiles/Mesh.dir/flags.make
-Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o: ../Mesh/include/Mesh/Sphere.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/amina/Desktop/Temple Run/Build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o"
-	cd "/home/amina/Desktop/Temple Run/Build/Mesh" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o -c "/home/amina/Desktop/Temple Run/Mesh/include/Mesh/Sphere.cpp"
+Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o: Mesh/CMakeFiles/Mesh.dir/flags.make
+Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o: ../Mesh/src/Mesh.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/amina/Desktop/Temple Run/Build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o"
+	cd "/home/amina/Desktop/Temple Run/Build/Mesh" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Mesh.dir/src/Mesh.cpp.o -c "/home/amina/Desktop/Temple Run/Mesh/src/Mesh.cpp"
 
-Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.i"
-	cd "/home/amina/Desktop/Temple Run/Build/Mesh" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/amina/Desktop/Temple Run/Mesh/include/Mesh/Sphere.cpp" > CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.i
+Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Mesh.dir/src/Mesh.cpp.i"
+	cd "/home/amina/Desktop/Temple Run/Build/Mesh" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/amina/Desktop/Temple Run/Mesh/src/Mesh.cpp" > CMakeFiles/Mesh.dir/src/Mesh.cpp.i
 
-Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.s"
-	cd "/home/amina/Desktop/Temple Run/Build/Mesh" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/amina/Desktop/Temple Run/Mesh/include/Mesh/Sphere.cpp" -o CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.s
+Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Mesh.dir/src/Mesh.cpp.s"
+	cd "/home/amina/Desktop/Temple Run/Build/Mesh" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/amina/Desktop/Temple Run/Mesh/src/Mesh.cpp" -o CMakeFiles/Mesh.dir/src/Mesh.cpp.s
 
-Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o.requires:
+Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o.requires:
 
-.PHONY : Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o.requires
+.PHONY : Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o.requires
 
-Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o.provides: Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o.requires
-	$(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o.provides.build
-.PHONY : Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o.provides
+Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o.provides: Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o.requires
+	$(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o.provides.build
+.PHONY : Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o.provides
 
-Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o.provides.build: Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o
+Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o.provides.build: Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o
+
+
+Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o: Mesh/CMakeFiles/Mesh.dir/flags.make
+Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o: ../Mesh/src/Sphere.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/amina/Desktop/Temple Run/Build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o"
+	cd "/home/amina/Desktop/Temple Run/Build/Mesh" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Mesh.dir/src/Sphere.cpp.o -c "/home/amina/Desktop/Temple Run/Mesh/src/Sphere.cpp"
+
+Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Mesh.dir/src/Sphere.cpp.i"
+	cd "/home/amina/Desktop/Temple Run/Build/Mesh" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/amina/Desktop/Temple Run/Mesh/src/Sphere.cpp" > CMakeFiles/Mesh.dir/src/Sphere.cpp.i
+
+Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Mesh.dir/src/Sphere.cpp.s"
+	cd "/home/amina/Desktop/Temple Run/Build/Mesh" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/amina/Desktop/Temple Run/Mesh/src/Sphere.cpp" -o CMakeFiles/Mesh.dir/src/Sphere.cpp.s
+
+Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o.requires:
+
+.PHONY : Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o.requires
+
+Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o.provides: Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o.requires
+	$(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o.provides.build
+.PHONY : Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o.provides
+
+Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o.provides.build: Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o
 
 
 # Object files for target Mesh
 Mesh_OBJECTS = \
-"CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o"
+"CMakeFiles/Mesh.dir/src/Mesh.cpp.o" \
+"CMakeFiles/Mesh.dir/src/Sphere.cpp.o"
 
 # External object files for target Mesh
 Mesh_EXTERNAL_OBJECTS =
 
-Mesh/libMesh.a: Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o
+Mesh/libMesh.a: Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o
+Mesh/libMesh.a: Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o
 Mesh/libMesh.a: Mesh/CMakeFiles/Mesh.dir/build.make
 Mesh/libMesh.a: Mesh/CMakeFiles/Mesh.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/amina/Desktop/Temple Run/Build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libMesh.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/amina/Desktop/Temple Run/Build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libMesh.a"
 	cd "/home/amina/Desktop/Temple Run/Build/Mesh" && $(CMAKE_COMMAND) -P CMakeFiles/Mesh.dir/cmake_clean_target.cmake
 	cd "/home/amina/Desktop/Temple Run/Build/Mesh" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Mesh.dir/link.txt --verbose=$(VERBOSE)
 
@@ -100,7 +126,8 @@ Mesh/CMakeFiles/Mesh.dir/build: Mesh/libMesh.a
 
 .PHONY : Mesh/CMakeFiles/Mesh.dir/build
 
-Mesh/CMakeFiles/Mesh.dir/requires: Mesh/CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o.requires
+Mesh/CMakeFiles/Mesh.dir/requires: Mesh/CMakeFiles/Mesh.dir/src/Mesh.cpp.o.requires
+Mesh/CMakeFiles/Mesh.dir/requires: Mesh/CMakeFiles/Mesh.dir/src/Sphere.cpp.o.requires
 
 .PHONY : Mesh/CMakeFiles/Mesh.dir/requires
 

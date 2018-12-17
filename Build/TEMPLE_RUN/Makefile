@@ -111,19 +111,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-TEMPLE_RUN/CMakeFiles/Temple_Run.dir/rule:
-	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f CMakeFiles/Makefile2 TEMPLE_RUN/CMakeFiles/Temple_Run.dir/rule
-.PHONY : TEMPLE_RUN/CMakeFiles/Temple_Run.dir/rule
+TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/rule:
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f CMakeFiles/Makefile2 TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/rule
+.PHONY : TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/rule
 
 # Convenience name for target.
-Temple_Run: TEMPLE_RUN/CMakeFiles/Temple_Run.dir/rule
+TEMPLE_RUN_main: TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/rule
 
-.PHONY : Temple_Run
+.PHONY : TEMPLE_RUN_main
 
 # fast build rule for target.
-Temple_Run/fast:
-	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f TEMPLE_RUN/CMakeFiles/Temple_Run.dir/build.make TEMPLE_RUN/CMakeFiles/Temple_Run.dir/build
-.PHONY : Temple_Run/fast
+TEMPLE_RUN_main/fast:
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/build.make TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/build
+.PHONY : TEMPLE_RUN_main/fast
 
 main.o: main.cpp.o
 
@@ -131,7 +131,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f TEMPLE_RUN/CMakeFiles/Temple_Run.dir/build.make TEMPLE_RUN/CMakeFiles/Temple_Run.dir/main.cpp.o
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/build.make TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -140,7 +140,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f TEMPLE_RUN/CMakeFiles/Temple_Run.dir/build.make TEMPLE_RUN/CMakeFiles/Temple_Run.dir/main.cpp.i
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/build.make TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -149,7 +149,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f TEMPLE_RUN/CMakeFiles/Temple_Run.dir/build.make TEMPLE_RUN/CMakeFiles/Temple_Run.dir/main.cpp.s
+	cd "/home/amina/Desktop/Temple Run/Build" && $(MAKE) -f TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/build.make TEMPLE_RUN/CMakeFiles/TEMPLE_RUN_main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -159,7 +159,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... Temple_Run"
+	@echo "... TEMPLE_RUN_main"
 	@echo "... edit_cache"
 	@echo "... main.o"
 	@echo "... main.i"

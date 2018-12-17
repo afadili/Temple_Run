@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=c++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/include/SDL -I"/home/amina/Desktop/Temple Run/glimac/include" -I"/home/amina/Desktop/Temple Run/third-party/include" -I"/home/amina/Desktop/Temple Run/Error/include" -I"/home/amina/Desktop/Temple Run/Render/include" -I"/home/amina/Desktop/Temple Run/Game/include" -I"/home/amina/Desktop/Temple Run/Element/include" -I"/home/amina/Desktop/Temple Run/Mesh/include" 
+CXX_INCLUDES = -I/usr/include/SDL -I"/home/amina/Desktop/Temple Run/glimac/include" -I"/home/amina/Desktop/Temple Run/third-party/include" -I"/home/amina/Desktop/Temple Run/dependencies/jsoncpp/include" -I"/home/amina/Desktop/Temple Run/Error/include" -I"/home/amina/Desktop/Temple Run/Render/include" -I"/home/amina/Desktop/Temple Run/Game/include" -I"/home/amina/Desktop/Temple Run/Element/include" -I"/home/amina/Desktop/Temple Run/Mesh/include" 
 

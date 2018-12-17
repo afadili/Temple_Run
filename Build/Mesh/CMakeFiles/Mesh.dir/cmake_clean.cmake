@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Mesh.dir/include/Mesh/Sphere.cpp.o"
+  "CMakeFiles/Mesh.dir/src/Mesh.cpp.o"
+  "CMakeFiles/Mesh.dir/src/Sphere.cpp.o"
   "libMesh.pdb"
   "libMesh.a"
 )

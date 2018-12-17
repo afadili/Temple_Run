@@ -13,6 +13,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/SDL"
   "../glimac/include"
   "../third-party/include"
+  "../dependencies/jsoncpp/include"
   "../Error/include"
   "../Render/include"
   "../Game/include"
