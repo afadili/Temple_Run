@@ -4,13 +4,12 @@
  */
 
 #include <iostream>
-#include "Error/Error.hpp"
+#include <Game/GameManager.hpp>
 
 /**
  * \brief ============================== main ==================================
  */
 int main(int argc, char **argv) {
-  Error err = Error("TEST ERROR !!! ", ERROR_AT);
-  std::cout << err.what() << std::endl;
+  GameManager manager("test.json");
   return (EXIT_SUCCESS);
 }
