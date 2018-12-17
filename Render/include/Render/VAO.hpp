@@ -6,8 +6,8 @@
 #ifndef __VAO__HPP
 #define __VAO__HPP
 
-#include "Render/Render.hpp"
-//#include "IBO.hpp"
+#include "Render.hpp"
+#include "VBO.hpp"
 
 /**
 * \class VAO
@@ -16,7 +16,7 @@
 
 class VAO : public Render {
 
-public :
+public:
 	/**
 	* \brief constructor
 	*/
@@ -41,7 +41,8 @@ public :
 	* \brief 
 	* \param 
 	*/
-	void render();
+	template <typename type>
+	void fillBuffer(std::vector<type> &vect, VBO *vbo);
 
 };
 

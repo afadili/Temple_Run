@@ -1,20 +1,21 @@
-//#include <Game/Game.hpp>
-#include <iostream>
-#include <fstream>
-#include <string>
-/*Game::Game(GameManager){
+#include <Game/Game.hpp>
+#include <glimac/FilePath.hpp>
+
+using namespace glimac;
+
+Game::Game(){
 
 }
 
 void Game::loadMap(const FilePath &path, int nbFloor){
 
-	for(int i = 0; i<nbFloor ; i++){
+	/*for(int i = 0; i<nbFloor; i++){
 		loadFloor(path + std::to_string(i) + ".txt");
-	}
-}*/
+	}*/
+}
 
-void loadFloor(/*const FilePath &file*/){
-	std::ifstream fileLevel("/mnt/c/Users/cecil/Documents/IMAC2/ProjetSyntheseImage/Temple_Run/Level/test2.ppm");  //Ouverture d'un fichier en lecture
+void loadFloor(const FilePath &file){
+	std::ifstream fileLevel(file);  //Ouverture d'un fichier en lecture
 
 	int w, h, i, j, r, g, b, max;
 	
@@ -65,8 +66,4 @@ void loadFloor(/*const FilePath &file*/){
 	else{
 	    std::cout << "ERREUR: Impossible d'ouvrir le fichier." << std::endl;
 	}
-}
-
-int main(){
-	loadFloor();
 }

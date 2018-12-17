@@ -9,30 +9,32 @@
 #include <iostream>
 #include <vector>
 #include <fstream> //lire dans les fichiers
+#include <glimac/FilePath.hpp>
 
-#include "GameManager"
+//#include "GameManager.hpp"
 
 /**
 * \class Game
 * \brief class hosting the current game
 */
+using namespace glimac;
 
 class Game {
 
-protected :
-	GameManager m_manager; /*!<  */
-	Character m_character; /*!<  */
-	vector<Object> m_walls; /*!<  */
-	vector<Object> m_ground; /*!<  */
-	vector<Stone> m_stone; /*!<  */
+protected:
+	//GameManager m_manager; /*!<  */
+	//Character m_character; /*!<  */
+	//std::vector<Object> m_walls; /*!<  */
+	//std::vector<Object> m_ground; /*!<  */
+	//std::vector<Stone> m_stone; /*!<  */
 
 
-public :
+public:
 	/**
 	* \brief constructor
-	* \param GameManager :
+	* \param GameManager : manager oh the game
 	*/
-	Game(GameManager);
+	Game();
 
 	/**
 	* \brief create the map from a ppm file

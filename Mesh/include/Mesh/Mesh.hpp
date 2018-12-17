@@ -9,6 +9,7 @@
 #include <iostream>
 #include <Render/Texture.hpp>
 #include <glimac/Shader.hpp>
+#include <glimac/common.hpp>
 #include <Render/VAO.hpp>
 #include <Render/VBO.hpp>
 #include <GL/glew.h>
@@ -17,11 +18,12 @@
 
 
 class Mesh {
-protected : 
+
+protected:
 	std::string m_name;    /*!< name of the Mesh */
 	std::vector<Texture> m_textures;   /*!< Vector with textures */
-	//Shader m_shader;   /*!< Shader of the Mesh */
-	//std::vector<ShapeVertex> m_vertices;   /*!< Vector with ShapeVertex */
+	Shader m_shader;   /*!< Shader of the Mesh */
+	std::vector<ShapeVertex> m_vertices;   /*!< Vector with ShapeVertex */
 	GLsizei m_nbVertex;   /*!< Number of Vertex of the Mesh */
 	VBO m_vbo;   /*!<  Identifiant of the VBO*/
 	VAO m_vao;   /*!<  Identifiant of the VAO */
@@ -32,19 +34,23 @@ public:
 	* \brief constructor of Mesh using a vector of SHapeVertex
     * \param v : Vector of ShapeVertex
 	*/
-	//Mesh(std::vector<ShapeVertex>);
+	Mesh();
 
 	/**
 	* \brief getter of the pointer that leads us to the shapeVertex
     * \return : the pointer that leads us to the shapeVertex
 	*/
-	//*ShapeVertex getDataPointer();
+	const ShapeVertex* getDataPointer() const {
+        return &m_vertices[0];
+    }
 
 	/**
 	* \brief getter of the number of Vertex of the Mesh
     * \return : the number of Vertex of the Mesh
 	*/
-	//GLsizei getNbVertex();
+	GLsizei getVertexCount() const {
+        return m_nbVertex;
+    }
 
 	/**
 	* \brief method that binds the Mesh
