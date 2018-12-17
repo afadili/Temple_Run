@@ -39,31 +39,22 @@ public:
 	/**
 	* \brief method that loads the texture 
 	*/
-<<<<<<< HEAD
 	void loadTexture();
-=======
-	void loadTexture(FilePath m_path);
->>>>>>> master
+
 
 	/**
 	* \brief constructor of Texture using a Filepath
     * \param v : Filepath of the file with textures
 	*/
-<<<<<<< HEAD
+
 	Texture(FilePath path);
-=======
-	Texture(FilePath m_path);
->>>>>>> master
 
 	/**
 	* \brief constructor of Texture using a path, a maxFilter and a minFilter 
     * \param v : Filepath of the file, minFilter and maxFilter
 	*/
-<<<<<<< HEAD
+
 	Texture(FilePath path, const int min, const int max);
-=======
-	Texture(FilePath m_path, const GLint* min, const GLint* max);
->>>>>>> master
 
 	/**
 	* \brief destructor of Texture
