@@ -17,8 +17,8 @@ public:
 	/**
 	* \brief constructor of Program 
 	*/
-	//Program(): m_nGLId(glCreateProgram()) {
-	//}
+	Program(): m_nGLId(glCreateProgram()) {
+	}
 
 	/**
 	* \brief destructor of Program
