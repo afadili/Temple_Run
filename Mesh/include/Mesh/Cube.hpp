@@ -27,6 +27,6 @@ public:
 	/**
 	* \brief destructor of Cube
 	*/	
-	~Cube();
+	~Cube() = default;
 	
 };

@@ -104,6 +104,7 @@ Render/CMakeFiles/Render.dir/src/Texture.cpp.o: ../Render/src/Texture.cpp
 
 Render/CMakeFiles/Render.dir/src/VAO.cpp.o: ../Render/include/Render/Render.hpp
 Render/CMakeFiles/Render.dir/src/VAO.cpp.o: ../Render/include/Render/VAO.hpp
+Render/CMakeFiles/Render.dir/src/VAO.cpp.o: ../Render/include/Render/VBO.hpp
 Render/CMakeFiles/Render.dir/src/VAO.cpp.o: ../Render/src/VAO.cpp
 
 Render/CMakeFiles/Render.dir/src/VBO.cpp.o: ../Render/include/Render/Render.hpp

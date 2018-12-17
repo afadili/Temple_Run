@@ -47,6 +47,8 @@ GL/gl.h
 -
 iostream
 -
+vector
+-
 
 ../Render/include/Render/Texture.hpp
 iostream
@@ -67,8 +69,10 @@ SDL/SDL.h
 -
 
 ../Render/include/Render/VAO.hpp
-Render/Render.hpp
-../Render/include/Render/Render/Render.hpp
+Render.hpp
+../Render/include/Render/Render.hpp
+VBO.hpp
+../Render/include/Render/VBO.hpp
 
 ../Render/include/Render/VBO.hpp
 Render/Render.hpp

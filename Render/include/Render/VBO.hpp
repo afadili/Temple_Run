@@ -40,7 +40,8 @@ public :
 	* \brief 
 	* \param 
 	*/
-	void render();
+	template <typename type>
+    void fillBuffer(std::vector<type> &vect);
 
 };
 

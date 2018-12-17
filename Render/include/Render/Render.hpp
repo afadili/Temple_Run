@@ -9,6 +9,7 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 #include <iostream>
+#include <vector>
 
 /**
 * \class Render
@@ -16,36 +17,46 @@
 */
 class Render {
 
-protected :
+protected:
 	GLuint m_ID; /*!< id of the object (vao, vbo..) */
 
-public :
+public:
 	/**
 	* \brief default constructor
 	*/
 	Render() = default;
 
 	/**
-	* \brief getter of id of the object 
-	* \param 
+	* \brief default constructor
+	*/
+	~Render();
+
+	/**
+	* \brief getter of id of the object
 	*/
 	const GLuint &id() const;
 
 	/**
 	* \brief setter of id of the object 
-	* \param 
 	*/
 	GLuint &id();
 
 	/**
 	* \brief 
 	*/
-	virtual void bind(){};
+	void bind() const;
 
 	/**
 	* \brief 
 	*/
-	virtual void debind(){};
+	void debind() const;
+
+	/**
+	* \brief 
+	*/
+	template <typename type>
+	void fillBuffer(std::vector<type> vect){};
+
 
 };
 
