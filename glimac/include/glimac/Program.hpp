@@ -8,8 +8,16 @@ namespace glimac {
 
 class Program {
 public:
+<<<<<<< Updated upstream:glimac/include/glimac/Program.hpp
 	Program(): m_nGLId(glCreateProgram()) {
 	}
+=======
+	/**
+	* \brief constructor of Program 
+	*/
+	//Program(): m_nGLId(glCreateProgram()) {
+	//}
+>>>>>>> Stashed changes:Render/include/Render/Program.hpp
 
 	~Program() {
 		glDeleteProgram(m_nGLId);
