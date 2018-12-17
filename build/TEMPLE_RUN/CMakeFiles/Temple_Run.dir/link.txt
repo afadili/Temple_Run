@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/Temple_Run.dir/main.cpp.o  -o ../bin/Temple_Run -rdynamic 
