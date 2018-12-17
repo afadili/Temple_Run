@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Error/include/Error/Error.hpp
+exception
+-
+string
+-
+
+/home/6im2/crouss20/Bureau/Temple_Run/TEMPLE_RUN/main.cpp
+iostream
+-
+Error/Error.hpp
+/home/6im2/crouss20/Bureau/Temple_Run/TEMPLE_RUN/Error/Error.hpp
+

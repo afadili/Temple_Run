@@ -32,15 +32,15 @@ find_package(GLEW REQUIRED)
 
 # lib include path
 include_directories(${SDL_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIR} glimac/include third-party/include)
-include_directories(Error/include Render/include Game/include Object/include Mesh/include)
+include_directories(Error/include Render/include Game/include Element/include Mesh/include)
 
-set(ALL_LIBRARIES glimac Error Render Game Object Mesh ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY})
+set(ALL_LIBRARIES glimac Error Render Game Element Mesh ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY})
 
 add_subdirectory(glimac)
 add_subdirectory(Error)
 add_subdirectory(Render)
 add_subdirectory(Game)
-add_subdirectory(Object)
+add_subdirectory(Element)
 add_subdirectory(Mesh)
 
 add_subdirectory(TEMPLE_RUN)

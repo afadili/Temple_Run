@@ -1,13 +1,13 @@
-#include "Texture.hpp"
+#include <Render/Texture.hpp>
 #include <iostream>
 
-using namespace glimac
+using namespace glimac;
 
 GLuint Texture::getId(){
 	return m_id;
 }
 
-Texture::loadTexture(std::string Filepath) // TO DO : changer la fonction pour que ça marche pour plusieurs textures 
+/*Texture::loadTexture(std::string Filepath) // TO DO : changer la fonction pour que ça marche pour plusieurs textures 
 {
 	m_image = loadImage(Filepath);
 
@@ -45,4 +45,4 @@ void Texture::bind(){
 
 void Texture::free(){
 	 glDeleteTextures(1, &m_id);
-}
+}*/

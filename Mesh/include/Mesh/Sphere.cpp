@@ -7,8 +7,8 @@
 #define __SPHERE__HPP
 
 #include <iostream>
-#include "Texture.hpp"
-#include "Shader.hpp"
+#include <Render/Texture.hpp>
+#include <Render/Shader.hpp>
 #include "Mesh.hpp"
 #include <vector>
 #include <string>
@@ -34,3 +34,5 @@ public:
 	~Sphere();
 	
 };
+
+#endif

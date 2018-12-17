@@ -1,4 +1,4 @@
-# Install script for directory: /home/6im2/nsenecal/Bureau/Temple_Run/Error
+# Install script for directory: /home/6im2/crouss20/Bureau/Temple_Run/Error
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

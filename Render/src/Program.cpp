@@ -1,4 +1,4 @@
-#include "glimac/Program.hpp"
+#include <Render/Program.hpp>
 #include <stdexcept>
 
 namespace glimac {

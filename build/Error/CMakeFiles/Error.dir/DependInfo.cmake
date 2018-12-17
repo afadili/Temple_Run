@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/6im2/nsenecal/Bureau/Temple_Run/Error/src/Error.cpp" "/home/6im2/nsenecal/Bureau/Temple_Run/build/Error/CMakeFiles/Error.dir/src/Error.cpp.o"
+  "/home/6im2/crouss20/Bureau/Temple_Run/Error/src/Error.cpp" "/home/6im2/crouss20/Bureau/Temple_Run/build/Error/CMakeFiles/Error.dir/src/Error.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -15,6 +15,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../third-party/include"
   "../Error/include"
   "../Render/include"
+  "../Game/include"
+  "../Element/include"
+  "../Mesh/include"
   )
 
 # Targets to which this target links.
