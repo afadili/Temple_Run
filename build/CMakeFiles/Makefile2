@@ -84,7 +84,7 @@ glimac/preinstall:
 glimac/CMakeFiles/glimac.dir/all:
 	$(MAKE) -f glimac/CMakeFiles/glimac.dir/build.make glimac/CMakeFiles/glimac.dir/depend
 	$(MAKE) -f glimac/CMakeFiles/glimac.dir/build.make glimac/CMakeFiles/glimac.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6im2/crouss20/Bureau/Temple_Run/build/CMakeFiles --progress-num=16,17,18,19,20,21,22,23,24 "Built target glimac"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6im2/crouss20/Bureau/Temple_Run/build/CMakeFiles --progress-num=17,18,19,20,21,22,23,24,25 "Built target glimac"
 .PHONY : glimac/CMakeFiles/glimac.dir/all
 
 # Include target in all.
@@ -194,7 +194,7 @@ Render/preinstall:
 Render/CMakeFiles/Render.dir/all:
 	$(MAKE) -f Render/CMakeFiles/Render.dir/build.make Render/CMakeFiles/Render.dir/depend
 	$(MAKE) -f Render/CMakeFiles/Render.dir/build.make Render/CMakeFiles/Render.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6im2/crouss20/Bureau/Temple_Run/build/CMakeFiles --progress-num=9,10,11,12,13 "Built target Render"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6im2/crouss20/Bureau/Temple_Run/build/CMakeFiles --progress-num=10,11,12,13,14 "Built target Render"
 .PHONY : Render/CMakeFiles/Render.dir/all
 
 # Include target in all.
@@ -359,7 +359,7 @@ Mesh/preinstall:
 Mesh/CMakeFiles/Mesh.dir/all:
 	$(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/depend
 	$(MAKE) -f Mesh/CMakeFiles/Mesh.dir/build.make Mesh/CMakeFiles/Mesh.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6im2/crouss20/Bureau/Temple_Run/build/CMakeFiles --progress-num=7,8 "Built target Mesh"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6im2/crouss20/Bureau/Temple_Run/build/CMakeFiles --progress-num=7,8,9 "Built target Mesh"
 .PHONY : Mesh/CMakeFiles/Mesh.dir/all
 
 # Include target in all.
@@ -369,7 +369,7 @@ all: Mesh/CMakeFiles/Mesh.dir/all
 
 # Build rule for subdir invocation for target.
 Mesh/CMakeFiles/Mesh.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/6im2/crouss20/Bureau/Temple_Run/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/6im2/crouss20/Bureau/Temple_Run/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 Mesh/CMakeFiles/Mesh.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/6im2/crouss20/Bureau/Temple_Run/build/CMakeFiles 0
 .PHONY : Mesh/CMakeFiles/Mesh.dir/rule
@@ -414,7 +414,7 @@ TEMPLE_RUN/preinstall:
 TEMPLE_RUN/CMakeFiles/Temple_Run.dir/all:
 	$(MAKE) -f TEMPLE_RUN/CMakeFiles/Temple_Run.dir/build.make TEMPLE_RUN/CMakeFiles/Temple_Run.dir/depend
 	$(MAKE) -f TEMPLE_RUN/CMakeFiles/Temple_Run.dir/build.make TEMPLE_RUN/CMakeFiles/Temple_Run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6im2/crouss20/Bureau/Temple_Run/build/CMakeFiles --progress-num=14,15 "Built target Temple_Run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/6im2/crouss20/Bureau/Temple_Run/build/CMakeFiles --progress-num=15,16 "Built target Temple_Run"
 .PHONY : TEMPLE_RUN/CMakeFiles/Temple_Run.dir/all
 
 # Include target in all.

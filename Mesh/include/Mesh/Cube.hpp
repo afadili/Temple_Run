@@ -7,8 +7,8 @@
 #define __CUBE__HPP
 
 #include <iostream>
-#include "Texture.hpp"
-#include "Shader.hpp"
+#include <Render/Texture.hpp>
+#include <glimac/Shader.hpp>
 #include "Mesh.hpp"
 #include <vector>
 #include <string>
