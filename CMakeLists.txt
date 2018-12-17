@@ -32,8 +32,7 @@ find_package(GLEW REQUIRED)
 
 # lib include path
 include_directories(${SDL_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIR} glimac/include third-party/include)
-include_directories(dependencies/jsoncpp/include)
-include_directories(Error/include Render/include Game/include Element/include Mesh/include)
+include_directories(dependencies/jsoncpp/include Error/include Render/include Game/include Element/include Mesh/include)
 
 set(ALL_LIBRARIES jsoncpp glimac Error Render Game Element Mesh ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY})
 
