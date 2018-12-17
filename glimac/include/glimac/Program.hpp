@@ -10,13 +10,19 @@ class Program {
 public:
 	Program(): m_nGLId(glCreateProgram()) {
 	}
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 	/**
 	* \brief constructor of Program 
 	*/
 	//Program(): m_nGLId(glCreateProgram()) {
 	//}
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 	~Program() {
 		glDeleteProgram(m_nGLId);
 	}
