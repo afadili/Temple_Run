@@ -8,15 +8,18 @@
 
 #include <iostream>
 #include <glimac/Shader.hpp>
+#include <glimac/FilePath.hpp>
 #include <vector>
 #include <string>
 #include <GL/glew.h>
 #include <SDL/SDL.h>
 
+using namespace glimac;
+
 class Texture
 {
 private: 
-	glimac::FilePath m_path;   /*!< Path of the file of the texture */
+	FilePath m_path;   /*!< Path of the file of the texture */
 	GLuint m_id;   /*!< id of the texture */
 	//std::unique_ptr<Image> m_image;   /*!< Ipointer to the image of the texture */
 	GLenum m_format;   /*!< format of the texture */
@@ -35,7 +38,7 @@ public:
 	/**
 	* \brief method that loads the texture 
 	*/
-	//loadTexture(glimac::Filepath m_path);
+	loadTexture(Filepath m_path);
 
 	/**
 	* \brief constructor of Texture using a Filepath
