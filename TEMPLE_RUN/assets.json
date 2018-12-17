@@ -5,13 +5,23 @@
 			"fs" : "/shaders/tex3D.fs.gl",
 			"vs" : "/shaders/tex3D.vs.glsl"
 		},
+		{
+			"name" : "tex3D",
+			"fs" : "/shaders/tex3D.fs.gl",
+			"vs" : "/shaders/tex3D.vs.glsl"
+		},
+		{
+			"name" : "tex3D",
+			"fs" : "/shaders/tex3D.fs.gl",
+			"vs" : "/shaders/tex3D.vs.glsl"
+		}
 	],
 	"textures" : [
 		{
 			"name" : "triforce",
 			"src" : "/assets/textures/triforce.png",
 			"minFilter" : "GL_LINEAR",
-			"maxFilter" : "GL_LINEAR",	
+			"maxFilter" : "GL_LINEAR"
 		}
 	],
 	"objects" : [
@@ -19,7 +29,7 @@
 			"name" : "Wall1",
 			"type" : "Cube",
 			"texture" : "triforce",
-			"shader" : "tex3D",
+			"shader" : "tex3D"
 		}
 	]
 } 

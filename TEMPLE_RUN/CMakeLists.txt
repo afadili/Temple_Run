@@ -1,6 +1,4 @@
-
 # compile
-#add_executable(Temple_Run main.cpp)
 
 file(GLOB HEADER_FILES *.hpp)
 file(GLOB SRC_FILES *.cpp)
@@ -17,3 +15,4 @@ endforeach()
 #copy shaders and assets
 file(COPY shaders DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(COPY assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY assets.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
