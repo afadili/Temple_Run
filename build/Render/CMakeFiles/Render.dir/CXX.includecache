@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../Render/include/Render/FilePath.hpp
-string
--
-
-../Render/include/Render/Program.hpp
-GL/glew.h
--
-Shader.hpp
-../Render/include/Render/Shader.hpp
-FilePath.hpp
-../Render/include/Render/FilePath.hpp
-
 ../Render/include/Render/Render.hpp
 GL/glew.h
 -
@@ -26,19 +14,11 @@ GL/gl.h
 iostream
 -
 
-../Render/include/Render/Shader.hpp
-GL/glew.h
--
-string
--
-FilePath.hpp
-../Render/include/Render/FilePath.hpp
-
 ../Render/include/Render/Texture.hpp
 iostream
 -
-Shader.hpp
-../Render/include/Render/Shader.hpp
+glimac/Shader.hpp
+-
 vector
 -
 string
@@ -56,11 +36,17 @@ Render/Render.hpp
 Render/Render.hpp
 ../Render/include/Render/Render/Render.hpp
 
-/home/6im2/crouss20/Bureau/Temple_Run/Render/src/Program.cpp
-Render/Program.hpp
+../glimac/include/glimac/FilePath.hpp
+string
 -
-stdexcept
+
+../glimac/include/glimac/Shader.hpp
+GL/glew.h
 -
+string
+-
+FilePath.hpp
+../glimac/include/glimac/FilePath.hpp
 
 /home/6im2/crouss20/Bureau/Temple_Run/Render/src/Render.cpp
 Render/Render.hpp

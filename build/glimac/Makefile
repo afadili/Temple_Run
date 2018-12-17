@@ -206,6 +206,33 @@ src/Image.cpp.s:
 	cd /home/6im2/crouss20/Bureau/Temple_Run/build && $(MAKE) -f glimac/CMakeFiles/glimac.dir/build.make glimac/CMakeFiles/glimac.dir/src/Image.cpp.s
 .PHONY : src/Image.cpp.s
 
+src/Program.o: src/Program.cpp.o
+
+.PHONY : src/Program.o
+
+# target to build an object file
+src/Program.cpp.o:
+	cd /home/6im2/crouss20/Bureau/Temple_Run/build && $(MAKE) -f glimac/CMakeFiles/glimac.dir/build.make glimac/CMakeFiles/glimac.dir/src/Program.cpp.o
+.PHONY : src/Program.cpp.o
+
+src/Program.i: src/Program.cpp.i
+
+.PHONY : src/Program.i
+
+# target to preprocess a source file
+src/Program.cpp.i:
+	cd /home/6im2/crouss20/Bureau/Temple_Run/build && $(MAKE) -f glimac/CMakeFiles/glimac.dir/build.make glimac/CMakeFiles/glimac.dir/src/Program.cpp.i
+.PHONY : src/Program.cpp.i
+
+src/Program.s: src/Program.cpp.s
+
+.PHONY : src/Program.s
+
+# target to generate assembly for a file
+src/Program.cpp.s:
+	cd /home/6im2/crouss20/Bureau/Temple_Run/build && $(MAKE) -f glimac/CMakeFiles/glimac.dir/build.make glimac/CMakeFiles/glimac.dir/src/Program.cpp.s
+.PHONY : src/Program.cpp.s
+
 src/SDLWindowManager.o: src/SDLWindowManager.cpp.o
 
 .PHONY : src/SDLWindowManager.o
@@ -332,6 +359,9 @@ help:
 	@echo "... src/Image.o"
 	@echo "... src/Image.i"
 	@echo "... src/Image.s"
+	@echo "... src/Program.o"
+	@echo "... src/Program.i"
+	@echo "... src/Program.s"
 	@echo "... src/SDLWindowManager.o"
 	@echo "... src/SDLWindowManager.i"
 	@echo "... src/SDLWindowManager.s"

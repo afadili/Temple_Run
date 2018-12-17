@@ -292,6 +292,11 @@ glimac/CMakeFiles/glimac.dir/src/Image.cpp.o
  ../third-party/include/glm/vector_relational.hpp
  /home/6im2/crouss20/Bureau/Temple_Run/glimac/src/Image.cpp
  /home/6im2/crouss20/Bureau/Temple_Run/glimac/src/stb_image.h
+glimac/CMakeFiles/glimac.dir/src/Program.cpp.o
+ ../glimac/include/glimac/FilePath.hpp
+ ../glimac/include/glimac/Program.hpp
+ ../glimac/include/glimac/Shader.hpp
+ /home/6im2/crouss20/Bureau/Temple_Run/glimac/src/Program.cpp
 glimac/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o
  ../glimac/include/glimac/SDLWindowManager.hpp
  ../glimac/include/glimac/glm.hpp

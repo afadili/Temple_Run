@@ -292,6 +292,11 @@ glimac/CMakeFiles/glimac.dir/src/Image.cpp.o: ../third-party/include/glm/vector_
 glimac/CMakeFiles/glimac.dir/src/Image.cpp.o: ../glimac/src/Image.cpp
 glimac/CMakeFiles/glimac.dir/src/Image.cpp.o: ../glimac/src/stb_image.h
 
+glimac/CMakeFiles/glimac.dir/src/Program.cpp.o: ../glimac/include/glimac/FilePath.hpp
+glimac/CMakeFiles/glimac.dir/src/Program.cpp.o: ../glimac/include/glimac/Program.hpp
+glimac/CMakeFiles/glimac.dir/src/Program.cpp.o: ../glimac/include/glimac/Shader.hpp
+glimac/CMakeFiles/glimac.dir/src/Program.cpp.o: ../glimac/src/Program.cpp
+
 glimac/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o: ../glimac/include/glimac/SDLWindowManager.hpp
 glimac/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o: ../glimac/include/glimac/glm.hpp
 glimac/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o: ../third-party/include/glm/common.hpp

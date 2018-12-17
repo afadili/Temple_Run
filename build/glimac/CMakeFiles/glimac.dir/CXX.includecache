@@ -46,6 +46,14 @@ glm.hpp
 FilePath.hpp
 ../glimac/include/glimac/FilePath.hpp
 
+../glimac/include/glimac/Program.hpp
+GL/glew.h
+-
+Shader.hpp
+../glimac/include/glimac/Shader.hpp
+FilePath.hpp
+../glimac/include/glimac/FilePath.hpp
+
 ../glimac/include/glimac/SDLWindowManager.hpp
 cstdint
 -
@@ -852,6 +860,12 @@ glimac/Image.hpp
 stb_image.h
 /home/6im2/crouss20/Bureau/Temple_Run/glimac/src/stb_image.h
 iostream
+-
+
+/home/6im2/crouss20/Bureau/Temple_Run/glimac/src/Program.cpp
+glimac/Program.hpp
+/home/6im2/crouss20/Bureau/Temple_Run/glimac/src/glimac/Program.hpp
+stdexcept
 -
 
 /home/6im2/crouss20/Bureau/Temple_Run/glimac/src/SDLWindowManager.cpp

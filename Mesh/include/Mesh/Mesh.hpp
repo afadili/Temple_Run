@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include <Render/Texture.hpp>
-#include <Render/Shader.hpp>
+#include <glimac/Shader.hpp>
 #include <Render/VAO.hpp>
 #include <Render/VBO.hpp>
 #include <GL/glew.h>

@@ -125,33 +125,6 @@ Render/fast:
 	cd /home/6im2/crouss20/Bureau/Temple_Run/build && $(MAKE) -f Render/CMakeFiles/Render.dir/build.make Render/CMakeFiles/Render.dir/build
 .PHONY : Render/fast
 
-src/Program.o: src/Program.cpp.o
-
-.PHONY : src/Program.o
-
-# target to build an object file
-src/Program.cpp.o:
-	cd /home/6im2/crouss20/Bureau/Temple_Run/build && $(MAKE) -f Render/CMakeFiles/Render.dir/build.make Render/CMakeFiles/Render.dir/src/Program.cpp.o
-.PHONY : src/Program.cpp.o
-
-src/Program.i: src/Program.cpp.i
-
-.PHONY : src/Program.i
-
-# target to preprocess a source file
-src/Program.cpp.i:
-	cd /home/6im2/crouss20/Bureau/Temple_Run/build && $(MAKE) -f Render/CMakeFiles/Render.dir/build.make Render/CMakeFiles/Render.dir/src/Program.cpp.i
-.PHONY : src/Program.cpp.i
-
-src/Program.s: src/Program.cpp.s
-
-.PHONY : src/Program.s
-
-# target to generate assembly for a file
-src/Program.cpp.s:
-	cd /home/6im2/crouss20/Bureau/Temple_Run/build && $(MAKE) -f Render/CMakeFiles/Render.dir/build.make Render/CMakeFiles/Render.dir/src/Program.cpp.s
-.PHONY : src/Program.cpp.s
-
 src/Render.o: src/Render.cpp.o
 
 .PHONY : src/Render.o
@@ -269,9 +242,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Render"
-	@echo "... src/Program.o"
-	@echo "... src/Program.i"
-	@echo "... src/Program.s"
 	@echo "... src/Render.o"
 	@echo "... src/Render.i"
 	@echo "... src/Render.s"

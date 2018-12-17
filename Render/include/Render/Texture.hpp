@@ -7,7 +7,7 @@
 #define __TEXTURE__HPP
 
 #include <iostream>
-#include "Shader.hpp"
+#include <glimac/Shader.hpp>
 #include <vector>
 #include <string>
 #include <GL/glew.h>
