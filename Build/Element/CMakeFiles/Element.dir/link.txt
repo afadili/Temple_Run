@@ -1,0 +1,2 @@
+/usr/bin/ar qc libElement.a  CMakeFiles/Element.dir/src/Object.cpp.o
+/usr/bin/ranlib libElement.a
