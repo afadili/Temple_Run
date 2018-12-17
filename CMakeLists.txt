@@ -32,10 +32,12 @@ find_package(GLEW REQUIRED)
 
 # lib include path
 include_directories(${SDL_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIR} glimac/include third-party/include)
+include_directories(dependencies/jsoncpp/include)
 include_directories(Error/include Render/include Game/include Element/include Mesh/include)
 
-set(ALL_LIBRARIES glimac Error Render Game Element Mesh ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY})
+set(ALL_LIBRARIES jsoncpp glimac Error Render Game Element Mesh ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY})
 
+add_subdirectory(dependencies/jsoncpp)
 add_subdirectory(glimac)
 add_subdirectory(Error)
 add_subdirectory(Render)
@@ -43,4 +45,8 @@ add_subdirectory(Game)
 add_subdirectory(Element)
 add_subdirectory(Mesh)
 
-add_subdirectory(TEMPLE_RUN)
+file(GLOB GAME_DIRECTORIES "TEMPLE_RUN")
+
+foreach(GAME ${GAME_DIRECTORIES})
+    add_subdirectory(${GAME})
+endforeach()
