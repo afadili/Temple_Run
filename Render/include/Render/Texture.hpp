@@ -9,6 +9,7 @@
 #include <iostream>
 #include <glimac/Shader.hpp>
 #include <glimac/FilePath.hpp>
+#include <glimac/Image.hpp>
 #include <vector>
 #include <string>
 #include <GL/glew.h>
@@ -21,10 +22,10 @@ class Texture
 private: 
 	FilePath m_path;   /*!< Path of the file of the texture */
 	GLuint m_id;   /*!< id of the texture */
-	//std::unique_ptr<Image> m_image;   /*!< Ipointer to the image of the texture */
+	std::unique_ptr<Image> m_image;   /*!< Ipointer to the image of the texture */
 	GLenum m_format;   /*!< format of the texture */
-	const GLint* m_minFilter;   /*!< minimum filter of the texture */
-	const GLint* m_maxFilter;   /*!< maximum filter of the texture  */
+	const int m_minFilter;   /*!< minimum filter of the texture */
+	const int m_maxFilter;   /*!< maximum filter of the texture  */
 	bool m_isLoaded;   /*!< boolean to know is the texture is loaded or not */
 	unsigned int s_nbTexture;   /*!< number of textures*/
 
@@ -38,19 +39,19 @@ public:
 	/**
 	* \brief method that loads the texture 
 	*/
-	loadTexture(Filepath m_path);
+	void loadTexture();
 
 	/**
 	* \brief constructor of Texture using a Filepath
     * \param v : Filepath of the file with textures
 	*/
-	Texture(std::string FilePath);
+	Texture(FilePath path);
 
 	/**
 	* \brief constructor of Texture using a path, a maxFilter and a minFilter 
     * \param v : Filepath of the file, minFilter and maxFilter
 	*/
-	//Texture(FilePath path, const GLint* min, const GLint* max);
+	Texture(FilePath path, const int min, const int max);
 
 	/**
 	* \brief destructor of Texture

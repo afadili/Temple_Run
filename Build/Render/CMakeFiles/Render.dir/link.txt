@@ -1,0 +1,2 @@
+/usr/bin/ar qc libRender.a  CMakeFiles/Render.dir/src/Render.cpp.o CMakeFiles/Render.dir/src/Texture.cpp.o CMakeFiles/Render.dir/src/VAO.cpp.o CMakeFiles/Render.dir/src/VBO.cpp.o
+/usr/bin/ranlib libRender.a
