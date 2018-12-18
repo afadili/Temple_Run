@@ -7,24 +7,41 @@ GameManager::GameManager(const FilePath &assetPath){
 void GameManager::loadAssets(const FilePath &assetPath){
 	std::ifstream assetJSON(assetPath, std::ifstream::binary);
 	if(assetJSON.fail())
-		std::cout << "FILE DON'T EXIST" << std::endl;
+		throw Error("The asset file \"" + assetPath.str() +"\" is not found !", "FILE_NOT_FOUND", true);
+
+	if(assetPath.ext() != "json")
+		throw Error("The file \"" + assetPath.str() +"\" as to be a JSON file !", "INCORRECT_FILE", true);
 
     Json::Value root;   // will contain the root value after parsing.
     Json::CharReaderBuilder builder;
     std::string errs;
 
-    if (!Json::parseFromStream(builder, assetJSON, &root, &errs)) {
-        // report to the user the failure and their locations in the document.
-        std::cout  << errs << std::endl;
-    }
-     
+    if (!Json::parseFromStream(builder, assetJSON, &root, &errs))
+        throw Error(errs, "INCORRECT_FILE", true);
+    
+    loadShaders(root["shaders"]);
 
-    const Json::Value& shaders = root["shaders"]; // array of characters
-    for (int i = 0; i < shaders.size(); i++){
-        std::cout << "    name: " << shaders[i]["name"].asString();
-        std::cout << "      fs: " << shaders[i]["fs"].asString();
-        std::cout << "      vs: " << shaders[i]["vs"].asString();
-        std::cout << std::endl;
-    }
 
 }
+
+void GameManager::loadShaders(const Json::Value &jsonShaders){
+	if(!jsonShaders)
+		throw Error("No shaders data found !", "DATA_NOT_FOUND", false);
+
+	std::for_each(jsonShaders.begin(), jsonShaders.end(),
+	  [](const Json::Value &jsonShader) {
+	  	//Shader *shader = new Shader()
+	  	//m_shaders.insert(std::make_pair(jsonShader["name"], shader));
+		
+	});
+}
+
+void GameManager::loadMeshs(const Json::Value &jsonMeshs){
+	  std::for_each(jsonMeshs.begin(), jsonMeshs.end(),
+          [](const Json::Value &mesh) {
+        	
+      }
+  );
+}
+
+void loadTextures(const Json::Value &jsonTextures);
