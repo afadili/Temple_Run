@@ -7,7 +7,7 @@ Cube::Cube() : Mesh() {
 	generateIndexs();
 }
 
-Cube::Cube() : Mesh(const glm::vec3 &width) {
+Cube::Cube(const glm::vec3 &width) : Mesh() {
 	generateVertices(width);
 	generateIndexs();
 }
@@ -48,8 +48,4 @@ void Cube::generateIndexs(){
 	m_indexVer.insert(m_indexVer.end(), { 2, 3, 7, 2, 6, 7 }); // LEFT FACE
 	m_indexVer.insert(m_indexVer.end(), { 0, 3, 4, 3, 4, 7 }); // TOP FACE
 	m_indexVer.insert(m_indexVer.end(), { 1, 2, 5, 2, 5, 6 }); // BTTOM FACE
-}
-
-const std::vector<ShapeVertex> &Cube::Vertices() const{
-	return m_vertices;
 }

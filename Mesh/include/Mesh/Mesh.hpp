@@ -50,8 +50,8 @@ public:
 	/**
 	* \brief constructor of Mesh using a vector of ShapeVertex
     * \param vertices : vector of all the vertices
-    * \param shader :
-    * \param textures : 
+    * \param shader : shader of the mesh
+    * \param textures : texture of the mesh
 	*/
 	Mesh(const std::vector<ShapeVertex> &vertices, Shader *shader, Texture *texture);
 
@@ -59,8 +59,8 @@ public:
 	/**
 	* \brief constructor of Mesh using a vector of ShapeVertex
     * \param vertices : vector of all the vertices
-    * \param shader :
-    * \param textures : 
+    * \param shader : shader of the mesh
+    * \param textures : texture of the mesh
 	*/
 	Mesh(Shader *shader, Texture *texture);
 
@@ -68,8 +68,8 @@ public:
 	* \brief constructor of Mesh using a vector of ShapeVertex
     * \param vertices : vector of all the vertices
     * \param indexVer : vector of the index of the vertices
-    * \param shader :
-    * \param textures :
+    * \param shader : shader of the mesh
+    * \param textures : texture of the mesh
 	*/
 	Mesh(const std::vector<ShapeVertex> &vertices, const std::vector<uint32_t> &indexVer, Shader *shader, Texture *texture);
 
@@ -83,7 +83,7 @@ public:
 	* \brief getter of the pointer that leads us to the shapeVertex
     * \return : the pointer that leads us to the vector of vertices
 	*/
-	const ShapeVertex* getDataPointer() const {
+	const ShapeVertex* dataPointer() const {
         return &m_vertices[0];
     }
 
@@ -91,7 +91,7 @@ public:
 	* \brief getter of the number of Vertex of the Mesh
     * \return : the number of Vertex of the Mesh
 	*/
-	GLsizei getVertexCount() const {
+	GLsizei vertexCount() const {
         return m_nbVertex;
     }
 
