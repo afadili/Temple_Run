@@ -29,7 +29,7 @@ public:
 	/**
 	* \brief default constructor
 	*/
-	~Render();
+	~Render() = default;
 
 	/**
 	* \brief getter of id of the object

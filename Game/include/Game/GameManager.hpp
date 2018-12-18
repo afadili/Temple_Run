@@ -13,6 +13,7 @@
 #include <glimac/Shader.hpp>
 #include <glimac/FilePath.hpp>
 #include <glimac/FilePath.hpp>
+#include <Error/Error.hpp>
 #include <iostream>
 #include <fstream>
 #include <json/json.h>
