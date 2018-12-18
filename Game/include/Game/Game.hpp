@@ -13,10 +13,9 @@
 
 //#include "GameManager.hpp"
 
-/**
-* \class Game
-* \brief class hosting the current game
-*/
+/// \class VectorD
+/// \brief class defining a vector for linear algebra operations.
+
 using namespace glimac;
 
 class Game {
