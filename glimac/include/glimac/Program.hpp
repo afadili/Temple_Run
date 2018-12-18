@@ -1,8 +1,8 @@
 #pragma once
 
 #include <GL/glew.h>
-#include "Shader.hpp"
 #include "FilePath.hpp"
+#include "Shader.hpp"
 
 namespace glimac {
 
