@@ -49,3 +49,10 @@ file(GLOB GAME_DIRECTORIES "TEMPLE_RUN")
 foreach(GAME ${GAME_DIRECTORIES})
     add_subdirectory(${GAME})
 endforeach()
+
+
+
+# call the CMakeLists.txt to make the documentation (Doxygen)
+# > 'make html' to generate the documentation
+# > the documentation is located in : [CMAKE ROOT]/build/doc/doc-doxygen/html
+add_subdirectory(doc)
