@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include "Texture.hpp"
-#include "Shader.hpp"
 #include <vector>
 #include <string>
 
