@@ -7,6 +7,7 @@
 #include <GL/glew.h>
 #include <iostream>
 #include <Game/GameManager.hpp>
+#include <Game/Game.hpp>
 
 /**
  * \brief ============================== main ==================================
@@ -23,7 +24,7 @@ int main(int argc, char **argv) {
 
 
 	// Initialize SDL and open a window
-	SDLWindowManager windowManager(800, 600, "I N F I N I T Y  R U N");
+	SDLWindowManager windowManager(800, 600, "I N F I N I T Y   R U N");
 
 	// Initialize glew for OpenGL3+ support
 	GLenum glewInitError = glewInit();
@@ -38,6 +39,12 @@ int main(int argc, char **argv) {
 	/*********************************
 	 * HERE SHOULD COME THE INITIALIZATION CODE
 	 *********************************/
+
+	//TEST PPM
+	static const FilePath file = "../Levels/Tests/test3.ppm"; 
+	Game gm(file, 1);
+	gm.loadFloor(file, 0);
+
 
 	// Application loop:
 	bool done = false;

@@ -10,6 +10,7 @@
 #include <vector>
 #include <fstream> //lire dans les fichiers
 #include <glimac/FilePath.hpp>
+#include <Error/Error.hpp>
 
 //#include "GameManager.hpp"
 
@@ -31,22 +32,21 @@ protected:
 public:
 	/**
 	* \brief constructor
-	* \param GameManager : manager oh the game
 	*/
-	Game();
+	Game(const FilePath &path, int nbFloor);
 
 	/**
-	* \brief create the map from a ppm file
+	* \brief create the map from all the levels of the decor
 	* \param path : path to the level files
 	* \param nbFloor : number of floors in the level
 	*/
 	void loadMap(const FilePath &path, int nbFloor);
 
 	/**
-	* \brief create the map from a ppm file
+	* \brief create a level of the decor from a ppm file
 	* \param file : file for the floor
 	*/
-	void loadFloor(const FilePath &file);
+	void loadFloor(const FilePath &file, int floor);
 };
 
 #endif
