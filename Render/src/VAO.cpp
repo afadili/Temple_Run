@@ -16,20 +16,7 @@ void VAO::debind(){
 	glBindVertexArray(0);
 }
 
-template <typename type>
-void VAO::fillBuffer(std::vector<type> &vect, VBO *vbo){
-	bind();
-        
-    const GLuint VERTEX_ATTR_POSITION = 0;
-    const GLuint VERTEX_ATTR_NORMAL = 1;
-    const GLuint VERTEX_ATTR_TEXTURE = 2;
-    glEnableVertexAttribArray(VERTEX_ATTR_POSITION);
-    glEnableVertexAttribArray(VERTEX_ATTR_NORMAL);
-    glEnableVertexAttribArray(VERTEX_ATTR_TEXTURE);
-    vbo->bind();
-    glVertexAttribPointer(VERTEX_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(type), (const GLvoid*) offsetof(type, position));
-    glVertexAttribPointer(VERTEX_ATTR_NORMAL, 3, GL_FLOAT, GL_FALSE, sizeof(type), (const GLvoid*) offsetof(type, normal));
-    glVertexAttribPointer(VERTEX_ATTR_TEXTURE, 2, GL_FLOAT, GL_FALSE, sizeof(type), (const GLvoid*) offsetof(type, texCoords));
-    vbo->debind();
-    debind();
-}
+/*template <typename type>
+void VAO::fillBuffer(std::vector<type> &vect, VBO *vbo, IBO *ibo = nullptr){
+	
+}*/
