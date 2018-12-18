@@ -13,10 +13,3 @@ void IBO::bind(){
 void IBO::debind(){
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
-
-template <typename type>
-void IBO::fillBuffer(std::vector<type> &vect){
-    bind();
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, vect.size() * sizeof(type), vect.data(), GL_STATIC_DRAW);
-    debind();
-};

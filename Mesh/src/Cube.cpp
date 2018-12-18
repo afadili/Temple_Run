@@ -12,12 +12,12 @@ Cube::Cube(const glm::vec3 &width) : Mesh() {
 	generateIndexs();
 }
 
-Cube::Cube(Shader *shader, Texture *texture) : Mesh(shader, texture) {
+Cube::Cube(ShaderManager *shader, Texture *texture) : Mesh(shader, texture) {
 	generateVertices(glm::vec3(1.,1.,1.));
 	generateIndexs();
 }
 
-Cube::Cube(const glm::vec3 &width, Shader *shader, Texture *texture) : Mesh(shader, texture) {
+Cube::Cube(const glm::vec3 &width, ShaderManager *shader, Texture *texture) : Mesh(shader, texture) {
 	generateVertices(width);
 	generateIndexs();
 }
