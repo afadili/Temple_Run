@@ -16,25 +16,25 @@ void moveLeft(){}
 
 
 void Update(){}
-
+/*
 void readEvent(const SDL_Event &e)
 {
 	switch (e.type)
 	{
-		/* Touche du clavier */
+		// Touche du clavier
 		case SDL_KEYDOWN:
 		{
-			if (e.key.keysym.sym == SDLK_z || e.key.keysym.sym == SDLK_UP) /* touche de Haut */
+			if (e.key.keysym.sym == SDLK_z || e.key.keysym.sym == SDLK_UP) // touche de Haut
 			{
-				/* code */
+				// code 
 			}
-			else if (e.key.keysym.sym == SDLK_s || e.key.keysym.sym == SDLK_DOWN) /* touche de bas */
+			else if (e.key.keysym.sym == SDLK_s || e.key.keysym.sym == SDLK_DOWN) // touche de bas 
 			{
-				/* code */
+				// code 
 			}
 		}
 		break;
-		/* la souris */
+		// la souris 
 		case SDL_MOUSEMOTION:
 		{
 
@@ -45,3 +45,4 @@ void readEvent(const SDL_Event &e)
 		break;
 	}
 }
+*/

@@ -7,7 +7,10 @@
 #define __CAMERA__HPP
 
 #include <iostream>
+<<<<<<< HEAD
 #include "Texture.hpp"
+=======
+>>>>>>> master
 #include <vector>
 #include <string>
 
@@ -15,7 +18,7 @@
 class Camera {
 private : 
 
-	glm::vec3 m_position;    /*!< position of the camera */
+	//glm::vec3 m_position;    /*!< position of the camera */
 
 
 public:
@@ -62,8 +65,8 @@ public:
 	/**
 	* \brief setter that reads the event and will set the camera depending on the event
 	*/
-	void readEvent(const SDL_Event &e);
-	
+	//void readEvent(const SDL_Event &e);
+
 };
 
 #endif
