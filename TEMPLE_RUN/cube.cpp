@@ -80,18 +80,18 @@ int main(int argc, char **argv) {
   // ======== TEST CUBE ========
 
   // Construct cube
-  ShaderManager shaderCube("TEMPLE_RUN/shaders/3D.vs.glsl", "TEMPLE_RUN/shaders/normals.fs.glsl");
+  ShaderManager shaderCube("TEMPLE_RUN/shaders/tex3D.vs.glsl", "TEMPLE_RUN/shaders/tex3D.fs.glsl");
   shaderCube.use();
   shaderCube.addUniform("uMVPMatrix");
   shaderCube.addUniform("uMVMatrix");
   shaderCube.addUniform("uNormalMatrix"); 
   shaderCube.addUniform("uTexture");
 
-  Texture textureCube("TEMPLE_RUN/assets/textures/cube.png");
+  Texture textureCube("TEMPLE_RUN/assets/textures/cube.jpg");
   Cube myCube(glm::vec3(2), &shaderCube, &textureCube);
 
   // Cube Initilisation
-  //textureCube.loadTexture();
+  textureCube.loadTexture();
   myCube.fillBuffers();
 
 
@@ -120,16 +120,15 @@ int main(int argc, char **argv) {
     // MATRICES de transformations
     glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f), WINDOWS_WIDTH / (float) WINDOWS_HEIGHT, NEAR_VISION, FAR_VISION);
     glm::mat4 MVMatrix = glm::translate(glm::mat4(), glm::vec3(0.f, 0.f, -5.f));
-	MVMatrix = glm::rotate(MVMatrix, windowManager.getTime() * 0.25f, glm::vec3(0.f, 1.f, 0.f));
-    MVMatrix = glm::rotate(MVMatrix, 0.25f, glm::vec3(0.f, 1.f, 0.f));
+    MVMatrix = glm::rotate(MVMatrix, windowManager.getTime() * 0.75f, glm::vec3(1.f, 1.f, 1.f));
     glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
 
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-glCheckError();
+
     // Bind du VAO
-    myCube.vao()->bind(); // ==< ERROR HERE
-glCheckError();
+    myCube.vao()->bind();
+
     // program du shader
     myCube.shader()->use();
 
@@ -140,14 +139,16 @@ glCheckError();
     myCube.shader()->sendUniform1i("uTexture", 0);
 
     // bind de la texture
-    //myCube.texture()->bind();
+    myCube.texture()->bind();
 
  
-    glDrawElements(GL_TRIANGLES, myCube.indexVer().size(), GL_UNSIGNED_INT, 0);
-    //glDrawArrays(GL_TRIANGLES, 0, myCube.vertexCount());
+    if(myCube.haveIBO())
+      glDrawElements(GL_TRIANGLES, myCube.indexVer().size(), GL_UNSIGNED_INT, 0);
+    else
+      glDrawArrays(GL_TRIANGLES, 0, myCube.vertexCount());
 
     // debind de la texture
-    //myCube.texture()->unbind();
+    myCube.texture()->unbind();
 
 
     // debind du VAO
@@ -161,7 +162,7 @@ glCheckError();
     }
   }
 
-  //textureCube.free();
+  textureCube.free();
   
   
   return EXIT_SUCCESS;

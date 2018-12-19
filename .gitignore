@@ -4,6 +4,9 @@ build/*
 .vscode
 temp/*
 
+# Ignored IDE files
+nbproject/*
+
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles

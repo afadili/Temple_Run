@@ -6,59 +6,60 @@
 
 namespace glimac {
 
-class Program {
-public:
-	/**
-	* \brief constructor of Program 
-	*/
-	Program(): m_nGLId(glCreateProgram()) {
-	}
-	
-	//Program(): m_nGLId(glCreateProgram()) {
-	//}
+  class Program {
+  public:
 
-	~Program() {
-		glDeleteProgram(m_nGLId);
-	}
+    /**
+     * \brief constructor of Program 
+     */
+    Program() : m_nGLId(glCreateProgram()) {
+    }
 
-	Program(Program&& rvalue): m_nGLId(rvalue.m_nGLId) {
-		rvalue.m_nGLId = 0;
-	}
+    //Program(): m_nGLId(glCreateProgram()) {
+    //}
 
-	Program& operator =(Program&& rvalue) {
-		m_nGLId = rvalue.m_nGLId;
-		rvalue.m_nGLId = 0;
-		return *this;
-	}
+    ~Program() {
+      glDeleteProgram(m_nGLId);
+    }
 
-	GLuint getGLId() const {
-		return m_nGLId;
-	}
+    Program(Program&& rvalue) : m_nGLId(rvalue.m_nGLId) {
+      rvalue.m_nGLId = 0;
+    }
 
-	void attachShader(const Shader& shader) {
-		glAttachShader(m_nGLId, shader.getGLId());
-	}
+    Program& operator=(Program&& rvalue) {
+      m_nGLId = rvalue.m_nGLId;
+      rvalue.m_nGLId = 0;
+      return *this;
+    }
 
-	bool link();
+    GLuint getGLId() const {
+      return m_nGLId;
+    }
 
-	const std::string getInfoLog() const;
+    void attachShader(const Shader& shader) {
+      glAttachShader(m_nGLId, shader.getGLId());
+    }
 
-	void use() const {
-		glUseProgram(m_nGLId);
-	}
+    bool link();
 
-private:
-	Program(const Program&);
-	Program& operator =(const Program&);
+    const std::string getInfoLog() const;
 
-	GLuint m_nGLId;
-};
+    void use() const {
+      glUseProgram(m_nGLId);
+    }
 
-// Build a GLSL program from source code
-Program buildProgram(const GLchar* vsSrc, const GLchar* fsSrc);
+  private:
+    Program(const Program&);
+    Program& operator=(const Program&);
 
-// Load source code from files and build a GLSL program
-Program loadProgram(const FilePath& vsFile, const FilePath& fsFile);
+    GLuint m_nGLId;
+  };
+
+  // Build a GLSL program from source code
+  Program buildProgram(const GLchar* vsSrc, const GLchar* fsSrc);
+
+  // Load source code from files and build a GLSL program
+  Program loadProgram(const FilePath& vsFile, const FilePath& fsFile);
 
 
 }

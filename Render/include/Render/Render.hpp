@@ -1,7 +1,7 @@
 /**
-* \file Render.hpp
-* \brief Declaration of the class "Render"
-*/
+ * \file Render.hpp
+ * \brief Declaration of the class "Render"
+ */
 
 #ifndef __RENDER__HPP
 #define __RENDER__HPP
@@ -12,50 +12,50 @@
 #include <vector>
 
 /**
-* \class Render
-* \brief Mother class of rendering management
-*/
+ * \class Render
+ * \brief Mother class of rendering management
+ */
 class Render {
-
 protected:
-	GLuint m_ID; /*!< id of the object (vao, vbo..) */
+  GLuint m_ID; /*!< id of the object (vao, vbo..) */
 
 public:
-	/**
-	* \brief default constructor
-	*/
-	Render() = default;
+  /**
+   * \brief default constructor
+   */
+  Render() = default;
 
-	/**
-	* \brief default constructor
-	*/
-	~Render() = default;
+  /**
+   * \brief default constructor
+   */
+  ~Render() = default;
 
-	/**
-	* \brief getter of id of the object
-	*/
-	const GLuint &id() const;
+  /**
+   * \brief getter of id of the object
+   */
+  const GLuint &id() const;
 
-	/**
-	* \brief setter of id of the object 
-	*/
-	GLuint &id();
+  /**
+   * \brief setter of id of the object 
+   */
+  GLuint &id();
 
-	/**
-	* \brief 
-	*/
-	void bind() const;
+  /**
+   * \brief 
+   */
+  void bind() const;
 
-	/**
-	* \brief 
-	*/
-	void debind() const;
+  /**
+   * \brief 
+   */
+  void debind() const;
 
-	/**
-	* \brief 
-	*/
-	template <typename type>
-	void fillBuffer(std::vector<type> vect){};
+  /**
+   * \brief 
+   */
+  template <typename type>
+  void fillBuffer(std::vector<type> vect) {
+  };
 
 
 };
