@@ -58,9 +58,9 @@ public:
   const char* what() const noexcept {
     std::string *err;
     if(_critical)
-      err = new std::string("CRITICAL ERROR :\n -- [" + _code + "] " + _message + "\n");
+      err = new std::string("\nCRITICAL ERROR :\n -- [" + _code + "] " + _message + "\n");
     else
-      err = new std::string("WARNING :\n -- [" + _code + "] " + _message + "\n");
+      err = new std::string("\nWARNING :\n -- [" + _code + "] " + _message + "\n");
     return err->c_str();
   }
 
