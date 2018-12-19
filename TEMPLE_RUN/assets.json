@@ -3,47 +3,39 @@
     {
       "//": "IMPORTANT: Always have this default shaders for textures and shaders not found",
       "name": "default", 
-      "vs": "/shaders/3D.vs.glsl",
-      "fs": "/shaders/default.fs.gl"
+      "vs": "TEMPLE_RUN/shaders/3D.vs.glsl",
+      "fs": "TEMPLE_RUN/shaders/default.fs.glsl"
     },
     {
       "name": "normals",
-      "vs": "/shaders/3D.vs.glsl",
-      "fs": "/shaders/normals.fs.gl"
+      "vs": "TEMPLE_RUN/shaders/3D.vs.glsl",
+      "fs": "TEMPLE_RUN/shaders/normals.fs.glsl"
     },
     {
       "name": "tex3D",
-      "vs": "/shaders/tex3D.vs.glsl",
-      "fs": "/shaders/tex3D.fs.gl"
+      "vs": "TEMPLE_RUN/shaders/tex3D.vs.glsl",
+      "fs": "TEMPLE_RUN/shaders/tex3D.fs.glsl"
     }
   ],
   "textures": [
     {
       "name": "triforce",
-      "src": "/assets/textures/triforce.png",
-      "minFilter": "GL_LINEAR",
-      "maxFilter": "GL_LINEAR"
+      "src": "TEMPLE_RUN/assets/textures/triforce.png"
     },
     {
       "name": "cube",
-      "src": "/assets/textures/cube.jpg",
-      "minFilter": "GL_LINEAR",
-      "maxFilter": "GL_LINEAR"
+      "src": "TEMPLE_RUN/assets/textures/cube.jpg"
     },
     {
       "name": "stone",
-      "src": "/assets/textures/cube.jpg",
-      "minFilter": "GL_LINEAR",
-      "maxFilter": "GL_LINEAR"
+      "src": "TEMPLE_RUN/assets/textures/cube.jpg"
     },
     {
       "name": "pavement",
-      "src": "/assets/textures/cube.jpg",
-      "minFilter": "GL_LINEAR",
-      "maxFilter": "GL_LINEAR"
+      "src": "TEMPLE_RUN/assets/textures/cube.jpg"
     }
   ],
-  "objects": [
+  "meshs": [
     {
       "name": "wall1",
       "type": "Cube",

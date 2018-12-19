@@ -24,25 +24,29 @@ static const float FAR_VISION = 100.f;
  * \brief ============================== main ==================================
  */
 
- GLenum glCheckError_(const char *file, int line)
-{
-    GLenum errorCode;
-    while ((errorCode = glGetError()) != GL_NO_ERROR)
-    {
-        std::string error;
-        switch (errorCode)
-        {
-            case GL_INVALID_ENUM:                  error = "INVALID_ENUM"; break;
-            case GL_INVALID_VALUE:                 error = "INVALID_VALUE"; break;
-            case GL_INVALID_OPERATION:             error = "INVALID_OPERATION"; break;
-            case GL_STACK_OVERFLOW:                error = "STACK_OVERFLOW"; break;
-            case GL_STACK_UNDERFLOW:               error = "STACK_UNDERFLOW"; break;
-            case GL_OUT_OF_MEMORY:                 error = "OUT_OF_MEMORY"; break;
-            case GL_INVALID_FRAMEBUFFER_OPERATION: error = "INVALID_FRAMEBUFFER_OPERATION"; break;
-        }
-        std::cout << error << " | " << file << " (" << line << ")" << std::endl;
+GLenum glCheckError_(const char *file, int line) {
+  GLenum errorCode;
+  while ((errorCode = glGetError()) != GL_NO_ERROR) {
+    std::string error;
+    switch (errorCode) {
+      case GL_INVALID_ENUM: error = "INVALID_ENUM";
+        break;
+      case GL_INVALID_VALUE: error = "INVALID_VALUE";
+        break;
+      case GL_INVALID_OPERATION: error = "INVALID_OPERATION";
+        break;
+      case GL_STACK_OVERFLOW: error = "STACK_OVERFLOW";
+        break;
+      case GL_STACK_UNDERFLOW: error = "STACK_UNDERFLOW";
+        break;
+      case GL_OUT_OF_MEMORY: error = "OUT_OF_MEMORY";
+        break;
+      case GL_INVALID_FRAMEBUFFER_OPERATION: error = "INVALID_FRAMEBUFFER_OPERATION";
+        break;
     }
-    return errorCode;
+    std::cout << error << " | " << file << " (" << line << ")" << std::endl;
+  }
+  return errorCode;
 }
 #define glCheckError() glCheckError_(__FILE__, __LINE__) 
 
@@ -50,9 +54,6 @@ static const float FAR_VISION = 100.f;
 using namespace glimac;
 
 int main(int argc, char **argv) {
-  // TEST GAME MANAGER
-  //GameManager manager("TEMPLE_RUN/assets.json");
-
 
   // Initialize SDL and open a window
   SDLWindowManager windowManager(800, 600, "I N F I N I T Y   R U N");
@@ -71,10 +72,14 @@ int main(int argc, char **argv) {
    * HERE SHOULD COME THE INITIALIZATION CODE
    *********************************/
 
+  // TEST GAME MANAGER
+  GameManager manager("TEMPLE_RUN/assets.json");
+  std::cout << "GAME MANAGER :\n" << manager << std::endl;
+
   //TEST PPM
- /* static const FilePath file = "../Levels/Tests/test3.ppm";
-  Game gm(file, 1);
-  gm.loadFloor(file, 0);*/
+  /* static const FilePath file = "../Levels/Tests/test3.ppm";
+   Game gm(file, 1);
+   gm.loadFloor(file, 0);*/
 
 
   // ======== TEST CUBE ========
@@ -84,7 +89,7 @@ int main(int argc, char **argv) {
   shaderCube.use();
   shaderCube.addUniform("uMVPMatrix");
   shaderCube.addUniform("uMVMatrix");
-  shaderCube.addUniform("uNormalMatrix"); 
+  shaderCube.addUniform("uNormalMatrix");
   shaderCube.addUniform("uTexture");
 
   Texture textureCube("TEMPLE_RUN/assets/textures/cube.jpg");
@@ -96,10 +101,10 @@ int main(int argc, char **argv) {
 
 
 
-   // END CUBE
+  // END CUBE
 
-	// activer le test de profondeur du GPU
-	glEnable(GL_DEPTH_TEST);
+  // activer le test de profondeur du GPU
+  glEnable(GL_DEPTH_TEST);
 
   // Application loop:
   bool done = false;
@@ -141,8 +146,8 @@ int main(int argc, char **argv) {
     // bind de la texture
     myCube.texture()->bind();
 
- 
-    if(myCube.haveIBO())
+
+    if (myCube.haveIBO())
       glDrawElements(GL_TRIANGLES, myCube.indexVer().size(), GL_UNSIGNED_INT, 0);
     else
       glDrawArrays(GL_TRIANGLES, 0, myCube.vertexCount());
@@ -163,7 +168,7 @@ int main(int argc, char **argv) {
   }
 
   textureCube.free();
-  
-  
+
+
   return EXIT_SUCCESS;
 }
