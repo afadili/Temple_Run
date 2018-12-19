@@ -1,6 +1,7 @@
 #include <Render/Texture.hpp>
 #include <iostream>
 
+
 using namespace glimac;
 
 GLuint Texture::getId(){

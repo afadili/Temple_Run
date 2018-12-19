@@ -88,6 +88,8 @@ public:
 	* \brief methods that free the memory allocated to the texture after using it
 	*/
 	void free();
+
+
 };
 
 #endif
