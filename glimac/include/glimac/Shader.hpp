@@ -10,7 +10,8 @@ namespace glimac {
 
 class Shader {
 public:
-	Shader(GLenum type): m_nGLId(glCreateShader(type)) {
+	Shader(GLenum type) {
+          m_nGLId = glCreateShader(type);
 	}
 
 	~Shader() {

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GL/glew.h>
+#include <iostream>
 #include "FilePath.hpp"
 #include "Shader.hpp"
 

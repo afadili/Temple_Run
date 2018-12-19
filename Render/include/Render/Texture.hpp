@@ -15,6 +15,8 @@
 #include <GL/glew.h>
 #include <SDL/SDL.h>
 
+#include <Error/Error.hpp>
+
 using namespace glimac;
 
 class Texture {

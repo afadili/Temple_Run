@@ -29,10 +29,11 @@ Shader loadShader(GLenum type, const FilePath& filepath) {
     if(!input) {
         throw std::runtime_error("Unable to load the file " + filepath.str());
     }
-    
+
     std::stringstream buffer;
     buffer << input.rdbuf();
     
+
     Shader shader(type);
     shader.setSource(buffer.str().c_str());
 

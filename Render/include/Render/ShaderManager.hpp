@@ -25,14 +25,13 @@ private:
   glimac::FilePath m_fsPath;
   std::map<std::string, GLint> m_uMap;
 
-public:
-  //GLuint m_nGLId;
-
+private:
   /**
    * \brief constructor of Shader
    */
   ShaderManager() = default;
 
+public:
   /**
    * \brief constructor of Shader
    * \param vs : filepath of the vs file
@@ -86,19 +85,20 @@ public:
   void use();
 
   //GLuint getGLId() const;
+
   inline
   GLuint id() const {
     return m_program.getGLId();
   }
 
   /**
-   * \brief Opérateur << for print a mesh data
+   * \brief Opérateur << for print shader data
    */
   friend std::ostream &operator<<(std::ostream &os, const ShaderManager &shader) {
     // Print position
     os << "-- Uniform Matrix = {\n";
     for (std::pair<std::string, GLuint> map : shader.m_uMap)
-        os << "\t" << map.first << " = " << map.second << std::endl;
+      os << "\t" << map.first << " = " << map.second << std::endl;
     os << "]\n";
     return os;
   }

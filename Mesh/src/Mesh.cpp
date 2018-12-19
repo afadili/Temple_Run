@@ -20,19 +20,18 @@ Mesh::Mesh(const std::vector<ShapeVertex> &vertices, const std::vector<int> &ind
 }
 
 Mesh::~Mesh() {
-	delete m_vbo;
-	delete m_ibo;
-	delete m_vao;
+  delete m_vbo;
+  delete m_ibo;
+  delete m_vao;
 }
 
 void Mesh::fillBuffers() {
   m_vbo->fillBuffer(m_vertices);
-  if(haveIBO()){
-  	m_ibo->fillBuffer(m_indexVer);
-  	m_vao->fillBuffer(m_vertices, m_vbo, m_ibo);
-  }
-  else {
-  	m_vao->fillBuffer(m_vertices, m_vbo);
+  if (haveIBO()) {
+    m_ibo->fillBuffer(m_indexVer);
+    m_vao->fillBuffer(m_vertices, m_vbo, m_ibo);
+  } else {
+    m_vao->fillBuffer(m_vertices, m_vbo);
   }
 }
 
