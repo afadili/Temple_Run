@@ -29,68 +29,6 @@ private:
   unsigned int s_nbTexture; /*!< number of textures*/
 
 public:
-
-<<<<<<< HEAD
-	/**
-	* \brief constructor of Texture 
-	*/
-	Texture() = default;
-
-	/**
-	* \brief method that loads the texture 
-	*/
-	void loadTexture();
-
-
-	/**
-	* \brief constructor of Texture using a Filepath
-    * \param v : Filepath of the file with textures
-	*/
-
-	Texture(FilePath path);
-
-	/**
-	* \brief constructor of Texture using a path, a maxFilter and a minFilter 
-    * \param v : Filepath of the file, minFilter and maxFilter
-	*/
-
-	Texture(FilePath path, const int min, const int max);
-
-	/**
-	* \brief destructor of Texture
-	*/
-	~Texture(){};
-
-	/**
-	* \brief getter of the Image that we will draw with Texture
-    * \return : the pointer that leads us to the Image
-    * pas besoin car la methode loadImage existe déjà dans glimac et on peut l'utiliser
-	*/
-	std::unique_ptr<Image> getImage();
-
-	/**
-	* \brief method that binds the Texture 
-	*/
-	void bind();
-
-	/**
-	* \brief method that unbinds the Texture 
-	*/
-	void unbind();
-
-	/**
-	* \brief getter of the id of the Texture 
-    * \return : the id of the texture 
-	*/
-	GLuint getId();
-
-	/**
-	* \brief methods that free the memory allocated to the texture after using it
-	*/
-	void free();
-
-
-=======
   /**
    * \brief constructor of Texture 
    */
@@ -149,7 +87,6 @@ public:
    * \brief methods that free the memory allocated to the texture after using it
    */
   void free();
->>>>>>> master
 };
 
 #endif
