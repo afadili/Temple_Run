@@ -1,35 +1,62 @@
 {
-	"shaders": [
-		{
-			"name" : "tex3D",
-			"fs" : "/shaders/tex3D.fs.gl",
-			"vs" : "/shaders/tex3D.vs.glsl"
-		},
-		{
-			"name" : "tex3D",
-			"fs" : "/shaders/tex3D.fs.gl",
-			"vs" : "/shaders/tex3D.vs.glsl"
-		},
-		{
-			"name" : "tex3D",
-			"fs" : "/shaders/tex3D.fs.gl",
-			"vs" : "/shaders/tex3D.vs.glsl"
-		}
-	],
-	"textures" : [
-		{
-			"name" : "triforce",
-			"src" : "/assets/textures/triforce.png",
-			"minFilter" : "GL_LINEAR",
-			"maxFilter" : "GL_LINEAR"
-		}
-	],
-	"objects" : [
-		{
-			"name" : "Wall1",
-			"type" : "Cube",
-			"texture" : "triforce",
-			"shader" : "tex3D"
-		}
-	]
+  "shaders": [
+    {
+      "//": "IMPORTANT: Always have this default shaders for textures and shaders not found",
+      "name": "default", 
+      "vs": "/shaders/3D.vs.glsl",
+      "fs": "/shaders/default.fs.gl"
+    },
+    {
+      "name": "normals",
+      "vs": "/shaders/3D.vs.glsl",
+      "fs": "/shaders/normals.fs.gl"
+    },
+    {
+      "name": "tex3D",
+      "vs": "/shaders/tex3D.vs.glsl",
+      "fs": "/shaders/tex3D.fs.gl"
+    }
+  ],
+  "textures": [
+    {
+      "name": "triforce",
+      "src": "/assets/textures/triforce.png",
+      "minFilter": "GL_LINEAR",
+      "maxFilter": "GL_LINEAR"
+    },
+    {
+      "name": "cube",
+      "src": "/assets/textures/cube.jpg",
+      "minFilter": "GL_LINEAR",
+      "maxFilter": "GL_LINEAR"
+    },
+    {
+      "name": "stone",
+      "src": "/assets/textures/cube.jpg",
+      "minFilter": "GL_LINEAR",
+      "maxFilter": "GL_LINEAR"
+    },
+    {
+      "name": "pavement",
+      "src": "/assets/textures/cube.jpg",
+      "minFilter": "GL_LINEAR",
+      "maxFilter": "GL_LINEAR"
+    }
+  ],
+  "objects": [
+    {
+      "name": "wall1",
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "stone",
+      "shader": "tex3D"
+    },
+    {
+      "name": "ground1",
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "pavement",
+      "shader": "tex3D"
+    }
+  ]
 } 
