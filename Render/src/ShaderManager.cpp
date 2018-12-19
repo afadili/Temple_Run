@@ -1,12 +1,12 @@
 #include <Render/ShaderManager.hpp>
 
 ShaderManager::ShaderManager(const glimac::FilePath &vs, const glimac::FilePath &fs)
-: m_vsPath(vs), m_fsPath(fs) {
-  m_program = glimac::loadProgram(m_vsPath, m_fsPath);
+: m_vsPath(vs), m_fsPath(fs), m_program(glimac::loadProgram(vs, fs)){
 }
 
-void ShaderManager::addUniform(std::string name) {
-  m_uMap.insert(std::pair<std::string, GLuint>(name, glGetUniformLocation(m_program.getGLId(), name.c_str())));
+void ShaderManager::addUniform(const std::string &name) {
+  GLint uVar = glGetUniformLocation(id(), name.c_str());
+  m_uMap.insert(std::pair<std::string, GLint>(name, uVar));
 }
 
 void ShaderManager::sendUniformMatrix4fv(std::string name, glm::mat4 value) {
@@ -27,8 +27,4 @@ void ShaderManager::sendUniform1f(std::string name, float num) {
 
 void ShaderManager::use() {
   m_program.use();
-}
-
-GLuint ShaderManager::getGLId() const {
-  return m_nGLId;
 }

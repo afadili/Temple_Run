@@ -23,19 +23,9 @@ void Texture::loadTexture() // TO DO : changer la fonction pour que ça marche p
 }
 
 Texture::Texture(FilePath path) : m_path(path), m_minFilter(GL_LINEAR), m_maxFilter(GL_LINEAR) {
-  try {
-    loadTexture();
-  } catch (const std::string &e) {
-    std::cout << "Erreur : " << e << std::endl;
-  }
 }
 
 Texture::Texture(FilePath path, const int min, const int max) : m_path(path), m_minFilter(min), m_maxFilter(max) {
-  try {
-    loadTexture();
-  } catch (const std::string &e) {
-    std::cout << "Erreur : " << e << std::endl;
-  }
 }
 
 void Texture::unbind() {

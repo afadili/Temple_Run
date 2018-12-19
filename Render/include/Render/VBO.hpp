@@ -28,19 +28,19 @@ public:
   /**
    * \brief 
    */
-  void bind();
+  void bind() const;
 
   /**
    * \brief 
    */
-  void debind();
+  void debind() const;
 
   /**
    * \brief 
    * \param 
    */
   template <typename type>
-  void fillBuffer(std::vector<type> &vect) {
+  void fillBuffer(const std::vector<type> &vect) {
     bind();
     glBufferData(GL_ARRAY_BUFFER, vect.size() * sizeof (type), vect.data(), GL_STATIC_DRAW);
     debind();

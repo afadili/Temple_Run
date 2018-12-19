@@ -7,22 +7,26 @@
 #define __SHADERMANAGER__HPP
 
 #include <GL/glew.h>
+#include <iostream>
 #include <string>
 #include <map>
+#include <fstream>
 
 #include <glimac/FilePath.hpp>
 #include <glimac/common.hpp>
 #include <glimac/Program.hpp>
+
+#include <Error/Error.hpp>
 
 class ShaderManager {
 private:
   glimac::Program m_program;
   glimac::FilePath m_vsPath;
   glimac::FilePath m_fsPath;
-  std::map<std::string, GLuint> m_uMap;
+  std::map<std::string, GLint> m_uMap;
 
 public:
-  GLuint m_nGLId;
+  //GLuint m_nGLId;
 
   /**
    * \brief constructor of Shader
@@ -46,7 +50,7 @@ public:
    * \brief 
    * \param name :
    */
-  void addUniform(std::string name);
+  void addUniform(const std::string &name);
 
   /**
    * \brief 
@@ -81,7 +85,24 @@ public:
    */
   void use();
 
-  GLuint getGLId() const;
+  //GLuint getGLId() const;
+  inline
+  GLuint id() const {
+    return m_program.getGLId();
+  }
+
+  /**
+   * \brief Opérateur << for print a mesh data
+   */
+  friend std::ostream &operator<<(std::ostream &os, const ShaderManager &shader) {
+    // Print position
+    os << "-- Uniform Matrix = {\n";
+    for (std::pair<std::string, GLuint> map : shader.m_uMap)
+        os << "\t" << map.first << " = " << map.second << std::endl;
+    os << "]\n";
+    return os;
+  }
+
 };
 
 

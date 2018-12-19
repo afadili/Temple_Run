@@ -30,24 +30,23 @@ public:
   /**
    * \brief 
    */
-  void bind();
+  void bind() const;
 
   /**
    * \brief 
    */
-  void debind();
+  void debind() const;
 
   /**
    * \brief 
    * \param 
    */
   template <typename type>
-  void fillBuffer(std::vector<type> &vect, VBO *vbo, IBO *ibo = nullptr) {
+  void fillBuffer(const std::vector<type> &vect,const VBO *vbo,const IBO *ibo = nullptr) {
     bind();
 
-    if (ibo) {
+    if (ibo != nullptr)
       ibo->bind();
-    }
 
     const GLuint VERTEX_ATTR_POSITION = 0;
     const GLuint VERTEX_ATTR_NORMAL = 1;
