@@ -12,9 +12,9 @@ void Texture::loadTexture() // TO DO : changer la fonction pour que ça marche p
 {
   m_image = loadImage(m_path);
 
-  if (m_image == nullptr) {
-    std::cout << " Problème lors du chargement de la texture" << std::endl;
-  }
+  if (m_image == nullptr)
+    throw Error("The texture \"" + m_path.str() + "\" is not found, the default shader will be used !", "FILE_NOT_FOUND");
+
   glGenTextures(1, &m_id);
   bind();
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_image->getWidth(), m_image->getHeight(), 0, GL_RGBA, GL_FLOAT, m_image->getPixels());
@@ -24,9 +24,11 @@ void Texture::loadTexture() // TO DO : changer la fonction pour que ça marche p
 }
 
 Texture::Texture(FilePath path) : m_path(path), m_minFilter(GL_LINEAR), m_maxFilter(GL_LINEAR) {
+  loadTexture();
 }
 
 Texture::Texture(FilePath path, const int min, const int max) : m_path(path), m_minFilter(min), m_maxFilter(max) {
+  loadTexture();
 }
 
 void Texture::unbind() {
