@@ -10,6 +10,7 @@
 #include <GL/glew.h>
 #include <vector>
 #include <string>
+#include <fstream>
 
 #include <glimac/Shader.hpp>
 #include <glimac/common.hpp>
@@ -23,17 +24,19 @@
 class Mesh {
 protected:
   std::vector<ShapeVertex> m_vertices; /*!< Vector with the vertices */
-  std::vector<uint32_t> m_indexVer; /*!< Vector with the index of the vertices */
+  std::vector<int> m_indexVer; /*!< Vector with the index of the vertices */
   ShaderManager *m_shader; /*!< Shader of the Mesh */
   Texture *m_texture; /*!< Texture of the mesh */
   GLsizei m_nbVertex; /*!< Number of Vertex of the Mesh */
-  VBO m_vbo; /*!<  Identifiant of the VBO*/
-  VAO m_vao; /*!<  Identifiant of the VAO */
-  IBO m_ibo; /*!<  Identifiant of the IBO */
+  VBO *m_vbo = new VBO(); /*!<  Pointer on VBO manager */
+  VAO *m_vao = new VAO(); /*!<  Pointer on VAO manager */
+  IBO *m_ibo = new IBO(); /*!<  Pointer on IBO manager */
   GLsizei s_nbMesh; /*!< Number of Meshs */
 
-public:
+private:
   Mesh() = default;
+
+public:
 
   /**
    * \brief constructor of Mesh using a vector of ShapeVertex
@@ -46,7 +49,7 @@ public:
    * \param vertices : vector of all the vertices
    * \param indexVer : vector of the index of the vertices
    */
-  Mesh(const std::vector<ShapeVertex> &vertices, const std::vector<uint32_t> &indexVer);
+  Mesh(const std::vector<ShapeVertex> &vertices, const std::vector<int> &indexVer);
 
   /**
    * \brief constructor of Mesh using a vector of ShapeVertex
@@ -72,7 +75,7 @@ public:
    * \param shader : shader of the mesh
    * \param textures : texture of the mesh
    */
-  Mesh(const std::vector<ShapeVertex> &vertices, const std::vector<uint32_t> &indexVer, ShaderManager *shader, Texture *texture);
+  Mesh(const std::vector<ShapeVertex> &vertices, const std::vector<int> &indexVer, ShaderManager *shader, Texture *texture);
 
   /**
    * \brief destructor of Mesh
@@ -83,6 +86,7 @@ public:
    * \brief getter of the pointer that leads us to the shapeVertex
    * \return : the pointer that leads us to the vector of vertices
    */
+   inline
   const ShapeVertex* dataPointer() const {
     return &m_vertices[0];
   }
@@ -101,17 +105,27 @@ public:
   void fillBuffers();
 
   inline
-  VBO vbo() const {
+  std::vector<ShapeVertex> vertices() const {
+    return m_vertices;
+  }
+
+    inline
+  std::vector<int> indexVer() const {
+    return m_indexVer;
+  }
+
+  inline
+  VBO *vbo() const {
     return m_vbo;
   }
 
   inline
-  VAO vao() const {
+  VAO *vao() const {
     return m_vao;
   }
 
   inline
-  IBO ibo() const {
+  IBO *ibo() const {
     return m_ibo;
   }
 
@@ -124,6 +138,31 @@ public:
   Texture *texture() const {
     return m_texture;
   }
+
+  inline
+  bool haveIBO() const {
+    return m_indexVer.size() > 0 ? true : false;
+  }
+
+  /**
+   * \brief Opérateur << for print a mesh data
+   */
+  friend std::ostream &operator<<(std::ostream &os, const Mesh &mesh) {
+    // Print position
+    os << "-- Vertices position (" << mesh.vertices().size() << ") = {\n";
+    for (auto vertex: mesh.vertices())
+      os << vertex.position << "\n";
+    os << "}\n";
+  
+    // Print index
+    os << "-- Vertices index (" << mesh.indexVer().size() << ") = [ ";
+    for (auto index: mesh.indexVer())
+      os << index << " ";
+    os << "]\n";
+    return os;
+  }
 };
+
+
 
 #endif

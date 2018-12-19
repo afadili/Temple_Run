@@ -20,7 +20,7 @@
 class Sphere : public Mesh {
 public:
     // Constructeur: alloue le tableau de données et construit les attributs des vertex
-    Sphere(GLfloat radius, GLsizei discLat, GLsizei discLong){
+    Sphere(GLfloat radius, GLsizei discLat, GLsizei discLong) : Mesh(nullptr,nullptr) {
     	m_nbVertex = 0;
         build(radius, discLat, discLong); // Construction (voir le .cpp)
     }
