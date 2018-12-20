@@ -86,7 +86,7 @@ public:
    * \brief getter of the pointer that leads us to the shapeVertex
    * \return : the pointer that leads us to the vector of vertices
    */
-   inline
+  inline
   const ShapeVertex* dataPointer() const {
     return &m_vertices[0];
   }
@@ -109,7 +109,7 @@ public:
     return m_vertices;
   }
 
-    inline
+  inline
   std::vector<int> indexVer() const {
     return m_indexVer;
   }
@@ -150,13 +150,13 @@ public:
   friend std::ostream &operator<<(std::ostream &os, const Mesh &mesh) {
     // Print position
     os << "-- Vertices position (" << mesh.vertices().size() << ") = {\n";
-    for (auto vertex: mesh.vertices())
+    for (auto vertex : mesh.vertices())
       os << vertex.position << "\n";
     os << "}\n";
-  
+
     // Print index
     os << "-- Vertices index (" << mesh.indexVer().size() << ") = [ ";
-    for (auto index: mesh.indexVer())
+    for (auto index : mesh.indexVer())
       os << index << " ";
     os << "]\n";
     return os;
