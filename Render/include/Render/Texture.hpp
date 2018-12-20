@@ -19,16 +19,17 @@
 
 using namespace glimac;
 
-class Texture {
+class Texture
+{
 private:
-  FilePath m_path; /*!< Path of the file of the texture */
-  GLuint m_id; /*!< id of the texture */
+  FilePath m_path;                /*!< Path of the file of the texture */
+  GLuint m_id;                    /*!< id of the texture */
   std::unique_ptr<Image> m_image; /*!< Ipointer to the image of the texture */
-  GLenum m_format; /*!< format of the texture */
-  const int m_minFilter; /*!< minimum filter of the texture */
-  const int m_maxFilter; /*!< maximum filter of the texture  */
-  bool m_isLoaded; /*!< boolean to know is the texture is loaded or not */
-  unsigned int s_nbTexture; /*!< number of textures*/
+  GLenum m_format;                /*!< format of the texture */
+  const int m_minFilter;          /*!< minimum filter of the texture */
+  const int m_maxFilter;          /*!< maximum filter of the texture  */
+  bool m_isLoaded;                /*!< boolean to know is the texture is loaded or not */
+  unsigned int s_nbTexture;       /*!< number of textures*/
 
 public:
   /**
@@ -40,7 +41,6 @@ public:
    * \brief method that loads the texture 
    */
   void loadTexture();
-
 
   /**
    * \brief constructor of Texture using a Filepath
@@ -59,8 +59,7 @@ public:
   /**
    * \brief destructor of Texture
    */
-  ~Texture() {
-  };
+  ~Texture(){};
 
   /**
    * \brief getter of the Image that we will draw with Texture
