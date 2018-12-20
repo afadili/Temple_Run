@@ -20,7 +20,7 @@ void Texture::loadTexture() // TO DO : changer la fonction pour que ça marche p
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_image->getWidth(), m_image->getHeight(), 0, GL_RGBA, GL_FLOAT, m_image->getPixels());
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-  unbind();
+  debind();
 }
 
 Texture::Texture(FilePath path) : m_path(path), m_minFilter(GL_LINEAR), m_maxFilter(GL_LINEAR) {
@@ -31,7 +31,7 @@ Texture::Texture(FilePath path, const int min, const int max) : m_path(path), m_
   loadTexture();
 }
 
-void Texture::unbind() {
+void Texture::debind() {
   glActiveTexture(m_format);
   glBindTexture(GL_TEXTURE_2D, 0);
 }

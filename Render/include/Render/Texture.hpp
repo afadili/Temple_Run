@@ -75,9 +75,9 @@ public:
   void bind();
 
   /**
-   * \brief method that unbinds the Texture 
+   * \brief method that debinds the Texture 
    */
-  void unbind();
+  void debind();
 
   /**
    * \brief getter of the id of the Texture 

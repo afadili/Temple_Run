@@ -153,7 +153,7 @@ int main(int argc, char **argv) {
       glDrawArrays(GL_TRIANGLES, 0, myCube.vertexCount());
 
     // debind de la texture
-    myCube.texture()->unbind();
+    myCube.texture()->debind();
 
 
     // debind du VAO
