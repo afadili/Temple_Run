@@ -12,6 +12,6 @@ void main() {
 
 	vFragTexture = aVertexTexCoords;
 	vFragColor = aVertexColor;
-    gl_Position = vec4((rotate(uTime) * vec3(aVertexPosition,1)).xy, 0, 1);
+    gl_Position = vec4((vec3(aVertexPosition,1)).xy, 0, 1);
 	
 }
