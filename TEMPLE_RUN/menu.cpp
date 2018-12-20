@@ -38,8 +38,8 @@ int main(int argc, char** argv) {
 
   // Charger et compiler les shaders
   FilePath applicationPath(argv[0]);
-  Program program = loadProgram(applicationPath.dirPath() + "shaders/triangle.vs.glsl",
-                                applicationPath.dirPath() + "shaders/triangle.fs.glsl");
+  Program program = loadProgram("TEMPLE_RUN/shaders/triangle.vs.glsl",
+                                "TEMPLE_RUN/shaders/triangle.fs.glsl");
   program.use(); // Indiquer a OpenGL de les utiliser
 
   // Variable uniforme partagée par tous mes shaders
@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
   //On peut à présent modifier le VBO en passant par la cible 
 
   // Création d'une texture 
-  std::unique_ptr<Image> menuMap = loadImage(applicationPath.dirPath() + "assets/textures/menu.png"); // il faut faire une fonction qui donne le chemin absolu à partir du chemin relatif peut etre existe dans glimac
+  std::unique_ptr<Image> menuMap = loadImage("TEMPLE_RUN/assets/textures/menu.png"); // il faut faire une fonction qui donne le chemin absolu à partir du chemin relatif peut etre existe dans glimac
 
   if (menuMap == NULL)
   	{
