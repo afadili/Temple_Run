@@ -24,25 +24,29 @@ static const float FAR_VISION = 100.f;
  * \brief ============================== main ==================================
  */
 
- GLenum glCheckError_(const char *file, int line)
-{
-    GLenum errorCode;
-    while ((errorCode = glGetError()) != GL_NO_ERROR)
-    {
-        std::string error;
-        switch (errorCode)
-        {
-            case GL_INVALID_ENUM:                  error = "INVALID_ENUM"; break;
-            case GL_INVALID_VALUE:                 error = "INVALID_VALUE"; break;
-            case GL_INVALID_OPERATION:             error = "INVALID_OPERATION"; break;
-            case GL_STACK_OVERFLOW:                error = "STACK_OVERFLOW"; break;
-            case GL_STACK_UNDERFLOW:               error = "STACK_UNDERFLOW"; break;
-            case GL_OUT_OF_MEMORY:                 error = "OUT_OF_MEMORY"; break;
-            case GL_INVALID_FRAMEBUFFER_OPERATION: error = "INVALID_FRAMEBUFFER_OPERATION"; break;
-        }
-        std::cout << error << " | " << file << " (" << line << ")" << std::endl;
+GLenum glCheckError_(const char *file, int line) {
+  GLenum errorCode;
+  while ((errorCode = glGetError()) != GL_NO_ERROR) {
+    std::string error;
+    switch (errorCode) {
+      case GL_INVALID_ENUM: error = "INVALID_ENUM";
+        break;
+      case GL_INVALID_VALUE: error = "INVALID_VALUE";
+        break;
+      case GL_INVALID_OPERATION: error = "INVALID_OPERATION";
+        break;
+      case GL_STACK_OVERFLOW: error = "STACK_OVERFLOW";
+        break;
+      case GL_STACK_UNDERFLOW: error = "STACK_UNDERFLOW";
+        break;
+      case GL_OUT_OF_MEMORY: error = "OUT_OF_MEMORY";
+        break;
+      case GL_INVALID_FRAMEBUFFER_OPERATION: error = "INVALID_FRAMEBUFFER_OPERATION";
+        break;
     }
-    return errorCode;
+    std::cout << error << " | " << file << " (" << line << ")" << std::endl;
+  }
+  return errorCode;
 }
 #define glCheckError() glCheckError_(__FILE__, __LINE__) 
 
@@ -72,9 +76,9 @@ int main(int argc, char **argv) {
    *********************************/
 
   //TEST PPM
- /* static const FilePath file = "../Levels/Tests/test3.ppm";
-  Game gm(file, 1);
-  gm.loadFloor(file, 0);*/
+  /* static const FilePath file = "../Levels/Tests/test3.ppm";
+   Game gm(file, 1);
+   gm.loadFloor(file, 0);*/
 
 
   // ======== TEST CUBE ========
@@ -84,7 +88,7 @@ int main(int argc, char **argv) {
   shaderCube.use();
   shaderCube.addUniform("uMVPMatrix");
   shaderCube.addUniform("uMVMatrix");
-  shaderCube.addUniform("uNormalMatrix"); 
+  shaderCube.addUniform("uNormalMatrix");
   shaderCube.addUniform("uTexture");
 
   Texture textureCube("TEMPLE_RUN/assets/textures/cube.jpg");
@@ -96,10 +100,10 @@ int main(int argc, char **argv) {
 
 
 
-   // END CUBE
+  // END CUBE
 
-	// activer le test de profondeur du GPU
-	glEnable(GL_DEPTH_TEST);
+  // activer le test de profondeur du GPU
+  glEnable(GL_DEPTH_TEST);
 
   // Application loop:
   bool done = false;
@@ -126,33 +130,9 @@ int main(int argc, char **argv) {
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // Bind du VAO
-    myCube.vao()->bind();
-
-    // program du shader
-    myCube.shader()->use();
-
-    // variables uniformes
-    myCube.shader()->sendUniformMatrix4fv("uMVPMatrix", ProjMatrix * MVMatrix);
-    myCube.shader()->sendUniformMatrix4fv("uMVMatrix", MVMatrix);
-    myCube.shader()->sendUniformMatrix4fv("uNormalMatrix", NormalMatrix);
-    myCube.shader()->sendUniform1i("uTexture", 0);
-
-    // bind de la texture
-    myCube.texture()->bind();
-
- 
-    if(myCube.haveIBO())
-      glDrawElements(GL_TRIANGLES, myCube.indexVer().size(), GL_UNSIGNED_INT, 0);
-    else
-      glDrawArrays(GL_TRIANGLES, 0, myCube.vertexCount());
-
-    // debind de la texture
-    myCube.texture()->debind();
-
-
-    // debind du VAO
-    myCube.vao()->debind();
+    myCube.bind();
+    myCube.draw(ProjMatrix, MVMatrix);
+    myCube.debind();
 
     // Update the display
     windowManager.swapBuffers();
@@ -163,7 +143,7 @@ int main(int argc, char **argv) {
   }
 
   textureCube.free();
-  
-  
+
+
   return EXIT_SUCCESS;
 }

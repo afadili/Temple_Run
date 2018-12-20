@@ -131,33 +131,9 @@ int main(int argc, char **argv) {
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // Bind du VAO
-    myCube.vao()->bind();
-
-    // program du shader
-    myCube.shader()->use();
-
-    // variables uniformes
-    myCube.shader()->sendUniformMatrix4fv("uMVPMatrix", ProjMatrix * MVMatrix);
-    myCube.shader()->sendUniformMatrix4fv("uMVMatrix", MVMatrix);
-    myCube.shader()->sendUniformMatrix4fv("uNormalMatrix", NormalMatrix);
-    myCube.shader()->sendUniform1i("uTexture", 0);
-
-    // bind de la texture
-    myCube.texture()->bind();
-
-
-    if (myCube.haveIBO())
-      glDrawElements(GL_TRIANGLES, myCube.indexVer().size(), GL_UNSIGNED_INT, 0);
-    else
-      glDrawArrays(GL_TRIANGLES, 0, myCube.vertexCount());
-
-    // debind de la texture
-    myCube.texture()->debind();
-
-
-    // debind du VAO
-    myCube.vao()->debind();
+    myCube.bind();
+    myCube.draw(ProjMatrix, MVMatrix);
+    myCube.debind();
 
     // Update the display
     windowManager.swapBuffers();

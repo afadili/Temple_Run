@@ -95,6 +95,7 @@ public:
    * \brief getter of the number of Vertex of the Mesh
    * \return : the number of Vertex of the Mesh
    */
+  inline
   GLsizei vertexCount() const {
     return m_nbVertex;
   }
@@ -103,6 +104,29 @@ public:
    * \brief fillBuffer of the vao, vbo and ibo
    */
   void fillBuffers();
+
+  /**
+   * \brief bind the vao, the shader and the texture of the mesh for draw it 
+   */
+  void bind() const;
+
+  /**
+   * \brief debind the vao and the texture of the mesh
+   */
+  void debind() const;
+
+  /**
+   * \brief Draw the mesh, the mesh must be bind and uniform variables should be sent before
+   */
+  void draw() const;
+
+  /**
+   * \brief Draw the mesh with the uniform variables in parameter, the mesh must be bind before and unbind after
+   * \param ProjMatrix : Projection matrix
+   * \param MWMatrix : world coordinates matrix of the model, also used for normal matrix (normalMatrix = inverse(MWMatrix))
+   * \param ViewMatrix : view matrix of the camera, identity matrix by default
+   */
+  void draw(const glm::mat4 &ProjMatrix, const glm::mat4 &MWMatrix, const glm::mat4 &ViewMatrix = glm::mat4()) const;
 
   inline
   std::vector<ShapeVertex> vertices() const {

@@ -25,6 +25,36 @@ Mesh::~Mesh() {
   delete m_vao;
 }
 
+void Mesh::bind() const {
+  m_vao->bind(); // VAO
+  m_shader->use(); // Shader program
+  m_texture->bind(); // Texture
+}
+
+void Mesh::debind() const {
+  m_texture->debind(); // Texture
+  m_vao->debind(); // VAO
+}
+
+void Mesh::draw() const {
+  if (haveIBO())
+    glDrawElements(GL_TRIANGLES, m_indexVer.size(), GL_UNSIGNED_INT, 0);
+  else
+    glDrawArrays(GL_TRIANGLES, 0, vertexCount());
+}
+
+void Mesh::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &MWMatrix, const glm::mat4 &ViewMatrix) const {
+    // sends uniform variables
+    m_shader->sendUniformMatrix4fv("uMVPMatrix", ProjMatrix * ViewMatrix * MWMatrix);
+    m_shader->sendUniformMatrix4fv("uMVMatrix", ViewMatrix * MWMatrix);
+    m_shader->sendUniformMatrix4fv("uNormalMatrix", glm::inverse(MWMatrix));
+    m_shader->sendUniform1i("uTexture", 0);
+
+    // draw the mesh
+    draw();
+  }
+
+
 void Mesh::fillBuffers() {
   m_vbo->fillBuffer(m_vertices);
   if (haveIBO()) {
