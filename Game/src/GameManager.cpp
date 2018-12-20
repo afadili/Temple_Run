@@ -4,6 +4,10 @@ GameManager::GameManager(const FilePath &assetPath) {
   loadAssets(assetPath);
 }
 
+GameManager::~GameManager() {
+  unloadAssets();
+}
+
 void GameManager::loadAssets(const FilePath &assetPath) {
   std::ifstream assetJSON(assetPath, std::ifstream::binary);
   if (assetJSON.fail())
@@ -22,6 +26,12 @@ void GameManager::loadAssets(const FilePath &assetPath) {
   loadShaders(root["shaders"]);
   loadTextures(root["textures"]);
   loadMeshs(root["meshs"]);
+}
+
+void GameManager::unloadAssets() {
+  unloadMeshs();
+  unloadTextures();
+  unloadShaders();
 }
 
 void GameManager::loadShaders(const Json::Value &jsonShaders) {
@@ -48,6 +58,12 @@ void GameManager::loadShader(const Json::Value &jsonShader) {
   }
 }
 
+void GameManager::unloadShaders() {
+  for (std::pair<std::string, ShaderManager*> map : m_shaders)
+    delete map.second;
+  m_shaders.clear();
+}
+
 void GameManager::loadTextures(const Json::Value &jsonTextures) {
   if (!jsonTextures)
     throw Error("No textures data found !", "DATA_NOT_FOUND");
@@ -64,6 +80,12 @@ void GameManager::loadTexture(const Json::Value &jsonTexture) {
   } catch (const std::exception& err) {
     std::cout << err.what() << std::endl;
   }
+}
+
+void GameManager::unloadTextures() {
+  for (std::pair<std::string, Texture*> map : m_textures)
+    delete map.second;
+  m_textures.clear();
 }
 
 void GameManager::loadMeshs(const Json::Value &jsonMeshs) {
@@ -108,5 +130,10 @@ void GameManager::loadMesh(const Json::Value &jsonMesh) {
   }
 }
 
+void GameManager::unloadMeshs() {
+  for (std::pair<std::string, Mesh*> map : m_meshs)
+    delete map.second;
+  m_meshs.clear();
+}
 
 

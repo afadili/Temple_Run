@@ -38,10 +38,20 @@ public:
   GameManager(const FilePath &assetPath);
 
   /**
+   * \brief destructor of the GameManager, delete all loaded assets
+   */
+  ~GameManager();
+
+  /**
    * \brief Load all assets declared in assets file
    * \param assetPath : the json file with all assets (meshs, textures and shaders)
    */
   void loadAssets(const FilePath &assetPath);
+
+  /**
+   * \brief Unload all assets (clear the map list and unload data)
+   */
+  void unloadAssets();
 
   /**
    * \brief Load all shaders data
@@ -56,6 +66,11 @@ public:
   void loadShader(const Json::Value &jsonShader);
 
   /**
+   * \brief Unload all shaders (clear the map list and unload data)
+   */
+  void unloadShaders();
+
+  /**
    * \brief Load all textures data
    * \param jsonTextures : the json value (parsing with parseFromStream) with textures data
    */
@@ -68,6 +83,11 @@ public:
   void loadTexture(const Json::Value &jsonTexture);
 
   /**
+   * \brief Unload all textures (clear the map list and unload data)
+   */
+  void unloadTextures();
+
+  /**
    * \brief Load all meshs data
    * \param jsonMeshs : the json value (parsing with parseFromStream) with meshs data
    */
@@ -78,6 +98,11 @@ public:
    * \param jsonMesh : the json value (parsing with parseFromStream) with the mesh data
    */
   void loadMesh(const Json::Value &jsonMesh);
+
+  /**
+   * \brief Unload all meshs (clear the map list and unload data)
+   */
+  void unloadMeshs();
 
   /**
    * \brief Opérateur << for print GameManager data
