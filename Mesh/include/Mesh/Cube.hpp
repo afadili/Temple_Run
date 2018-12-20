@@ -28,17 +28,17 @@ public:
 
   /**
    * \brief constructor of Cube
-   * \param width : size of the cube
+   * \param size : size of the cube in x, y and z
    * \param shader : shader of the cube
    * \param textures : texture of the cube 
    */
-  Cube(const glm::vec3 &width, ShaderManager *shader, Texture *texture);
+  Cube(const glm::vec3 &size, ShaderManager *shader, Texture *texture);
 
   /**
    * \brief constructor of Cube
-   * \param width : size of the cube
+   * \param size : size of the cube in x, y and z
    */
-  Cube(const glm::vec3 &width);
+  Cube(const glm::vec3 &size);
 
   /**
    * \brief destructor of Cube
@@ -48,9 +48,9 @@ public:
 
   /**
    * \brief generates the vertices of the cube
-   * \param width : size of the cube
+   * \param size : size of the cube in x, y and z
    */
-  void generateVertices(const glm::vec3 &width);
+  void generateVertices(const glm::vec3 &size);
 
   /**
    * \brief generates the index with the vertices of the cube

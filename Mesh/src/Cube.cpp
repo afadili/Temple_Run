@@ -7,8 +7,8 @@ Cube::Cube() : Mesh(nullptr, nullptr) {
   generateIndexs();
 }
 
-Cube::Cube(const glm::vec3 &width) : Mesh(nullptr, nullptr) {
-  generateVertices(width);
+Cube::Cube(const glm::vec3 &size) : Mesh(nullptr, nullptr) {
+  generateVertices(size);
   generateIndexs();
 }
 
@@ -17,15 +17,15 @@ Cube::Cube(ShaderManager *shader, Texture *texture) : Mesh(shader, texture) {
   generateIndexs();
 }
 
-Cube::Cube(const glm::vec3 &width, ShaderManager *shader, Texture *texture) : Mesh(shader, texture) {
-  generateVertices(width);
+Cube::Cube(const glm::vec3 &size, ShaderManager *shader, Texture *texture) : Mesh(shader, texture) {
+  generateVertices(size);
   generateIndexs();
 }
 
-void Cube::generateVertices(const glm::vec3 &width) {
+void Cube::generateVertices(const glm::vec3 &size) {
   // Center the mesh 
-  glm::vec3 upper = glm::vec3(width.x / 2., width.y / 2., width.z / 2.);
-  glm::vec3 lower = glm::vec3(-width.x / 2., -width.y / 2., -width.z / 2.);
+  glm::vec3 upper = glm::vec3(size.x / 2., size.y / 2., size.z / 2.);
+  glm::vec3 lower = glm::vec3(-size.x / 2., -size.y / 2., -size.z / 2.);
 
   // FRONT FACE										POSITION								NORMAL				TEXTURE
   m_vertices.push_back(ShapeVertex(glm::vec3(upper.x, upper.y, upper.z), glm::vec3(upper.x, upper.y, upper.z), glm::vec2(1, 1))); // TOP RIGHT
