@@ -49,6 +49,11 @@ void AssetsManager::loadShader(const Json::Value &jsonShader) {
 
   try {
     ShaderManager *shader = new ShaderManager(vs, fs);
+    shader->use();
+    shader->addUniform("uMVPMatrix");
+    shader->addUniform("uMVMatrix");
+    shader->addUniform("uNormalMatrix");
+    shader->addUniform("uTexture");
     m_shaders.insert(std::make_pair(jsonShader["name"].asString(), shader));
   } catch (const std::exception& err) {
     // if error in ShaderManager, we create and show a specific warning
@@ -102,6 +107,7 @@ void AssetsManager::loadMesh(const Json::Value &jsonMesh) {
     Mesh *obj;
     std::string type = jsonMesh["type"].asString();
 
+    // Try to load texture and shader for the mesh, if we can't, we asign the default shader
     ShaderManager *shader = m_shaders[jsonMesh["shader"].asString()];
     Texture *texture = nullptr;
     if (shader == nullptr) { // shader not found
@@ -115,6 +121,7 @@ void AssetsManager::loadMesh(const Json::Value &jsonMesh) {
       }
     }
 
+    // Create the mesh object
     if (type == "Cube" || type == "cube") {
       if (jsonMesh["size"]) {
         obj = new Cube(glm::vec3(jsonMesh["size"][0].asFloat(), jsonMesh["size"][1].asFloat(), jsonMesh["size"][2].asFloat()), shader, texture);
@@ -124,6 +131,9 @@ void AssetsManager::loadMesh(const Json::Value &jsonMesh) {
     } else {
       obj = new Mesh(shader, texture);
     }
+    
+    // Initialisation
+    obj->fillBuffers();
     m_meshs.insert(std::make_pair(jsonMesh["name"].asString(), obj));
   } catch (const std::exception& err) {
     std::cout << err.what() << std::endl;
