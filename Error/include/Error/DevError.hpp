@@ -50,7 +50,7 @@ public:
    */
   virtual
   const char* what() const noexcept {
-    std::string *err = new std::string("\nERROR : \n -- " + _file + ":" + std::to_string(_line) + "::" + _function + "\n -- " + _message + "\n");
+    std::string *err = new std::string("\nERROR : \n-- " + _file + ":" + std::to_string(_line) + "::" + _function + "\n -- " + _message + "\n");
     return err->c_str();
   }
 

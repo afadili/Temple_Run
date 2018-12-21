@@ -36,7 +36,7 @@ public:
   Error(const std::string &message, const std::string &code, const bool critical) noexcept : _message(message), _code(code), _critical(critical) {
   }
 
-    /**
+  /**
    * \brief Constructor for runtime errors
    * \param message : error message
    * \param code : error code 
@@ -57,10 +57,10 @@ public:
   virtual
   const char* what() const noexcept {
     std::string *err;
-    if(_critical)
-      err = new std::string("\nCRITICAL ERROR :\n -- [" + _code + "] " + _message + "\n");
+    if (_critical)
+      err = new std::string("\nCRITICAL ERROR :\n-- [" + _code + "] " + _message + "\n");
     else
-      err = new std::string("\nWARNING :\n -- [" + _code + "] " + _message + "\n");
+      err = new std::string("\nWARNING :\n-- [" + _code + "] " + _message + "\n");
     return err->c_str();
   }
 
