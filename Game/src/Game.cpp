@@ -3,7 +3,7 @@
 
 using namespace glimac;
 
-Game::Game(const FilePath &path, int nbFloor) {
+Game::Game(AssetsManager *assets, const FilePath &path, int nbFloor) : m_assets(assets) {
   loadMap(path, nbFloor);
 }
 
@@ -42,11 +42,13 @@ void Game::loadFloor(const FilePath &file, int floor) {
       fileLevel >> g;
       fileLevel >> b;
 
+      // GROUND
       if (r == 143 && g == 94 && b == 10) {
-        //std::cout << "Brown" << std::endl;
-        //std::cout << "Ground" << std::endl;					
+        /*if (!m_objects["wall"])
+          m_objects.insert(std::make_pair("wall", m_assets->));*/
       }
 
+      // WALL
       if (r == 143 && g == 136 && b == 131) {
         //std::cout << "Grey" << std::endl;
         //std::cout << "Wall" << std::endl;					
