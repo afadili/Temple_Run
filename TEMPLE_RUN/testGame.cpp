@@ -128,7 +128,6 @@ int main(int argc, char **argv) {
     MVMatrix = glm::rotate(MVMatrix, windowManager.getTime() * 0.75f, glm::vec3(1.f, 1.f, 1.f));
     glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
 
-
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     myCube.bind();

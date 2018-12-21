@@ -86,6 +86,14 @@ public:
   glm::mat4 MWMatrix() const;
 
   /**
+   * \brief Draw the object with is world coordinates, 
+   * \param ProjMatrix : Projection matrix
+   * \param ViewMatrix : view matrix of the camera, identity matrix by default
+   * \param isBind : if the mesh has already been bind (default) or if it must be bind and debind in this function (false)
+   */
+  void draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix = glm::mat4(), const bool isBind = true) const;
+
+  /**
    * \brief Getter of mesh
    * \return m_mesh
    */
