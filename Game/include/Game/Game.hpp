@@ -49,6 +49,13 @@ public:
    * \param file : file for the floor
    */
   void loadFloor(const FilePath &file, int floor);
+
+  /**
+   * \brief draw all element of the level game
+   * \param ProjMatrix : the projection matrix
+   * \param ViewMatrix : view matrix of the camera, identity matrix by default
+   */
+  void draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix = glm::mat4()) const;
 };
 
 #endif

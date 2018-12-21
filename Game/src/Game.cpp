@@ -44,8 +44,9 @@ void Game::loadFloor(const FilePath &file, int floor) {
 
       // GROUND
       if (r == 143 && g == 94 && b == 10) {
-        /*if (!m_objects["wall"])
-          m_objects.insert(std::make_pair("wall", m_assets->));*/
+        if (m_objects.find("wall") == m_objects.end())
+          m_objects.insert(std::make_pair("wall", m_assets->mesh("wall")));
+        m_objects.at("wall").add(glm::vec3(i, j, floor));
       }
 
       // WALL
@@ -105,4 +106,9 @@ void Game::loadFloor(const FilePath &file, int floor) {
       }
     }
   }
+}
+
+void Game::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const {
+  for (auto const& mapObj : m_objects)
+    mapObj.second.draw(ProjMatrix, ViewMatrix);
 }

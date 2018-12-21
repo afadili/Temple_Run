@@ -22,7 +22,7 @@ void ObjectList::remove(Object *obj, const bool deleteIt) {
 void ObjectList::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const {
   // bind the mesh 
   m_mesh->bind();
-
+  
   // Mesh instances
   for (auto&& obj : m_objects)
     m_mesh->draw(ProjMatrix, obj->MWMatrix(), ViewMatrix);
