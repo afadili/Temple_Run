@@ -28,11 +28,13 @@ Mesh::~Mesh() {
 void Mesh::bind() const {
   m_vao->bind(); // VAO
   m_shader->use(); // Shader program
-  m_texture->bind(); // Texture
+  if (m_texture)
+    m_texture->bind(); // Texture
 }
 
 void Mesh::debind() const {
-  m_texture->debind(); // Texture
+  if (m_texture)
+    m_texture->debind(); // Texture
   m_vao->debind(); // VAO
 }
 
@@ -44,16 +46,15 @@ void Mesh::draw() const {
 }
 
 void Mesh::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &MWMatrix, const glm::mat4 &ViewMatrix) const {
-    // sends uniform variables
-    m_shader->sendUniformMatrix4fv("uMVPMatrix", ProjMatrix * ViewMatrix * MWMatrix);
-    m_shader->sendUniformMatrix4fv("uMVMatrix", ViewMatrix * MWMatrix);
-    m_shader->sendUniformMatrix4fv("uNormalMatrix", glm::inverse(MWMatrix));
-    m_shader->sendUniform1i("uTexture", 0);
+  // sends uniform variables
+  m_shader->sendUniformMatrix4fv("uMVPMatrix", ProjMatrix * ViewMatrix * MWMatrix);
+  m_shader->sendUniformMatrix4fv("uMVMatrix", ViewMatrix * MWMatrix);
+  m_shader->sendUniformMatrix4fv("uNormalMatrix", glm::inverse(MWMatrix));
+  m_shader->sendUniform1i("uTexture", 0);
 
-    // draw the mesh
-    draw();
-  }
-
+  // draw the mesh
+  draw();
+}
 
 void Mesh::fillBuffers() {
   m_vbo->fillBuffer(m_vertices);
