@@ -17,6 +17,7 @@
 #include <Error/Error.hpp>
 
 #include "AssetsManager.hpp"
+#include "Configuration.hpp"
 
 class Game;
 
@@ -26,15 +27,16 @@ class Game;
  */
 class GameManager {
 protected:
+  Configuration m_config; /*!<The configuration of the game */
   Game *m_currentGame; /*!< Pointer on the current game, null if no game has started */
   AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
 
 public:
   /**
    * \brief constructor of the GameManager
-   * \param assetPath : the json file with all assets (meshs, textures and shaders)
+   * \param assetPath : the json file with the configuration
    */
-  GameManager(const FilePath &assetPath);
+  GameManager(const FilePath &configPath);
 
   /**
    * \brief destructor of the GameManager, delete all loaded assets

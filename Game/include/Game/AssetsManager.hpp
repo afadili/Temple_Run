@@ -11,6 +11,8 @@
 #include <map>
 #include <algorithm>
 
+#include <glimac/FilePath.hpp>
+
 #include <json/json.h>
 #include <Mesh/Mesh.hpp>
 #include <Mesh/Cube.hpp>
@@ -31,7 +33,7 @@ public:
    * \brief constructor of the AssetsManager
    * \param assetPath : the json file with all assets (meshs, textures and shaders)
    */
-  AssetsManager(const FilePath &assetPath);
+  AssetsManager(const glimac::FilePath &assetPath);
 
   /**
    * \brief destructor of the AssetsManager, delete all loaded assets
@@ -42,7 +44,7 @@ public:
    * \brief Load all assets declared in assets file
    * \param assetPath : the json file with all assets (meshs, textures and shaders)
    */
-  void loadAssets(const FilePath &assetPath);
+  void loadAssets(const glimac::FilePath &assetPath);
 
   /**
    * \brief Unload all assets (clear the map list and unload data)

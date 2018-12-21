@@ -1,6 +1,6 @@
 #include <Game/AssetsManager.hpp>
 
-AssetsManager::AssetsManager(const FilePath &assetPath) {
+AssetsManager::AssetsManager(const glimac::FilePath &assetPath) {
   loadAssets(assetPath);
 }
 
@@ -8,7 +8,7 @@ AssetsManager::~AssetsManager() {
   unloadAssets();
 }
 
-void AssetsManager::loadAssets(const FilePath &assetPath) {
+void AssetsManager::loadAssets(const glimac::FilePath &assetPath) {
   std::ifstream assetJSON(assetPath, std::ifstream::binary);
   if (assetJSON.fail())
     throw Error("The asset file \"" + assetPath.str() + "\" is not found !", "FILE_NOT_FOUND", true);

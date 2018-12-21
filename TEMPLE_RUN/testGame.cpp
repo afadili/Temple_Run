@@ -12,7 +12,7 @@
 #include <Render/ShaderManager.hpp>
 #include <Render/Texture.hpp>
 
-#include <glimac/TrackballCamera.hpp>
+#include <glimac/FreeflyCamera.hpp>
 
 
 // Nombre minimal de millisecondes separant le rendu de deux images
@@ -75,7 +75,7 @@ int main(int argc, char **argv) {
    *********************************/
 
   // TEST GAME MANAGER
-  GameManager manager("TEMPLE_RUN/assets.json");
+  GameManager manager("TEMPLE_RUN/config.json");
   std::cout << "GAME MANAGER :\n" << manager << std::endl;
 
   //TEST PPM
@@ -87,12 +87,16 @@ int main(int argc, char **argv) {
   // activer le test de profondeur du GPU
   glEnable(GL_DEPTH_TEST);
 
-  // Camera
-  TrackballCamera camera(-5, 5, 5);
 
-  // Souris
-  glm::ivec2 mousePos;
-  glm::ivec2 lastMousePos;
+  // Camera
+  FreeflyCamera camera;
+
+  // Keyboard
+  bool KEY_UP_PRESSED = false;
+  bool KEY_DOWN_PRESSED = false;
+  bool KEY_LEFT_PRESSED = false;
+  bool KEY_RIGHT_PRESSED = false;
+
 
   // Application loop:
   bool done = false;
@@ -104,17 +108,69 @@ int main(int argc, char **argv) {
       if (e.type == SDL_QUIT) {
         done = true; // Leave the loop after this iteration
       }
-      if (windowManager.isMouseButtonPressed(SDL_BUTTON_LEFT)) {
-        mousePos = windowManager.getMousePosition();
-        camera.rotateLeft(mousePos.x - lastMousePos.x);
-        camera.rotateUp(mousePos.y - lastMousePos.y);
-        lastMousePos = mousePos;
+
+      switch (e.type) {
+          /* Touche clavier DOWN */
+        case SDL_KEYDOWN:
+          if (e.key.keysym.sym == SDLK_z || e.key.keysym.sym == SDLK_UP) {
+            KEY_UP_PRESSED = true;
+          }
+          if (e.key.keysym.sym == SDLK_s || e.key.keysym.sym == SDLK_DOWN) {
+            KEY_DOWN_PRESSED = true;
+          }
+          if (e.key.keysym.sym == SDLK_q || e.key.keysym.sym == SDLK_LEFT) {
+            KEY_LEFT_PRESSED = true;
+          }
+          if (e.key.keysym.sym == SDLK_d || e.key.keysym.sym == SDLK_RIGHT) {
+            KEY_RIGHT_PRESSED = true;
+          }
+          break;
+
+
+        case SDL_KEYUP:
+          if (e.key.keysym.sym == SDLK_z || e.key.keysym.sym == SDLK_UP) {
+            KEY_UP_PRESSED = false;
+          }
+          if (e.key.keysym.sym == SDLK_s || e.key.keysym.sym == SDLK_DOWN) {
+            KEY_DOWN_PRESSED = false;
+          }
+          if (e.key.keysym.sym == SDLK_q || e.key.keysym.sym == SDLK_LEFT) {
+            KEY_LEFT_PRESSED = false;
+          }
+          if (e.key.keysym.sym == SDLK_d || e.key.keysym.sym == SDLK_RIGHT) {
+            KEY_RIGHT_PRESSED = false;
+          }
+          break;
+
+
+        case SDL_MOUSEMOTION:
+          float speed = 0.5f;
+          if (e.motion.xrel != 0) {
+            camera.rotateFront(float(-e.motion.xrel) * speed);
+          }
+          if (e.motion.yrel != 0) {
+            camera.rotateLeft(float(e.motion.yrel) * speed);
+          }
+          break;
+
       }
-      if (windowManager.isKeyPressed(SDLK_UP))
-        camera.moveFront(0.5);
-      if (windowManager.isKeyPressed(SDLK_DOWN))
-        camera.moveFront(-0.5);
     }
+
+    /* CONTROL */
+
+    float speed = 0.1f;
+    if (KEY_UP_PRESSED) {
+      camera.moveFront(speed);
+    } else if (KEY_DOWN_PRESSED) {
+      camera.moveFront(-speed);
+    } else if (KEY_LEFT_PRESSED) {
+      KEY_LEFT_PRESSED = true;
+      camera.moveLeft(speed);
+    } else if (KEY_RIGHT_PRESSED) {
+      KEY_RIGHT_PRESSED = true;
+      camera.moveLeft(-speed);
+    }
+
 
     /*********************************
      * HERE SHOULD COME THE RENDERING CODE
