@@ -186,13 +186,13 @@ public:
 
     // Print position
     os << "-- Vertices position (" << mesh.vertices().size() << ") = {\n";
-    for (auto vertex : mesh.vertices())
+    for (const ShapeVertex &vertex : mesh.vertices())
       os << "  " << vertex.position << "\n";
     os << "}\n";
 
     // Print index
     os << "-- Vertices index (" << mesh.indexVer().size() << ") = [ ";
-    for (auto index : mesh.indexVer())
+    for (const int &index : mesh.indexVer())
       os << index << " ";
     os << "]\n";
     return os;

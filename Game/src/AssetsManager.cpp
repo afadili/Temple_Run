@@ -38,7 +38,7 @@ void AssetsManager::loadShaders(const Json::Value &jsonShaders) {
   if (!jsonShaders)
     throw Error("No shaders data found !", "DATA_NOT_FOUND", true);
 
-  for (auto const& value : jsonShaders) {
+  for (Json::Value const& value : jsonShaders) {
     loadShader(value);
   }
 }
@@ -73,7 +73,7 @@ void AssetsManager::loadTextures(const Json::Value &jsonTextures) {
   if (!jsonTextures)
     throw Error("No textures data found !", "DATA_NOT_FOUND");
 
-  for (auto const& value : jsonTextures) {
+  for (Json::Value const& value : jsonTextures) {
     loadTexture(value);
   }
 }
@@ -97,7 +97,7 @@ void AssetsManager::loadMeshs(const Json::Value &jsonMeshs) {
   if (!jsonMeshs)
     throw Error("No textures data found !", "DATA_NOT_FOUND");
 
-  for (auto const& value : jsonMeshs) {
+  for (Json::Value const& value : jsonMeshs) {
     loadMesh(value);
   }
 }
