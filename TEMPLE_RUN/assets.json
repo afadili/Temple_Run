@@ -19,36 +19,32 @@
   ],
   "textures": [
     {
-      "name": "triforce",
-      "src": "TEMPLE_RUN/assets/textures/triforce.png"
-    },
-    {
       "name": "cube",
       "src": "TEMPLE_RUN/assets/textures/cube.jpg"
     },
     {
       "name": "stone",
-      "src": "TEMPLE_RUN/assets/textures/cube.jpg"
+      "src": "TEMPLE_RUN/assets/textures/stone_wall.jpg"
     },
     {
       "name": "pavement",
-      "src": "TEMPLE_RUN/assets/textures/cube.jpg"
+      "src": "TEMPLE_RUN/assets/textures/brick_pavement.jpg"
     }
   ],
   "meshs": [
     {
-      "name": "wall1",
+      "name": "wall",
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "stone",
-      "shader": "tex3D"
+      "shader": "normals"
     },
     {
-      "name": "ground1",
+      "name": "ground",
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "pavement",
-      "shader": "tex3D"
+      "shader": "normals"
     }
   ]
 } 

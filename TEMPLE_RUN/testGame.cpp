@@ -12,6 +12,8 @@
 #include <Render/ShaderManager.hpp>
 #include <Render/Texture.hpp>
 
+#include <glimac/TrackballCamera.hpp>
+
 
 // Nombre minimal de millisecondes separant le rendu de deux images
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -77,34 +79,20 @@ int main(int argc, char **argv) {
   std::cout << "GAME MANAGER :\n" << manager << std::endl;
 
   //TEST PPM
-  /* static const FilePath file = "../Levels/Tests/test3.ppm";
-   Game gm(file, 1);
-   gm.loadFloor(file, 0);*/
+  static const FilePath file = "../Levels/Tests/test2.ppm";
+  Game gm(manager.assets(), file, 1);
+  gm.loadFloor(file, 0);
 
-
-  // ======== TEST CUBE ========
-
-  // Construct cube
-  ShaderManager shaderCube("TEMPLE_RUN/shaders/tex3D.vs.glsl", "TEMPLE_RUN/shaders/tex3D.fs.glsl");
-  shaderCube.use();
-  shaderCube.addUniform("uMVPMatrix");
-  shaderCube.addUniform("uMVMatrix");
-  shaderCube.addUniform("uNormalMatrix");
-  shaderCube.addUniform("uTexture");
-
-  Texture textureCube("TEMPLE_RUN/assets/textures/cube.jpg");
-  Cube myCube(glm::vec3(2), &shaderCube, &textureCube);
-
-  // Cube Initilisation
-  textureCube.loadTexture();
-  myCube.fillBuffers();
-
-
-
-  // END CUBE
 
   // activer le test de profondeur du GPU
   glEnable(GL_DEPTH_TEST);
+
+  // Camera
+  TrackballCamera camera;
+
+  // Souris
+  glm::ivec2 mousePos;
+  glm::ivec2 lastMousePos;
 
   // Application loop:
   bool done = false;
@@ -116,6 +104,16 @@ int main(int argc, char **argv) {
       if (e.type == SDL_QUIT) {
         done = true; // Leave the loop after this iteration
       }
+      if (windowManager.isMouseButtonPressed(SDL_BUTTON_LEFT)) {
+        mousePos = windowManager.getMousePosition();
+        camera.rotateLeft(mousePos.x - lastMousePos.x);
+        camera.rotateUp(mousePos.y - lastMousePos.y);
+        lastMousePos = mousePos;
+      }
+      if (windowManager.isKeyPressed(SDLK_UP))
+        camera.moveFront(0.5);
+      if (windowManager.isKeyPressed(SDLK_DOWN))
+        camera.moveFront(-0.5);
     }
 
     /*********************************
@@ -124,15 +122,11 @@ int main(int argc, char **argv) {
 
     // MATRICES de transformations
     glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f), WINDOWS_WIDTH / (float) WINDOWS_HEIGHT, NEAR_VISION, FAR_VISION);
-    glm::mat4 MVMatrix = glm::translate(glm::mat4(), glm::vec3(0.f, 0.f, -5.f));
-    MVMatrix = glm::rotate(MVMatrix, windowManager.getTime() * 0.75f, glm::vec3(1.f, 1.f, 1.f));
-    glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    myCube.bind();
-    myCube.draw(ProjMatrix, MVMatrix);
-    myCube.debind();
+    gm.draw(ProjMatrix, camera.getViewMatrix());
+
 
     // Update the display
     windowManager.swapBuffers();
@@ -141,8 +135,6 @@ int main(int argc, char **argv) {
       SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
     }
   }
-
-  textureCube.free();
 
 
   return EXIT_SUCCESS;
