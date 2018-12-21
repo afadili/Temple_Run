@@ -109,12 +109,11 @@ void AssetsManager::loadMesh(const Json::Value &jsonMesh) {
 
     // Try to load texture and shader for the mesh, if we can't, we asign the default shader
     ShaderManager *shader = m_shaders[jsonMesh["shader"].asString()];
-    Texture *texture = nullptr;
+    Texture *texture = m_textures[jsonMesh["texture"].asString()];
     if (shader == nullptr) { // shader not found
       std::cout << Error("The shader " + jsonMesh["shader"].asString() + " was not found, the default shader was loaded instead", "DATA_NOT_FOUND").what() << std::endl;
       shader = m_shaders["default"];
     } else { // shader found
-      Texture *texture = m_textures[jsonMesh["texture"].asString()];
       if (texture == nullptr) { // texture not found
         std::cout << Error("The texture " + jsonMesh["texture"].asString() + " was not found, the default shader was loaded instead", "DATA_NOT_FOUND").what() << std::endl;
         shader = m_shaders["default"];

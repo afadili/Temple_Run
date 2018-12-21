@@ -37,13 +37,13 @@
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "stone",
-      "shader": "normals"
+      "shader": "tex3D"
     },
     {
       "name": "ground",
       "type": "Cube",
       "size": [1, 1, 1],
-      "texture": "pavement",
+      "texture": "stone",
       "shader": "normals"
     }
   ]
