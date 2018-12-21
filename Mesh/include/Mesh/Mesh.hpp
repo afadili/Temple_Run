@@ -172,10 +172,22 @@ public:
    * \brief Opérateur << for print a mesh data
    */
   friend std::ostream &operator<<(std::ostream &os, const Mesh &mesh) {
+    // Print shader
+    if (mesh.m_shader)
+      os << "-- Shader = {\n" << *mesh.m_shader << "}\n";
+    else
+      os << "-- Shader = NaN\n";
+
+    // Print texture
+    if (mesh.m_texture)
+      os << "-- Texture = {\n" << *mesh.m_texture << "}\n";
+    else
+      os << "-- Texture = NaN\n";
+
     // Print position
     os << "-- Vertices position (" << mesh.vertices().size() << ") = {\n";
     for (auto vertex : mesh.vertices())
-      os << vertex.position << "\n";
+      os << "  " << vertex.position << "\n";
     os << "}\n";
 
     // Print index

@@ -95,11 +95,14 @@ public:
    * \brief Opérateur << for print shader data
    */
   friend std::ostream &operator<<(std::ostream &os, const ShaderManager &shader) {
+    // Print vs and fs path
+    os << "  -- VS path = \"" << shader.m_vsPath << "\"\n";
+    os << "  -- FS path = \"" << shader.m_fsPath << "\"\n";
     // Print position
-    os << "-- Uniform Matrix = {\n";
+    os << "  -- Uniform Matrix = {\n";
     for (std::pair<std::string, GLuint> map : shader.m_uMap)
-      os << "\t" << map.first << " = " << map.second << std::endl;
-    os << "]\n";
+      os << "      " << map.first << " = " << map.second << std::endl;
+    os << "  }\n";
     return os;
   }
 

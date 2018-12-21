@@ -102,6 +102,16 @@ public:
     return m_mesh;
   }
 
+  /**
+   * \brief Opérateur << for print Object data
+   */
+  friend std::ostream &operator<<(std::ostream &os, const Object &obj) {
+    // Print loaded shaders name
+    os << "  -- Position = " << obj.m_position << "\n";
+    os << "  -- Size = " << obj.m_size << "\n";
+    os << "  -- Rotation = " << obj.m_rotation << "\n";
+  }
+
 
 };
 

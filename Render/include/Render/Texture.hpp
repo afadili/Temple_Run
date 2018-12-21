@@ -19,17 +19,14 @@
 
 using namespace glimac;
 
-class Texture
-{
+class Texture {
 private:
-  FilePath m_path;                /*!< Path of the file of the texture */
-  GLuint m_id;                    /*!< id of the texture */
-  std::unique_ptr<Image> m_image; /*!< Ipointer to the image of the texture */
-  GLenum m_format;                /*!< format of the texture */
-  const int m_minFilter;          /*!< minimum filter of the texture */
-  const int m_maxFilter;          /*!< maximum filter of the texture  */
-  bool m_isLoaded;                /*!< boolean to know is the texture is loaded or not */
-  unsigned int s_nbTexture;       /*!< number of textures*/
+  FilePath m_path; /*!< Path of the file of the texture */
+  GLuint m_id; /*!< id of the texture */
+  std::unique_ptr<Image> m_image; /*!< pointer to the image of the texture */
+  GLenum m_format; /*!< format of the texture */
+  const int m_minFilter; /*!< minimum filter of the texture */
+  const int m_maxFilter; /*!< maximum filter of the texture  */
 
 public:
   /**
@@ -59,7 +56,8 @@ public:
   /**
    * \brief destructor of Texture
    */
-  ~Texture(){};
+  ~Texture() {
+  };
 
   /**
    * \brief getter of the Image that we will draw with Texture
@@ -88,6 +86,17 @@ public:
    * \brief methods that free the memory allocated to the texture after using it
    */
   void free();
+
+  /**
+   * \brief Opérateur << for print texture data
+   */
+  friend std::ostream &operator<<(std::ostream &os, const Texture &tex) {
+    os << "  -- path = \"" << tex.m_path << "\"\n";
+    os << "  -- id = " << tex.m_id << "\n";
+    os << "  -- format = " << tex.m_format << "\n";
+    os << "  -- image = " << tex.m_image->getWidth() << " x " << tex.m_image->getHeight() << "\n";
+    return os;
+  }
 };
 
 #endif
