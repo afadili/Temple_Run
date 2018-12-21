@@ -147,20 +147,20 @@ void AssetsManager::unloadMeshs() {
 }
 
 ShaderManager *AssetsManager::shader(const std::string &name) const {
-  if (!m_shaders.at(name))
-    throw Error("The shader " + name + " is not found !", "ASSET_FOUND", true);
+  if (m_shaders.find(name) == m_shaders.end())
+    throw Error("The shader " + name + " is not found !", "ASSET_NOT_FOUND", true);
   return m_shaders.at(name);
 }
 
 Texture *AssetsManager::texture(const std::string &name) const {
-  if (!m_textures.at(name))
-    throw Error("The texture " + name + " is not found !", "ASSET_FOUND", true);
+  if (m_textures.find(name) == m_textures.end())
+    throw Error("The texture " + name + " is not found !", "ASSET_NOT_FOUND", true);
   return m_textures.at(name);
 }
 
 Mesh *AssetsManager::mesh(const std::string &name) const {
-  if (!m_meshs.at(name))
-    throw Error("The mesh \"" + name + "\" is not found !", "ASSET_FOUND", true);
+  if (m_meshs.find(name) == m_meshs.end())
+    throw Error("The mesh \"" + name + "\" is not found !", "ASSET_NOT_FOUND", true);
   return m_meshs.at(name);
 }
 
