@@ -47,6 +47,7 @@ void Game::loadFloor(const FilePath &file, int floor) {
         if (m_objects.find("wall") == m_objects.end())
           m_objects.insert(std::make_pair("wall", m_assets->mesh("wall")));
         m_objects.at("wall").add(glm::vec3(i, j, floor));
+       // std::cout << *m_assets->mesh("wall") << std::endl;
       }
 
       // WALL

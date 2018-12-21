@@ -88,7 +88,7 @@ int main(int argc, char **argv) {
   glEnable(GL_DEPTH_TEST);
 
   // Camera
-  TrackballCamera camera;
+  TrackballCamera camera(-5, 5, 5);
 
   // Souris
   glm::ivec2 mousePos;

@@ -3,8 +3,7 @@
 
 using namespace glimac;
 
-GLuint Texture::getId()
-{
+GLuint Texture::getId() {
   return m_id;
 }
 
@@ -23,29 +22,24 @@ void Texture::loadTexture() // TO DO : changer la fonction pour que ça marche p
   debind();
 }
 
-Texture::Texture(FilePath path) : m_path(path), m_minFilter(GL_LINEAR), m_maxFilter(GL_LINEAR)
-{
+Texture::Texture(FilePath path) : m_path(path), m_minFilter(GL_LINEAR), m_maxFilter(GL_LINEAR) {
   loadTexture();
 }
 
-Texture::Texture(FilePath path, const int min, const int max) : m_path(path), m_minFilter(min), m_maxFilter(max)
-{
+Texture::Texture(FilePath path, const int min, const int max) : m_path(path), m_minFilter(min), m_maxFilter(max) {
   loadTexture();
 }
 
-void Texture::debind()
-{
+void Texture::debind() {
   glActiveTexture(m_format);
   glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Texture::bind()
-{
+void Texture::bind() {
   glActiveTexture(m_format);
   glBindTexture(GL_TEXTURE_2D, m_id);
 }
 
-void Texture::free()
-{
+void Texture::free() {
   glDeleteTextures(1, &m_id);
 }

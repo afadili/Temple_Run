@@ -1,46 +1,50 @@
 namespace glimac {
 
-    class TrackballCamera {
-    private:
-        float m_fDistance;
-        float m_fAngleX;
-        float m_fAngleY;
-    public:
-        // Constructeur: 
+  class TrackballCamera {
+  private:
+    float m_fDistance;
+    float m_fAngleX;
+    float m_fAngleY;
+  public:
+    // Constructeur: 
 
-        TrackballCamera() :
-        m_fDistance(5.f), m_fAngleX(0.), m_fAngleY(0.) {
-        }
+    TrackballCamera() :
+    m_fDistance(5.f), m_fAngleX(0.), m_fAngleY(0.) {
+    }
 
-        // Avancer / reculer la caméra, delta > 0 avance, delta < 0 reculer
+    TrackballCamera(const float &distance, const float &angleX, const float &angleY) :
+    m_fDistance(distance), m_fAngleX(angleX), m_fAngleY(angleY) {
+    }
 
-        inline
-        void moveFront(const float &delta) {
-            m_fDistance -= delta;
-        }
+    // Avancer / reculer la caméra, delta > 0 avance, delta < 0 reculer
 
-        // Tourner latéralement autour du centre de vision
+    inline
+    void moveFront(const float &delta) {
+      m_fDistance -= delta;
+    }
 
-        inline
-        void rotateLeft(const float &degrees) {
-            m_fAngleY += degrees;
-        }
+    // Tourner latéralement autour du centre de vision
 
-        // Tourner verticalement autour du centre de vision
+    inline
+    void rotateLeft(const float &degrees) {
+      m_fAngleY += degrees;
+    }
 
-        inline
-        void rotateUp(const float &degrees) {
-            m_fAngleX += degrees;
-        }
+    // Tourner verticalement autour du centre de vision
 
-        // Calculer la ViewMatrix de la caméra
+    inline
+    void rotateUp(const float &degrees) {
+      m_fAngleX += degrees;
+    }
 
-        glm::mat4 getViewMatrix() const {
-            glm::mat4 viewMatrix = glm::translate(glm::mat4(), glm::vec3(0.f, 0.f, m_fDistance));
-            viewMatrix = glm::rotate(viewMatrix, glm::radians(m_fAngleX), glm::vec3(1.f, 0.f, 0.f));
-            viewMatrix = glm::rotate(viewMatrix, glm::radians(m_fAngleY), glm::vec3(0.f, 1.f, 0.f));
-            return viewMatrix;
-        }
+    // Calculer la ViewMatrix de la caméra
 
-    };
+    glm::mat4 getViewMatrix() const {
+      glm::mat4 viewMatrix = glm::translate(glm::mat4(), glm::vec3(0.f, 0.f, m_fDistance));
+      viewMatrix = glm::rotate(viewMatrix, glm::radians(m_fAngleX), glm::vec3(1.f, 0.f, 0.f));
+      viewMatrix = glm::rotate(viewMatrix, glm::radians(m_fAngleY), glm::vec3(0.f, 1.f, 0.f));
+      return viewMatrix;
+    }
+
+  };
 }

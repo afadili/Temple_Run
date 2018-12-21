@@ -26,10 +26,6 @@ protected:
   AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
   std::map<std::string, ObjectList> m_objects; /*!< map of all objects in the map */
   //Character m_character; /*!<  */
-  //std::vector<Object> m_walls; /*!<  */
-  //std::vector<Object> m_ground; /*!<  */
-  //std::vector<Stone> m_stone; /*!<  */
-
 
 public:
   /**
