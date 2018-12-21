@@ -16,8 +16,7 @@
 #include <Mesh/Cube.hpp>
 #include <Error/Error.hpp>
 
-#include <Game/AssetsManager.hpp>
-
+#include "AssetsManager.hpp"
 
 class Game;
 
@@ -28,7 +27,7 @@ class Game;
 class GameManager {
 protected:
   Game *m_currentGame; /*!< Pointer on the current game, null if no game has started */
-  AssetsManager m_assets; /*!< The manager of all assets */
+  AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
 
 public:
   /**
@@ -43,12 +42,21 @@ public:
   ~GameManager();
 
   /**
+   * \brief Getter of the AssetsManager
+   * \return m_mesh
+   */
+  inline
+  AssetsManager* assets() const {
+    return m_assets;
+  }
+
+  /**
    * \brief Opérateur << for print GameManager data
    */
   friend std::ostream &operator<<(std::ostream &os, const GameManager &gm) {
     // Print loaded shaders name
     os << "-- Assets = [\n";
-    os << gm.m_assets;
+    os << *(gm.m_assets);
     os << "]\n";
   }
 };
