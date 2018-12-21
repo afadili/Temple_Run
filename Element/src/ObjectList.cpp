@@ -19,11 +19,6 @@ void ObjectList::remove(Object *obj, const bool deleteIt) {
     delete obj;
 }
 
-/**
- * \brief Draw all objects in the list
- * \param ProjMatrix : Projection matrix
- * \param ViewMatrix : view matrix of the camera, identity matrix by default
- */
 void ObjectList::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const {
   // bind the mesh 
   m_mesh->bind();
