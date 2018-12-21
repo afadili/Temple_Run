@@ -101,6 +101,27 @@ public:
   void unloadMeshs();
 
   /**
+   * \brief Getter of a shader
+   * \name the shader identifier in the map
+   * \return the mesh
+   */
+  ShaderManager *shader(const std::string &name) const;
+
+  /**
+   * \brief Getter of a texture
+   * \name the texture identifier in the map
+   * \return the mesh
+   */
+  Texture *texture(const std::string &name) const;
+
+  /**
+   * \brief Getter of a mesh
+   * \name the mesh identifier in the map
+   * \return the mesh
+   */
+  Mesh *mesh(const std::string &name) const;
+
+  /**
    * \brief Opérateur << for print AssetsManager data
    */
   friend std::ostream &operator<<(std::ostream &os, const AssetsManager &am) {

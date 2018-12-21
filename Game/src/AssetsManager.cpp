@@ -131,7 +131,7 @@ void AssetsManager::loadMesh(const Json::Value &jsonMesh) {
     } else {
       obj = new Mesh(shader, texture);
     }
-    
+
     // Initialisation
     obj->fillBuffers();
     m_meshs.insert(std::make_pair(jsonMesh["name"].asString(), obj));
@@ -144,6 +144,24 @@ void AssetsManager::unloadMeshs() {
   for (std::pair<std::string, Mesh*> map : m_meshs)
     delete map.second;
   m_meshs.clear();
+}
+
+ShaderManager *AssetsManager::shader(const std::string &name) const {
+  if (!m_shaders.at(name))
+    throw Error("The shader " + name + " is not found !", "ASSET_FOUND", true);
+  return m_shaders.at(name);
+}
+
+Texture *AssetsManager::texture(const std::string &name) const {
+  if (!m_textures.at(name))
+    throw Error("The texture " + name + " is not found !", "ASSET_FOUND", true);
+  return m_textures.at(name);
+}
+
+Mesh *AssetsManager::mesh(const std::string &name) const {
+  if (!m_meshs.at(name))
+    throw Error("The mesh \"" + name + "\" is not found !", "ASSET_FOUND", true);
+  return m_meshs.at(name);
 }
 
 
