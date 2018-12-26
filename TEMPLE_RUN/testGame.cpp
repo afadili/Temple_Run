@@ -79,7 +79,7 @@ int main(int argc, char **argv) {
   std::cout << "GAME MANAGER :\n" << manager << std::endl;
 
   //TEST PPM
-  static const FilePath file = "../Levels/Tests/test2.ppm";
+  static const FilePath file = "../levels/Tests/test2.ppm";
   Level gm(manager.assets(), file, 1);
   gm.loadFloor(file, 0);
 

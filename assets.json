@@ -3,32 +3,32 @@
     {
       "//": "IMPORTANT: Always have this default shaders for textures and shaders not found",
       "name": "default", 
-      "vs": "TEMPLE_RUN/shaders/3D.vs.glsl",
-      "fs": "TEMPLE_RUN/shaders/default.fs.glsl"
+      "vs": "shaders/3D.vs.glsl",
+      "fs": "shaders/default.fs.glsl"
     },
     {
       "name": "normals",
-      "vs": "TEMPLE_RUN/shaders/3D.vs.glsl",
-      "fs": "TEMPLE_RUN/shaders/normals.fs.glsl"
+      "vs": "shaders/3D.vs.glsl",
+      "fs": "shaders/normals.fs.glsl"
     },
     {
       "name": "tex3D",
-      "vs": "TEMPLE_RUN/shaders/tex3D.vs.glsl",
-      "fs": "TEMPLE_RUN/shaders/tex3D.fs.glsl"
+      "vs": "shaders/tex3D.vs.glsl",
+      "fs": "shaders/tex3D.fs.glsl"
     }
   ],
   "textures": [
     {
       "name": "cube",
-      "src": "TEMPLE_RUN/assets/textures/cube.jpg"
+      "src": "assets/textures/cube.jpg"
     },
     {
       "name": "stone",
-      "src": "TEMPLE_RUN/assets/textures/stone_wall.jpg"
+      "src": "assets/textures/stone_wall.jpg"
     },
     {
       "name": "pavement",
-      "src": "TEMPLE_RUN/assets/textures/brick_pavement.jpg"
+      "src": "assets/textures/brick_pavement.jpg"
     }
   ],
   "meshs": [
