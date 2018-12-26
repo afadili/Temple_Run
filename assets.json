@@ -34,6 +34,7 @@
   "meshs": [
     {
       "name": "wall",
+      "code": [143, 94, 10],
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "stone",
@@ -41,6 +42,7 @@
     },
     {
       "name": "ground",
+      "code": [143, 136, 131],
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "stone",

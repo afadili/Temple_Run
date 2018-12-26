@@ -14,6 +14,9 @@
 #include <json/json.h>
 #include <Error/Error.hpp>
 
+#include "Level.hpp"
+#include "AssetsManager.hpp"
+
 /**
  * \class Configuration
  * \brief Stores all the configuration of the program
@@ -40,6 +43,21 @@ public:
    * \brief destructor 
    */
   ~Configuration() = default;
+
+  /**
+   * \brief Get a map of all possible configured levels 
+   * \param assets : Pointer on the manager of all assets
+   * \return a map of all possible levels 
+   */
+  std::map<std::string, Level*> levels(AssetsManager *assets = nullptr) const;
+
+  /**
+   * \brief Get a configured levels 
+   * \param path : the path of the level with the config.json file
+   * \param assets : Pointer on the manager of all assets
+   * \return A pointer to the level
+   */
+  Level* level(const glimac::FilePath &path, AssetsManager *assets = nullptr) const;
 
   /**
    * \brief Getter of m_configFile
@@ -108,12 +126,12 @@ public:
    * \brief Opérateur << for print Configuration data
    */
   friend std::ostream &operator<<(std::ostream &os, const Configuration &conf) {
-    os << "  -- configuration File = \"" << conf.m_configFile << "\"\n";
+    os << "  -- configuration File = " << conf.m_configFile << " \n";
     os << "  -- assets File = " << conf.m_assetsFile << "\n";
-    os << "  -- Levels = {";
+    os << "  -- Levels = {\n";
     for (std::pair<std::string, glimac::FilePath> map : conf.m_levelsPath)
-      os << "    " << map.first << " = " << map.second << "\n";
-    os << "  }";
+      os << "    -- " << map.first << " = " << map.second << "\n";
+    os << "  }\n";
     os << "  -- fps = " << conf.m_fps << "\n";
     os << "  -- ratio = " << conf.m_ratio << "\n";
     os << "  -- nearVision = " << conf.m_nearVision << "\n";

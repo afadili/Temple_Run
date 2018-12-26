@@ -75,13 +75,10 @@ int main(int argc, char **argv) {
    *********************************/
 
   // TEST GAME MANAGER
-  GameManager manager("TEMPLE_RUN/config.json");
+  GameManager manager("config.json");
   std::cout << "GAME MANAGER :\n" << manager << std::endl;
-
-  //TEST PPM
-  static const FilePath file = "../levels/Tests/test2.ppm";
-  Level gm(manager.assets(), file, 1);
-  gm.loadFloor(file, 0);
+  
+  manager.loadLevel("test1");
 
 
   // activer le test de profondeur du GPU
@@ -181,7 +178,7 @@ int main(int argc, char **argv) {
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    gm.draw(ProjMatrix, camera.getViewMatrix());
+    manager.level()->draw(ProjMatrix, camera.getViewMatrix());
 
 
     // Update the display

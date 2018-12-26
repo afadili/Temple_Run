@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <map>
+#include <vector>
 #include <algorithm>
 
 #include <glimac/FilePath.hpp>
@@ -27,6 +28,7 @@ protected:
   std::map<std::string, ShaderManager*> m_shaders; /*!< map of any possible shaders */
   std::map<std::string, Mesh*> m_meshs; /*!< map of any possible mesh */
   std::map<std::string, Texture*> m_textures; /*!< map of any possible loaded texture */
+  std::map<std::vector<int>, std::string> m_objectsCode; /*!< map of all the color identifiers of objects */
 
 public:
   /**
@@ -122,6 +124,20 @@ public:
    * \return the mesh
    */
   Mesh *mesh(const std::string &name) const;
+
+  /**
+   * \brief Getter of a meshName using his code 
+   * \name the mesh identifier in the map
+   * \return the mesh name or empty if not found
+   */
+  std::string meshName(const std::vector<int> &vec) const;
+
+  /**
+   * \brief Getter of a mesh using his code 
+   * \name the mesh identifier in the map
+   * \return the mesh name or empty if not found
+   */
+  std::string meshName(const int r, const int g, const int b) const;
 
   /**
    * \brief Opérateur << for print AssetsManager data

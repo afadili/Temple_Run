@@ -1,20 +1,16 @@
 #include <Game/Level.hpp>
-#include <glimac/FilePath.hpp>
 
-using namespace glimac;
-
-Level::Level(AssetsManager *assets, const FilePath &path, int nbFloor) : m_assets(assets) {
-  loadMap(path, nbFloor);
+Level::Level(AssetsManager *assets, const glimac::FilePath &path, int nbFloor) : m_assets(assets), m_path(path), m_nbFloor(nbFloor) {
 }
 
-void Level::loadMap(const FilePath &path, int nbFloor) {
-
-  /*for(int i = 0; i<nbFloor; i++){
-          loadFloor(path + std::to_string(i) + ".ppm");
-  }*/
+void Level::loadMap() {
+  for (int i = 0; i < m_nbFloor; i++) {
+    std::string file("floor_" + std::to_string(i) + ".ppm");
+    loadFloor(m_path + file, i);
+  }
 }
 
-void Level::loadFloor(const FilePath &file, int floor) {
+void Level::loadFloor(const glimac::FilePath &file, const int floor) {
   std::ifstream fileLevel(file);
 
   if (fileLevel.fail())
@@ -42,68 +38,15 @@ void Level::loadFloor(const FilePath &file, int floor) {
       fileLevel >> g;
       fileLevel >> b;
 
-      // GROUND
-      if (r == 143 && g == 94 && b == 10) {
-        if (m_objects.find("wall") == m_objects.end())
-          m_objects.insert(std::make_pair("wall", m_assets->mesh("wall")));
-        m_objects.at("wall").add(glm::vec3(i, j, floor));
-       // std::cout << *m_assets->mesh("wall") << std::endl;
-      }
+      std::string meshName = m_assets->meshName(r, g, b);
 
-      // WALL
-      if (r == 143 && g == 136 && b == 131) {
-        //std::cout << "Grey" << std::endl;
-        //std::cout << "Wall" << std::endl;					
-      }
-
-      if (r == 152 && g == 21 && b == 49) {
-        //std::cout << "Burgundy" << std::endl;
-        //std::cout << "Hole" << std::endl;					
-      }
-
-      if (r == 255 && g == 207 && b == 171) {
-        //std::cout << "Beige" << std::endl;
-        //std::cout << "Rock" << std::endl;					
-      }
-
-      if (r == 0 && g == 0 && b == 0) {
-        //std::cout << "Black" << std::endl;
-        //std::cout << "Camera" << std::endl;					
-      }
-
-      if (r == 39 && g == 203 && b == 205) {
-        //std::cout << "Turquoise" << std::endl;
-        //std::cout << "Character" << std::endl;					
-      }
-
-      if (r == max && g == 0 && b == 0) {
-        //std::cout << "Red" << std::endl;					
-        //std::cout << "Reality Stone" << std::endl;			
-      }
-
-      if (r == 0 && g == max && b == 0) {
-        //std::cout << "Green" << std::endl;
-        //std::cout << "Time Stone" << std::endl;				
-      }
-
-      if (r == 0 && g == 0 && b == max) {
-        //std::cout << "Blue" << std::endl;
-        //std::cout << "Space Stone" << std::endl;				
-      }
-
-      if (r == max && g == max && b == 0) {
-        //std::cout << "Yellow" << std::endl;
-        //std::cout << "Mind Stone" << std::endl;					
-      }
-
-      if (r == max && g == 0 && b == max) {
-        //std::cout << "Purple" << std::endl;
-        //std::cout << "Power Stone" << std::endl;					
-      }
-
-      if (r == max && g == 162 && b == 0) {
-        //std::cout << "Orange" << std::endl;
-        //std::cout << "Soul Stone" << std::endl;					
+      if (!meshName.empty()) {
+        // If no list of objects has been initialized to this name
+        if (m_objects.find(meshName) == m_objects.end())
+          m_objects.insert(std::make_pair(meshName, m_assets->mesh(meshName)));
+        
+        // Add the object to its list
+        m_objects.at(meshName).add(glm::vec3(i, floor, j));
       }
     }
   }

@@ -18,7 +18,7 @@ Configuration::Configuration(const glimac::FilePath &configFile) : m_configFile(
   m_assetsFile = glimac::FilePath(root["assetsFile"].asString());
 
   for (Json::Value const& value : root["levels"]) {
-    m_levelsPath.insert(std::make_pair(root["name"].asString(), root["path"].asString()));
+    m_levelsPath.insert(std::make_pair(value["name"].asString(), value["path"].asString()));
   }
 
   if (root["fps"])
@@ -35,4 +35,27 @@ Configuration::Configuration(const glimac::FilePath &configFile) : m_configFile(
 
   if (root["farVision"])
     m_farVision = root["farVision"].asFloat();
+}
+
+std::map<std::string, Level*> Configuration::levels(AssetsManager *assets) const {
+  std::map<std::string, Level*> levels;
+  for (std::pair<std::string, glimac::FilePath> map : m_levelsPath) {
+    levels.insert(std::make_pair(map.first, level(map.second, assets)));
+  }
+  return levels;
+}
+
+Level* Configuration::level(const glimac::FilePath &path, AssetsManager *assets) const {
+  std::ifstream levelJSON(path + "config.json", std::ifstream::binary);
+  if (levelJSON.fail())
+    throw Error("The level configuration file (config.json) is not found in \"" + path.str() + "\" !", "FILE_NOT_FOUND", false);
+
+  Json::Value root;
+  Json::CharReaderBuilder builder;
+  std::string errs;
+
+  if (!Json::parseFromStream(builder, levelJSON, &root, &errs))
+    throw Error(errs, "INCORRECT_FILE", false);
+
+  return new Level(assets, path, root["floor"].asInt());
 }

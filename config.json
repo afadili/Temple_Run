@@ -6,8 +6,8 @@
   "farVision": 100,
   "levels": [
     {
-      "name": "test",
-      "path": ""
+      "name": "test1",
+      "path": "levels/test1/"
     }
   ]
 } 
