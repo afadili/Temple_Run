@@ -19,7 +19,7 @@
 #include "AssetsManager.hpp"
 #include "Configuration.hpp"
 
-class Game;
+class Level;
 
 /**
  * \class GameManager
@@ -28,7 +28,7 @@ class Game;
 class GameManager {
 protected:
   Configuration m_config; /*!<The configuration of the game */
-  Game *m_currentGame; /*!< Pointer on the current game, null if no game has started */
+  Level *m_currentLevel; /*!< Pointer on the current level, null if no Level has started */
   AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
 
 public:
@@ -42,6 +42,12 @@ public:
    * \brief destructor of the GameManager, delete all loaded assets
    */
   ~GameManager();
+
+  /**
+   * \brief Load a level and set it in currentLevel
+   * \param name : the name of the level in the configuration 
+   */
+  void loadLevel(const std::string &name);
 
   /**
    * \brief Getter of the AssetsManager

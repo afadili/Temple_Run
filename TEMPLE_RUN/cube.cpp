@@ -7,7 +7,7 @@
 #include <GL/glew.h>
 #include <iostream>
 #include <Game/GameManager.hpp>
-#include <Game/Game.hpp>
+#include <Game/Level.hpp>
 #include <Mesh/Cube.hpp>
 #include <Render/ShaderManager.hpp>
 #include <Render/Texture.hpp>

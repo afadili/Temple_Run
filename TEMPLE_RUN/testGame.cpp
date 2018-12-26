@@ -7,7 +7,7 @@
 #include <GL/glew.h>
 #include <iostream>
 #include <Game/GameManager.hpp>
-#include <Game/Game.hpp>
+#include <Game/Level.hpp>
 #include <Mesh/Cube.hpp>
 #include <Render/ShaderManager.hpp>
 #include <Render/Texture.hpp>
@@ -80,7 +80,7 @@ int main(int argc, char **argv) {
 
   //TEST PPM
   static const FilePath file = "../Levels/Tests/test2.ppm";
-  Game gm(manager.assets(), file, 1);
+  Level gm(manager.assets(), file, 1);
   gm.loadFloor(file, 0);
 
 

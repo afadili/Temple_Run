@@ -1,20 +1,20 @@
-#include <Game/Game.hpp>
+#include <Game/Level.hpp>
 #include <glimac/FilePath.hpp>
 
 using namespace glimac;
 
-Game::Game(AssetsManager *assets, const FilePath &path, int nbFloor) : m_assets(assets) {
+Level::Level(AssetsManager *assets, const FilePath &path, int nbFloor) : m_assets(assets) {
   loadMap(path, nbFloor);
 }
 
-void Game::loadMap(const FilePath &path, int nbFloor) {
+void Level::loadMap(const FilePath &path, int nbFloor) {
 
   /*for(int i = 0; i<nbFloor; i++){
           loadFloor(path + std::to_string(i) + ".ppm");
   }*/
 }
 
-void Game::loadFloor(const FilePath &file, int floor) {
+void Level::loadFloor(const FilePath &file, int floor) {
   std::ifstream fileLevel(file);
 
   if (fileLevel.fail())
@@ -109,7 +109,7 @@ void Game::loadFloor(const FilePath &file, int floor) {
   }
 }
 
-void Game::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const {
+void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const {
   for (auto const& mapObj : m_objects)
     mapObj.second.draw(ProjMatrix, ViewMatrix);
 }

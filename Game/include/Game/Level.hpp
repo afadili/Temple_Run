@@ -1,6 +1,6 @@
 /**
- * \file Game.hpp
- * \brief Declaration of the class "Game"
+ * \file Level.hpp
+ * \brief Declaration of the class "Level"
  */
 
 #ifndef __GAME__HPP
@@ -16,12 +16,14 @@
 
 #include "AssetsManager.hpp"
 
-/// \class VectorD
-/// \brief class defining a vector for linear algebra operations.
 
+/**
+ * \class Level
+ * \brief The manager for a level game
+ */
 using namespace glimac;
 
-class Game {
+class Level {
 protected:
   AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
   std::map<std::string, ObjectList> m_objects; /*!< map of all objects in the map */
@@ -31,7 +33,7 @@ public:
   /**
    * \brief constructor
    */
-  Game(AssetsManager *assets, const FilePath &path, int nbFloor);
+  Level(AssetsManager *assets, const FilePath &path, int nbFloor);
 
   /**
    * \brief create the map from all the levels of the decor
