@@ -28,8 +28,8 @@ class Level;
 class GameManager {
 protected:
   Configuration m_config; /*!<The configuration of the game */
-  Level *m_currentLevel; /*!< Pointer on the current level, null if no Level has started */
-  AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
+  Level *m_currentLevel = nullptr; /*!< Pointer on the current level, null if no Level has started */
+  AssetsManager *m_assets = nullptr; /*!< Pointer on the manager of all assets */
 
 public:
   /**

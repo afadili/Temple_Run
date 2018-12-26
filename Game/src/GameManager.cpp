@@ -5,8 +5,8 @@ GameManager::GameManager(const FilePath &configPath) : m_config(configPath) {
 }
 
 GameManager::~GameManager() {
- /* if (m_currentGame)
-    delete m_currentGame;
+  if (m_currentLevel)
+    delete m_currentLevel;
   if (m_assets)
-    delete m_assets;*/
+    delete m_assets;
 }
