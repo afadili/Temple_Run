@@ -129,6 +129,8 @@ void AssetsManager::loadMesh(const Json::Value &jsonMesh) {
       }
     } else {
       obj = new Mesh(shader, texture);
+      if (jsonMesh["path"])
+        obj->loadObj(jsonMesh["path"].asString());
     }
 
     // Initialisation

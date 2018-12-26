@@ -47,6 +47,13 @@
       "size": [1, 1, 1],
       "texture": "stone",
       "shader": "normals"
+    },
+    {
+      "name": "testCube",
+      "type": "Mesh",
+      "path": "assets/meshs/cube.obj",
+      "texture": "stone",
+      "shader": "normals"
     }
   ]
 } 

@@ -2,12 +2,12 @@
 #include <glimac/common.hpp>
 #include <Mesh/Cube.hpp>
 
-Cube::Cube() : Mesh(nullptr, nullptr) {
+Cube::Cube() : Mesh() {
   generateVertices(glm::vec3(1., 1., 1.));
   generateIndexs();
 }
 
-Cube::Cube(const glm::vec3 &size) : Mesh(nullptr, nullptr) {
+Cube::Cube(const glm::vec3 &size) : Mesh() {
   generateVertices(size);
   generateIndexs();
 }

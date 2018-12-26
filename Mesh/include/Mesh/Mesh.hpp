@@ -14,6 +14,10 @@
 
 #include <glimac/Shader.hpp>
 #include <glimac/common.hpp>
+#include <glimac/FilePath.hpp>
+
+#include <Error/DevError.hpp>
+#include <Error/Error.hpp>
 
 #include <Render/VAO.hpp>
 #include <Render/VBO.hpp>
@@ -33,10 +37,8 @@ protected:
   IBO *m_ibo = new IBO(); /*!<  Pointer on IBO manager */
   GLsizei s_nbMesh; /*!< Number of Meshs */
 
-private:
-  Mesh() = default;
-
 public:
+  Mesh() = default;
 
   /**
    * \brief constructor of Mesh using a vector of ShapeVertex
@@ -76,6 +78,12 @@ public:
    * \param textures : texture of the mesh
    */
   Mesh(const std::vector<ShapeVertex> &vertices, const std::vector<int> &indexVer, ShaderManager *shader, Texture *texture);
+
+  /**
+   * \brief constructor of Mesh using an object file
+   * \param objPath : the file of the object data (.obj)
+   */
+  Mesh(const glimac::FilePath &objPath);
 
   /**
    * \brief destructor of Mesh
@@ -127,6 +135,12 @@ public:
    * \param ViewMatrix : view matrix of the camera, identity matrix by default
    */
   void draw(const glm::mat4 &ProjMatrix, const glm::mat4 &MWMatrix, const glm::mat4 &ViewMatrix = glm::mat4()) const;
+
+  /**
+   * \brief Load object file and get is vertices, textures and normals data, created with http://www.opengl-tutorial.org/fr/beginners-tutorials/tutorial-7-model-loading/
+   * \param objPath : the file of the object data (.obj)
+   */
+  void loadObj(const glimac::FilePath &objPath);
 
   inline
   std::vector<ShapeVertex> vertices() const {
@@ -195,6 +209,19 @@ public:
     for (const int &index : mesh.indexVer())
       os << index << " ";
     os << "]\n";
+
+    // Print normal
+    os << "-- Normals position (" << mesh.vertices().size() << ") = {\n";
+    for (const ShapeVertex &vertex : mesh.vertices())
+      os << "  " << vertex.normal << "\n";
+    os << "}\n";
+
+    // Print texture
+    os << "-- Texture position (" << mesh.vertices().size() << ") = {\n";
+    for (const ShapeVertex &vertex : mesh.vertices())
+      os << "  " << vertex.texCoords << "\n";
+    os << "}\n";
+
     return os;
   }
 };
