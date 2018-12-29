@@ -11,6 +11,8 @@
 #include <Mesh/Cube.hpp>
 #include <Render/ShaderManager.hpp>
 #include <Render/Texture.hpp>
+#include <GLFW/glfw3.h>
+
 
 // Nombre minimal de millisecondes separant le rendu de deux images
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -90,7 +92,7 @@ int main(int argc, char **argv)
   gm.loadFloor(file, 0);*/
 
   // ======== TEST CUBE ========
-
+  //Model boule("TEMPLE_RUN/assets/obj/boule.obj");
   // Construct cube
   ShaderManager shaderCube("TEMPLE_RUN/shaders/3D.vs.glsl", "TEMPLE_RUN/shaders/normals.fs.glsl");
   shaderCube.use();
@@ -129,7 +131,7 @@ int main(int argc, char **argv)
     /*********************************
      * HERE SHOULD COME THE RENDERING CODE
      *********************************/
-
+    //boule.draw();
     // MATRICES de transformations
     glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f), WINDOWS_WIDTH / (float)WINDOWS_HEIGHT, NEAR_VISION, FAR_VISION);
     glm::mat4 MVMatrix = glm::translate(glm::mat4(), glm::vec3(0.f, 0.f, -5.f));

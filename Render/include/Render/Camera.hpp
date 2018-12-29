@@ -40,7 +40,6 @@ private :
 
 	glm::vec3 m_position;    /*!< position of the camera */
 
-
 public:
 	/**
 	* \brief constructor of Camera
