@@ -1,6 +1,6 @@
 #include <Game/AssetsManager.hpp>
 
-AssetsManager::AssetsManager(const FilePath &assetPath) {
+AssetsManager::AssetsManager(const glimac::FilePath &assetPath) {
   loadAssets(assetPath);
 }
 
@@ -8,7 +8,7 @@ AssetsManager::~AssetsManager() {
   unloadAssets();
 }
 
-void AssetsManager::loadAssets(const FilePath &assetPath) {
+void AssetsManager::loadAssets(const glimac::FilePath &assetPath) {
   std::ifstream assetJSON(assetPath, std::ifstream::binary);
   if (assetJSON.fail())
     throw Error("The asset file \"" + assetPath.str() + "\" is not found !", "FILE_NOT_FOUND", true);
@@ -95,7 +95,7 @@ void AssetsManager::unloadTextures() {
 
 void AssetsManager::loadMeshs(const Json::Value &jsonMeshs) {
   if (!jsonMeshs)
-    throw Error("No textures data found !", "DATA_NOT_FOUND");
+    throw Error("No meshs data found !", "DATA_NOT_FOUND");
 
   for (Json::Value const& value : jsonMeshs) {
     loadMesh(value);
@@ -129,11 +129,21 @@ void AssetsManager::loadMesh(const Json::Value &jsonMesh) {
       }
     } else {
       obj = new Mesh(shader, texture);
+      if (jsonMesh["path"])
+        obj->loadObj(jsonMesh["path"].asString());
     }
 
     // Initialisation
     obj->fillBuffers();
     m_meshs.insert(std::make_pair(jsonMesh["name"].asString(), obj));
+
+    // Object code
+    if (jsonMesh["code"]) {
+      std::vector<int> code(3);
+      for (int i = 0; i < 3; i++)
+        code[i] = jsonMesh["code"][i].asInt();
+      m_objectsCode.insert(std::make_pair(code, jsonMesh["name"].asString()));
+    }
   } catch (const std::exception& err) {
     std::cout << err.what() << std::endl;
   }
@@ -163,4 +173,12 @@ Mesh *AssetsManager::mesh(const std::string &name) const {
   return m_meshs.at(name);
 }
 
+std::string AssetsManager::meshName(const std::vector<int> &vec) const {
+  if (m_objectsCode.find(vec) == m_objectsCode.end())
+    return std::string();
+  return m_objectsCode.at(vec);
+}
 
+std::string AssetsManager::meshName(const int r, const int g, const int b) const {
+  return meshName(std::vector<int>{r, g, b});
+}

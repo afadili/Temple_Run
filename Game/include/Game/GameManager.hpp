@@ -11,14 +11,13 @@
 #include <map>
 #include <algorithm>
 
-#include <json/json.h>
 #include <Mesh/Mesh.hpp>
 #include <Mesh/Cube.hpp>
 #include <Error/Error.hpp>
 
 #include "AssetsManager.hpp"
-
-class Game;
+#include "Level.hpp"
+#include "Configuration.hpp"
 
 /**
  * \class GameManager
@@ -26,20 +25,33 @@ class Game;
  */
 class GameManager {
 protected:
-  Game *m_currentGame; /*!< Pointer on the current game, null if no game has started */
-  AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
+  Configuration m_config; /*!<The configuration of the game */
+  Level *m_currentLevel = nullptr; /*!< Pointer on the current level, null if no Level has started */
+  std::map<std::string, Level*> m_levels; /*!< A map of all possible levels */
+  AssetsManager *m_assets = nullptr; /*!< Pointer on the manager of all assets */
 
 public:
   /**
    * \brief constructor of the GameManager
-   * \param assetPath : the json file with all assets (meshs, textures and shaders)
+   * \param assetPath : the json file with the configuration
    */
-  GameManager(const FilePath &assetPath);
+  GameManager(const FilePath &configPath);
 
   /**
    * \brief destructor of the GameManager, delete all loaded assets
    */
   ~GameManager();
+
+  /**
+   * \brief Set all the possible levels from the configuration
+   */
+  void setLevelsMap();
+
+  /**
+   * \brief Load a level and set it in currentLevel
+   * \param name : the name of the level in the configuration 
+   */
+  void loadLevel(const std::string &name);
 
   /**
    * \brief Getter of the AssetsManager
@@ -48,6 +60,15 @@ public:
   inline
   AssetsManager* assets() const {
     return m_assets;
+  }
+
+  /**
+   * \brief Getter of the current level
+   * \return m_mesh
+   */
+  inline
+  Level* level() const {
+    return m_currentLevel;
   }
 
   /**

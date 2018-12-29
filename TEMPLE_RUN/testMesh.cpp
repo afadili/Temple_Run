@@ -12,8 +12,6 @@
 #include <Render/ShaderManager.hpp>
 #include <Render/Texture.hpp>
 
-#include <glimac/FreeflyCamera.hpp>
-
 
 // Nombre minimal de millisecondes separant le rendu de deux images
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -56,6 +54,9 @@ GLenum glCheckError_(const char *file, int line) {
 using namespace glimac;
 
 int main(int argc, char **argv) {
+  // TEST GAME MANAGER
+  //GameManager manager("TEMPLE_RUN/assets.json");
+
 
   // Initialize SDL and open a window
   SDLWindowManager windowManager(800, 600, "I N F I N I T Y   R U N");
@@ -74,26 +75,34 @@ int main(int argc, char **argv) {
    * HERE SHOULD COME THE INITIALIZATION CODE
    *********************************/
 
-  // TEST GAME MANAGER
-  GameManager manager("config.json");
-  std::cout << "GAME MANAGER :\n" << manager << std::endl;
-  
-  manager.loadLevel("test1");
+  //TEST PPM
+  /* static const FilePath file = "../Levels/Tests/test3.ppm";
+   Game gm(file, 1);
+   gm.loadFloor(file, 0);*/
 
+
+  // ======== TEST MESh ========
+
+  // Construct cube
+  ShaderManager shaderMesh("shaders/tex3D.vs.glsl", "shaders/tex3D.fs.glsl");
+  shaderMesh.use();
+  shaderMesh.addUniform("uMVPMatrix");
+  shaderMesh.addUniform("uMVMatrix");
+  shaderMesh.addUniform("uNormalMatrix");
+  shaderMesh.addUniform("uTexture");
+
+  Texture textureMesh("assets/textures/stone_wall.jpg");
+  Mesh myMesh(&shaderMesh, &textureMesh);
+
+  // Mesh Initilisation
+  myMesh.loadObj("assets/meshs/cube.obj");
+  std::cout << myMesh << std::endl;
+
+
+  // END CUBE
 
   // activer le test de profondeur du GPU
   glEnable(GL_DEPTH_TEST);
-
-
-  // Camera
-  FreeflyCamera camera;
-
-  // Keyboard
-  bool KEY_UP_PRESSED = false;
-  bool KEY_DOWN_PRESSED = false;
-  bool KEY_LEFT_PRESSED = false;
-  bool KEY_RIGHT_PRESSED = false;
-
 
   // Application loop:
   bool done = false;
@@ -105,69 +114,7 @@ int main(int argc, char **argv) {
       if (e.type == SDL_QUIT) {
         done = true; // Leave the loop after this iteration
       }
-
-      switch (e.type) {
-          /* Touche clavier DOWN */
-        case SDL_KEYDOWN:
-          if (e.key.keysym.sym == SDLK_z || e.key.keysym.sym == SDLK_UP) {
-            KEY_UP_PRESSED = true;
-          }
-          if (e.key.keysym.sym == SDLK_s || e.key.keysym.sym == SDLK_DOWN) {
-            KEY_DOWN_PRESSED = true;
-          }
-          if (e.key.keysym.sym == SDLK_q || e.key.keysym.sym == SDLK_LEFT) {
-            KEY_LEFT_PRESSED = true;
-          }
-          if (e.key.keysym.sym == SDLK_d || e.key.keysym.sym == SDLK_RIGHT) {
-            KEY_RIGHT_PRESSED = true;
-          }
-          break;
-
-
-        case SDL_KEYUP:
-          if (e.key.keysym.sym == SDLK_z || e.key.keysym.sym == SDLK_UP) {
-            KEY_UP_PRESSED = false;
-          }
-          if (e.key.keysym.sym == SDLK_s || e.key.keysym.sym == SDLK_DOWN) {
-            KEY_DOWN_PRESSED = false;
-          }
-          if (e.key.keysym.sym == SDLK_q || e.key.keysym.sym == SDLK_LEFT) {
-            KEY_LEFT_PRESSED = false;
-          }
-          if (e.key.keysym.sym == SDLK_d || e.key.keysym.sym == SDLK_RIGHT) {
-            KEY_RIGHT_PRESSED = false;
-          }
-          break;
-
-
-        case SDL_MOUSEMOTION:
-          float speed = 0.5f;
-          if (e.motion.xrel != 0) {
-            camera.rotateFront(float(-e.motion.xrel) * speed);
-          }
-          if (e.motion.yrel != 0) {
-            camera.rotateLeft(float(e.motion.yrel) * speed);
-          }
-          break;
-
-      }
     }
-
-    /* CONTROL */
-
-    float speed = 0.1f;
-    if (KEY_UP_PRESSED) {
-      camera.moveFront(speed);
-    } else if (KEY_DOWN_PRESSED) {
-      camera.moveFront(-speed);
-    } else if (KEY_LEFT_PRESSED) {
-      KEY_LEFT_PRESSED = true;
-      camera.moveLeft(speed);
-    } else if (KEY_RIGHT_PRESSED) {
-      KEY_RIGHT_PRESSED = true;
-      camera.moveLeft(-speed);
-    }
-
 
     /*********************************
      * HERE SHOULD COME THE RENDERING CODE
@@ -175,11 +122,16 @@ int main(int argc, char **argv) {
 
     // MATRICES de transformations
     glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f), WINDOWS_WIDTH / (float) WINDOWS_HEIGHT, NEAR_VISION, FAR_VISION);
+    glm::mat4 MVMatrix = glm::translate(glm::mat4(), glm::vec3(0.f, 0.f, -5.f));
+    MVMatrix = glm::rotate(MVMatrix, windowManager.getTime() * 0.75f, glm::vec3(1.f, 1.f, 1.f));
+    glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
+
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    manager.level()->draw(ProjMatrix, camera.getViewMatrix());
-
+    myMesh.bind();
+    myMesh.draw(ProjMatrix, MVMatrix);
+    myMesh.debind();
 
     // Update the display
     windowManager.swapBuffers();
@@ -188,6 +140,8 @@ int main(int argc, char **argv) {
       SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
     }
   }
+
+  textureMesh.free();
 
 
   return EXIT_SUCCESS;

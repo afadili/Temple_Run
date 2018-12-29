@@ -1,10 +1,10 @@
 /**
- * \file Game.hpp
- * \brief Declaration of the class "Game"
+ * \file Level.hpp
+ * \brief Declaration of the class "Level"
  */
 
-#ifndef __GAME__HPP
-#define __GAME__HPP
+#ifndef __LEVEL__HPP
+#define __LEVEL__HPP
 
 #include <iostream>
 #include <vector>
@@ -16,35 +16,35 @@
 
 #include "AssetsManager.hpp"
 
-/// \class VectorD
-/// \brief class defining a vector for linear algebra operations.
-
-using namespace glimac;
-
-class Game {
+/**
+ * \class Level
+ * \brief The manager for a level game
+ */
+class Level {
 protected:
+  glimac::FilePath m_path; /*!< The level folder */
   AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
+  int m_nbFloor; /*!< floor number of the level (number of ppm files) */
   std::map<std::string, ObjectList> m_objects; /*!< map of all objects in the map */
+  int nbFloor; /*!< floor number of level */
   //Character m_character; /*!<  */
 
 public:
   /**
    * \brief constructor
    */
-  Game(AssetsManager *assets, const FilePath &path, int nbFloor);
+  Level(AssetsManager *assets, const glimac::FilePath &path, int nbFloor);
 
   /**
    * \brief create the map from all the levels of the decor
-   * \param path : path to the level files
-   * \param nbFloor : number of floors in the level
    */
-  void loadMap(const FilePath &path, int nbFloor);
+  void loadMap();
 
   /**
    * \brief create a level of the decor from a ppm file
    * \param file : file for the floor
    */
-  void loadFloor(const FilePath &file, int floor);
+  void loadFloor(const glimac::FilePath &file, const int floor);
 
   /**
    * \brief draw all element of the level game

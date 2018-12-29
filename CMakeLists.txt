@@ -51,6 +51,13 @@ foreach(GAME ${GAME_DIRECTORIES})
 endforeach()
 
 
+#copy shaders and assets
+file(COPY shaders DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY levels DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY assets.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY config.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 
 # call the CMakeLists.txt to make the documentation (Doxygen)
 # > 'make html' to generate the documentation
