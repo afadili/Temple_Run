@@ -70,7 +70,7 @@
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "stone",
-      "shader": "normals"
+      "shader": "tex3D"
     },
     {
       "name": "realitystone",
@@ -78,7 +78,7 @@
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "realitystone",
-      "shader": "normals"
+      "shader": "tex3D"
     },
     {
       "name": "timestone",
@@ -86,7 +86,7 @@
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "timestone",
-      "shader": "normals"
+      "shader": "tex3D"
     },
     {
       "name": "spacestone",
@@ -94,7 +94,7 @@
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "spacestone",
-      "shader": "normals"
+      "shader": "tex3D"
     },
     {
       "name": "mindstone",
@@ -102,7 +102,7 @@
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "mindstone",
-      "shader": "normals"
+      "shader": "tex3D"
     },
     {
       "name": "powerstone",
@@ -110,7 +110,7 @@
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "powerstone",
-      "shader": "normals"
+      "shader": "tex3D"
     },
     {
       "name": "soulstone",
@@ -118,7 +118,7 @@
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "soulstone",
-      "shader": "normals"
+      "shader": "tex3D"
     },
     {
       "name": "testCube",
