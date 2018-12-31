@@ -30,6 +30,30 @@
       "name": "pavement",
       "src": "assets/textures/brick_pavement.jpg"
     }
+    {
+      "name": "realitystone",
+      "src": "assets/textures/realitystone.jpg"
+    }
+    {
+      "name": "timestone",
+      "src": "assets/textures/timestone.jpg"
+    }
+    {
+      "name": "spacestone",
+      "src": "assets/textures/spacestone.jpg"
+    }
+    {
+      "name": "mindstone",
+      "src": "assets/textures/mindstone.jpg"
+    }
+    {
+      "name": "powerstone",
+      "src": "assets/textures/powerstone.jpg"
+    }
+    {
+      "name": "soulstone",
+      "src": "assets/textures/soulstone.jpg"
+    }
   ],
   "meshs": [
     {
@@ -46,6 +70,54 @@
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "stone",
+      "shader": "normals"
+    },
+    {
+      "name": "realitystone",
+      "code": [255, 0, 0],
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "realitystone",
+      "shader": "normals"
+    },
+    {
+      "name": "timestone",
+      "code": [0, 255, 0],
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "timestone",
+      "shader": "normals"
+    },
+    {
+      "name": "spacestone",
+      "code": [0, 0, 255],
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "spacestone",
+      "shader": "normals"
+    },
+    {
+      "name": "mindstone",
+      "code": [255, 255, 0],
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "mindstone",
+      "shader": "normals"
+    },
+    {
+      "name": "powerstone",
+      "code": [255, 0, 255],
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "powerstone",
+      "shader": "normals"
+    },
+    {
+      "name": "soulstone",
+      "code": [255, 162, 0],
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "soulstone",
       "shader": "normals"
     },
     {
