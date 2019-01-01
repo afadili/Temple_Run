@@ -31,6 +31,30 @@
       "src": "assets/textures/brick_pavement.jpg"
     }
     {
+      "name": "ground_1",
+      "src": "assets/textures/ground_1.jpg"
+    }
+    {
+      "name": "ground_2",
+      "src": "assets/textures/ground_2.jpg"
+    }
+    {
+      "name": "wall_1_1",
+      "src": "assets/textures/wall_1_1.jpg"
+    }
+    {
+      "name": "wall_1_2",
+      "src": "assets/textures/wall_1_2.jpg"
+    }
+    {
+      "name": "wall_2_1",
+      "src": "assets/textures/wall_2_1.jpg"
+    }
+    {
+      "name": "wall_2_2",
+      "src": "assets/textures/wall_2_2.jpg"
+    }
+    {
       "name": "realitystone",
       "src": "assets/textures/realitystone.jpg"
     }
