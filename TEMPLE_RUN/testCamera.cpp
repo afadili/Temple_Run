@@ -165,11 +165,11 @@ int main(int argc, char **argv) {
           float speed = 0.5f;
           if (e.motion.xrel != 0) {
             std::cout << "event ! " << std::endl;
-            cam.rotateFront(float(-e.motion.xrel) * speed);
+            cam.rotateLeft(float(-e.motion.xrel) * speed);
           }
           if (e.motion.yrel != 0) {
             std::cout << "event ! " << std::endl;
-            cam.rotateLeft(float(e.motion.yrel) * speed);
+            cam.rotateUp(float(e.motion.yrel) * speed);
           }
           break;
 

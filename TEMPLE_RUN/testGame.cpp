@@ -143,10 +143,10 @@ int main(int argc, char **argv) {
         case SDL_MOUSEMOTION:
           float speed = 0.5f;
           if (e.motion.xrel != 0) {
-            camera.rotateFront(float(-e.motion.xrel) * speed);
+            camera.rotateLeft(float(-e.motion.xrel) * speed);
           }
           if (e.motion.yrel != 0) {
-            camera.rotateLeft(float(e.motion.yrel) * speed);
+            camera.rotateUp(float(e.motion.yrel) * speed);
           }
           break;
 
