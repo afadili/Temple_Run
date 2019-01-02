@@ -48,7 +48,9 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
           m_objects.insert(std::make_pair(meshName, m_assets->mesh(meshName)));
 
         // Add the object to its list
-        Object *obj = m_objects.at(meshName).add(glm::vec3(i, floor, j));
+        Object *obj = m_objects.at(meshName).add(glm::vec3(i, -floor, -j));
+        
+        // Add the object to the grid
         m_grid[floor].coeffRef(i, j) = obj;
       }
     }
