@@ -57,5 +57,14 @@ Level* Configuration::level(const glimac::FilePath &path, AssetsManager *assets)
   if (!Json::parseFromStream(builder, levelJSON, &root, &errs))
     throw Error("On file \"" + path.str() + "\"\n" + errs, "INCORRECT_FILE", false);
 
-  return new Level(assets, path, root["floor"].asInt());
+  if (!root["floor"])
+    throw Error("Missing \"floor\" data to \"" + path.str() + "\"", "INCORRECT_FILE", false);
+
+  if (!root["width"])
+    throw Error("Missing \"width\" data to \"" + path.str() + "\"", "INCORRECT_FILE", false);
+
+  if (!root["height"])
+    throw Error("Missing \"height\" data to \"" + path.str() + "\"", "INCORRECT_FILE", false);
+
+  return new Level(assets, path, root["floor"].asInt(), root["width"].asInt(), root["height"].asInt());
 }

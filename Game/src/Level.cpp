@@ -1,6 +1,8 @@
 #include <Game/Level.hpp>
 
-Level::Level(AssetsManager *assets, const glimac::FilePath &path, int nbFloor) : m_assets(assets), m_path(path), m_nbFloor(nbFloor) {
+Level::Level(AssetsManager *assets, const glimac::FilePath &path, int nbFloor, int width, int height) : m_assets(assets), m_path(path), m_nbFloor(nbFloor), m_width(width), m_height(height) {
+  for (int i = 0; i < nbFloor; i++)
+    m_grid.push_back(Eigen::SparseMatrix<Object*>(width, height));
 }
 
 void Level::loadMap() {
@@ -44,9 +46,10 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
         // If no list of objects has been initialized to this name
         if (m_objects.find(meshName) == m_objects.end())
           m_objects.insert(std::make_pair(meshName, m_assets->mesh(meshName)));
-        
+
         // Add the object to its list
-        m_objects.at(meshName).add(glm::vec3(i, floor, j));
+        Object *obj = m_objects.at(meshName).add(glm::vec3(i, floor, j));
+        m_grid[floor].coeffRef(i, j) = obj;
       }
     }
   }

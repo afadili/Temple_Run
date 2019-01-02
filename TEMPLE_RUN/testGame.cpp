@@ -78,7 +78,7 @@ int main(int argc, char **argv) {
   GameManager manager("config.json");
   std::cout << "GAME MANAGER :\n" << manager << std::endl;
   
-  manager.loadLevel("test2");
+  manager.loadLevel("level1");
 
 
   // activer le test de profondeur du GPU

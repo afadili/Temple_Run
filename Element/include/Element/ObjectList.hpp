@@ -49,10 +49,12 @@ public:
   /**
    * \brief Add an object to the list
    * \param obj : pointer on the obj element
+   * \return pointer on the object
    */
   inline
-  void add(Object *obj) {
+  Object* add(Object *obj) {
     m_objects.push_back(obj);
+    return obj;
   }
 
   /**
@@ -60,10 +62,11 @@ public:
    * \param position : position of the object in the world coordinates
    * \param size : size of the object in the world coordinates, (1,1,1) by default
    * \param rotation : rotation of the object in the world coordinates, (0,0,0) by default
+   * \return pointer on the object
    */
   inline
-  void add(const glm::vec3 &position, const glm::vec3 &size = glm::vec3(1, 1, 1), const glm::vec3 &rotation = glm::vec3(0, 0, 0)) {
-    add(new Object(m_mesh, position, size, rotation));
+  Object* add(const glm::vec3 &position, const glm::vec3 &size = glm::vec3(1, 1, 1), const glm::vec3 &rotation = glm::vec3(0, 0, 0)) {
+    return add(new Object(m_mesh, position, size, rotation));
   }
 
   /**
