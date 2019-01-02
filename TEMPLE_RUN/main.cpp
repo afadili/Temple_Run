@@ -11,7 +11,6 @@
 #include <Mesh/Cube.hpp>
 #include <Render/ShaderManager.hpp>
 #include <Render/Texture.hpp>
-#include <GLFW/glfw3.h>
 
 
 // Nombre minimal de millisecondes separant le rendu de deux images

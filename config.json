@@ -8,6 +8,10 @@
     {
       "name": "test1",
       "path": "levels/test1/"
+    },
+    {
+      "name": "test2",
+      "path": "levels/test2/"
     }
   ]
 } 
