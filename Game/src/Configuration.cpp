@@ -13,7 +13,7 @@ Configuration::Configuration(const glimac::FilePath &configFile) : m_configFile(
   std::string errs;
 
   if (!Json::parseFromStream(builder, configJSON, &root, &errs))
-    throw Error(errs, "INCORRECT_FILE", true);
+    throw Error("On file \"" + configFile.str() + "\"\n" + errs, "INCORRECT_FILE", true);
 
   m_assetsFile = glimac::FilePath(root["assetsFile"].asString());
 
@@ -55,7 +55,7 @@ Level* Configuration::level(const glimac::FilePath &path, AssetsManager *assets)
   std::string errs;
 
   if (!Json::parseFromStream(builder, levelJSON, &root, &errs))
-    throw Error(errs, "INCORRECT_FILE", false);
+    throw Error("On file \"" + path.str() + "\"\n" + errs, "INCORRECT_FILE", false);
 
   return new Level(assets, path, root["floor"].asInt());
 }

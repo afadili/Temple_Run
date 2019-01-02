@@ -21,7 +21,7 @@ void AssetsManager::loadAssets(const glimac::FilePath &assetPath) {
   std::string errs;
 
   if (!Json::parseFromStream(builder, assetJSON, &root, &errs))
-    throw Error(errs, "INCORRECT_FILE", true);
+    throw Error("On file \"" + assetPath.str() + "\"\n" + errs, "INCORRECT_FILE", true);
 
   loadShaders(root["shaders"]);
   loadTextures(root["textures"]);
