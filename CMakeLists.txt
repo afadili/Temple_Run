@@ -26,15 +26,16 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 find_package(SDL REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 # To manage a bug on some pc, delete on personal machine
 # set(OPENGL_LIBRARIES /usr/lib/x86_64-linux-gnu/libGL.so.1)
 
 # lib include path
-include_directories(${SDL_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIR} glimac/include third-party/include)
+include_directories(${SDL_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIR} ${EIGEN3_INCLUDE_DIR} glimac/include third-party/include)
 include_directories(dependencies/jsoncpp/include Error/include Render/include Game/include Element/include Mesh/include)
 
-set(ALL_LIBRARIES jsoncpp glimac Error Render Game Element Mesh ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY})
+set(ALL_LIBRARIES jsoncpp glimac Error Render Game Element Mesh ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY} ${EIGEN3_LIBRARY})
 
 add_subdirectory(dependencies/jsoncpp)
 add_subdirectory(glimac)
