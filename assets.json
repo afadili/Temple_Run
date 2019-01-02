@@ -30,6 +30,54 @@
       "name": "pavement",
       "src": "assets/textures/brick_pavement.jpg"
     }
+    {
+      "name": "ground_1",
+      "src": "assets/textures/ground_1.jpg"
+    }
+    {
+      "name": "ground_2",
+      "src": "assets/textures/ground_2.jpg"
+    }
+    {
+      "name": "wall_1_1",
+      "src": "assets/textures/wall_1_1.jpg"
+    }
+    {
+      "name": "wall_1_2",
+      "src": "assets/textures/wall_1_2.jpg"
+    }
+    {
+      "name": "wall_2_1",
+      "src": "assets/textures/wall_2_1.jpg"
+    }
+    {
+      "name": "wall_2_2",
+      "src": "assets/textures/wall_2_2.jpg"
+    }
+    {
+      "name": "realitystone",
+      "src": "assets/textures/realitystone.jpg"
+    }
+    {
+      "name": "timestone",
+      "src": "assets/textures/timestone.jpg"
+    }
+    {
+      "name": "spacestone",
+      "src": "assets/textures/spacestone.jpg"
+    }
+    {
+      "name": "mindstone",
+      "src": "assets/textures/mindstone.jpg"
+    }
+    {
+      "name": "powerstone",
+      "src": "assets/textures/powerstone.jpg"
+    }
+    {
+      "name": "soulstone",
+      "src": "assets/textures/soulstone.jpg"
+    }
   ],
   "meshs": [
     {
@@ -46,7 +94,55 @@
       "type": "Cube",
       "size": [1, 1, 1],
       "texture": "stone",
-      "shader": "normals"
+      "shader": "tex3D"
+    },
+    {
+      "name": "realitystone",
+      "code": [255, 0, 0],
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "realitystone",
+      "shader": "tex3D"
+    },
+    {
+      "name": "timestone",
+      "code": [0, 255, 0],
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "timestone",
+      "shader": "tex3D"
+    },
+    {
+      "name": "spacestone",
+      "code": [0, 0, 255],
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "spacestone",
+      "shader": "tex3D"
+    },
+    {
+      "name": "mindstone",
+      "code": [255, 255, 0],
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "mindstone",
+      "shader": "tex3D"
+    },
+    {
+      "name": "powerstone",
+      "code": [255, 0, 255],
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "powerstone",
+      "shader": "tex3D"
+    },
+    {
+      "name": "soulstone",
+      "code": [255, 162, 0],
+      "type": "Cube",
+      "size": [1, 1, 1],
+      "texture": "soulstone",
+      "shader": "tex3D"
     },
     {
       "name": "testCube",
