@@ -103,7 +103,7 @@
       "code": [255, 0, 0],
       "mesh": "Cube",
       "type": "Stone",
-      "size": [0.5, 0.5, 0.5],
+      "size": [0.3, 0.3, 0.3],
       "texture": "realitystone",
       "shader": "tex3D"
     },
@@ -112,7 +112,7 @@
       "code": [0, 255, 0],
       "mesh": "Cube",
       "type": "Stone",
-      "size": [0.5, 0.5, 0.5],
+      "size": [0.3, 0.3, 0.3],
       "texture": "timestone",
       "shader": "tex3D"
     },
@@ -121,7 +121,7 @@
       "code": [0, 0, 255],
       "mesh": "Cube",
       "type": "Stone",
-      "size": [0.5, 0.5, 0.5],
+      "size": [0.3, 0.3, 0.3],
       "texture": "spacestone",
       "shader": "tex3D"
     },
@@ -130,7 +130,7 @@
       "code": [255, 255, 0],
       "mesh": "Cube",
       "type": "Stone",
-      "size": [0.5, 0.5, 0.5],
+      "size": [0.3, 0.3, 0.3],
       "texture": "mindstone",
       "shader": "tex3D"
     },
@@ -139,7 +139,7 @@
       "code": [255, 0, 255],
       "mesh": "Cube",
       "type": "Stone",
-      "size": [0.5, 0.5, 0.5],
+      "size": [0.3, 0.3, 0.3],
       "texture": "powerstone",
       "shader": "tex3D"
     },
@@ -148,7 +148,7 @@
       "code": [255, 162, 0],
       "mesh": "Cube",
       "type": "Stone",
-      "size": [0.5, 0.5, 0.5],
+      "size": [0.3, 0.3, 0.3],
       "texture": "soulstone",
       "shader": "tex3D"
     },

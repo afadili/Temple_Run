@@ -18,7 +18,10 @@
  */
 class Stone : public Object {
 protected:
-  float m_rotationSpeed = 0.05; /*!< speed of rotation of the stone per frame */
+  float m_rotationSpeed = 0.05; /*!< speed of the rotation of the stone per frame */
+  float m_translateSpeed = 0.005; /*!< speed of the translation of the stone per frame */
+  float m_maxTranslate = 0.15; /*!< max of the stone translation */
+  float m_actualTranslate = 0; /*!< actual stone translation */
 
 private:
   Stone();
