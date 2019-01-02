@@ -105,7 +105,7 @@ void AssetsManager::loadMeshs(const Json::Value &jsonMeshs) {
 void AssetsManager::loadMesh(const Json::Value &jsonMesh) {
   try {
     Mesh *obj;
-    std::string type = jsonMesh["type"].asString();
+    std::string meshType = jsonMesh["mesh"].asString();
 
     // Try to load texture and shader for the mesh, if we can't, we asign the default shader
     ShaderManager *shader = m_shaders[jsonMesh["shader"].asString()];
@@ -121,7 +121,7 @@ void AssetsManager::loadMesh(const Json::Value &jsonMesh) {
     }
 
     // Create the mesh object
-    if (type == "Cube" || type == "cube") {
+    if (meshType == "Cube" || meshType == "cube") {
       if (jsonMesh["size"]) {
         obj = new Cube(glm::vec3(jsonMesh["size"][0].asFloat(), jsonMesh["size"][1].asFloat(), jsonMesh["size"][2].asFloat()), shader, texture);
       } else {
@@ -144,6 +144,10 @@ void AssetsManager::loadMesh(const Json::Value &jsonMesh) {
         code[i] = jsonMesh["code"][i].asInt();
       m_objectsCode.insert(std::make_pair(code, jsonMesh["name"].asString()));
     }
+
+    //Object type
+    if (jsonMesh["type"])
+      m_objectsType.insert(std::make_pair(jsonMesh["name"].asString(), jsonMesh["type"].asString()));
   } catch (const std::exception& err) {
     std::cout << err.what() << std::endl;
   }
@@ -173,6 +177,20 @@ Mesh *AssetsManager::mesh(const std::string &name) const {
   return m_meshs.at(name);
 }
 
+Mesh *AssetsManager::mesh(const std::vector<int> &vec) const {
+  std::string name = meshName(vec);
+  if (name.empty())
+    return nullptr;
+  return mesh(name);
+}
+
+Mesh *AssetsManager::mesh(const int r, const int g, const int b) const {
+  std::string name = meshName(r, g, b);
+  if (name.empty())
+    return nullptr;
+  return mesh(name);
+}
+
 std::string AssetsManager::meshName(const std::vector<int> &vec) const {
   if (m_objectsCode.find(vec) == m_objectsCode.end())
     return std::string();
@@ -181,4 +199,10 @@ std::string AssetsManager::meshName(const std::vector<int> &vec) const {
 
 std::string AssetsManager::meshName(const int r, const int g, const int b) const {
   return meshName(std::vector<int>{r, g, b});
+}
+
+std::string AssetsManager::meshType(const std::string &meshName) const {
+  if (m_objectsType.find(meshName) == m_objectsType.end())
+    return std::string();
+  return m_objectsType.at(meshName);
 }

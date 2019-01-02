@@ -59,6 +59,12 @@ public:
   Object(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size, const glm::vec3 &rotation);
 
   /**
+   * \brief Update object data. Function called at each drawing on ObjectList.
+   */
+  virtual
+  void update(){};
+
+  /**
    * \brief Translate the object
    * \param vec : translation vector
    * \return the new world coordinates matrix of the object

@@ -8,7 +8,7 @@ ObjectList::ObjectList(Object *obj) : m_mesh(obj->mesh()) {
 }
 
 ObjectList::~ObjectList() {
-  for (auto&& elem : m_objects)
+  for (Object* elem : m_objects)
     delete elem;
   m_objects.clear();
 }
@@ -22,10 +22,12 @@ void ObjectList::remove(Object *obj, const bool deleteIt) {
 void ObjectList::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const {
   // bind the mesh 
   m_mesh->bind();
-  
+
   // Mesh instances
-  for (auto&& obj : m_objects)
+  for (Object* obj : m_objects) {
+    obj->update();
     m_mesh->draw(ProjMatrix, obj->MWMatrix(), ViewMatrix);
+  }
 
   // debind the mesh 
   m_mesh->debind();

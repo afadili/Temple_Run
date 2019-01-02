@@ -1,10 +1,10 @@
 /**
- * \file Stone.hpp
+ * \file Obstacle.hpp
  * \brief Declaration of the class "Stone"
  */
 
-#ifndef __STONE__HPP
-#define __STONE__HPP
+#ifndef __OBSTACLE__HPP
+#define __OBSTACLE__HPP
 
 #include <GL/glew.h>
 #include <GL/gl.h>
@@ -13,15 +13,15 @@
 #include "Object.hpp"
 
 /**
- * \class Stone
- * \brief Mother class of all the different stones
+ * \class Obstacle
+ * \brief Mother class of all the different Obstacles
  */
-class Stone : public Object {
+class Obstacle : public Object {
 protected:
   /*!< */
 
 private:
-  Stone();
+  Obstacle();
 
 public:
 
@@ -29,14 +29,14 @@ public:
    * \brief Constructor with mesh
    * \param mesh : pointer on the mesh corresponding to the object
    */
-  Stone(Mesh *mesh) : Object(mesh) {
+  Obstacle(Mesh *mesh) : Object(mesh) {
   };
 
   /**
    * \brief Constructor with mesh and parameters
    * \param mesh : pointer on the mesh corresponding to the object
    */
-  Stone(Mesh *mesh, const glm::vec3 &position) : Object(mesh, position) {
+  Obstacle(Mesh *mesh, const glm::vec3 &position) : Object(mesh, position) {
   };
 
   /**
@@ -45,7 +45,7 @@ public:
    * \param position : position of the object in the world coordinates
    * \param size : size of the object in the world coordinates
    */
-  Stone(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size) : Object(mesh, position, size) {
+  Obstacle(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size) : Object(mesh, position, size) {
   };
 
   /**
@@ -55,7 +55,7 @@ public:
    * \param size : size of the object in the world coordinates
    * \param rotation : rotation of the object in the world coordinates
    */
-  Stone(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size, const glm::vec3 &rotation) : Object(mesh, position, size, rotation) {
+  Obstacle(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size, const glm::vec3 &rotation) : Object(mesh, position, size, rotation) {
   };
 
 
