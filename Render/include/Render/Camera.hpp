@@ -31,6 +31,7 @@
 #include <glimac/glm.hpp>
 #include <vector>
 #include <string>
+#include <glimac/SDLWindowManager.hpp>
 
 /// \class VectorD
 /// \brief class defining a vector for linear algebra operations.
@@ -38,18 +39,20 @@
 class Camera {
 private : 
 
-	glm::vec3 m_position;    /*!< position of the camera */
+	glm::vec3 m_position;    /*!< position of the center of the camera */
+	float m_center; /*!< distance from the center of the camera */
+	float m_rotateX;  /*!< Angle around the X-axis of the camera */
+	float m_rotateY; /*!< Angle around the Y-axis of the camera */
 
 public:
 	/**
 	* \brief constructor of Camera
 	*/
 	Camera();
-
 	/**
 	* \brief destructor of Camera
 	*/	
-	~Camera();
+	~Camera(){}
 
 	/**
 	* \brief method to move the camera with the character's view
@@ -59,32 +62,32 @@ public:
 	/**
 	* \brief method to move the camera with the character's view
 	*/
-	void moveDown();
+	void moveForward(const float &x);
 
 	/**
 	* \brief method to move the camera with the character's view
 	*/
-	void moveForward();
+	void moveLeft(const float &x);
 
 	/**
 	* \brief method to move the camera with the character's view
 	*/
-	void moveRight();
-
-	/**
-	* \brief method to move the camera with the character's view
-	*/
-	void moveLeft();
+	void moveRight(const float &y);
 
 	/**
 	* \brief method that update the position of the camera
 	*/
-	void Update();
+	void Update(){}
 
 	/**
 	* \brief setter that reads the event and will set the camera depending on the event
 	*/
-	//void readEvent(const SDL_Event &e);
+	void readEvent(const SDL_Event &e);
+
+	/**
+	* \brief getter of the camera's viewMatrix
+	*/
+	glm::mat4 getViewMatrix() const;
 
 };
 

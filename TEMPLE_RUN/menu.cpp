@@ -86,8 +86,8 @@ std::cout << "sdl fine ! " << std::endl;
 
   // Charger et compiler les shaders
   FilePath applicationPath(argv[0]);
-  Program program = loadProgram("TEMPLE_RUN/shaders/triangle.vs.glsl",
-                                "TEMPLE_RUN/shaders/triangle.fs.glsl");
+  Program program = loadProgram("shaders/triangle.vs.glsl",
+                                "shaders/triangle.fs.glsl");
   program.use(); // Indiquer a OpenGL de les utiliser
 
   // Variable uniforme partagée par tous mes shaders
@@ -104,10 +104,10 @@ std::cout << "sdl fine ! " << std::endl;
   int mode = 1;
 
   // Création d'une texture
-  FilePath menu = "TEMPLE_RUN/assets/textures/menu.png";
-  FilePath run = "TEMPLE_RUN/assets/textures/run.png";
-  FilePath replay = "TEMPLE_RUN/assets/textures/replay.png";
-  FilePath quit = "TEMPLE_RUN/assets/textures/quit.png";
+  FilePath menu = "assets/textures/menu.png";
+  FilePath run = "assets/textures/run.png";
+  FilePath replay = "assets/textures/replay.png";
+  FilePath quit = "assets/textures/quit.png";
 
   Texture textureMenu(menu);
   Texture textureRun(run);

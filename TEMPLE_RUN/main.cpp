@@ -94,14 +94,14 @@ int main(int argc, char **argv)
   // ======== TEST CUBE ========
   //Model boule("TEMPLE_RUN/assets/obj/boule.obj");
   // Construct cube
-  ShaderManager shaderCube("TEMPLE_RUN/shaders/3D.vs.glsl", "TEMPLE_RUN/shaders/normals.fs.glsl");
+  ShaderManager shaderCube("shaders/3D.vs.glsl", "shaders/normals.fs.glsl");
   shaderCube.use();
   shaderCube.addUniform("uMVPMatrix");
   shaderCube.addUniform("uMVMatrix");
   shaderCube.addUniform("uNormalMatrix");
   shaderCube.addUniform("uTexture");
 
-  Texture textureCube("TEMPLE_RUN/assets/textures/cube.png");
+  Texture textureCube("assets/textures/cube.png");
   Cube myCube(glm::vec3(2), &shaderCube, &textureCube);
 
   // Cube Initilisation

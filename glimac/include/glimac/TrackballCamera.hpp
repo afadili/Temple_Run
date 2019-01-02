@@ -1,3 +1,5 @@
+#include <iostream> 
+
 namespace glimac {
 
   class TrackballCamera {
@@ -20,6 +22,7 @@ namespace glimac {
 
     inline
     void moveFront(const float &delta) {
+      std::cout << "move ! " << std::endl;
       m_fDistance -= delta;
     }
 
@@ -27,6 +30,7 @@ namespace glimac {
 
     inline
     void rotateLeft(const float &degrees) {
+      std::cout << "rotate left ! " << std::endl;
       m_fAngleY += degrees;
     }
 
@@ -34,6 +38,7 @@ namespace glimac {
 
     inline
     void rotateUp(const float &degrees) {
+      std::cout << "rotate ! " << std::endl;
       m_fAngleX += degrees;
     }
 
