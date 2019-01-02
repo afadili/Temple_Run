@@ -75,7 +75,7 @@ int main(int argc, char **argv) {
    *********************************/
 
   // TEST GAME MANAGER
-  GameManager manager("config.json");
+  GameManager manager("data/config.json");
   std::cout << "GAME MANAGER :\n" << manager << std::endl;
   
   manager.loadLevel("level1");

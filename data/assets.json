@@ -3,80 +3,80 @@
     {
       "//": "IMPORTANT: Always have this default shaders for textures and shaders not found",
       "name": "default", 
-      "vs": "shaders/3D.vs.glsl",
-      "fs": "shaders/default.fs.glsl"
+      "vs": "data/shaders/3D.vs.glsl",
+      "fs": "data/shaders/default.fs.glsl"
     },
     {
       "name": "normals",
-      "vs": "shaders/3D.vs.glsl",
-      "fs": "shaders/normals.fs.glsl"
+      "vs": "data/shaders/3D.vs.glsl",
+      "fs": "data/shaders/normals.fs.glsl"
     },
     {
       "name": "tex3D",
-      "vs": "shaders/tex3D.vs.glsl",
-      "fs": "shaders/tex3D.fs.glsl"
+      "vs": "data/shaders/tex3D.vs.glsl",
+      "fs": "data/shaders/tex3D.fs.glsl"
     }
   ],
   "textures": [
     {
       "name": "cube",
-      "src": "assets/textures/cube.jpg"
+      "src": "data/assets/textures/cube.jpg"
     },
     {
       "name": "stone",
-      "src": "assets/textures/stone_wall.jpg"
+      "src": "data/assets/textures/stone_wall.jpg"
     },
     {
       "name": "pavement",
-      "src": "assets/textures/brick_pavement.jpg"
+      "src": "data/assets/textures/brick_pavement.jpg"
     },
     {
       "name": "ground_1",
-      "src": "assets/textures/ground_1.jpg"
+      "src": "data/assets/textures/ground_1.jpg"
     },
     {
       "name": "ground_2",
-      "src": "assets/textures/ground_2.jpg"
+      "src": "data/assets/textures/ground_2.jpg"
     },
     {
       "name": "wall_1_1",
-      "src": "assets/textures/wall_1_1.jpg"
+      "src": "data/assets/textures/wall_1_1.jpg"
     },
     {
       "name": "wall_1_2",
-      "src": "assets/textures/wall_1_2.jpg"
+      "src": "data/assets/textures/wall_1_2.jpg"
     },
     {
       "name": "wall_2_1",
-      "src": "assets/textures/wall_2_1.jpg"
+      "src": "data/assets/textures/wall_2_1.jpg"
     },
     {
       "name": "wall_2_2",
-      "src": "assets/textures/wall_2_2.jpg"
+      "src": "data/assets/textures/wall_2_2.jpg"
     },
     {
       "name": "realitystone",
-      "src": "assets/textures/realitystone.jpg"
+      "src": "data/assets/textures/realitystone.jpg"
     },
     {
       "name": "timestone",
-      "src": "assets/textures/timestone.jpg"
+      "src": "data/assets/textures/timestone.jpg"
     },
     {
       "name": "spacestone",
-      "src": "assets/textures/spacestone.jpg"
+      "src": "data/assets/textures/spacestone.jpg"
     },
     {
       "name": "mindstone",
-      "src": "assets/textures/mindstone.jpg"
+      "src": "data/assets/textures/mindstone.jpg"
     },
     {
       "name": "powerstone",
-      "src": "assets/textures/powerstone.jpg"
+      "src": "data/assets/textures/powerstone.jpg"
     },
     {
       "name": "soulstone",
-      "src": "assets/textures/soulstone.jpg"
+      "src": "data/assets/textures/soulstone.jpg"
     }
   ],
   "meshs": [
@@ -147,7 +147,7 @@
     {
       "name": "testCube",
       "type": "Mesh",
-      "path": "assets/meshs/cube.obj",
+      "path": "data/assets/meshs/cube.obj",
       "texture": "stone",
       "shader": "normals"
     }

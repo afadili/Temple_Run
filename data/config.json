@@ -1,5 +1,5 @@
 {
-  "assetsFile": "assets.json",
+  "assetsFile": "data/assets.json",
   "fps": 60,
   "defaultWidth": 800,
   "nearVision": 0.1,
@@ -7,7 +7,7 @@
   "levels": [
     {
       "name": "level1",
-      "path": "levels/level1/"
+      "path": "data/levels/level1/"
     }
   ]
 } 
