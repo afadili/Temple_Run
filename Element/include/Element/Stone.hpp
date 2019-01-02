@@ -18,7 +18,7 @@
  */
 class Stone : public Object {
 protected:
-  /*!< */
+  float m_rotationSpeed = 0.05; /*!< speed of rotation of the stone per frame */
 
 private:
   Stone();
@@ -57,6 +57,11 @@ public:
    */
   Stone(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size, const glm::vec3 &rotation) : Object(mesh, position, size, rotation) {
   };
+
+  /**
+   * \brief Update object data. Function called at each drawing on ObjectList.
+   */
+  void update();
 
 
 };
