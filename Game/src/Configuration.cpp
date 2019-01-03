@@ -35,6 +35,10 @@ Configuration::Configuration(const glimac::FilePath &configFile) : m_configFile(
 
   if (root["farVision"])
     m_farVision = root["farVision"].asFloat();
+
+  if (root["viewDistance"])
+    m_viewDistance = root["viewDistance"].asFloat();
+
 }
 
 std::map<std::string, Level*> Configuration::levels(AssetsManager *assets) const {
