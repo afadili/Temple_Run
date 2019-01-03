@@ -98,9 +98,9 @@ int main(int argc, char **argv) {
   vbo.bind();
 
   //On peut à présent modifier le VBO en passant par la cible
-
+/*
   // Création d'un Menu 
-  Menu principalMenu;
+ // Menu principalMenu;
   principalMenu.CreateTextureMenu();
 
    vbo.bind();
@@ -146,7 +146,7 @@ int main(int argc, char **argv) {
   glUniform1i(uTexture, 0); // envoie de l'id de la texture à la variable uniforme sampler 2D
 
   vao.bind();
-
+*/
   // TEST GAME MANAGER
   GameManager manager("data/config.json");
   std::cout << "GAME MANAGER :\n" << manager << std::endl;
@@ -179,7 +179,7 @@ int main(int argc, char **argv) {
         done = true; // Leave the loop after this iteration
       }
 
-      principalMenu.EventManager(e);
+      //principalMenu.EventManager(e);
 
       switch (e.type) {
           /* Touche clavier DOWN */
@@ -250,7 +250,7 @@ int main(int argc, char **argv) {
       camera.moveLeft(-speed);
     }
 
-    principalMenu.drawMenu();
+    //principalMenu.drawMenu();
     /*********************************
      * HERE SHOULD COME THE RENDERING CODE
      *********************************/
@@ -270,11 +270,11 @@ int main(int argc, char **argv) {
       SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
     }
   }
-  textureLevelmenu.free();
+  //textureLevelmenu.free();
 
   //libération des ressources
-  vbo.~VBO();
-  vao.~VAO();
+  //vbo.~VBO();
+  //vao.~VAO();
 
   return EXIT_SUCCESS;
 }

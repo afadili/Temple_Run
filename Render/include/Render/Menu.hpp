@@ -3,6 +3,8 @@
  * \brief description : Declaration of the class "Menu"
  */
 
+#if FALSE
+
 #ifndef __Menu__HPP
 #define __Menu__HPP
 
@@ -69,5 +71,7 @@ public:
   void drawMenu();
 
 };
+
+#endif
 
 #endif
