@@ -15,6 +15,9 @@
 
 #include <Error/Error.hpp>
 #include <Element/ObjectList.hpp>
+#include <Element/Obstacle.hpp>
+#include <Element/Stone.hpp>
+#include <Element/Character.hpp>
 
 #include "AssetsManager.hpp"
 

@@ -83,7 +83,8 @@
     {
       "name": "wall",
       "code": [143, 94, 10],
-      "type": "Cube",
+      "mesh": "Cube",
+      "type": "Obstacle",
       "size": [1, 1, 1],
       "texture": "stone",
       "shader": "tex3D"
@@ -91,7 +92,8 @@
     {
       "name": "ground",
       "code": [143, 136, 131],
-      "type": "Cube",
+      "mesh": "Cube",
+      "type": "Obstacle",
       "size": [1, 1, 1],
       "texture": "stone",
       "shader": "tex3D"
@@ -99,54 +101,61 @@
     {
       "name": "realitystone",
       "code": [255, 0, 0],
-      "type": "Cube",
-      "size": [0.5, 0.5, 0.5],
+      "mesh": "Cube",
+      "type": "Stone",
+      "size": [0.3, 0.3, 0.3],
       "texture": "realitystone",
       "shader": "tex3D"
     },
     {
       "name": "timestone",
       "code": [0, 255, 0],
-      "type": "Cube",
-      "size": [0.5, 0.5, 0.5],
+      "mesh": "Cube",
+      "type": "Stone",
+      "size": [0.3, 0.3, 0.3],
       "texture": "timestone",
       "shader": "tex3D"
     },
     {
       "name": "spacestone",
       "code": [0, 0, 255],
-      "type": "Cube",
-      "size": [0.5, 0.5, 0.5],
+      "mesh": "Cube",
+      "type": "Stone",
+      "size": [0.3, 0.3, 0.3],
       "texture": "spacestone",
       "shader": "tex3D"
     },
     {
       "name": "mindstone",
       "code": [255, 255, 0],
-      "type": "Cube",
-      "size": [0.5, 0.5, 0.5],
+      "mesh": "Cube",
+      "type": "Stone",
+      "size": [0.3, 0.3, 0.3],
       "texture": "mindstone",
       "shader": "tex3D"
     },
     {
       "name": "powerstone",
       "code": [255, 0, 255],
-      "type": "Cube",
-      "size": [0.5, 0.5, 0.5],
+      "mesh": "Cube",
+      "type": "Stone",
+      "size": [0.3, 0.3, 0.3],
       "texture": "powerstone",
       "shader": "tex3D"
     },
     {
       "name": "soulstone",
       "code": [255, 162, 0],
-      "type": "Cube",
-      "size": [0.5, 0.5, 0.5],
+      "mesh": "Cube",
+      "type": "Stone",
+      "size": [0.3, 0.3, 0.3],
       "texture": "soulstone",
       "shader": "tex3D"
     },
     {
       "name": "testCube",
-      "type": "Mesh",
+      "mesh": "Mesh",
+      "type": "Stone",
       "path": "data/assets/meshs/cube.obj",
       "texture": "stone",
       "shader": "normals"

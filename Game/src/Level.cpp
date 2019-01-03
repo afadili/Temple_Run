@@ -43,13 +43,28 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
       std::string meshName = m_assets->meshName(r, g, b);
 
       if (!meshName.empty()) {
+        Mesh *mesh = m_assets->mesh(meshName);
+        std::string meshType = m_assets->meshType(meshName);
+
         // If no list of objects has been initialized to this name
         if (m_objects.find(meshName) == m_objects.end())
-          m_objects.insert(std::make_pair(meshName, m_assets->mesh(meshName)));
+          m_objects.insert(std::make_pair(meshName, mesh));
+
+        // Create the object
+        Object *obj;
+        if (meshType == "Obstacle" || meshType == "obstacle") {
+          obj = new Obstacle(mesh, glm::vec3(i, -floor, -j));
+        } else if (meshType == "Stone" || meshType == "stone") {
+          obj = new Stone(mesh, glm::vec3(i, -floor, -j));
+        } else if (meshType == "Character" || meshType == "character") {
+          obj = new Character(mesh, glm::vec3(i, -floor, -j));
+        } else {
+          obj = new Object(mesh, glm::vec3(i, -floor, -j));
+        }
 
         // Add the object to its list
-        Object *obj = m_objects.at(meshName).add(glm::vec3(i, -floor, -j));
-        
+        m_objects.at(meshName).add(obj);
+
         // Add the object to the grid
         m_grid[floor].coeffRef(i, j) = obj;
       }

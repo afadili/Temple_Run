@@ -59,25 +59,38 @@ public:
   Object(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size, const glm::vec3 &rotation);
 
   /**
+   * \brief Update object data. Function called at each drawing on ObjectList.
+   */
+  virtual
+  void update() {
+  };
+
+  /**
    * \brief Translate the object
    * \param vec : translation vector
-   * \return the new world coordinates matrix of the object
    */
-  glm::mat4 translate(const glm::vec3 &vec);
+  inline
+  void translate(const glm::vec3 &vec) {
+    m_position += vec;
+  }
 
   /**
    * \brief Rotate the object (in radian)
    * \param vec : rotation vector
-   * \return the new world coordinates matrix of the object
    */
-  glm::mat4 rotate(const glm::vec3 &vec);
+  inline
+  void rotate(const glm::vec3 &vec) {
+    m_rotation += vec;
+  }
 
   /**
    * \brief Scale the object
    * \param vec : scale vector
-   * \return the new world coordinates matrix of the object
    */
-  glm::mat4 scale(const glm::vec3 &vec);
+  inline
+  void scale(const glm::vec3 &vec) {
+    m_size += vec;
+  }
 
   /**
    * \brief Get the world coordinates matrix of the object 
