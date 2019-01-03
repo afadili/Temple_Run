@@ -70,20 +70,20 @@ int main(int argc, char **argv)
   int mode = 1;
 
   // Création d'une texture
-  FilePath menu = "data/assets/textures/menu.png";
-  FilePath run = "data/assets/textures/run.png";
-  FilePath replay = "data/assets/textures/replay.png";
-  FilePath quit = "data/assets/textures/quit.png";
+  FilePath Levelmenu = "data/assets/textures/Levelmenu.png";
+  FilePath Level1menu = "data/assets/textures/Level1menu.png";
+  FilePath Level2menu = "data/assets/textures/Level2menu.png";
+  FilePath Level3menu = "data/assets/textures/Level3menu.png";
 
-  Texture textureMenu(menu);
-  Texture textureRun(run);
-  Texture textureReplay(replay);
-  Texture textureQuit(quit);
+  Texture textureLevelmenu(Levelmenu);
+  Texture textureLevel1menu(Level1menu);
+  Texture textureLevel2menu(Level2menu);
+  Texture textureLevel3menu(Level3menu);
 
   vbo.bind();
 
-  textureMenu.loadTexture();
-  textureRun.loadTexture();
+  textureLevelmenu.loadTexture();
+  textureLevel1menu.loadTexture();
 
   //Coordonnée quad
   Vertex2DColor vertices[] = {
@@ -149,15 +149,15 @@ int main(int argc, char **argv)
       {
         done = true; // Leave the loop after this iteration
       }
-      if (e.button.x > 306 && e.button.x < 478 && e.button.y > 238 && e.button.y < 339)
+      if (e.button.x > 261 && e.button.x < 538 && e.button.y > 239 && e.button.y < 310)
       {
         mode = 2;
       }
-      else if (e.button.x > 167 && e.button.x < 311 && e.button.y > 425 && e.button.y < 498)
+      else if (e.button.x > 252 && e.button.x < 539 && e.button.y > 345 && e.button.y < 415)
       {
         mode = 0;
       }
-      else if (e.button.x > 507 && e.button.x < 748 && e.button.y > 426 && e.button.y < 491)
+      else if (e.button.x > 243 && e.button.x < 532 && e.button.y > 450 && e.button.y < 520)
       {
         mode = 3;
       }
@@ -171,18 +171,18 @@ int main(int argc, char **argv)
         {
           std::cout << "(" << e.button.x << "," << e.button.y << ")" << std::endl;
           //done = true;
-          if (e.button.x > 167 && e.button.x < 311 && e.button.y > 425 && e.button.y < 498)
+          if (e.button.x > 243 && e.button.x < 532 && e.button.y > 450 && e.button.y < 520)
           {
-            done = true;
+            std::cout << "Level 3 ! " << std::endl;
           }
-          else if (e.button.x > 306 && e.button.x < 478 && e.button.y > 238 && e.button.y < 339)
+          else if (e.button.x > 261 && e.button.x < 538 && e.button.y > 239 && e.button.y < 310)
           {
-            std::cout << "PLAY ! RUN ! Game Begin ! " << std::endl;
+            std::cout << "Level 1 ! " << std::endl;
             mode = 2;
           }
-          else if (e.button.x > 507 && e.button.x < 748 && e.button.y > 426 && e.button.y < 491)
+          else if (e.button.x > 252 && e.button.x < 539 && e.button.y > 345 && e.button.y < 415)
           {
-            std::cout << "REPLAY ! RUN AGAIN ! Game Begin AGAIN ! " << std::endl;
+            std::cout << "Level 2! " << std::endl;
           }
         }
       }
@@ -231,46 +231,46 @@ int main(int argc, char **argv)
 
     if (mode == 1)
     {
-      textureMenu.bind();
+      textureLevelmenu.bind();
 
       glDrawArrays(GL_TRIANGLES, 0, 6);
       glBindVertexArray(0);
 
-      textureMenu.debind();
+      textureLevelmenu.debind();
     }
     else if (mode == 2)
     {
-      textureRun.bind();
+      textureLevel1menu.bind();
 
       glDrawArrays(GL_TRIANGLES, 0, 6);
       glBindVertexArray(0);
 
-      textureRun.debind();
+      textureLevel1menu.debind();
     }
     else if (mode == 0)
     {
-      textureQuit.bind();
+      textureLevel2menu.bind();
 
       glDrawArrays(GL_TRIANGLES, 0, 6);
       glBindVertexArray(0);
 
-      textureQuit.debind();
+      textureLevel2menu.debind();
     }
     else if (mode == 3)
     {
-      textureReplay.bind();
+      textureLevel3menu.bind();
 
       glDrawArrays(GL_TRIANGLES, 0, 6);
       glBindVertexArray(0);
 
-      textureReplay.debind();
+      textureLevel3menu.debind();
     }
     windowManager.swapBuffers();
   }
   /*********************************
      *         EVENT CODE
      *********************************/
-  textureMenu.free();
+  textureLevelmenu.free();
 
   //libération des ressources
   vbo.~VBO();

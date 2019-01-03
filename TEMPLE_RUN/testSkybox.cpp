@@ -6,23 +6,12 @@
 #include <glimac/SDLWindowManager.hpp>
 #include <GL/glew.h>
 #include <iostream>
-#include <cstddef>
-#include <SDL/SDL.h>
-#include <math.h>
-#include <glimac/Program.hpp>
-#include <glimac/Image.hpp>
-#include <glimac/FilePath.hpp>
 #include <Game/GameManager.hpp>
-#include <Render/VAO.hpp>
-#include <Render/Menu.hpp>
-#include <glimac/glm.hpp>
 #include <Game/Level.hpp>
 #include <Mesh/Cube.hpp>
 #include <Render/ShaderManager.hpp>
 #include <Render/Texture.hpp>
-
 #include <glimac/FreeflyCamera.hpp>
-#define BIT_PER_PIXEL 32 /* Nombre de bits par pixel de la fenêtre */
 
 // Nombre minimal de millisecondes separant le rendu de deux images
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -65,6 +54,9 @@ GLenum glCheckError_(const char *file, int line) {
 using namespace glimac;
 
 int main(int argc, char **argv) {
+  // TEST GAME MANAGER
+  //GameManager manager("TEMPLE_RUN/assets.json");
+
 
   // Initialize SDL and open a window
   SDLWindowManager windowManager(800, 600, "I N F I N I T Y   R U N");
@@ -82,91 +74,48 @@ int main(int argc, char **argv) {
   /*********************************
    * HERE SHOULD COME THE INITIALIZATION CODE
    *********************************/
-    // Charger et compiler les shaders
-  FilePath applicationPath(argv[0]);
-  Program program = loadProgram("data/shaders/triangle.vs.glsl",
-                                "data/shaders/triangle.fs.glsl");
-  program.use(); // Indiquer a OpenGL de les utiliser
 
-   // Variable uniforme partagée par tous mes shaders
-  GLint uTexture = glGetUniformLocation(program.getGLId(), "uTexture");
+  //TEST PPM
+  /* static const FilePath file = "../Levels/Tests/test3.ppm";
+   Game gm(file, 1);
+   gm.loadFloor(file, 0);*/
 
-  // Création d'un seul VBO = contient les données
-  VBO vbo;
 
-  //Binding d'un VBO sur la cible GL_ARRAY_BUFFER: permet de la modifier
-  vbo.bind();
+  // ======== TEST CUBE ========
 
-  //On peut à présent modifier le VBO en passant par la cible
+  // Construct cube
+  ShaderManager shaderCube("data/shaders/tex3D.vs.glsl", "data/shaders/tex3D.fs.glsl");
+  shaderCube.use();
+  shaderCube.addUniform("uMVPMatrix");
+  shaderCube.addUniform("uMVMatrix");
+  shaderCube.addUniform("uNormalMatrix");
+  shaderCube.addUniform("uTexture");
 
-  // Création d'un Menu 
-  Menu principalMenu;
-  principalMenu.CreateTextureMenu();
+  Texture textureCube("data/assets/textures/etoile.png");
+  Cube myCube(glm::vec3(2), &shaderCube, &textureCube);
 
-   vbo.bind();
+  // Cube Initilisation
+  textureCube.loadTexture();
+  myCube.fillBuffers();
 
-   //Envoi des données
-  glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(Vertex2DColor), vertices, GL_STATIC_DRAW);
-  //On utilise GL_STATIC_DRAW pour un buffer dont les données ne changeront jamais.
 
-  //Débindage, pour éviter de remodifier le VBO par erreur.
-  vbo.debind();
 
-  //Création du VAO (Vertex Array Object) = décrit les données
-  //décrit pour chaque attribut de sommet (position, couleur, normale, etc.) la manière dont ils sont rangés dans un ou plusieurs VBOs
-  VAO vao;
-  vao.~VAO();
-
-  //Binding du VAO
-  vao.bind();
-
-   //Activation des attributs de vertex
-  const GLuint VERTEX_ATTR_POSITION = 0;
-  const GLuint VERTEX_ATTR_TEXCOORDS = 1;
-  const GLuint VERTEX_ATTR_COLOR = 2;
-  glEnableVertexAttribArray(VERTEX_ATTR_POSITION);
-  glEnableVertexAttribArray(VERTEX_ATTR_TEXCOORDS);
-  glEnableVertexAttribArray(VERTEX_ATTR_COLOR);
-
-  //Binding d'un VBO sur la cible GL_ARRAY_BUFFER:
-  vbo.bind();
-
-  //Spécification des attributs de vertex
-  
-  glVertexAttribPointer(VERTEX_ATTR_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2DColor), (const GLvoid *)offsetof(Vertex2DColor, position));
-  glVertexAttribPointer(VERTEX_ATTR_COLOR, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2DColor), (const GLvoid *)offsetof(Vertex2DColor, color));
-  glVertexAttribPointer(VERTEX_ATTR_TEXCOORDS, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2DColor), (const GLvoid *)offsetof(Vertex2DColor, texCoords));
-
-  //Débindage
-  vbo.bind();
-  glBindVertexArray(0);
-
-  glClear(GL_COLOR_BUFFER_BIT);
-
-  glUniform1i(uTexture, 0); // envoie de l'id de la texture à la variable uniforme sampler 2D
-
-  vao.bind();
-
-  // TEST GAME MANAGER
-  GameManager manager("data/config.json");
-  std::cout << "GAME MANAGER :\n" << manager << std::endl;
-  
-  manager.loadLevel("level1");
-
+  // END CUBE
 
   // activer le test de profondeur du GPU
   glEnable(GL_DEPTH_TEST);
+  // Camera 
+  FreeflyCamera cam;
 
-
-  // Camera
-  FreeflyCamera camera;
+  // Souris
+  glm::ivec2 mousePos;
+  glm::ivec2 lastMousePos;
 
   // Keyboard
   bool KEY_UP_PRESSED = false;
   bool KEY_DOWN_PRESSED = false;
   bool KEY_LEFT_PRESSED = false;
   bool KEY_RIGHT_PRESSED = false;
-
 
   // Application loop:
   bool done = false;
@@ -178,10 +127,7 @@ int main(int argc, char **argv) {
       if (e.type == SDL_QUIT) {
         done = true; // Leave the loop after this iteration
       }
-
-      principalMenu.EventManager(e);
-
-      switch (e.type) {
+ switch (e.type) {
           /* Touche clavier DOWN */
         case SDL_KEYDOWN:
           if (e.key.keysym.sym == SDLK_z || e.key.keysym.sym == SDLK_UP) {
@@ -214,54 +160,54 @@ int main(int argc, char **argv) {
           }
           break;
 
-        case SDL_MOUSEBUTTONDOWN:
-          if (e.button.button == SDL_BUTTON_LEFT)
-          {
-            std::cout << "(" << e.button.x << "," << e.button.y << ")" << std::endl;
-            if (e.button.x > 170 && e.button.x < 335 && e.button.y > 325 && e.button.y < 500)
-              done = true;
-          }
-          break;
 
         case SDL_MOUSEMOTION:
           float speed = 0.5f;
           if (e.motion.xrel != 0) {
-            camera.rotateLeft(float(-e.motion.xrel) * speed);
+            std::cout << "event ! " << std::endl;
+            cam.rotateLeft(float(-e.motion.xrel) * speed);
           }
           if (e.motion.yrel != 0) {
-            camera.rotateUp(float(e.motion.yrel) * speed);
+            std::cout << "event ! " << std::endl;
+            cam.rotateUp(float(e.motion.yrel) * speed);
           }
           break;
+
       }
     }
+  
 
     /* CONTROL */
 
     float speed = 0.1f;
-    if (KEY_UP_PRESSED) {
-      camera.moveFront(speed);
+  if (KEY_UP_PRESSED) {
+      cam.moveFront(speed);
     } else if (KEY_DOWN_PRESSED) {
-      camera.moveFront(-speed);
+      cam.moveFront(-speed);
     } else if (KEY_LEFT_PRESSED) {
       KEY_LEFT_PRESSED = true;
-      camera.moveLeft(speed);
+      cam.moveLeft(speed);
     } else if (KEY_RIGHT_PRESSED) {
       KEY_RIGHT_PRESSED = true;
-      camera.moveLeft(-speed);
+      cam.moveLeft(-speed);
     }
 
-    principalMenu.drawMenu();
     /*********************************
      * HERE SHOULD COME THE RENDERING CODE
      *********************************/
 
     // MATRICES de transformations
     glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f), WINDOWS_WIDTH / (float) WINDOWS_HEIGHT, NEAR_VISION, FAR_VISION);
+    glm::mat4 MVMatrix = glm::translate(glm::mat4(), glm::vec3(0.f, 0.f, -5.f));
+    //MVMatrix = glm::rotate(MVMatrix, windowManager.getTime() * 0.75f, glm::vec3(1.f, 1.f, 1.f));
+    glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
+
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    manager.level()->draw(ProjMatrix, camera.getViewMatrix());
-
+    myCube.bind();
+    myCube.draw(ProjMatrix, MVMatrix, cam.getViewMatrix());
+    myCube.debind();
 
     // Update the display
     windowManager.swapBuffers();
@@ -270,11 +216,9 @@ int main(int argc, char **argv) {
       SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
     }
   }
-  textureLevelmenu.free();
 
-  //libération des ressources
-  vbo.~VBO();
-  vao.~VAO();
+  textureCube.free();
+
 
   return EXIT_SUCCESS;
 }

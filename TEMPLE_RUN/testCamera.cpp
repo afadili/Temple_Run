@@ -84,14 +84,14 @@ int main(int argc, char **argv) {
   // ======== TEST CUBE ========
 
   // Construct cube
-  ShaderManager shaderCube("shaders/tex3D.vs.glsl", "shaders/tex3D.fs.glsl");
+  ShaderManager shaderCube("data/shaders/tex3D.vs.glsl", "data/shaders/tex3D.fs.glsl");
   shaderCube.use();
   shaderCube.addUniform("uMVPMatrix");
   shaderCube.addUniform("uMVMatrix");
   shaderCube.addUniform("uNormalMatrix");
   shaderCube.addUniform("uTexture");
 
-  Texture textureCube("assets/textures/stone_wall.jpg");
+  Texture textureCube("data/assets/textures/stone_wall.jpg");
   Cube myCube(glm::vec3(2), &shaderCube, &textureCube);
 
   // Cube Initilisation
