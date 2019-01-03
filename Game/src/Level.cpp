@@ -56,6 +56,8 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
           obj = new Obstacle(mesh, glm::vec3(i, -floor, -j));
         } else if (meshType == "Stone" || meshType == "stone") {
           obj = new Stone(mesh, glm::vec3(i, -floor, -j));
+        } else if (meshType == "FinishingLine" || meshType == "finishingline") {
+          obj = new FinishingLine(mesh, glm::vec3(i, -floor, -j));
         } else if (meshType == "Character" || meshType == "character") {
           m_character = new Character(mesh, glm::vec3(i, -floor - 0.25, -j));
           obj = m_character;

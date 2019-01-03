@@ -78,6 +78,10 @@
       "name": "soulstone",
       "src": "data/assets/textures/soulstone.jpg"
     }
+    {
+      "name": "infinitygauntlet",
+      "src": "data/assets/textures/infinitygauntlet.jpg"
+    }
   ],
   "meshs": [
     {
@@ -105,6 +109,60 @@
       "type": "Obstacle",
       "size": [1, 1, 1],
       "texture": "stone",
+      "shader": "tex3D"
+    },
+    {
+      "name": "dirtground",
+      "code": [171, 129, 99],
+      "mesh": "Cube",
+      "type": "Obstacle",
+      "size": [1, 1, 1],
+      "texture": "ground_1",
+      "shader": "tex3D"
+    },
+    {
+      "name": "rockwall",
+      "code": [147, 82, 34],
+      "mesh": "Cube",
+      "type": "Obstacle",
+      "size": [1, 1, 1],
+      "texture": "wall_1_1",
+      "shader": "tex3D"
+    },
+    {
+      "name": "sandwall",
+      "code": [224, 194, 123],
+      "mesh": "Cube",
+      "type": "Obstacle",
+      "size": [1, 1, 1],
+      "texture": "wall_1_2",
+      "shader": "tex3D"
+    },
+    {
+      "name": "grassground",
+      "code": [110, 193, 91],
+      "mesh": "Cube",
+      "type": "Obstacle",
+      "size": [1, 1, 1],
+      "texture": "ground_2",
+      "shader": "tex3D"
+    },
+    {
+      "name": "stonewall",
+      "code": [78, 95, 74],
+      "mesh": "Cube",
+      "type": "Obstacle",
+      "size": [1, 1, 1],
+      "texture": "wall_2_1",
+      "shader": "tex3D"
+    },
+    {
+      "name": "brickwall",
+      "code": [162, 201, 153],
+      "mesh": "Cube",
+      "type": "Obstacle",
+      "size": [1, 1, 1],
+      "texture": "wall_2_2",
       "shader": "tex3D"
     },
     {
@@ -159,6 +217,15 @@
       "type": "Stone",
       "size": [0.3, 0.3, 0.3],
       "texture": "soulstone",
+      "shader": "tex3D"
+    },
+    {
+      "name": "infinitygauntlet",
+      "code": [0, 0, 0],
+      "mesh": "Cube",
+      "type": "FinishingLine",
+      "size": [1, 1, 1],
+      "texture": "infinitygauntlet",
       "shader": "tex3D"
     },
     {
