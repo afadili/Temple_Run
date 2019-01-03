@@ -1,6 +1,6 @@
 #include <Game/Level.hpp>
 
-Level::Level(AssetsManager *assets, const glimac::FilePath &path, int nbFloor, int width, int height) : m_assets(assets), m_path(path), m_nbFloor(nbFloor), m_width(width), m_height(height) {
+Level::Level(const AssetsManager *assets, const glimac::FilePath &path, int nbFloor, int width, int height) : m_assets(assets), m_path(path), m_nbFloor(nbFloor), m_width(width), m_height(height) {
   for (int i = 0; i < nbFloor; i++)
     m_grid.push_back(Eigen::SparseMatrix<Object*>(width, height));
 }
@@ -78,6 +78,9 @@ void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const
     mapObj.second.draw(ProjMatrix, ViewMatrix);
 }
 
-void Level::update() {
+int Level::update(const SDL_Event &event, const glm::mat4 &ProjMatrix) {
+  glm::mat4 ViewMatrix = glm::translate(m_character->MWMatrix(), glm::vec3(2, 0, 0));
+  draw(ProjMatrix, ViewMatrix);
 
+  return 0;
 }

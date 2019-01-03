@@ -4,6 +4,7 @@
   "defaultWidth": 800,
   "nearVision": 0.1,
   "farVision": 100,
+  "viewDistance": 2,
   "levels": [
     {
       "name": "level1",
