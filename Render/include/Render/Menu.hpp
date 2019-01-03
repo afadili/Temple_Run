@@ -3,7 +3,13 @@
  * \brief description : Declaration of the class "Menu"
  */
 
+<<<<<<< HEAD
 /*#ifndef __Menu__HPP
+=======
+#if FALSE
+
+#ifndef __Menu__HPP
+>>>>>>> master
 #define __Menu__HPP
 
 #include <glimac/glm.hpp>
@@ -70,4 +76,10 @@ public:
 
 //};
 
+<<<<<<< HEAD
 //#endif
+=======
+#endif
+
+#endif
+>>>>>>> master

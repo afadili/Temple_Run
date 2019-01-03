@@ -18,7 +18,6 @@
  */
 class Obstacle : public Object {
 protected:
-  /*!< */
 
 private:
   Obstacle();

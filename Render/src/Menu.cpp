@@ -1,5 +1,7 @@
 /*#include <Render/Menu.hpp>
 
+#if FALSE
+
 Menu::Menu(){
       stateMenu = 0;
       stateLevel = 0;
@@ -165,3 +167,4 @@ void Menu::drawMenu(){
 }*/
 
 
+#endif

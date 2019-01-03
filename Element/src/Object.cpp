@@ -31,3 +31,9 @@ void Object::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix, cons
   if (!isBind)
     m_mesh->debind();
 }
+
+float Object::lastUpdate() const {
+  if (m_lastUpdate != 0)
+    return float(std::clock() - m_lastUpdate) / CLOCKS_PER_SEC;
+  return 0;
+}

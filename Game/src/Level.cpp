@@ -1,6 +1,6 @@
 #include <Game/Level.hpp>
 
-Level::Level(AssetsManager *assets, const glimac::FilePath &path, int nbFloor, int width, int height) : m_assets(assets), m_path(path), m_nbFloor(nbFloor), m_width(width), m_height(height) {
+Level::Level(const AssetsManager *assets, const glimac::FilePath &path, int nbFloor, int width, int height) : m_assets(assets), m_path(path), m_nbFloor(nbFloor), m_width(width), m_height(height) {
   for (int i = 0; i < nbFloor; i++)
     m_grid.push_back(Eigen::SparseMatrix<Object*>(width, height));
 }
@@ -56,8 +56,11 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
           obj = new Obstacle(mesh, glm::vec3(i, -floor, -j));
         } else if (meshType == "Stone" || meshType == "stone") {
           obj = new Stone(mesh, glm::vec3(i, -floor, -j));
+        } else if (meshType == "FinishingLine" || meshType == "finishingline") {
+          obj = new FinishingLine(mesh, glm::vec3(i, -floor, -j));
         } else if (meshType == "Character" || meshType == "character") {
-          obj = new Character(mesh, glm::vec3(i, -floor, -j));
+          m_character = new Character(mesh, glm::vec3(i, -floor - 0.25, -j));
+          obj = m_character;
         } else {
           obj = new Object(mesh, glm::vec3(i, -floor, -j));
         }
@@ -75,4 +78,11 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
 void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const {
   for (auto const& mapObj : m_objects)
     mapObj.second.draw(ProjMatrix, ViewMatrix);
+}
+
+int Level::update(const SDL_Event &event, const glm::mat4 &ProjMatrix) {
+  glm::mat4 ViewMatrix = glm::translate(m_character->MWMatrix(), glm::vec3(2, 0, 0));
+  draw(ProjMatrix, ViewMatrix);
+
+  return 0;
 }

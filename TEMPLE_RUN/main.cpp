@@ -4,6 +4,7 @@
  */
 
 #include <glimac/SDLWindowManager.hpp>
+<<<<<<< HEAD
 #include <GL/glew.h>
 #include <iostream>
 #include <Game/GameManager.hpp>
@@ -14,6 +15,10 @@
 
 #include <glimac/FreeflyCamera.hpp>
 
+=======
+#include <Game/GameManager.hpp>
+
+>>>>>>> master
 
 // Nombre minimal de millisecondes separant le rendu de deux images
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -26,39 +31,12 @@ static const float FAR_VISION = 100.f;
  * \brief ============================== main ==================================
  */
 
-GLenum glCheckError_(const char *file, int line) {
-  GLenum errorCode;
-  while ((errorCode = glGetError()) != GL_NO_ERROR) {
-    std::string error;
-    switch (errorCode) {
-      case GL_INVALID_ENUM: error = "INVALID_ENUM";
-        break;
-      case GL_INVALID_VALUE: error = "INVALID_VALUE";
-        break;
-      case GL_INVALID_OPERATION: error = "INVALID_OPERATION";
-        break;
-      case GL_STACK_OVERFLOW: error = "STACK_OVERFLOW";
-        break;
-      case GL_STACK_UNDERFLOW: error = "STACK_UNDERFLOW";
-        break;
-      case GL_OUT_OF_MEMORY: error = "OUT_OF_MEMORY";
-        break;
-      case GL_INVALID_FRAMEBUFFER_OPERATION: error = "INVALID_FRAMEBUFFER_OPERATION";
-        break;
-    }
-    std::cout << error << " | " << file << " (" << line << ")" << std::endl;
-  }
-  return errorCode;
-}
-#define glCheckError() glCheckError_(__FILE__, __LINE__) 
-
-
-using namespace glimac;
-
 int main(int argc, char **argv) {
+  // LOAD CONFIGURATION
+  Configuration *config = new Configuration("data/config.json");
 
   // Initialize SDL and open a window
-  SDLWindowManager windowManager(800, 600, "I N F I N I T Y   R U N");
+  SDLWindowManager windowManager(config->defaultWidth(), config->defaultWidth() * 1. / config->ratio(), "I N F I N I T Y   R U N");
 
   // Initialize glew for OpenGL3+ support
   GLenum glewInitError = glewInit();
@@ -73,38 +51,34 @@ int main(int argc, char **argv) {
   /*********************************
    * HERE SHOULD COME THE INITIALIZATION CODE
    *********************************/
+<<<<<<< HEAD
 
   // TEST GAME MANAGER
   GameManager manager("data/config.json");
   std::cout << "GAME MANAGER :\n" << manager << std::endl;
   
   manager.loadLevel("level1");
+=======
+>>>>>>> master
 
+  // GAME MANAGER
+  GameManager manager(config);
 
   // activer le test de profondeur du GPU
   glEnable(GL_DEPTH_TEST);
-
-
-  // Camera
-  FreeflyCamera camera;
-
-  // Keyboard
-  bool KEY_UP_PRESSED = false;
-  bool KEY_DOWN_PRESSED = false;
-  bool KEY_LEFT_PRESSED = false;
-  bool KEY_RIGHT_PRESSED = false;
-
 
   // Application loop:
   bool done = false;
   while (!done) {
     Uint32 startTime = SDL_GetTicks();
+
     // Event loop:
     SDL_Event e;
     while (windowManager.pollEvent(e)) {
       if (e.type == SDL_QUIT) {
         done = true; // Leave the loop after this iteration
       }
+<<<<<<< HEAD
 
       switch (e.type) {
           /* Touche clavier DOWN */
@@ -176,19 +150,30 @@ int main(int argc, char **argv) {
     // MATRICES de transformations
     glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f), WINDOWS_WIDTH / (float) WINDOWS_HEIGHT, NEAR_VISION, FAR_VISION);
 
+=======
+    }
+
+>>>>>>> master
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    manager.level()->draw(ProjMatrix, camera.getViewMatrix());
+    // Update the game
+    manager.update(e);
 
 
     // Update the display
     windowManager.swapBuffers();
+
+    // FPS CONTROLLER
     Uint32 elapsedTime = SDL_GetTicks() - startTime;
-    if (elapsedTime < FRAMERATE_MILLISECONDS) {
-      SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
+    if (elapsedTime < 1000 / config->fps()) {
+      SDL_Delay(1000 / config->fps() - elapsedTime);
     }
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 
+  delete config;
   return EXIT_SUCCESS;
 }

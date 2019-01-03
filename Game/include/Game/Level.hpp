@@ -28,13 +28,13 @@
 class Level {
 protected:
   glimac::FilePath m_path; /*!< The level folder */
-  AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
+  const AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
+  Character *m_character;
   int m_nbFloor; /*!< floor number of the level (number of ppm files) */
   int m_width; /*!< width of the level */
   int m_height; /*!< height of the level */
   std::map<std::string, ObjectList> m_objects; /*!< map of all objects in the map, for the rendering */
   std::vector<Eigen::SparseMatrix<Object*>> m_grid; /*!< vector of sparse Matrix with all static object in the level */
-  //Character m_character; /*!<  */
 
 private:
   Level() = default;
@@ -43,7 +43,7 @@ public:
   /**
    * \brief constructor
    */
-  Level(AssetsManager *assets, const glimac::FilePath &path, int nbFloor, int width, int height);
+  Level(const AssetsManager *assets, const glimac::FilePath &path, int nbFloor, int width, int height);
 
   /**
    * \brief create the map from all the levels of the decor
@@ -64,6 +64,14 @@ public:
   void draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix = glm::mat4()) const;
 
   /**
+   * \brief pdate and draw the level, with character controller. Function called at each frame
+   * \param event : the sdl event
+   * \param event : the projection matrice of the game
+   * \return 1 if character win, 2 if loose and 0 otherwise
+   */
+  int update(const SDL_Event &event, const glm::mat4 &ProjMatrix);
+
+  /**
    * \brief get an static object based on its position in the level 
    * \param x : the x position of the grid
    * \param y : the y position of the grid
@@ -71,7 +79,7 @@ public:
    * \return pointer on the object or null if empty position
    */
   inline
-  Object* grid(const int x, const int y, const int z) const{
+  Object* grid(const int x, const int y, const int z) const {
     return m_grid[y].coeff(x, z);
   }
 };

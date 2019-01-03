@@ -10,7 +10,10 @@
 #include <fstream>
 #include <map>
 #include <algorithm>
+#include <GL/glew.h>
 
+#include <glimac/SDLWindowManager.hpp>
+#include <glimac/glm.hpp>
 #include <Mesh/Mesh.hpp>
 #include <Mesh/Cube.hpp>
 #include <Error/Error.hpp>
@@ -25,7 +28,7 @@
  */
 class GameManager {
 protected:
-  Configuration m_config; /*!<The configuration of the game */
+  const Configuration *m_config; /*!<The configuration of the game */
   Level *m_currentLevel = nullptr; /*!< Pointer on the current level, null if no Level has started */
   std::map<std::string, Level*> m_levels; /*!< A map of all possible levels */
   AssetsManager *m_assets = nullptr; /*!< Pointer on the manager of all assets */
@@ -33,14 +36,21 @@ protected:
 public:
   /**
    * \brief constructor of the GameManager
-   * \param assetPath : the json file with the configuration
+   * \param config : the configuration of the game
    */
-  GameManager(const FilePath &configPath);
+  GameManager(const Configuration *config);
 
   /**
    * \brief destructor of the GameManager, delete all loaded assets
    */
   ~GameManager();
+
+  /**
+   * \brief Main loop of all the game
+   * \param event : the sdl event
+   */
+  void update(const SDL_Event &event);
+
 
   /**
    * \brief Set all the possible levels from the configuration

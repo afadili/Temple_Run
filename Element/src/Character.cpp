@@ -1,12 +1,36 @@
-#include <Element/Stone.hpp>
+#include <Element/Character.hpp>
 
-void Stone::update() {
-  // Stone rotation
-  rotate(glm::vec3(0, m_rotationSpeed, 0));
+void Character::update() {
+  lastUpdate();
 
-  // Stone translation 
-  if (std::abs(m_actualTranslate) >= m_maxTranslate)
-    m_translateSpeed = -m_translateSpeed;
-  m_actualTranslate += m_translateSpeed;
-  translate(glm::vec3(0, m_translateSpeed, 0));
+  // automatic translation by speed
+ // translate(m_direction * m_speed * lastUpdate());
+
+  // jump
+  if (m_isJumping) {
+    // if we are at the top, we reverse the speed
+    if (m_jumpState >= m_maxJump) {
+      m_jumpSpeed = -m_jumpSpeed;
+      m_jumpVelocity = 0;
+    }
+
+    m_jumpVelocity += m_jumpSpeed * lastUpdate();
+    m_jumpState += m_jumpVelocity * m_friction;
+    m_position.y += m_jumpVelocity * m_friction;
+
+    // if the jump is over
+    if (m_jumpState <= 0) {
+      m_position.y = 0;
+      m_isJumping = false;
+    }
+  }
+
+
+  Object::update();
+}
+
+void Character::jump() {
+  if (!m_isJumping)
+    std::abs(m_jumpSpeed);
+  m_isJumping = true;
 }
