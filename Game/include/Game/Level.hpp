@@ -29,12 +29,12 @@ class Level {
 protected:
   glimac::FilePath m_path; /*!< The level folder */
   AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
+  Character *m_character;
   int m_nbFloor; /*!< floor number of the level (number of ppm files) */
   int m_width; /*!< width of the level */
   int m_height; /*!< height of the level */
   std::map<std::string, ObjectList> m_objects; /*!< map of all objects in the map, for the rendering */
   std::vector<Eigen::SparseMatrix<Object*>> m_grid; /*!< vector of sparse Matrix with all static object in the level */
-  //Character m_character; /*!<  */
 
 private:
   Level() = default;
@@ -64,6 +64,11 @@ public:
   void draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix = glm::mat4()) const;
 
   /**
+   * \brief Update and draw the level, with character controller. Function called at each frame;
+   */
+  void update();
+
+  /**
    * \brief get an static object based on its position in the level 
    * \param x : the x position of the grid
    * \param y : the y position of the grid
@@ -71,7 +76,7 @@ public:
    * \return pointer on the object or null if empty position
    */
   inline
-  Object* grid(const int x, const int y, const int z) const{
+  Object* grid(const int x, const int y, const int z) const {
     return m_grid[y].coeff(x, z);
   }
 };

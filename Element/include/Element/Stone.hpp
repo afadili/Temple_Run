@@ -6,10 +6,6 @@
 #ifndef __STONE__HPP
 #define __STONE__HPP
 
-#include <GL/glew.h>
-#include <GL/gl.h>
-#include <iostream>
-
 #include "Object.hpp"
 
 /**

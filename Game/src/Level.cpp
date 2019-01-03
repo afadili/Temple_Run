@@ -57,7 +57,8 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
         } else if (meshType == "Stone" || meshType == "stone") {
           obj = new Stone(mesh, glm::vec3(i, -floor, -j));
         } else if (meshType == "Character" || meshType == "character") {
-          obj = new Character(mesh, glm::vec3(i, -floor, -j));
+          m_character = new Character(mesh, glm::vec3(i, -floor - 0.25, -j));
+          obj = m_character;
         } else {
           obj = new Object(mesh, glm::vec3(i, -floor, -j));
         }
@@ -75,4 +76,8 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
 void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const {
   for (auto const& mapObj : m_objects)
     mapObj.second.draw(ProjMatrix, ViewMatrix);
+}
+
+void Level::update() {
+
 }

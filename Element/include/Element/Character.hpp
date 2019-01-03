@@ -6,10 +6,6 @@
 #ifndef __CHARACTER__HPP
 #define __CHARACTER__HPP
 
-#include <GL/glew.h>
-#include <GL/gl.h>
-#include <iostream>
-
 #include "Object.hpp"
 
 /**
@@ -18,8 +14,16 @@
  */
 class Character : public Object {
 protected:
-  int m_life; /*!< life of the character */
-  float m_speed; /*!< speed of the character */
+  glm::vec3 m_direction = glm::vec3(1, 0, 0); /*!< the direction vector of the character */
+  float m_speed = 3; /*!< speed of the character, blocks by seconds */
+  float m_jumpSpeed = 0.75; /*!< speed of the jumping animation, blocks by seconds */
+  float m_maxJump = 1.3; /*!< maximum jump height */
+  float m_turnVelocity = 0; /*!< velocity on turn */
+  float m_translateVelocity = 0; /*!< velocity on translate */
+  float m_jumpVelocity = 0; /*!< velocity on jump */
+  float m_jumpState = 0; /*!< distance course by the jump */
+  float m_friction = 0.98; /*!< the friction for all animation */
+  bool m_isJumping = false; /*!< if the character is jumping */
 
 private:
   Character();
@@ -58,6 +62,37 @@ public:
    */
   Character(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size, const glm::vec3 &rotation) : Object(mesh, position, size, rotation) {
   };
+
+  /**
+   * \brief Update object data. Function called at each drawing on ObjectList.
+   */
+  void update();
+
+  /**
+   * \brief Launch a translation animation to the left
+   */
+  void moveLeft();
+
+  /**
+   * \brief Launch a translation animation to the right
+   */
+  void moveRight();
+
+  /**
+   * \brief Launch a rotation animation to the left
+   */
+  void turnLeft();
+
+  /**
+   * \brief Launch a rotation animation to the right
+   */
+  void turnRight();
+
+  /**
+   * \brief Launch a jump animation
+   */
+
+  void jump();
 
 };
 

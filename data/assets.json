@@ -90,6 +90,15 @@
       "shader": "tex3D"
     },
     {
+      "name": "perso",
+      "code": [39, 203, 205],
+      "mesh": "Cube",
+      "type": "Character",
+      "size": [0.5, 1.5, 0.5],
+      "texture": "stone",
+      "shader": "normals"
+    },
+    {
       "name": "ground",
       "code": [143, 136, 131],
       "mesh": "Cube",

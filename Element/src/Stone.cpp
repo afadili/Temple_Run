@@ -9,4 +9,6 @@ void Stone::update() {
     m_translateSpeed = -m_translateSpeed;
   m_actualTranslate += m_translateSpeed;
   translate(glm::vec3(0, m_translateSpeed, 0));
+
+  Object::update();
 }

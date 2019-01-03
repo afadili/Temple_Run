@@ -9,6 +9,7 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 #include <iostream>
+#include <ctime>
 
 #include <Mesh/Mesh.hpp>
 
@@ -22,6 +23,7 @@ protected:
   glm::vec3 m_position = glm::vec3(0, 0, 0); /*!< Position of the object in the world coordinates */
   glm::vec3 m_size = glm::vec3(1, 1, 1); /*!< Size of the object in the world coordinates */
   glm::vec3 m_rotation = glm::vec3(0, 0, 0); /*!< Rotation of the object in the world coordinates */
+  std::clock_t m_lastUpdate = 0; /*!< Date of last update of the object */
 
 private:
   Object();
@@ -63,6 +65,7 @@ public:
    */
   virtual
   void update() {
+    m_lastUpdate = std::clock();
   };
 
   /**
@@ -114,6 +117,12 @@ public:
   Mesh *mesh() const {
     return m_mesh;
   }
+
+  /**
+   * \brief Get the elapsed time since the last update
+   * \return the elapsed time in secondes
+   */
+  float lastUpdate() const;
 
   /**
    * \brief Opérateur << for print Object data
