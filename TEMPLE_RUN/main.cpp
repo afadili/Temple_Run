@@ -6,23 +6,14 @@
 #include <glimac/SDLWindowManager.hpp>
 #include <GL/glew.h>
 #include <iostream>
-#include <cstddef>
-#include <SDL/SDL.h>
-#include <math.h>
-#include <glimac/Program.hpp>
-#include <glimac/Image.hpp>
-#include <glimac/FilePath.hpp>
 #include <Game/GameManager.hpp>
-#include <Render/VAO.hpp>
-#include <Render/Menu.hpp>
-#include <glimac/glm.hpp>
 #include <Game/Level.hpp>
 #include <Mesh/Cube.hpp>
 #include <Render/ShaderManager.hpp>
 #include <Render/Texture.hpp>
 
 #include <glimac/FreeflyCamera.hpp>
-#define BIT_PER_PIXEL 32 /* Nombre de bits par pixel de la fenêtre */
+
 
 // Nombre minimal de millisecondes separant le rendu de deux images
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -82,70 +73,6 @@ int main(int argc, char **argv) {
   /*********************************
    * HERE SHOULD COME THE INITIALIZATION CODE
    *********************************/
-    // Charger et compiler les shaders
-  FilePath applicationPath(argv[0]);
-  Program program = loadProgram("data/shaders/triangle.vs.glsl",
-                                "data/shaders/triangle.fs.glsl");
-  program.use(); // Indiquer a OpenGL de les utiliser
-
-   // Variable uniforme partagée par tous mes shaders
-  GLint uTexture = glGetUniformLocation(program.getGLId(), "uTexture");
-
-  // Création d'un seul VBO = contient les données
-  VBO vbo;
-
-  //Binding d'un VBO sur la cible GL_ARRAY_BUFFER: permet de la modifier
-  vbo.bind();
-
-  //On peut à présent modifier le VBO en passant par la cible
-
-  // Création d'un Menu 
-  Menu principalMenu;
-  principalMenu.CreateTextureMenu();
-
-   vbo.bind();
-
-   //Envoi des données
-  glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(Vertex2DColor), vertices, GL_STATIC_DRAW);
-  //On utilise GL_STATIC_DRAW pour un buffer dont les données ne changeront jamais.
-
-  //Débindage, pour éviter de remodifier le VBO par erreur.
-  vbo.debind();
-
-  //Création du VAO (Vertex Array Object) = décrit les données
-  //décrit pour chaque attribut de sommet (position, couleur, normale, etc.) la manière dont ils sont rangés dans un ou plusieurs VBOs
-  VAO vao;
-  vao.~VAO();
-
-  //Binding du VAO
-  vao.bind();
-
-   //Activation des attributs de vertex
-  const GLuint VERTEX_ATTR_POSITION = 0;
-  const GLuint VERTEX_ATTR_TEXCOORDS = 1;
-  const GLuint VERTEX_ATTR_COLOR = 2;
-  glEnableVertexAttribArray(VERTEX_ATTR_POSITION);
-  glEnableVertexAttribArray(VERTEX_ATTR_TEXCOORDS);
-  glEnableVertexAttribArray(VERTEX_ATTR_COLOR);
-
-  //Binding d'un VBO sur la cible GL_ARRAY_BUFFER:
-  vbo.bind();
-
-  //Spécification des attributs de vertex
-  
-  glVertexAttribPointer(VERTEX_ATTR_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2DColor), (const GLvoid *)offsetof(Vertex2DColor, position));
-  glVertexAttribPointer(VERTEX_ATTR_COLOR, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2DColor), (const GLvoid *)offsetof(Vertex2DColor, color));
-  glVertexAttribPointer(VERTEX_ATTR_TEXCOORDS, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2DColor), (const GLvoid *)offsetof(Vertex2DColor, texCoords));
-
-  //Débindage
-  vbo.bind();
-  glBindVertexArray(0);
-
-  glClear(GL_COLOR_BUFFER_BIT);
-
-  glUniform1i(uTexture, 0); // envoie de l'id de la texture à la variable uniforme sampler 2D
-
-  vao.bind();
 
   // TEST GAME MANAGER
   GameManager manager("data/config.json");
@@ -178,8 +105,6 @@ int main(int argc, char **argv) {
       if (e.type == SDL_QUIT) {
         done = true; // Leave the loop after this iteration
       }
-
-      principalMenu.EventManager(e);
 
       switch (e.type) {
           /* Touche clavier DOWN */
@@ -214,14 +139,6 @@ int main(int argc, char **argv) {
           }
           break;
 
-        case SDL_MOUSEBUTTONDOWN:
-          if (e.button.button == SDL_BUTTON_LEFT)
-          {
-            std::cout << "(" << e.button.x << "," << e.button.y << ")" << std::endl;
-            if (e.button.x > 170 && e.button.x < 335 && e.button.y > 325 && e.button.y < 500)
-              done = true;
-          }
-          break;
 
         case SDL_MOUSEMOTION:
           float speed = 0.5f;
@@ -232,6 +149,7 @@ int main(int argc, char **argv) {
             camera.rotateUp(float(e.motion.yrel) * speed);
           }
           break;
+
       }
     }
 
@@ -250,7 +168,7 @@ int main(int argc, char **argv) {
       camera.moveLeft(-speed);
     }
 
-    principalMenu.drawMenu();
+
     /*********************************
      * HERE SHOULD COME THE RENDERING CODE
      *********************************/
@@ -270,11 +188,7 @@ int main(int argc, char **argv) {
       SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
     }
   }
-  textureLevelmenu.free();
 
-  //libération des ressources
-  vbo.~VBO();
-  vao.~VAO();
 
   return EXIT_SUCCESS;
 }

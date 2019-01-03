@@ -1,4 +1,4 @@
-#include <Render/Menu.hpp>
+/*#include <Render/Menu.hpp>
 
 Menu::Menu(){
       stateMenu = 0;
@@ -162,6 +162,6 @@ void Menu::drawMenu(){
       textureLevel3menu.debind();
     }
     }
-}
+}*/
 
 

@@ -3,7 +3,7 @@
  * \brief description : Declaration of the class "Menu"
  */
 
-#ifndef __Menu__HPP
+/*#ifndef __Menu__HPP
 #define __Menu__HPP
 
 #include <glimac/glm.hpp>
@@ -27,7 +27,7 @@ struct Vertex2DColor
  * \brief class defining a Menu and associated actions
  */
 
-class Menu {
+/*class Menu {
   private:
   unsigned int mode;
   Vertex2DColor sommets[];
@@ -46,28 +46,28 @@ public:
   /**
    * \brief constructor of the menu by loading the textures
    */
-  Menu();
+  //Menu();
 
   /**
    * \brief constructor of the menu by loading the textures
    */
-  void CreateTextureMenu();
+  //void CreateTextureMenu();
 
   /**
    * \brief destructor of the menu by releasing the memory space of the textures
    */
-  ~Menu();
+  //~Menu();
 
   /**
    * \brief method that read the events and manages it with the Menu display
    */
-  void EventManager();
+  //void EventManager();
 
   /**
    * \brief methode that draws the Menu and the Level Menu
    */
-  void drawMenu();
+  //void drawMenu();
 
-};
+//};
 
-#endif
+//#endif
