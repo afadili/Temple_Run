@@ -14,7 +14,6 @@
 #include <glimac/FilePath.hpp>
 #include <Game/GameManager.hpp>
 #include <Render/VAO.hpp>
-#include <Render/Menu.hpp>
 #include <glimac/glm.hpp>
 #include <Game/Level.hpp>
 #include <Mesh/Cube.hpp>
@@ -152,7 +151,7 @@ int main(int argc, char **argv) {
   GameManager manager(config);
   std::cout << "GAME MANAGER :\n" << manager << std::endl;
 
-  manager.loadLevel("level1");
+  manager.loadLevel("level2");
 
 
   // activer le test de profondeur du GPU
@@ -256,11 +255,14 @@ int main(int argc, char **argv) {
      *********************************/
 
     // MATRICES de transformations
-    glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f), WINDOWS_WIDTH / (float) WINDOWS_HEIGHT, NEAR_VISION, FAR_VISION);
+    //glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f), WINDOWS_WIDTH / (float) WINDOWS_HEIGHT, NEAR_VISION, FAR_VISION);
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    manager.level()->draw(ProjMatrix, camera.getViewMatrix());
+    //manager.level()->draw(ProjMatrix, camera.getViewMatrix());
+
+      // Update the game
+    manager.update(e);
 
 
     // Update the display

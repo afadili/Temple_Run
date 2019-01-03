@@ -91,7 +91,7 @@ int main(int argc, char **argv) {
   shaderCube.addUniform("uNormalMatrix");
   shaderCube.addUniform("uTexture");
 
-  Texture textureCube("data/assets/textures/etoile.png");
+  Texture textureCube("data/assets/textures/Skybox.png");
   Cube myCube(glm::vec3(2), &shaderCube, &textureCube);
 
   // Cube Initilisation

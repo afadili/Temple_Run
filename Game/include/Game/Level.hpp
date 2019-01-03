@@ -18,6 +18,7 @@
 #include <Element/Obstacle.hpp>
 #include <Element/Stone.hpp>
 #include <Element/Character.hpp>
+#include <Element/FinishingLine.hpp>
 
 #include "AssetsManager.hpp"
 

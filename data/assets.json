@@ -77,14 +77,46 @@
     {
       "name": "soulstone",
       "src": "data/assets/textures/soulstone.jpg"
-    }
+    },
     {
       "name": "infinitygauntlet",
       "src": "data/assets/textures/infinitygauntlet.jpg"
+    },
+    {
+      "name": "menutest",
+      "src": "data/assets/textures/menu.png"
+    },
+    {
+      "name": "run",
+      "src": "data/assets/textures/run.png"
+    },
+    {
+      "name": "replay",
+      "src": "data/assets/textures/replay.png"
+    },
+    {
+      "name": "quit",
+      "src": "data/assets/textures/quit.png"
+    },
+    {
+      "name": "levelMenu",
+      "src": "data/assets/textures/Levelmenu.png"
+    },
+    {
+      "name": "level1",
+      "src": "data/assets/textures/Level1menu.png"
+    },
+    {
+      "name": "level2",
+      "src": "data/assets/textures/Level2menu.png"
+    },
+    {
+      "name": "level3",
+      "src": "data/assets/textures/Level3menu.png"
     }
   ],
   "meshs": [
-    {
+  {
       "name": "wall",
       "code": [143, 94, 10],
       "mesh": "Cube",

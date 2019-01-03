@@ -1,49 +1,39 @@
-/*#include <Render/Menu.hpp>
-
-#if FALSE
+#include <Game/Menu.hpp>
 
 Menu::Menu(){
       stateMenu = 0;
       stateLevel = 0;
       mode = 0;
-      sommets[] = {
-        Vertex2DColor(glm::vec2(-1, -1), glm::vec3(1, 0, 0), glm::vec2(0, 1)),
-        Vertex2DColor(glm::vec2(1, -1), glm::vec3(0, 1, 0), glm::vec2(1, 1)),
-        Vertex2DColor(glm::vec2(-1, 1), glm::vec3(0, 0, 1), glm::vec2(0, 0)),
-        Vertex2DColor(glm::vec2(1, 1), glm::vec3(1, 0, 0), glm::vec2(1, 0)),
-        Vertex2DColor(glm::vec2(1, -1), glm::vec3(0, 1, 0), glm::vec2(1, 1)),
-        Vertex2DColor(glm::vec2(-1, 1), glm::vec3(0, 0, 1), glm::vec2(0, 0))};
-}
+      sommets.push_back(Vertex2DColor(glm::vec2(-1, -1), glm::vec3(1, 0, 0), glm::vec2(0, 1)));
+      sommets.push_back(Vertex2DColor(glm::vec2(1, -1), glm::vec3(0, 1, 0), glm::vec2(1, 1)));
+      sommets.push_back(Vertex2DColor(glm::vec2(-1, 1), glm::vec3(0, 0, 1), glm::vec2(0, 0)));
+      sommets.push_back(Vertex2DColor(glm::vec2(1, 1), glm::vec3(1, 0, 0), glm::vec2(1, 0)));
+      sommets.push_back(Vertex2DColor(glm::vec2(1, -1), glm::vec3(0, 1, 0), glm::vec2(1, 1)));
+      sommets.push_back(Vertex2DColor(glm::vec2(-1, 1), glm::vec3(0, 0, 1), glm::vec2(0, 0)));
 
-void Menu::CreateTextureMenu(){
+             std::cout << "Menuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu" << std::endl;
 
-    if (mode == 0){
-    FilePath menu = "data/assets/textures/menu.png";
-    FilePath run = "data/assets/textures/run.png";
-    FilePath replay = "data/assets/textures/replay.png";
-    FilePath quit = "data/assets/textures/quit.png";
 
-    textureMenu = Texture(menu);
-    textureRun = Texture(run);
-    textureReplay = Texture(replay);
-    textureQuit = Texture(quit);
 
-    }
-    else if (mode == 1){
-  FilePath Levelmenu = "data/assets/textures/Levelmenu.png";
-  FilePath Level1menu = "data/assets/textures/Level1menu.png";
-  FilePath Level2menu = "data/assets/textures/Level2menu.png";
-  FilePath Level3menu = "data/assets/textures/Level3menu.png";
+       texMenu["Menu"] = m_assetsMenu->texture("menutest");
+        texMenu["Run"] = m_assetsMenu->texture("run");
+        texMenu["Replay"] = m_assetsMenu->texture("replay");
+        texMenu["Quit"] = m_assetsMenu->texture("quit");
 
-  textureLevelmenu = Texture(Levelmenu);
-  textureLevel1menu = Texture(Level1menu);
-  textureLevel2menu = Texture(Level2menu);
-  textureLevel3menu = Texture(Level3menu);
-    }
+        texMenu["LevelMenu"] = m_assetsMenu->texture("levelMenu");
+        texMenu["Level1"] = m_assetsMenu->texture("level1");
+        texMenu["Level2"] = m_assetsMenu->texture("level2");
+        texMenu["Level3"] = m_assetsMenu->texture("level3");
+
+  if (m_assetsMenu != nullptr)
+  {
+    std::cout << "pointeur pas nul ! " << std::endl;
+  } 
+  std::cout << "pointeur nul !!!!!!!!!!!!!!!!!!!!" << std::endl;
 }
 
 
-Menu::~Menu();
+Menu::~Menu(){}
 
 
 void Menu::EventManager(SDL_Event e){
@@ -89,39 +79,39 @@ void Menu::drawMenu(){
     {
         if (stateMenu == 1)
         {
-        textureMenu.bind();
+        texMenu["Menu"]->bind();
 
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
 
-        textureMenu.debind();
+        texMenu["Menu"]->debind();
         }
         else if (stateMenu == 2)
         {
-        textureRun.bind();
+        texMenu["Run"]->bind();
 
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
 
-        textureRun.debind();
+        texMenu["Run"]->debind();
         }
         else if (stateMenu == 0)
         {
-        textureQuit.bind();
+        texMenu["Quit"]->bind();
 
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
 
-        textureQuit.debind();
+        texMenu["Quit"]->debind();
         }
         else if (stateMenu == 3)
         {
-        textureReplay.bind();
+        texMenu["Replay"]->bind();
 
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
 
-        textureReplay.debind();
+        texMenu["Replay"]->debind();
         }
     }
 
@@ -129,42 +119,39 @@ void Menu::drawMenu(){
     {
         if (stateLevel == 1)
     {
-      textureLevelmenu.bind();
+      texMenu["LevelMenu"]->bind();
 
       glDrawArrays(GL_TRIANGLES, 0, 6);
       glBindVertexArray(0);
 
-      textureLevelmenu.debind();
+      texMenu["LevelMenu"]->debind();
     }
     else if (stateLevel == 2)
     {
-      textureLevel1menu.bind();
+      texMenu["Level1"]->bind();
 
       glDrawArrays(GL_TRIANGLES, 0, 6);
       glBindVertexArray(0);
 
-      textureLevel1menu.debind();
+      texMenu["Level1"]->debind();
     }
     else if (stateLevel == 0)
     {
-      textureLevel2menu.bind();
+      texMenu["Level2"]->bind();
 
       glDrawArrays(GL_TRIANGLES, 0, 6);
       glBindVertexArray(0);
 
-      textureLevel2menu.debind();
+      texMenu["Level2"]->debind();
     }
     else if (stateLevel == 3)
     {
-      textureLevel3menu.bind();
+      texMenu["Level3"]->bind();
 
       glDrawArrays(GL_TRIANGLES, 0, 6);
       glBindVertexArray(0);
 
-      textureLevel3menu.debind();
+      texMenu["Level3"]->debind();
     }
     }
-}*/
-
-
-#endif
+}

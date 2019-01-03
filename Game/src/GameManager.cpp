@@ -41,8 +41,11 @@ void GameManager::update(const SDL_Event &event) {
   } else {
 
     // MENUUUUUUUUUUUUUUUU
+  Menu menu;
 
-    loadLevel("level1");
+  menu.drawMenu();
+
+    loadLevel("level2");
 
   }
 

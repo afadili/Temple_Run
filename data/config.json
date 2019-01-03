@@ -9,6 +9,10 @@
     {
       "name": "level1",
       "path": "data/levels/level1/"
+    },
+    {
+      "name": "level2",
+      "path": "data/levels/level2/"
     }
   ]
 } 

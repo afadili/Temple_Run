@@ -4,21 +4,9 @@
  */
 
 #include <glimac/SDLWindowManager.hpp>
-<<<<<<< HEAD
-#include <GL/glew.h>
-#include <iostream>
 #include <Game/GameManager.hpp>
-#include <Game/Level.hpp>
-#include <Mesh/Cube.hpp>
-#include <Render/ShaderManager.hpp>
-#include <Render/Texture.hpp>
-
 #include <glimac/FreeflyCamera.hpp>
 
-=======
-#include <Game/GameManager.hpp>
-
->>>>>>> master
 
 // Nombre minimal de millisecondes separant le rendu de deux images
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -51,21 +39,24 @@ int main(int argc, char **argv) {
   /*********************************
    * HERE SHOULD COME THE INITIALIZATION CODE
    *********************************/
-<<<<<<< HEAD
-
-  // TEST GAME MANAGER
-  GameManager manager("data/config.json");
-  std::cout << "GAME MANAGER :\n" << manager << std::endl;
-  
-  manager.loadLevel("level1");
-=======
->>>>>>> master
 
   // GAME MANAGER
   GameManager manager(config);
 
   // activer le test de profondeur du GPU
   glEnable(GL_DEPTH_TEST);
+
+
+  // Camera
+  FreeflyCamera camera;
+
+
+  // Keyboard
+  bool KEY_UP_PRESSED = false;
+  bool KEY_DOWN_PRESSED = false;
+  bool KEY_LEFT_PRESSED = false;
+  bool KEY_RIGHT_PRESSED = false;
+
 
   // Application loop:
   bool done = false;
@@ -78,7 +69,6 @@ int main(int argc, char **argv) {
       if (e.type == SDL_QUIT) {
         done = true; // Leave the loop after this iteration
       }
-<<<<<<< HEAD
 
       switch (e.type) {
           /* Touche clavier DOWN */
@@ -113,6 +103,13 @@ int main(int argc, char **argv) {
           }
           break;
 
+        case SDL_MOUSEBUTTONDOWN:
+          if (e.button.button == SDL_BUTTON_LEFT) {
+            std::cout << "(" << e.button.x << "," << e.button.y << ")" << std::endl;
+            if (e.button.x > 170 && e.button.x < 335 && e.button.y > 325 && e.button.y < 500)
+              done = true;
+          }
+          break;
 
         case SDL_MOUSEMOTION:
           float speed = 0.5f;
@@ -123,7 +120,6 @@ int main(int argc, char **argv) {
             camera.rotateUp(float(e.motion.yrel) * speed);
           }
           break;
-
       }
     }
 
@@ -142,19 +138,9 @@ int main(int argc, char **argv) {
       camera.moveLeft(-speed);
     }
 
-
-    /*********************************
-     * HERE SHOULD COME THE RENDERING CODE
-     *********************************/
-
-    // MATRICES de transformations
-    glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f), WINDOWS_WIDTH / (float) WINDOWS_HEIGHT, NEAR_VISION, FAR_VISION);
-
-=======
-    }
-
->>>>>>> master
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+  
 
     // Update the game
     manager.update(e);
@@ -169,10 +155,6 @@ int main(int argc, char **argv) {
       SDL_Delay(1000 / config->fps() - elapsedTime);
     }
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 
   delete config;
   return EXIT_SUCCESS;

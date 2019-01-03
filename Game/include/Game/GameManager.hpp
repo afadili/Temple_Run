@@ -16,6 +16,7 @@
 #include <glimac/glm.hpp>
 #include <Mesh/Mesh.hpp>
 #include <Mesh/Cube.hpp>
+#include <Game/Menu.hpp>
 #include <Error/Error.hpp>
 
 #include "AssetsManager.hpp"
