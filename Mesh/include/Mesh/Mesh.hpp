@@ -27,6 +27,7 @@
 
 class Mesh {
 protected:
+  std::string m_name; /*!< Named of the mesh */
   std::vector<ShapeVertex> m_vertices; /*!< Vector with the vertices */
   std::vector<int> m_indexVer; /*!< Vector with the index of the vertices */
   ShaderManager *m_shader; /*!< Shader of the Mesh */
@@ -180,6 +181,24 @@ public:
   inline
   bool haveIBO() const {
     return m_indexVer.size() > 0 ? true : false;
+  }
+
+  /**
+   * \brief Getter of name
+   * \return m_name
+   */
+  inline
+  const std::string &name() const {
+    return m_name;
+  }
+
+  /**
+   * \brief Setter of name
+   * \return m_name
+   */
+  inline
+  std::string &name() {
+    return m_name;
   }
 
   /**

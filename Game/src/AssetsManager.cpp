@@ -135,6 +135,7 @@ void AssetsManager::loadMesh(const Json::Value &jsonMesh) {
 
     // Initialisation
     obj->fillBuffers();
+    obj->name() = jsonMesh["name"].asString();
     m_meshs[jsonMesh["name"].asString()] = obj;
 
     // Object code
