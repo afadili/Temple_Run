@@ -54,7 +54,7 @@ void AssetsManager::loadShader(const Json::Value &jsonShader) {
     shader->addUniform("uMVMatrix");
     shader->addUniform("uNormalMatrix");
     shader->addUniform("uTexture");
-    m_shaders.insert(std::make_pair(jsonShader["name"].asString(), shader));
+    m_shaders[jsonShader["name"].asString()] = shader;
   } catch (const std::exception& err) {
     // if error in ShaderManager, we create and show a specific warning
     std::string message = err.what();
@@ -81,7 +81,7 @@ void AssetsManager::loadTextures(const Json::Value &jsonTextures) {
 void AssetsManager::loadTexture(const Json::Value &jsonTexture) {
   try {
     Texture *texture = new Texture(jsonTexture["src"].asString());
-    m_textures.insert(std::make_pair(jsonTexture["name"].asString(), texture));
+    m_textures[jsonTexture["name"].asString()] = texture;
   } catch (const std::exception& err) {
     std::cout << err.what() << std::endl;
   }
@@ -135,19 +135,19 @@ void AssetsManager::loadMesh(const Json::Value &jsonMesh) {
 
     // Initialisation
     obj->fillBuffers();
-    m_meshs.insert(std::make_pair(jsonMesh["name"].asString(), obj));
+    m_meshs[jsonMesh["name"].asString()] = obj;
 
     // Object code
     if (jsonMesh["code"]) {
       std::vector<int> code(3);
       for (int i = 0; i < 3; i++)
         code[i] = jsonMesh["code"][i].asInt();
-      m_objectsCode.insert(std::make_pair(code, jsonMesh["name"].asString()));
+      m_objectsCode[code] = jsonMesh["name"].asString();
     }
 
     //Object type
     if (jsonMesh["type"])
-      m_objectsType.insert(std::make_pair(jsonMesh["name"].asString(), jsonMesh["type"].asString()));
+      m_objectsType[jsonMesh["name"].asString()] = jsonMesh["type"].asString();
   } catch (const std::exception& err) {
     std::cout << err.what() << std::endl;
   }
