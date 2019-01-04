@@ -52,17 +52,36 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
 
         // Create the object
         Object *obj;
+
+        // OBSTACLE
         if (meshType == "Obstacle" || meshType == "obstacle") {
-          obj = new Obstacle(mesh, glm::vec3(i, -floor, -j));
-        } else if (meshType == "Stone" || meshType == "stone") {
-          obj = new Stone(mesh, glm::vec3(i, -floor, -j));
-        } else if (meshType == "FinishingLine" || meshType == "finishingline") {
-          obj = new FinishingLine(mesh, glm::vec3(i, -floor, -j));
-        } else if (meshType == "Character" || meshType == "character") {
-          m_character = new Character(mesh, glm::vec3(i, -floor - 0.25, -j));
+          obj = new Obstacle(mesh, glm::vec3(i, floor, -j));
+        }// STONE
+        else if (meshType == "Stone" || meshType == "stone") {
+          obj = new Stone(mesh, glm::vec3(i, floor, -j));
+        }// FINISHING LINE
+        else if (meshType == "FinishingLine" || meshType == "finishingline") {
+          obj = new FinishingLine(mesh, glm::vec3(i, floor, -j));
+        }// CHARACTER
+        else if (meshType == "Character" || meshType == "character") {
+          m_character = new Character(mesh, glm::vec3(i, floor - 0.25, -j));
+
+          // CHARACTER CONFIGURATION
+          if (m_config["speed"])
+            m_character->speed() = m_config["speed"];
+          if (m_config["jumpSpeed"])
+            m_character->jumpSpeed() = m_config["jumpSpeed"];
+          if (m_config["maxJump"])
+            m_character->maxJump() = m_config["maxJump"];
+
+          // CHARACTER DEFAULT ORIENTATION
+          if (m_config["startDirection"])
+            m_character->direction(glm::vec3(m_config["startDirectionX"], m_config["startDirectionY"], m_config["startDirectionZ"]));
+
           obj = m_character;
-        } else {
-          obj = new Object(mesh, glm::vec3(i, -floor, -j));
+        }// DEFAULT
+        else {
+          obj = new Object(mesh, glm::vec3(i, floor, -j));
         }
 
         // Add the object to its list
@@ -81,7 +100,10 @@ void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const
 }
 
 int Level::update(const SDL_Event &event, const glm::mat4 &ProjMatrix) {
-  glm::mat4 ViewMatrix = glm::translate(m_character->MWMatrix(), glm::vec3(2, 0, 0));
+  glm::mat4 ViewMatrix = glm::inverse(m_character->MWMatrix());
+
+  ViewMatrix = glm::translate(ViewMatrix, glm::vec3(m_config["viewDistanceX"], -m_config["viewDistanceY"], 0));
+
   draw(ProjMatrix, ViewMatrix);
 
   return 0;

@@ -46,6 +46,7 @@ private:
 public:
   /**
    * \brief constructor of the menu by loading the textures
+   * \param assets : the assets manager
    */
   Menu(const AssetsManager *assets);
 

@@ -64,6 +64,66 @@ public:
   };
 
   /**
+   * \brief getter for speed
+   * \return m_speed
+   */
+  inline
+  const float &speed() const {
+    return m_speed;
+  }
+
+  /**
+   * \brief setter for speed
+   * \return m_speed
+   */
+  inline
+  float &speed() {
+    return m_speed;
+  }
+
+  /**
+   * \brief getter for jump speed
+   * \return m_jumpSpeed
+   */
+  inline
+  const float &jumpSpeed() const {
+    return m_jumpSpeed;
+  }
+
+  /**
+   * \brief setter for jump speed
+   * \return m_jumpSpeed
+   */
+  inline
+  float &jumpSpeed() {
+    return m_jumpSpeed;
+  }
+
+  /**
+   * \brief getter for max jump
+   * \return m_maxJump
+   */
+  inline
+  const float &maxJump() const {
+    return m_speed;
+  }
+
+  /**
+   * \brief setter for max jump
+   * \return m_maxJump
+   */
+  inline
+  float &maxJump() {
+    return m_maxJump;
+  }
+
+  /**
+   * \brief change the direction of the character and his orientation
+   */
+  void direction(const glm::vec3 &direction);
+
+
+  /**
    * \brief Update object data. Function called at each drawing on ObjectList.
    */
   void update();

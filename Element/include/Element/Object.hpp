@@ -119,6 +119,15 @@ public:
   }
 
   /**
+   * \brief Getter of position
+   * \return m_position
+   */
+  inline
+  glm::vec3 position() const {
+    return m_position;
+  }
+
+  /**
    * \brief Get the elapsed time since the last update
    * \return the elapsed time in secondes
    */

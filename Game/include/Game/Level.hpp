@@ -28,6 +28,7 @@
  */
 class Level {
 protected:
+  std::map<std::string, float> m_config; /*!< level configuration variable */
   glimac::FilePath m_path; /*!< The level folder */
   const AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
   Character *m_character;
@@ -67,10 +68,26 @@ public:
   /**
    * \brief pdate and draw the level, with character controller. Function called at each frame
    * \param event : the sdl event
-   * \param event : the projection matrice of the game
+   * \param ProjMatrix : the projection matrice of the game
    * \return 1 if character win, 2 if loose and 0 otherwise
    */
   int update(const SDL_Event &event, const glm::mat4 &ProjMatrix);
+
+  /**
+   * \brief getter for level configuration variable
+   * \return level configuration variable
+   */
+  const std::map<std::string, float> &config() const {
+    return m_config;
+  }
+
+  /**
+   * \brief setter for level configuration variable
+   * \return level configuration variable
+   */
+  std::map<std::string, float> &config() {
+    return m_config;
+  }
 
   /**
    * \brief get an static object based on its position in the level 

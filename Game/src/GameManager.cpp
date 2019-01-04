@@ -45,7 +45,7 @@ void GameManager::update(const SDL_Event &event) {
 
     menu.drawMenu();
 
-    loadLevel("level2");
+    loadLevel("level1");
 
   }
 

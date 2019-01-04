@@ -31,7 +31,6 @@ protected:
   int m_defaultWidth = 800; /*!< The default width of the screen in pixel, default 800px */
   float m_nearVision = 0.1f; /*!< The minimum vision to display, default 0.1 */
   float m_farVision = 100.f; /*!< The maximal vision to display, default 16/9 */
-  float m_viewDistance = 2; /*!< The distance between the camera and the character */
 
 public:
   /**
@@ -59,6 +58,13 @@ public:
    * \return A pointer to the level
    */
   Level* level(const glimac::FilePath &path, AssetsManager *assets = nullptr) const;
+
+  /**
+   * \brief Get the configuration of a level
+   * \param configJSON : the json value of the configuration
+   * \return A pointer to the level
+   */
+  std::map<std::string, float> levelConfig(const Json::Value &configJSON) const;
 
   /**
    * \brief Getter of m_configFile
@@ -121,15 +127,6 @@ public:
   inline
   float farVision() const {
     return m_farVision;
-  }
-
-  /**
-   * \brief Getter of m_viewDistance
-   * \return The vew distance
-   */
-  inline
-  float viewDistance() const {
-    return m_viewDistance;
   }
 
   /**

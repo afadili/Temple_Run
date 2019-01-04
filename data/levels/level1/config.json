@@ -1,5 +1,12 @@
 {
   "floor": 3,
   "width": 50,
-  "height": 50
+  "height": 50,
+  "viewDistanceX": 2,
+  "viewDistanceY": 1,
+  "viewTheta": 0,
+  "speed": 3,
+  "jumpSpeed": 0.75,
+  "maxJump": 1.3,
+  "startDirection": [0, 0, -1]
 }
