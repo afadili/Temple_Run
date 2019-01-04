@@ -1,10 +1,6 @@
 #include <Element/Character.hpp>
 
 void Character::update() {
-  lastUpdate();
-
-  // automatic translation by speed
-  // translate(m_direction * m_speed * lastUpdate());
 
   // jump
   if (m_isJumping) {
@@ -30,14 +26,17 @@ void Character::update() {
 }
 
 void Character::direction(const glm::vec3 &direction) {
-  /*m_direction = direction;
-  float rotation = (direction.x - 1) * M_PI / 2. + direction.z * M_PI;
-  std::cout << rotation << std::endl;
-  rotate(glm::vec3(0, rotation, 0));*/
+  m_direction = direction;
+  float rotation = (direction.x - 1) * M_PI / 2. + (direction.z - 1) * M_PI / 2.;
+  rotate(glm::vec3(0, rotation, 0));
 }
 
 void Character::jump() {
   if (!m_isJumping)
     std::abs(m_jumpSpeed);
   m_isJumping = true;
+}
+
+void Character::run() {
+  translate(m_direction * m_speed);
 }

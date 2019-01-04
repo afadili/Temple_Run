@@ -99,7 +99,15 @@ public:
    * \brief Get the world coordinates matrix of the object 
    * \return world coordinates matrix of the object 
    */
+  virtual 
   glm::mat4 MWMatrix() const;
+
+
+  /**
+   * \brief Get the world position matrix of the object 
+   * \return world position matrix of the object 
+   */
+  glm::mat4 positionMatrix() const;
 
   /**
    * \brief Draw the object with is world coordinates, 
@@ -119,12 +127,78 @@ public:
   }
 
   /**
+   * \brief Getter of type
+   * \return the type
+   */
+  inline
+  virtual std::string type() const {
+    return "Object";
+  }
+
+  /**
+   * \brief Getter of grid position
+   * \return position of the object on a grid (integer values)
+   */
+  const std::vector<int> gridPosition() const;
+
+  /**
+   * \brief Getter of grid position with a displacement according to the rotation of the object
+   * \return position of the object on a grid (integer values) with the displacement
+   */
+  const std::vector<int> gridPosition(const int x, const int y, const int z) const;
+
+  /**
    * \brief Getter of position
    * \return m_position
    */
   inline
-  glm::vec3 position() const {
+  const glm::vec3 &position() const {
     return m_position;
+  }
+
+  /**
+   * \brief Setter of position
+   * \return m_position
+   */
+  inline
+  glm::vec3 &position() {
+    return m_position;
+  }
+
+  /**
+   * \brief Getter of size
+   * \return m_size
+   */
+  inline
+  const glm::vec3 &size() const {
+    return m_size;
+  }
+
+  /**
+   * \brief Setter of size
+   * \return m_size
+   */
+  inline
+  glm::vec3 &size() {
+    return m_size;
+  }
+
+  /**
+   * \brief Getter of rotation
+   * \return m_rotation
+   */
+  inline
+  const glm::vec3 &rotation() const {
+    return m_rotation;
+  }
+
+  /**
+   * \brief Setter of rotation
+   * \return m_rotation
+   */
+  inline
+  glm::vec3 &rotation() {
+    return m_rotation;
   }
 
   /**

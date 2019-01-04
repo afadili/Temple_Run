@@ -56,6 +56,15 @@ public:
    */
   FinishingLine(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size, const glm::vec3 &rotation) : Stone(mesh, position, size, rotation) {
   };
+
+  /**
+   * \brief Getter of type
+   * \return the type
+   */
+  inline
+  std::string type() const override {
+    return "FinishingLine";
+  }
 };
 
 #endif

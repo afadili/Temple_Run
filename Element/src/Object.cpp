@@ -24,6 +24,10 @@ glm::mat4 Object::MWMatrix() const {
   return MWMatrix;
 }
 
+glm::mat4 Object::positionMatrix() const {
+  return glm::translate(glm::mat4(), m_position);
+}
+
 void Object::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix, const bool isBind) const {
   if (!isBind)
     m_mesh->bind();
@@ -36,4 +40,33 @@ float Object::lastUpdate() const {
   if (m_lastUpdate != 0)
     return float(std::clock() - m_lastUpdate) / CLOCKS_PER_SEC;
   return 0;
+}
+
+const std::vector<int> Object::gridPosition() const {
+  std::vector<int> vec;
+  vec.push_back(m_position.x);
+  vec.push_back(m_position.y);
+  vec.push_back(-m_position.z);
+  return vec;
+}
+
+const std::vector<int> Object::gridPosition(const int x, const int y, const int z) const {
+  std::vector<int> vec = gridPosition();
+  float orientation = std::fmod(m_rotation.y, 2. * M_PI);
+  if (orientation < M_PI / 2.) {
+    vec[0] += x;
+    vec[1] += z;
+  } else if (orientation < M_PI) {
+    vec[0] += -z;
+    vec[1] += x;
+  } else if (orientation < -M_PI / 2.) {
+    vec[0] += -x;
+    vec[1] += -z;
+  } else {
+    vec[0] += z;
+    vec[1] += x;
+  }
+
+  vec[1] += y;
+  return vec;
 }

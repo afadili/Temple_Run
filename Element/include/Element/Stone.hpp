@@ -58,10 +58,25 @@ public:
   };
 
   /**
+   * \brief Get the world coordinates matrix of the object 
+   * \return world coordinates matrix of the object 
+   */
+  virtual
+  glm::mat4 MWMatrix() const override;
+
+  /**
    * \brief Update object data. Function called at each drawing on ObjectList.
    */
   void update();
 
+  /**
+   * \brief Getter of type
+   * \return the type
+   */
+  inline
+  virtual std::string type() const override {
+    return "Stone";
+  }
 
 };
 

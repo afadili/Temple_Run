@@ -151,8 +151,21 @@ public:
   /**
    * \brief Launch a jump animation
    */
-
   void jump();
+
+  /**
+   * \brief Run forest run, automatic translation by speed
+   */
+  void run();
+
+  /**
+   * \brief Getter of type
+   * \return the type
+   */
+  inline
+  std::string type() const override {
+    return "Character";
+  }
 
 };
 
