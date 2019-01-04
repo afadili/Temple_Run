@@ -8,5 +8,5 @@
   "speed": 3,
   "jumpSpeed": 0.75,
   "maxJump": 1.3,
-  "startDirection": [0, 0, -1]
+  "startDirection": [0, 0, 1]
 }
