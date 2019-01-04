@@ -3,6 +3,7 @@
 const double PI = 3.141592653589;
 const double HALF_PI = PI / 2;
 const float Camera::VIEW_WIDTH = 30.f;
+static const bool DEBUG = true;
 
 Camera::Camera() : m_fDistance(-15.0f), m_fAngleX(0.0f), m_fAngleY(0.0f), m_center(0.f, 0.f, 0.f), m_currentCamera(1) {
   computeDirectionVectors();
