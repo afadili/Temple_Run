@@ -15,12 +15,11 @@
 #include <Game/AssetsManager.hpp>
 #include <Render/Texture.hpp>
 
-
-
-struct Vertex2DColor
-{
+struct Vertex2DColor {
   Vertex2DColor();
-  Vertex2DColor(const glm::vec2 &vecPos, const glm::vec3 &vecCol, const glm::vec2 &vecTex) : position(vecPos), color(vecCol), texCoords(vecTex){}; // constructeur
+
+  Vertex2DColor(const glm::vec2 &vecPos, const glm::vec3 &vecCol, const glm::vec2 &vecTex) : position(vecPos), color(vecCol), texCoords(vecTex) {
+  }; // constructeur
 
   glm::vec2 position;
   glm::vec2 texCoords;
@@ -33,19 +32,22 @@ struct Vertex2DColor
  */
 
 class Menu {
-  private:
-  std::vector<Vertex2DColor> sommets;
-  std::map<std::string,Texture*> texMenu;
-  const AssetsManager *m_assetsMenu = nullptr;
-  unsigned int mode;
-  unsigned int stateMenu;
-  unsigned int stateLevel;
+private:
+  std::vector<Vertex2DColor> m_sommets;
+  std::map<std::string, Texture*> m_texMenu;
+  const AssetsManager *m_assets;
+  unsigned int m_mode;
+  unsigned int m_stateMenu;
+  unsigned int m_stateLevel;
+
+private:
+  Menu() = default;
 
 public:
   /**
    * \brief constructor of the menu by loading the textures
    */
-  Menu();
+  Menu(const AssetsManager *assets);
 
   /**
    * \brief destructor of the menu by releasing the memory space of the textures

@@ -41,9 +41,9 @@ void GameManager::update(const SDL_Event &event) {
   } else {
 
     // MENUUUUUUUUUUUUUUUU
-  Menu menu;
+    Menu menu(m_assets);
 
-  menu.drawMenu();
+    menu.drawMenu();
 
     loadLevel("level2");
 
