@@ -37,6 +37,7 @@ protected:
   int m_height; /*!< height of the level */
   std::map<std::string, ObjectList> m_objects; /*!< map of all objects in the map, for the rendering */
   std::vector<Eigen::SparseMatrix<Object*>> m_grid; /*!< vector of sparse Matrix with all static object in the level */
+  unsigned int m_score = 0; /*!< the score of the actual game */
 
 private:
   Level() = default;
@@ -66,12 +67,24 @@ public:
   void draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix = glm::mat4()) const;
 
   /**
-   * \brief pdate and draw the level, with character controller. Function called at each frame
+   * \brief update and draw the level, with character controller. Function called at each frame
    * \param event : the sdl event
    * \param ProjMatrix : the projection matrice of the game
    * \return 1 if character win, 2 if loose and 0 otherwise
    */
   int update(const SDL_Event &event, const glm::mat4 &ProjMatrix);
+
+  /**
+   * \brief add a stone to the score
+   * \param stone : the stone 
+   */
+  void addStone(Object *stone);
+
+  /**
+   * \brief remove an object
+   * \param obj : the object to remove 
+   */
+  void removeObject(Object *obj);
 
   /**
    * \brief getter for level configuration variable
@@ -90,16 +103,48 @@ public:
   }
 
   /**
+   * \brief Remove an object from the grid
+   * \param x : the x position of the grid
+   * \param y : the y position of the grid
+   * \param z : the z position of the grid
+   */
+  inline
+  void removeGridObject(const int x, const int y, const int z) {
+    m_grid[y].coeffRef(x, z) = nullptr;
+  }
+
+  /**
+   * \brief Remove an object from the grid
+   * \param x : the x position of the grid
+   * \param y : the y position of the grid
+   * \param z : the z position of the grid
+   */
+  inline
+  void removeGridObject(const std::vector<int> &vec) {
+    removeGridObject(vec[0], vec[1], vec[2]);
+  }
+
+  /**
    * \brief get an static object based on its position in the level 
    * \param x : the x position of the grid
    * \param y : the y position of the grid
    * \param z : the z position of the grid
    * \return pointer on the object or null if empty position
    */
-  inline
   Object* grid(const int x, const int y, const int z) const {
+    if (x < 0, y < 0, z < 0) return nullptr;
     return m_grid[y].coeff(x, z);
   }
+
+  /** \brief get an static object based on its position in the level
+   * \param vec : the vector of position (size 3)
+   * \return pointer on the object or null if empty position
+   */
+  inline
+  Object* grid(const std::vector<int> &vec) const {
+    return grid(vec[0], vec[1], vec[2]);
+  }
+
 };
 
 #endif
