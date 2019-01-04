@@ -1,11 +1,8 @@
-#include <Render/Camera.hpp>
+#include <Game/Camera.hpp>
 
-Camera::Camera() {
-  m_position = glm::vec3(0.0f, 0.0f, 0.0f);
-  m_center = -10.0f;
-  m_rotateX = 0.0f;
-  m_rotateY = 0.0f;
-}
+Camera::Camera() : m_fDistance(-15.0f), m_fAngleX(0.0f), m_fAngleY(0.0f), m_center(0.f, 0.f, 0.f) {
+  computeDirectionVectors();
+};
 
 void Camera::moveUp() {
 }
