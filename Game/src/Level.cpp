@@ -51,67 +51,73 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
 
       std::string meshName = m_assets->meshName(r, g, b);
 
-      if (!meshName.empty()) {
-        Mesh *mesh = m_assets->mesh(meshName);
-        std::string meshType = m_assets->meshType(meshName);
+      addObject(meshName, j, floor, i);
 
-        // If no list of objects has been initialized to this name
-        if (m_objects.find(meshName) == m_objects.end())
-          m_objects.insert(std::make_pair(meshName, mesh));
-
-        // Create the object
-        Object * obj;
-
-        // OBSTACLE
-        if (meshType == "Obstacle" || meshType == "obstacle") {
-          obj = new Obstacle(mesh, glm::vec3(j, floor, i));
-        }// STONE
-        else if (meshType == "Stone" || meshType == "stone") {
-          obj = new Stone(mesh, glm::vec3(j, floor, i));
-        }// TURN LEFT
-        else if (meshType == "LeftTurn" || meshType == "lefttrun") {
-          obj = new LeftTurn(mesh, glm::vec3(j, floor, i));
-        }// TURN RIGHT
-        else if (meshType == "RightTurn" || meshType == "rightturn") {
-          obj = new RightTurn(mesh, glm::vec3(j, floor, i));
-        }// FINISHING LINE
-        else if (meshType == "FinishingLine" || meshType == "finishingline") {
-          obj = new FinishingLine(mesh, glm::vec3(j, floor, i));
-        }// CHARACTER
-        else if (meshType == "Character" || meshType == "character") {
-          m_character = new Character(mesh, glm::vec3(j, floor + 0.25, i));
-
-          // CHARACTER CONFIGURATION
-          if (m_config["speed"])
-            m_character->speed() = m_config["speed"];
-          if (m_config["jumpSpeed"])
-            m_character->jumpSpeed() = m_config["jumpSpeed"];
-          if (m_config["maxJump"])
-            m_character->maxJump() = m_config["maxJump"];
-
-          // CHARACTER DEFAULT ORIENTATION
-          if (m_config["startDirection"])
-            m_character->direction(glm::vec3(m_config["startDirectionX"], m_config["startDirectionY"], m_config["startDirectionZ"]));
-
-          obj = m_character;
-        }// DEFAULT
-        else {
-
-          obj = new Object(mesh, glm::vec3(j, floor, -i));
-        }
-
-        // Add the object to its list
-        m_objects.at(meshName).add(obj);
-
-        // Add the object to the grid
-        m_grid[floor].coeffRef(j, i) = obj;
-      }
     }
   }
 }
 
-void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const {
+void Level::addObject(const std::string &meshName, int x, int y, int z) {
+  if (meshName.empty())
+    return;
+  Mesh *mesh = m_assets->mesh(meshName);
+  if (!mesh)
+    return;
 
+  std::string meshType = m_assets->meshType(meshName);
+
+  // If no list of objects has been initialized to this name
+  if (m_objects.find(meshName) == m_objects.end())
+    m_objects.insert(std::make_pair(meshName, mesh));
+
+  // Create the object
+  Object * obj;
+
+  // OBSTACLE
+  if (meshType == "Obstacle" || meshType == "obstacle") {
+    obj = new Obstacle(mesh, glm::vec3(x, y, z));
+  }// STONE
+  else if (meshType == "Stone" || meshType == "stone") {
+    obj = new Stone(mesh, glm::vec3(x, y, z));
+  }// TURN LEFT
+  else if (meshType == "LeftTurn" || meshType == "lefttrun") {
+    obj = new LeftTurn(mesh, glm::vec3(x, y, z));
+  }// TURN RIGHT
+  else if (meshType == "RightTurn" || meshType == "rightturn") {
+    obj = new RightTurn(mesh, glm::vec3(x, y, z));
+  }// FINISHING LINE
+  else if (meshType == "FinishingLine" || meshType == "finishingline") {
+    obj = new FinishingLine(mesh, glm::vec3(x, y, z));
+  }// CHARACTER 
+  else if (meshType == "Character" || meshType == "character") {
+    m_character = new Character(mesh, glm::vec3(x, y + 0.25, z));
+
+    // CHARACTER CONFIGURATION
+    if (m_config["speed"])
+      m_character->speed() = m_config["speed"];
+    if (m_config["jumpSpeed"])
+      m_character->jumpSpeed() = m_config["jumpSpeed"];
+    if (m_config["maxJump"])
+      m_character->maxJump() = m_config["maxJump"];
+
+    // CHARACTER DEFAULT ORIENTATION
+    if (m_config["startDirection"])
+      m_character->direction(glm::vec3(m_config["startDirectionX"], m_config["startDirectionY"], m_config["startDirectionZ"]));
+
+    obj = m_character;
+  } else {
+    // DEFAULT
+    obj = new Object(mesh, glm::vec3(x, y, z));
+  }
+
+  // Add the object to its list
+  m_objects.at(meshName).add(obj);
+
+  // Add the object to the grid
+  m_grid[y].coeffRef(x, z) = obj;
+}
+
+void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const {
   for (auto const& mapObj : m_objects)
     mapObj.second.draw(ProjMatrix, ViewMatrix);
 }

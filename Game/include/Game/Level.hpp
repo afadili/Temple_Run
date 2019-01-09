@@ -65,6 +65,15 @@ public:
   void loadFloor(const glimac::FilePath &file, const int floor);
 
   /**
+   * \brief added and object to the level. Do nothing if the meshName is incorrect.
+   * \param type : the name of the mesh
+   * \param x : the x position
+   * \param y : the y position
+   * \param z : the z position
+   */
+  void addObject(const std::string &meshName, int x, int y, int z);
+
+  /**
    * \brief draw all element of the level game
    * \param ProjMatrix : the projection matrix
    * \param ViewMatrix : view matrix of the camera, identity matrix by default
