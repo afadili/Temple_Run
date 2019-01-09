@@ -1,10 +1,10 @@
 /**
- * \file Obstacle.hpp
- * \brief Declaration of the class "Obstacle"
+ * \file LeftTurn.hpp
+ * \brief Declaration of the class "LeftTurn"
  */
 
-#ifndef __OBSTACLE__HPP
-#define __OBSTACLE__HPP
+#ifndef __LEFTTURN__HPP
+#define __LEFTTURN__HPP
 
 #include <GL/glew.h>
 #include <GL/gl.h>
@@ -13,14 +13,14 @@
 #include "Object.hpp"
 
 /**
- * \class Obstacle
- * \brief Mother class of all the different Obstacles
+ * \class LeftTurn
+ * \brief Class of the blocs on the corner
  */
-class Obstacle : public Object {
+class LeftTurn : public Object {
 protected:
 
 private:
-  Obstacle();
+  LeftTurn();
 
 public:
 
@@ -28,14 +28,14 @@ public:
    * \brief Constructor with mesh
    * \param mesh : pointer on the mesh corresponding to the object
    */
-  Obstacle(Mesh *mesh) : Object(mesh) {
+  LeftTurn(Mesh *mesh) : Object(mesh) {
   };
 
   /**
    * \brief Constructor with mesh and parameters
    * \param mesh : pointer on the mesh corresponding to the object
    */
-  Obstacle(Mesh *mesh, const glm::vec3 &position) : Object(mesh, position) {
+  LeftTurn(Mesh *mesh, const glm::vec3 &position) : Object(mesh, position) {
   };
 
   /**
@@ -44,7 +44,7 @@ public:
    * \param position : position of the object in the world coordinates
    * \param size : size of the object in the world coordinates
    */
-  Obstacle(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size) : Object(mesh, position, size) {
+  LeftTurn(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size) : Object(mesh, position, size) {
   };
 
   /**
@@ -54,7 +54,7 @@ public:
    * \param size : size of the object in the world coordinates
    * \param rotation : rotation of the object in the world coordinates
    */
-  Obstacle(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size, const glm::vec3 &rotation) : Object(mesh, position, size, rotation) {
+  LeftTurn(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size, const glm::vec3 &rotation) : Object(mesh, position, size, rotation) {
   };
 
   /**
@@ -63,7 +63,7 @@ public:
    */
   inline
   std::string type() const override {
-    return "Obstacle";
+    return "LeftTurn";
   }
 
 
