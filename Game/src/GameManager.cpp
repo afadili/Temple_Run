@@ -16,9 +16,20 @@ void GameManager::loadLevel(const std::string &name) {
   m_currentLevel->loadMap();
 }
 
+void GameManager::unloadLevel() {
+  if (!m_currentLevel)
+    return;
+  m_currentLevel->clear();
+  m_currentLevel->resetScore();
+  m_currentLevel = nullptr;
+}
+
 GameManager::~GameManager() {
-  if (m_currentLevel)
-    delete m_currentLevel;
+  // delete all levels
+  for (std::pair<std::string, Level*> lvl : m_levels)
+    delete lvl.second;
+
+  // delete all assets
   if (m_assets)
     delete m_assets;
 }
@@ -37,11 +48,13 @@ void GameManager::update() {
     switch (m_currentLevel->update(ProjMatrix)) {
       case 1:
         // WIN
-        std::cout << "YOU WIN !" << std::endl;
+        std::cout << "YOU WIN WITH " << m_currentLevel->score() << " PTS !" << std::endl;
+        unloadLevel();
         break;
       case 2:
         // LOSE
-        std::cout << "YOU LOSE !" << std::endl;
+        std::cout << "YOU LOSE WITH " << m_currentLevel->score() << " PTS !" << std::endl;
+        unloadLevel();
         break;
       default:
         break;

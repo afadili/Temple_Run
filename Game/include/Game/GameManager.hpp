@@ -69,6 +69,11 @@ public:
   void loadLevel(const std::string &name);
 
   /**
+   * \brief Unload the current level
+   */
+  void unloadLevel();
+
+  /**
    * \brief Getter of the AssetsManager
    * \return m_mesh
    */
