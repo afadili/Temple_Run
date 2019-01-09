@@ -69,6 +69,8 @@ Level* Configuration::level(const glimac::FilePath &path, AssetsManager *assets)
 
   Level *lvl = new Level(assets, path, root["floor"].asInt(), root["width"].asInt(), root["height"].asInt());
   lvl->config() = levelConfig(root);
+  if (root["skybox"])
+    lvl->setSkybox(root["skybox"].asString());
   return lvl;
 }
 

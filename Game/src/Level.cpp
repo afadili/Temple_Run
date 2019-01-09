@@ -5,9 +5,11 @@ Level::Level(const AssetsManager *assets, const glimac::FilePath &path, int nbFl
     m_grid.push_back(Eigen::SparseMatrix<Object*>(width, height));
 }
 
-
-Level::~Level(){
+Level::~Level() {
   clear();
+
+  if (m_skybox)
+    delete m_skybox;
 }
 
 void Level::loadMap() {
@@ -123,9 +125,13 @@ void Level::addObject(const std::string &meshName, int x, int y, int z) {
 }
 
 void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const {
+  // OBJECTS
   for (auto const& mapObj : m_objects)
     mapObj.second.draw(ProjMatrix, ViewMatrix);
 
+  // SKYBOX
+  if (m_skybox)
+    m_skybox->draw(ProjMatrix, ViewMatrix, false);
 }
 
 void Level::eventManager(const SDL_Event &event) {
@@ -186,6 +192,17 @@ void Level::removeObject(Object * obj) {
   std::vector<int> vec = obj->gridPosition(); // get obj position
   removeGridObject(vec); // remove from the grid
   m_objects.at(obj->mesh()->name()).remove(obj);
+}
+
+void Level::setSkybox(const std::string &meshName) {
+  Mesh *mesh = m_assets->mesh(meshName);
+  if (!mesh)
+    return;
+
+  glm::vec3 pos(m_width / 2., 0, m_height / 2.);
+  float size = m_width > m_height ? m_width : m_height; // the size is the maximum between the length and width of the level
+  glm::vec3 scale(size + 10);
+  m_skybox = new Skybox(mesh, pos, scale);
 }
 
 void Level::clear() {

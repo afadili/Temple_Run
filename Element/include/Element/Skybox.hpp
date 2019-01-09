@@ -1,10 +1,10 @@
 /**
- * \file RightTurn.hpp
- * \brief Declaration of the class "RightTurn"
+ * \file Skybox.hpp
+ * \brief Declaration of the class "Skybox"
  */
 
-#ifndef __RIGHTTURN__HPP
-#define __RIGHTTURN__HPP
+#ifndef __SKYBOX__HPP
+#define __SKYBOX__HPP
 
 #include <GL/glew.h>
 #include <GL/gl.h>
@@ -13,14 +13,14 @@
 #include "Object.hpp"
 
 /**
- * \class RightTurn
+ * \class Skybox
  * \brief Class of the blocs on the corner
  */
-class RightTurn : public Object {
+class Skybox : public Object {
 protected:
 
 private:
-  RightTurn();
+  Skybox();
 
 public:
 
@@ -28,14 +28,14 @@ public:
    * \brief Constructor with mesh
    * \param mesh : pointer on the mesh corresponding to the object
    */
-  RightTurn(Mesh *mesh) : Object(mesh) {
+  Skybox(Mesh *mesh) : Object(mesh) {
   };
 
   /**
    * \brief Constructor with mesh and parameters
    * \param mesh : pointer on the mesh corresponding to the object
    */
-  RightTurn(Mesh *mesh, const glm::vec3 &position) : Object(mesh, position) {
+  Skybox(Mesh *mesh, const glm::vec3 &position) : Object(mesh, position) {
   };
 
   /**
@@ -44,7 +44,7 @@ public:
    * \param position : position of the object in the world coordinates
    * \param size : size of the object in the world coordinates
    */
-  RightTurn(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size) : Object(mesh, position, size) {
+  Skybox(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size) : Object(mesh, position, size) {
   };
 
   /**
@@ -54,7 +54,7 @@ public:
    * \param size : size of the object in the world coordinates
    * \param rotation : rotation of the object in the world coordinates
    */
-  RightTurn(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size, const glm::vec3 &rotation) : Object(mesh, position, size, rotation) {
+  Skybox(Mesh *mesh, const glm::vec3 &position, const glm::vec3 &size, const glm::vec3 &rotation) : Object(mesh, position, size, rotation) {
   };
 
   /**
@@ -63,7 +63,7 @@ public:
    */
   inline
   std::string type() const override {
-    return "RightTurn";
+    return "Skybox";
   }
 
 

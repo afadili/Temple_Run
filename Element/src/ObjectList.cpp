@@ -25,8 +25,8 @@ void ObjectList::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) 
 
   // Mesh instances
   for (Object* obj : m_objects) {
-      obj->update();
-      m_mesh->draw(ProjMatrix, obj->MWMatrix(), ViewMatrix);
+    obj->update();
+    m_mesh->draw(ProjMatrix, obj->MWMatrix(), ViewMatrix);
   }
 
   // debind the mesh 

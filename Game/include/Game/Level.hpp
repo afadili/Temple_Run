@@ -21,6 +21,7 @@
 #include <Element/FinishingLine.hpp>
 #include <Element/LeftTurn.hpp>
 #include <Element/RightTurn.hpp>
+#include <Element/Skybox.hpp>
 
 #include <Game/Camera.hpp>
 
@@ -43,6 +44,7 @@ protected:
   std::vector<Eigen::SparseMatrix<Object*>> m_grid; /*!< vector of sparse Matrix with all static object in the level */
   unsigned int m_score = 0; /*!< the score of the actual game */
   Camera m_cam; /*!< the camera of the level */
+  Skybox *m_skybox = nullptr; /*!< the skybox of the level */
 
 private:
   Level() = default;
@@ -109,6 +111,12 @@ public:
    * \param obj : the object to remove 
    */
   void removeObject(Object *obj);
+
+  /**
+   * \brief set the skybox of the level
+   * \param meshName : the mesh name of the skybox
+   */
+  void setSkybox(const std::string &meshName);
 
   /**
    * \brief Clean up the scene (remove all objects)

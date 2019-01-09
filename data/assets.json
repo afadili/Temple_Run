@@ -1,281 +1,293 @@
 {
-  "shaders": [
-    {
-      "//": "IMPORTANT: Always have this default shaders for textures and shaders not found",
-      "name": "default", 
-      "vs": "data/shaders/3D.vs.glsl",
-      "fs": "data/shaders/default.fs.glsl"
-    },
-    {
-      "name": "normals",
-      "vs": "data/shaders/3D.vs.glsl",
-      "fs": "data/shaders/normals.fs.glsl"
-    },
-    {
-      "name": "tex3D",
-      "vs": "data/shaders/tex3D.vs.glsl",
-      "fs": "data/shaders/tex3D.fs.glsl"
-    }
-  ],
-  "textures": [
-    {
-      "name": "cube",
-      "src": "data/assets/textures/cube.jpg"
-    },
-    {
-      "name": "stone",
-      "src": "data/assets/textures/stone_wall.jpg"
-    },
-    {
-      "name": "pavement",
-      "src": "data/assets/textures/brick_pavement.jpg"
-    },
-    {
-      "name": "ground_1",
-      "src": "data/assets/textures/ground_1.jpg"
-    },
-    {
-      "name": "grass",
-      "src": "data/assets/textures/ground_2.jpg"
-    },
-    {
-      "name": "wall_1_1",
-      "src": "data/assets/textures/wall_1_1.jpg"
-    },
-    {
-      "name": "wall_1_2",
-      "src": "data/assets/textures/wall_1_2.jpg"
-    },
-    {
-      "name": "wall_2_1",
-      "src": "data/assets/textures/wall_2_1.jpg"
-    },
-    {
-      "name": "wall_1",
-      "src": "data/assets/textures/wall_2_2.jpg"
-    },
-    {
-      "name": "realitystone",
-      "src": "data/assets/textures/realitystone.jpg"
-    },
-    {
-      "name": "timestone",
-      "src": "data/assets/textures/timestone.jpg"
-    },
-    {
-      "name": "spacestone",
-      "src": "data/assets/textures/spacestone.jpg"
-    },
-    {
-      "name": "mindstone",
-      "src": "data/assets/textures/mindstone.jpg"
-    },
-    {
-      "name": "powerstone",
-      "src": "data/assets/textures/powerstone.jpg"
-    },
-    {
-      "name": "soulstone",
-      "src": "data/assets/textures/soulstone.jpg"
-    },
-    {
-      "name": "infinitygauntlet",
-      "src": "data/assets/textures/infinitygauntlet.jpg"
-    },
-    {
-      "name": "menutest",
-      "src": "data/assets/textures/menu.png"
-    },
-    {
-      "name": "run",
-      "src": "data/assets/textures/run.png"
-    },
-    {
-      "name": "replay",
-      "src": "data/assets/textures/replay.png"
-    },
-    {
-      "name": "quit",
-      "src": "data/assets/textures/quit.png"
-    },
-    {
-      "name": "levelMenu",
-      "src": "data/assets/textures/Levelmenu.png"
-    },
-    {
-      "name": "level1",
-      "src": "data/assets/textures/Level1menu.png"
-    },
-    {
-      "name": "level2",
-      "src": "data/assets/textures/Level2menu.png"
-    },
-    {
-      "name": "level3",
-      "src": "data/assets/textures/Level3menu.png"
-    }
-  ],
-  "meshs": [
-  {
-      "name": "wall",
-      "code": [143, 94, 10],
-      "mesh": "Cube",
-      "type": "Obstacle",
-      "size": [1, 1, 1],
-      "texture": "stone",
-      "shader": "tex3D"
-    },
-    {
-      "name": "perso",
-      "code": [39, 203, 205],
-      "mesh": "Cube",
-      "type": "Character",
-      "size": [0.5, 1.5, 0.5],
-      "texture": "stone",
-      "shader": "normals"
-    },
-    {
-      "name": "ground",
-      "code": [143, 136, 131],
-      "mesh": "Cube",
-      "type": "Obstacle",
-      "size": [1, 1, 1],
-      "texture": "stone",
-      "shader": "tex3D"
-    },
-    {
-      "name": "dirtground",
-      "code": [171, 129, 99],
-      "mesh": "Cube",
-      "type": "Obstacle",
-      "size": [1, 1, 1],
-      "texture": "ground_1",
-      "shader": "tex3D"
-    },
-    {
-      "name": "rockwall",
-      "code": [147, 82, 34],
-      "mesh": "Cube",
-      "type": "Obstacle",
-      "size": [1, 1, 1],
-      "texture": "wall_1_1",
-      "shader": "tex3D"
-    },
-    {
-      "name": "sandwall",
-      "code": [224, 194, 123],
-      "mesh": "Cube",
-      "type": "Obstacle",
-      "size": [1, 1, 1],
-      "texture": "wall_1_2",
-      "shader": "tex3D"
-    },
-    {
-      "name": "grassground",
-      "code": [110, 193, 91],
-      "mesh": "Cube",
-      "type": "Obstacle",
-      "size": [1, 1, 1],
-      "texture": "grass",
-      "shader": "tex3D"
-    },
-    {
-      "name": "rightturn_1",
-      "code": [78, 95, 74],
-      "mesh": "Cube",
-      "type": "RightTurn",
-      "size": [1, 1, 1],
-      "texture": "grass",
-      "shader": "tex3D"
-    },
-    {
-      "name": "leftturn_1",
-      "code": [81, 123, 71],
-      "mesh": "Cube",
-      "type": "LeftTurn",
-      "size": [1, 1, 1],
-      "texture": "grass",
-      "shader": "tex3D"
-    },
-    {
-      "name": "brickwall",
-      "code": [162, 201, 153],
-      "mesh": "Cube",
-      "type": "Obstacle",
-      "size": [1, 1, 1],
-      "texture": "wall_1",
-      "shader": "tex3D"
-    },
-    {
-      "name": "realitystone",
-      "code": [255, 0, 0],
-      "mesh": "Cube",
-      "type": "Stone",
-      "size": [0.3, 0.3, 0.3],
-      "texture": "realitystone",
-      "shader": "tex3D"
-    },
-    {
-      "name": "timestone",
-      "code": [0, 255, 0],
-      "mesh": "Cube",
-      "type": "Stone",
-      "size": [0.3, 0.3, 0.3],
-      "texture": "timestone",
-      "shader": "tex3D"
-    },
-    {
-      "name": "spacestone",
-      "code": [0, 0, 255],
-      "mesh": "Cube",
-      "type": "Stone",
-      "size": [0.3, 0.3, 0.3],
-      "texture": "spacestone",
-      "shader": "tex3D"
-    },
-    {
-      "name": "mindstone",
-      "code": [255, 255, 0],
-      "mesh": "Cube",
-      "type": "Stone",
-      "size": [0.3, 0.3, 0.3],
-      "texture": "mindstone",
-      "shader": "tex3D"
-    },
-    {
-      "name": "powerstone",
-      "code": [255, 0, 255],
-      "mesh": "Cube",
-      "type": "Stone",
-      "size": [0.3, 0.3, 0.3],
-      "texture": "powerstone",
-      "shader": "tex3D"
-    },
-    {
-      "name": "soulstone",
-      "code": [255, 162, 0],
-      "mesh": "Cube",
-      "type": "Stone",
-      "size": [0.3, 0.3, 0.3],
-      "texture": "soulstone",
-      "shader": "tex3D"
-    },
-    {
-      "name": "infinitygauntlet",
-      "code": [0, 0, 0],
-      "mesh": "Cube",
-      "type": "FinishingLine",
-      "size": [1, 1, 1],
-      "texture": "infinitygauntlet",
-      "shader": "tex3D"
-    },
-    {
-      "name": "testCube",
-      "mesh": "Mesh",
-      "type": "Stone",
-      "path": "data/assets/meshs/cube.obj",
-      "texture": "stone",
-      "shader": "normals"
-    }
-  ]
+    "shaders": [
+        {
+            "//": "IMPORTANT: Always have this default shaders for textures and shaders not found",
+            "name": "default", 
+            "vs": "data/shaders/3D.vs.glsl",
+            "fs": "data/shaders/default.fs.glsl"
+        },
+        {
+            "name": "normals",
+            "vs": "data/shaders/3D.vs.glsl",
+            "fs": "data/shaders/normals.fs.glsl"
+        },
+        {
+            "name": "tex3D",
+            "vs": "data/shaders/tex3D.vs.glsl",
+            "fs": "data/shaders/tex3D.fs.glsl"
+        }
+    ],
+    "textures": [
+        {
+            "name": "galaxy1",
+            "src": "data/assets/textures/galaxy1.png"
+        },
+        {
+            "name": "cube",
+            "src": "data/assets/textures/cube.jpg"
+        },
+        {
+            "name": "stone",
+            "src": "data/assets/textures/stone_wall.jpg"
+        },
+        {
+            "name": "pavement",
+            "src": "data/assets/textures/brick_pavement.jpg"
+        },
+        {
+            "name": "ground_1",
+            "src": "data/assets/textures/ground_1.jpg"
+        },
+        {
+            "name": "grass",
+            "src": "data/assets/textures/ground_2.jpg"
+        },
+        {
+            "name": "wall_1_1",
+            "src": "data/assets/textures/wall_1_1.jpg"
+        },
+        {
+            "name": "wall_1_2",
+            "src": "data/assets/textures/wall_1_2.jpg"
+        },
+        {
+            "name": "wall_2_1",
+            "src": "data/assets/textures/wall_2_1.jpg"
+        },
+        {
+            "name": "wall_1",
+            "src": "data/assets/textures/wall_2_2.jpg"
+        },
+        {
+            "name": "realitystone",
+            "src": "data/assets/textures/realitystone.jpg"
+        },
+        {
+            "name": "timestone",
+            "src": "data/assets/textures/timestone.jpg"
+        },
+        {
+            "name": "spacestone",
+            "src": "data/assets/textures/spacestone.jpg"
+        },
+        {
+            "name": "mindstone",
+            "src": "data/assets/textures/mindstone.jpg"
+        },
+        {
+            "name": "powerstone",
+            "src": "data/assets/textures/powerstone.jpg"
+        },
+        {
+            "name": "soulstone",
+            "src": "data/assets/textures/soulstone.jpg"
+        },
+        {
+            "name": "infinitygauntlet",
+            "src": "data/assets/textures/infinitygauntlet.jpg"
+        },
+        {
+            "name": "menutest",
+            "src": "data/assets/textures/menu.png"
+        },
+        {
+            "name": "run",
+            "src": "data/assets/textures/run.png"
+        },
+        {
+            "name": "replay",
+            "src": "data/assets/textures/replay.png"
+        },
+        {
+            "name": "quit",
+            "src": "data/assets/textures/quit.png"
+        },
+        {
+            "name": "levelMenu",
+            "src": "data/assets/textures/Levelmenu.png"
+        },
+        {
+            "name": "level1",
+            "src": "data/assets/textures/Level1menu.png"
+        },
+        {
+            "name": "level2",
+            "src": "data/assets/textures/Level2menu.png"
+        },
+        {
+            "name": "level3",
+            "src": "data/assets/textures/Level3menu.png"
+        }
+    ],
+    "meshs": [
+        {
+            "name": "skybox1",
+            "mesh": "Cube",
+            "type": "Skybox",
+            "size": [1, 1, 1],
+            "texture": "galaxy1",
+            "shader": "tex3D"
+        },
+        {
+            "name": "wall",
+            "code": [143, 94, 10],
+            "mesh": "Cube",
+            "type": "Obstacle",
+            "size": [1, 1, 1],
+            "texture": "stone",
+            "shader": "tex3D"
+        },
+        {
+            "name": "perso",
+            "code": [39, 203, 205],
+            "mesh": "Cube",
+            "type": "Character",
+            "size": [0.5, 1.5, 0.5],
+            "texture": "stone",
+            "shader": "normals"
+        },
+        {
+            "name": "ground",
+            "code": [143, 136, 131],
+            "mesh": "Cube",
+            "type": "Obstacle",
+            "size": [1, 1, 1],
+            "texture": "stone",
+            "shader": "tex3D"
+        },
+        {
+            "name": "dirtground",
+            "code": [171, 129, 99],
+            "mesh": "Cube",
+            "type": "Obstacle",
+            "size": [1, 1, 1],
+            "texture": "ground_1",
+            "shader": "tex3D"
+        },
+        {
+            "name": "rockwall",
+            "code": [147, 82, 34],
+            "mesh": "Cube",
+            "type": "Obstacle",
+            "size": [1, 1, 1],
+            "texture": "wall_1_1",
+            "shader": "tex3D"
+        },
+        {
+            "name": "sandwall",
+            "code": [224, 194, 123],
+            "mesh": "Cube",
+            "type": "Obstacle",
+            "size": [1, 1, 1],
+            "texture": "wall_1_2",
+            "shader": "tex3D"
+        },
+        {
+            "name": "grassground",
+            "code": [110, 193, 91],
+            "mesh": "Cube",
+            "type": "Obstacle",
+            "size": [1, 1, 1],
+            "texture": "grass",
+            "shader": "tex3D"
+        },
+        {
+            "name": "rightturn_1",
+            "code": [78, 95, 74],
+            "mesh": "Cube",
+            "type": "RightTurn",
+            "size": [1, 1, 1],
+            "texture": "grass",
+            "shader": "tex3D"
+        },
+        {
+            "name": "leftturn_1",
+            "code": [81, 123, 71],
+            "mesh": "Cube",
+            "type": "LeftTurn",
+            "size": [1, 1, 1],
+            "texture": "grass",
+            "shader": "tex3D"
+        },
+        {
+            "name": "brickwall",
+            "code": [162, 201, 153],
+            "mesh": "Cube",
+            "type": "Obstacle",
+            "size": [1, 1, 1],
+            "texture": "wall_1",
+            "shader": "tex3D"
+        },
+        {
+            "name": "realitystone",
+            "code": [255, 0, 0],
+            "mesh": "Cube",
+            "type": "Stone",
+            "size": [0.3, 0.3, 0.3],
+            "texture": "realitystone",
+            "shader": "tex3D"
+        },
+        {
+            "name": "timestone",
+            "code": [0, 255, 0],
+            "mesh": "Cube",
+            "type": "Stone",
+            "size": [0.3, 0.3, 0.3],
+            "texture": "timestone",
+            "shader": "tex3D"
+        },
+        {
+            "name": "spacestone",
+            "code": [0, 0, 255],
+            "mesh": "Cube",
+            "type": "Stone",
+            "size": [0.3, 0.3, 0.3],
+            "texture": "spacestone",
+            "shader": "tex3D"
+        },
+        {
+            "name": "mindstone",
+            "code": [255, 255, 0],
+            "mesh": "Cube",
+            "type": "Stone",
+            "size": [0.3, 0.3, 0.3],
+            "texture": "mindstone",
+            "shader": "tex3D"
+        },
+        {
+            "name": "powerstone",
+            "code": [255, 0, 255],
+            "mesh": "Cube",
+            "type": "Stone",
+            "size": [0.3, 0.3, 0.3],
+            "texture": "powerstone",
+            "shader": "tex3D"
+        },
+        {
+            "name": "soulstone",
+            "code": [255, 162, 0],
+            "mesh": "Cube",
+            "type": "Stone",
+            "size": [0.3, 0.3, 0.3],
+            "texture": "soulstone",
+            "shader": "tex3D"
+        },
+        {
+            "name": "infinitygauntlet",
+            "code": [0, 0, 0],
+            "mesh": "Cube",
+            "type": "FinishingLine",
+            "size": [1, 1, 1],
+            "texture": "infinitygauntlet",
+            "shader": "tex3D"
+        },
+        {
+            "name": "testCube",
+            "mesh": "Mesh",
+            "type": "Stone",
+            "path": "data/assets/meshs/cube.obj",
+            "texture": "stone",
+            "shader": "normals"
+        }
+    ]
 } 
