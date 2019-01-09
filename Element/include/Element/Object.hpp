@@ -143,6 +143,9 @@ public:
 
   /**
    * \brief Getter of grid position with a displacement according to the rotation of the object
+   * \param x : the x displacement related to the object
+   * \param y : the y displacement related to the object
+   * \param z : the z displacement related to the object
    * \return position of the object on a grid (integer values) with the displacement
    */
   const std::vector<int> gridPosition(const int x, const int y, const int z) const;
@@ -152,6 +155,14 @@ public:
    * \return absolute position of the object with the displacement
    */
   glm::vec3 absolutePosition(const glm::vec3 &vec = glm::vec3(0, 0, 0)) const;
+
+  /**
+   * \brief Round the actual position to center the object on the box of the current grid
+   * \param x : if we do the rounding on the x axis
+   * \param y : if we do the rounding on the y axis
+   * \param z : if we do the rounding on the z axis
+   */
+  void roundPosition(bool onX = true, bool onY = false, bool onZ = true);
 
   /**
    * \brief Getter of position

@@ -138,17 +138,18 @@ void Level::eventManager(const SDL_Event &event) {
   // EVENT ON CAMERA
   m_cam.eventManager(event);
 
-  // UNDERNEATH OBSTACLES
-  Object * underObject = grid(m_character->gridPosition(0, -1, 0));
-
   // CHARACTER EVENT
   if (event.type == SDL_KEYDOWN) {
     SDLKey key = event.key.keysym.sym;
+
+    // UNDERNEATH OBSTACLES
+    Object * underObject = grid(m_character->gridPosition(0, -1, 0));
 
     // LEFT
     if (key == SDLK_q || key == SDLK_LEFT) {
       if (underObject && underObject->type() == "LeftTurn") { // TURN
         m_character->turnLeft();
+        m_cam.rotate(m_character->rotation().y);
       } else { // MOVE IF CAN
         if (!isObstacle(1, 0, 0)) {
           m_character->moveLeft();
@@ -156,8 +157,9 @@ void Level::eventManager(const SDL_Event &event) {
       }
     }// RIGHT
     else if (key == SDLK_d || key == SDLK_RIGHT) {
-      if (underObject && underObject->type() == "LeftRight") { // TURN
+      if (underObject && underObject->type() == "RightTurn") { // TURN
         m_character->turnRight();
+        m_cam.rotate(m_character->rotation().y);
       } else { // MOVE IF CAN
         if (!isObstacle(-1, 0, 0)) {
           m_character->moveRight();

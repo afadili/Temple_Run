@@ -28,28 +28,38 @@ void Character::update() {
 void Character::direction(const glm::vec3 &direction) {
   m_direction = direction;
   float rotation;
-  if (direction.x != 0)
-    rotation = direction.x * M_PI / 2.;
+  if (m_direction.x != 0.f)
+    rotation = m_direction.x * M_PI / 2.;
   else
-    rotation = (direction.z - 1) * M_PI / 2.;
-
-  rotate(glm::vec3(0, rotation, 0));
+    rotation = (m_direction.z - 1) * M_PI / 2.;
+  std::cout << rotation << std::endl;
+  m_rotation = glm::vec3(0.f, rotation, 0.f);
 }
 
 void Character::moveLeft() {
-  translate(glm::vec3(1.f, 0.f, 0.f));
+  m_position = absolutePosition(glm::vec3(1.f, 0.f, 0.f));
+  roundPosition();
 }
 
 void Character::moveRight() {
-  translate(glm::vec3(-1.f, 0.f, 0.f));
+  m_position = absolutePosition(glm::vec3(-1.f, 0.f, 0.f));
+  roundPosition();
 }
 
 void Character::turnLeft() {
-  
+  if (m_direction.x != 0.f)
+    direction(glm::vec3(0.f, 0.f, -m_direction.x));
+  else
+    direction(glm::vec3(m_direction.z, 0.f, 0.f));
+  roundPosition();
 }
 
 void Character::turnRight() {
-
+  if (m_direction.x != 0)
+    direction(glm::vec3(0.f, 0.f, m_direction.x));
+  else
+    direction(glm::vec3(-m_direction.z, 0.f, 0.f));
+  roundPosition();
 }
 
 void Character::jump() {
