@@ -51,22 +51,30 @@ const std::vector<int> Object::gridPosition() const {
 }
 
 const std::vector<int> Object::gridPosition(const int x, const int y, const int z) const {
-  std::vector<int> vec = gridPosition();
+  glm::vec3 pos = absolutePosition(glm::vec3(x, y, z));
+  std::vector<int> vec;
+  vec.push_back(pos.x);
+  vec.push_back(pos.y);
+  vec.push_back(pos.z);
+  return vec;
+}
+
+glm::vec3 Object::absolutePosition(const glm::vec3 &vec) const {
+  glm::vec3 pos = m_position;
   float orientation = std::fmod(m_rotation.y, 2. * M_PI);
   if (orientation < M_PI / 2.) {
-    vec[0] += x;
-    vec[2] += z;
+    pos.x += vec.x;
+    pos.z += vec.z;
   } else if (orientation < M_PI) {
-    vec[0] += -z;
-    vec[2] += x;
+    pos.x += -vec.z;
+    pos.z += vec.x;
   } else if (orientation < -M_PI / 2.) {
-    vec[0] += -x;
-    vec[2] += -z;
+    pos.x += -vec.x;
+    pos.z += -vec.z;
   } else {
-    vec[0] += z;
-    vec[2] += x;
+    pos.x += vec.z;
+    pos.z += vec.x;
   }
-
-  vec[1] += y;
-  return vec;
+  pos.y += vec.y;
+  return pos;
 }

@@ -99,7 +99,7 @@ public:
    * \brief Get the world coordinates matrix of the object 
    * \return world coordinates matrix of the object 
    */
-  virtual 
+  virtual
   glm::mat4 MWMatrix() const;
 
 
@@ -146,6 +146,12 @@ public:
    * \return position of the object on a grid (integer values) with the displacement
    */
   const std::vector<int> gridPosition(const int x, const int y, const int z) const;
+
+  /**
+   * \brief Getter of the absolute position with a displacement according to the rotation of the object
+   * \return absolute position of the object with the displacement
+   */
+  glm::vec3 absolutePosition(const glm::vec3 &vec = glm::vec3(0, 0, 0)) const;
 
   /**
    * \brief Getter of position
