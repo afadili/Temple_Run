@@ -19,6 +19,10 @@
 #include <Element/Stone.hpp>
 #include <Element/Character.hpp>
 #include <Element/FinishingLine.hpp>
+#include <Element/LeftTurn.hpp>
+#include <Element/RightTurn.hpp>
+
+#include <Game/Camera.hpp>
 
 #include "AssetsManager.hpp"
 
@@ -31,13 +35,14 @@ protected:
   std::map<std::string, float> m_config; /*!< level configuration variable */
   glimac::FilePath m_path; /*!< The level folder */
   const AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
-  Character *m_character;
+  Character *m_character = nullptr;
   int m_nbFloor; /*!< floor number of the level (number of ppm files) */
   int m_width; /*!< width of the level */
   int m_height; /*!< height of the level */
   std::map<std::string, ObjectList> m_objects; /*!< map of all objects in the map, for the rendering */
   std::vector<Eigen::SparseMatrix<Object*>> m_grid; /*!< vector of sparse Matrix with all static object in the level */
   unsigned int m_score = 0; /*!< the score of the actual game */
+  Camera m_cam; /*!< the camera of the level */
 
 private:
   Level() = default;
@@ -49,7 +54,7 @@ public:
   Level(const AssetsManager *assets, const glimac::FilePath &path, int nbFloor, int width, int height);
 
   /**
-   * \brief create the map from all the levels of the decor
+   * \brief create the map from all the levels of the decor, throw an error if there is no characters in this level
    */
   void loadMap();
 
@@ -67,12 +72,17 @@ public:
   void draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix = glm::mat4()) const;
 
   /**
+   * \brief modification of the level depending on the events
+   * \param event : SDL event
+   */
+  void eventManager(const SDL_Event &event);
+
+  /**
    * \brief update and draw the level, with character controller. Function called at each frame
-   * \param event : the sdl event
    * \param ProjMatrix : the projection matrice of the game
    * \return 1 if character win, 2 if loose and 0 otherwise
    */
-  int update(const SDL_Event &event, const glm::mat4 &ProjMatrix);
+  int update(const glm::mat4 &ProjMatrix);
 
   /**
    * \brief add a stone to the score

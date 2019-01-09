@@ -6,10 +6,19 @@ Level::Level(const AssetsManager *assets, const glimac::FilePath &path, int nbFl
 }
 
 void Level::loadMap() {
+  // Load each floor
   for (int i = 0; i < m_nbFloor; i++) {
     std::string file("floor_" + std::to_string(i) + ".ppm");
     loadFloor(m_path + file, i);
   }
+
+  // If there is no character in the level
+  if (!m_character)
+    throw Error("No spawn point found in this level !", "LEVEL_ERROR", true);
+
+  // Initialize the camera
+  m_cam.distance() = -m_config["viewDistance"];
+  m_cam.rotate(m_character->rotation().y);
 }
 
 void Level::loadFloor(const glimac::FilePath &file, const int floor) {
@@ -55,16 +64,22 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
 
         // OBSTACLE
         if (meshType == "Obstacle" || meshType == "obstacle") {
-          obj = new Obstacle(mesh, glm::vec3(i, floor, -j));
+          obj = new Obstacle(mesh, glm::vec3(j, floor, i));
         }// STONE
         else if (meshType == "Stone" || meshType == "stone") {
-          obj = new Stone(mesh, glm::vec3(i, floor, -j));
+          obj = new Stone(mesh, glm::vec3(j, floor, i));
+        }// TURN LEFT
+        else if (meshType == "LeftTurn" || meshType == "lefttrun") {
+          obj = new LeftTurn(mesh, glm::vec3(j, floor, i));
+        }// TURN RIGHT
+        else if (meshType == "RightTurn" || meshType == "rightturn") {
+          obj = new RightTurn(mesh, glm::vec3(j, floor, i));
         }// FINISHING LINE
         else if (meshType == "FinishingLine" || meshType == "finishingline") {
-          obj = new FinishingLine(mesh, glm::vec3(i, floor, -j));
+          obj = new FinishingLine(mesh, glm::vec3(j, floor, i));
         }// CHARACTER
         else if (meshType == "Character" || meshType == "character") {
-          m_character = new Character(mesh, glm::vec3(i, floor + 0.25, -j));
+          m_character = new Character(mesh, glm::vec3(j, floor + 0.25, i));
 
           // CHARACTER CONFIGURATION
           if (m_config["speed"])
@@ -81,14 +96,14 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
           obj = m_character;
         }// DEFAULT
         else {
-          obj = new Object(mesh, glm::vec3(i, floor, -j));
+          obj = new Object(mesh, glm::vec3(j, floor, -i));
         }
 
         // Add the object to its list
         m_objects.at(meshName).add(obj);
 
         // Add the object to the grid
-        m_grid[floor].coeffRef(i, j) = obj;
+        m_grid[floor].coeffRef(j, i) = obj;
       }
     }
   }
@@ -99,43 +114,9 @@ void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const
     mapObj.second.draw(ProjMatrix, ViewMatrix);
 }
 
-int Level::update(const SDL_Event &event, const glm::mat4 &ProjMatrix) {
-
-  // CAMERA TMP
-  float _fPhi = -m_character->rotation().y;
-  glm::vec3 _FrontVector = glm::vec3(cos(0.) * sin(_fPhi), sin(0.), cos(0.) * cos(_fPhi));
-  glm::vec3 _LeftVector = glm::vec3(sin(_fPhi + M_PI / 2), 0, cos(_fPhi + M_PI / 2));
-  glm::vec3 _UpVector = glm::cross(_FrontVector, _LeftVector);
-  glm::vec3 pos = m_character->position();
-  glm::mat4 ViewMatrix = glm::lookAt(pos, pos + _FrontVector, _UpVector);
-  ViewMatrix = glm::translate(ViewMatrix, glm::vec3(m_config["viewDistanceX"], -m_config["viewDistanceY"], 0));
-
-  bool isRunning = true; // if the character have to run or not
-
-  // RUNNING OBSTACLES
-  Object *frontObject1 = grid(m_character->gridPosition(1, 0, 0));
-  Object *frontObject2 = grid(m_character->gridPosition(1, 1, 0));
-  //Object *frontObject2 = grid(m_character->gridPosition(1, 1, 0));
-
-  if (frontObject1) {
-    std::cout << "frontObect1 = " << frontObject1->type() << std::endl;
-    if (frontObject1->type() == "Obstacle")
-      isRunning = false;
-    else if (frontObject1->type() == "Stone")
-      addStone(frontObject1);
-  }
-  if (frontObject2) {
-    std::cout << "frontObject2 = " << frontObject2->type() << std::endl;
-    if (frontObject2->type() == "Obstacle")
-      isRunning = false;
-  }
-
-  if (isRunning)
-    m_character->run();
-
-  // EVENT
-
-
+void Level::eventManager(const SDL_Event &event) {
+  // EVENT ON CAMERA
+  m_cam.eventManager(event);
 
   if (event.type == SDL_KEYDOWN) {
     if (event.key.keysym.sym == SDLK_c) {
@@ -143,20 +124,51 @@ int Level::update(const SDL_Event &event, const glm::mat4 &ProjMatrix) {
     }
   }
 
+}
 
-  draw(ProjMatrix, ViewMatrix);
+int Level::update(const glm::mat4 &ProjMatrix) {
+  bool isRunning = true; // if the character have to run or not
+
+  // CAMERA UPDATE
+  m_cam.update(m_character->position());
+
+  // FRONT OBSTACLES
+  int lowerY = 0, upperY = m_character->size().y;
+  for (int i = 0; i <= m_character->size().y; i++) {
+    Object * frontObject = grid(m_character->gridPosition(0, i, 1));
+    if (frontObject) {
+      if (frontObject->type() == "Obstacle")
+        isRunning = false;
+      else if (frontObject->type() == "Stone")
+        addStone(frontObject);
+      else if (frontObject->type() == "FinishingLine")
+        return 1; // WIN
+    }
+  }
+
+  // UNDERNEATH OBSTACLES
+  Object * underObject = grid(m_character->gridPosition(0, -1, 0));
+  if (!underObject || underObject->type() == "Water" || underObject->type() == "Lava")
+    return 2; // LOSE
+  
+  // RUNNING
+  if (isRunning)
+    m_character->run();
+
+  // DRAW
+  draw(ProjMatrix, m_cam.getViewMatrix());
 
   return 0;
 }
 
-void Level::addStone(Object *stone) {
+void Level::addStone(Object * stone) {
   if (!stone)
     return;
   m_score++;
   removeObject(stone);
 }
 
-void Level::removeObject(Object *obj) {
+void Level::removeObject(Object * obj) {
   std::vector<int> vec = obj->gridPosition(); // get obj position
   std::cout << vec[0] << "  " << vec[1] << "  " << vec[2] << "  " << std::endl;
   removeGridObject(vec); // remove from the grid

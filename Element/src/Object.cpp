@@ -46,7 +46,7 @@ const std::vector<int> Object::gridPosition() const {
   std::vector<int> vec;
   vec.push_back(m_position.x);
   vec.push_back(m_position.y);
-  vec.push_back(-m_position.z);
+  vec.push_back(m_position.z);
   return vec;
 }
 
@@ -55,16 +55,16 @@ const std::vector<int> Object::gridPosition(const int x, const int y, const int 
   float orientation = std::fmod(m_rotation.y, 2. * M_PI);
   if (orientation < M_PI / 2.) {
     vec[0] += x;
-    vec[1] += z;
+    vec[2] += z;
   } else if (orientation < M_PI) {
     vec[0] += -z;
-    vec[1] += x;
+    vec[2] += x;
   } else if (orientation < -M_PI / 2.) {
     vec[0] += -x;
-    vec[1] += -z;
+    vec[2] += -z;
   } else {
     vec[0] += z;
-    vec[1] += x;
+    vec[2] += x;
   }
 
   vec[1] += y;

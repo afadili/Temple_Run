@@ -23,17 +23,25 @@ GameManager::~GameManager() {
     delete m_assets;
 }
 
-void GameManager::update(const SDL_Event &event) {
+void GameManager::eventManager(const SDL_Event &event) {
+  // if a game is in progress
+  if (m_currentLevel != nullptr)
+    m_currentLevel->eventManager(event);
+}
+
+void GameManager::update() {
   // if a game is in progress
   if (m_currentLevel != nullptr) {
     // MATRICES de transformations
     glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f), m_config->defaultWidth() / float(m_config->defaultWidth() * 1. / m_config->ratio()), m_config->nearVision(), m_config->farVision());
-    switch (m_currentLevel->update(event, ProjMatrix)) {
+    switch (m_currentLevel->update(ProjMatrix)) {
       case 1:
         // WIN
+        std::cout << "YOU WIN !" << std::endl;
         break;
       case 2:
         // LOSE
+        std::cout << "YOU LOSE !" << std::endl;
         break;
       default:
         break;

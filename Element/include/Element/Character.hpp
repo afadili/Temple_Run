@@ -118,10 +118,18 @@ public:
   }
 
   /**
+   * \brief if the character is jumping
+   * \return true if jumping, false else
+   */
+  inline
+  bool isJumping() const {
+    return m_isJumping;
+  }
+
+  /**
    * \brief change the direction of the character and his orientation
    */
   void direction(const glm::vec3 &direction);
-
 
   /**
    * \brief Update object data. Function called at each drawing on ObjectList.

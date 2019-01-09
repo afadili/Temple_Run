@@ -38,18 +38,18 @@
       "name": "grass",
       "src": "data/assets/textures/ground_2.jpg"
     },
-    /*{
+    {
       "name": "wall_1_1",
       "src": "data/assets/textures/wall_1_1.jpg"
-    },*/
-    /*{
+    },
+    {
       "name": "wall_1_2",
       "src": "data/assets/textures/wall_1_2.jpg"
-    },*/
-    /*{
+    },
+    {
       "name": "wall_2_1",
       "src": "data/assets/textures/wall_2_1.jpg"
-    },*/
+    },
     {
       "name": "wall_1",
       "src": "data/assets/textures/wall_2_2.jpg"

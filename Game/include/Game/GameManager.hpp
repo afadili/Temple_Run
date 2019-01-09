@@ -47,11 +47,15 @@ public:
   ~GameManager();
 
   /**
-   * \brief Main loop of all the game
-   * \param event : the sdl event
+   * \brief modification of the game depending on the events
+   * \param event : SDL event
    */
-  void update(const SDL_Event &event);
+  void eventManager(const SDL_Event &event);
 
+  /**
+   * \brief Main loop of all the game
+   */
+  void update();
 
   /**
    * \brief Set all the possible levels from the configuration

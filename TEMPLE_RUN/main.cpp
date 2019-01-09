@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
   std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;
 
   /*********************************
-   * HERE SHOULD COME THE INITIALIZATION CODE
+   *      INITIALIZATION CODE
    *********************************/
 
   // GAME MANAGER
@@ -46,105 +46,25 @@ int main(int argc, char **argv) {
   // activer le test de profondeur du GPU
   glEnable(GL_DEPTH_TEST);
 
-
-  // Camera
-  FreeflyCamera camera;
-
-
-  // Keyboard
-  bool KEY_UP_PRESSED = false;
-  bool KEY_DOWN_PRESSED = false;
-  bool KEY_LEFT_PRESSED = false;
-  bool KEY_RIGHT_PRESSED = false;
-
-
   // Application loop:
   bool done = false;
   while (!done) {
     Uint32 startTime = SDL_GetTicks();
 
     // Event loop:
-    SDL_Event e;
-    while (windowManager.pollEvent(e)) {
-      if (e.type == SDL_QUIT) {
+    SDL_Event event;
+    while (windowManager.pollEvent(event)) {
+      if (event.type == SDL_QUIT) {
         done = true; // Leave the loop after this iteration
       }
+      manager.eventManager(event);
 
-      switch (e.type) {
-          /* Touche clavier DOWN */
-        case SDL_KEYDOWN:
-          if (e.key.keysym.sym == SDLK_z || e.key.keysym.sym == SDLK_UP) {
-            KEY_UP_PRESSED = true;
-          }
-          if (e.key.keysym.sym == SDLK_s || e.key.keysym.sym == SDLK_DOWN) {
-            KEY_DOWN_PRESSED = true;
-          }
-          if (e.key.keysym.sym == SDLK_q || e.key.keysym.sym == SDLK_LEFT) {
-            KEY_LEFT_PRESSED = true;
-          }
-          if (e.key.keysym.sym == SDLK_d || e.key.keysym.sym == SDLK_RIGHT) {
-            KEY_RIGHT_PRESSED = true;
-          }
-          break;
-
-
-        case SDL_KEYUP:
-          if (e.key.keysym.sym == SDLK_z || e.key.keysym.sym == SDLK_UP) {
-            KEY_UP_PRESSED = false;
-          }
-          if (e.key.keysym.sym == SDLK_s || e.key.keysym.sym == SDLK_DOWN) {
-            KEY_DOWN_PRESSED = false;
-          }
-          if (e.key.keysym.sym == SDLK_q || e.key.keysym.sym == SDLK_LEFT) {
-            KEY_LEFT_PRESSED = false;
-          }
-          if (e.key.keysym.sym == SDLK_d || e.key.keysym.sym == SDLK_RIGHT) {
-            KEY_RIGHT_PRESSED = false;
-          }
-          break;
-
-        case SDL_MOUSEBUTTONDOWN:
-          if (e.button.button == SDL_BUTTON_LEFT) {
-            std::cout << "(" << e.button.x << "," << e.button.y << ")" << std::endl;
-            if (e.button.x > 170 && e.button.x < 335 && e.button.y > 325 && e.button.y < 500)
-              done = true;
-          }
-          break;
-
-        case SDL_MOUSEMOTION:
-          float speed = 0.5f;
-          if (e.motion.xrel != 0) {
-            camera.rotateLeft(float(-e.motion.xrel) * speed);
-          }
-          if (e.motion.yrel != 0) {
-            camera.rotateUp(float(e.motion.yrel) * speed);
-          }
-          break;
-      }
-    }
-
-    /* CONTROL */
-
-    float speed = 0.1f;
-    if (KEY_UP_PRESSED) {
-      camera.moveFront(speed);
-    } else if (KEY_DOWN_PRESSED) {
-      camera.moveFront(-speed);
-    } else if (KEY_LEFT_PRESSED) {
-      KEY_LEFT_PRESSED = true;
-      camera.moveLeft(speed);
-    } else if (KEY_RIGHT_PRESSED) {
-      KEY_RIGHT_PRESSED = true;
-      camera.moveLeft(-speed);
     }
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  
-
     // Update the game
-    manager.update(e);
-
+    manager.update();
 
     // Update the display
     windowManager.swapBuffers();

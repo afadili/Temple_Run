@@ -37,9 +37,9 @@ private:
   bool KEY_RIGHT_PRESSED = false; /*!< keyboard action*/
 
   unsigned int m_currentCamera; /*!< 1 = third person */
-                                /*!< 2 = first person */
-                                /*!< 3 = rotation */
-                                /*!< 4 = freefly camera */
+  /*!< 2 = first person */
+  /*!< 3 = rotation */
+  /*!< 4 = freefly camera */
 
 
 public:
@@ -68,11 +68,28 @@ public:
   void update(const glm::vec3 &center);
 
   /**
-   * \brief 
-   * \param scale
-   * \param angles
+   * \brief Getter of distance
+   * \return m_fDistance
    */
-  void characterIntel(const float &scale, const glm::vec3 &angles);
+  inline
+  const float &distance() const {
+    return m_fDistance;
+  }
+
+  /**
+   * \brief Setter of distance
+   * \return m_fDistance
+   */
+  inline
+  float &distance() {
+    return m_fDistance;
+  }
+
+  /**
+   * \brief 
+   * \param rotationY in radian
+   */
+  void rotate(const float &rotationY);
 
   /**
    * \brief get view matrix
@@ -129,7 +146,7 @@ private:
   void computeDirectionVectors();
 
   template<typename T>
-  T clamp(const T &n, const T &lower, const T &upper){
+  T clamp(const T &n, const T &lower, const T &upper) {
     return std::max(lower, std::min(n, upper));
   }
 };
