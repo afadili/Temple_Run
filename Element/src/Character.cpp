@@ -27,7 +27,7 @@ void Character::update() {
 
 void Character::direction(const glm::vec3 &direction) {
   m_direction = direction;
-  float rotation = (direction.x - 1) * M_PI / 2. + (direction.z - 1) * M_PI / 2.;
+  float rotation = (direction.x) * M_PI / 2. + (direction.z - 1) * M_PI / 2.;
   rotate(glm::vec3(0, rotation, 0));
 }
 

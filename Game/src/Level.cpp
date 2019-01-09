@@ -55,22 +55,22 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
 
         // OBSTACLE
         if (meshType == "Obstacle" || meshType == "obstacle") {
-          obj = new Obstacle(mesh, glm::vec3(i, floor, -j));
+          obj = new Obstacle(mesh, glm::vec3(j, floor, i));
         }// STONE
         else if (meshType == "Stone" || meshType == "stone") {
-          obj = new Stone(mesh, glm::vec3(i, floor, -j));
+          obj = new Stone(mesh, glm::vec3(j, floor, i));
         }// TURN LEFT
         else if (meshType == "LeftTurn" || meshType == "lefttrun") {
-          obj = new LeftTurn(mesh, glm::vec3(i, floor, -j));
+          obj = new LeftTurn(mesh, glm::vec3(j, floor, i));
         }// TURN RIGHT
         else if (meshType == "RightTurn" || meshType == "rightturn") {
-          obj = new RightTurn(mesh, glm::vec3(i, floor, -j));
+          obj = new RightTurn(mesh, glm::vec3(j, floor, i));
         }// FINISHING LINE
         else if (meshType == "FinishingLine" || meshType == "finishingline") {
-          obj = new FinishingLine(mesh, glm::vec3(i, floor, -j));
+          obj = new FinishingLine(mesh, glm::vec3(j, floor, i));
         }// CHARACTER
         else if (meshType == "Character" || meshType == "character") {
-          m_character = new Character(mesh, glm::vec3(i, floor + 0.25, -j));
+          m_character = new Character(mesh, glm::vec3(j, floor + 0.25, i));
 
           // CHARACTER CONFIGURATION
           if (m_config["speed"])
@@ -87,14 +87,14 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
           obj = m_character;
         }// DEFAULT
         else {
-          obj = new Object(mesh, glm::vec3(i, floor, -j));
+          obj = new Object(mesh, glm::vec3(j, floor, -i));
         }
 
         // Add the object to its list
         m_objects.at(meshName).add(obj);
 
         // Add the object to the grid
-        m_grid[floor].coeffRef(i, j) = obj;
+        m_grid[floor].coeffRef(j, i) = obj;
       }
     }
   }
@@ -135,20 +135,20 @@ int Level::update(const glm::mat4 &ProjMatrix) {
 
   bool isRunning = true; // if the character have to run or not
 
-  // RUNNING OBSTACLES
-  Object *frontObject1 = grid(m_character->gridPosition(1, 0, 0));
-  Object *frontObject2 = grid(m_character->gridPosition(1, 1, 0));
+  // RUNNING OBSTACLES                                  G  T  F 
+  Object *frontObject1 = grid(m_character->gridPosition(0, 0, 1));
+  Object *frontObject2 = grid(m_character->gridPosition(0, 1, 1));
   //Object *frontObject2 = grid(m_character->gridPosition(1, 1, 0));
 
   if (frontObject1) {
-    //std::cout << "frontObect1 = " << frontObject1->type() << std::endl;
+    std::cout << "frontObect1 = " << frontObject1->type() << std::endl;
     if (frontObject1->type() == "Obstacle")
       isRunning = false;
     else if (frontObject1->type() == "Stone")
       addStone(frontObject1);
   }
   if (frontObject2) {
-    // std::cout << "frontObject2 = " << frontObject2->type() << std::endl;
+    std::cout << "frontObject2 = " << frontObject2->type() << std::endl;
     if (frontObject2->type() == "Obstacle")
       isRunning = false;
   }

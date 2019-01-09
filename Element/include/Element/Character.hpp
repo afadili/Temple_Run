@@ -122,7 +122,6 @@ public:
    */
   void direction(const glm::vec3 &direction);
 
-
   /**
    * \brief Update object data. Function called at each drawing on ObjectList.
    */
