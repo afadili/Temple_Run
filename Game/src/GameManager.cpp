@@ -37,9 +37,11 @@ void GameManager::update() {
     switch (m_currentLevel->update(ProjMatrix)) {
       case 1:
         // WIN
+        std::cout << "YOU WIN !" << std::endl;
         break;
       case 2:
         // LOSE
+        std::cout << "YOU LOSE !" << std::endl;
         break;
       default:
         break;

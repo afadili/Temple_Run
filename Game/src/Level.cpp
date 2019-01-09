@@ -127,42 +127,48 @@ void Level::eventManager(const SDL_Event &event) {
 }
 
 int Level::update(const glm::mat4 &ProjMatrix) {
+  bool isRunning = true; // if the character have to run or not
 
   // CAMERA UPDATE
   m_cam.update(m_character->position());
 
-  // RUNNING OBSTACLES
-  bool isRunning = true; // if the character have to run or not
-  Object *frontObject1 = grid(m_character->gridPosition(0, 0, 1));
-  Object *frontObject2 = grid(m_character->gridPosition(0, 1, 1));
-
-  if (frontObject1) {
-    if (frontObject1->type() == "Obstacle")
-      isRunning = false;
-    else if (frontObject1->type() == "Stone")
-      addStone(frontObject1);
-  }
-  if (frontObject2) {
-    if (frontObject2->type() == "Obstacle")
-      isRunning = false;
+  // FRONT OBSTACLES
+  int lowerY = 0, upperY = m_character->size().y;
+  for (int i = 0; i <= m_character->size().y; i++) {
+    Object * frontObject = grid(m_character->gridPosition(0, i, 1));
+    if (frontObject) {
+      if (frontObject->type() == "Obstacle")
+        isRunning = false;
+      else if (frontObject->type() == "Stone")
+        addStone(frontObject);
+      else if (frontObject->type() == "FinishingLine")
+        return 1; // WIN
+    }
   }
 
+  // UNDERNEATH OBSTACLES
+  Object * underObject = grid(m_character->gridPosition(0, -1, 0));
+  if (!underObject || underObject->type() == "Water" || underObject->type() == "Lava")
+    return 2; // LOSE
+  
+  // RUNNING
   if (isRunning)
     m_character->run();
 
+  // DRAW
   draw(ProjMatrix, m_cam.getViewMatrix());
 
   return 0;
 }
 
-void Level::addStone(Object *stone) {
+void Level::addStone(Object * stone) {
   if (!stone)
     return;
   m_score++;
   removeObject(stone);
 }
 
-void Level::removeObject(Object *obj) {
+void Level::removeObject(Object * obj) {
   std::vector<int> vec = obj->gridPosition(); // get obj position
   std::cout << vec[0] << "  " << vec[1] << "  " << vec[2] << "  " << std::endl;
   removeGridObject(vec); // remove from the grid
