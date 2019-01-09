@@ -262,7 +262,7 @@ int main(int argc, char **argv) {
     //manager.level()->draw(ProjMatrix, camera.getViewMatrix());
 
       // Update the game
-    manager.update(e);
+    manager.update();
 
 
     // Update the display

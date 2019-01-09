@@ -99,7 +99,18 @@ void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const
     mapObj.second.draw(ProjMatrix, ViewMatrix);
 }
 
-int Level::update(const SDL_Event &event, const glm::mat4 &ProjMatrix) {
+void Level::eventManager(const SDL_Event &event) {
+
+
+  if (event.type == SDL_KEYDOWN) {
+    if (event.key.keysym.sym == SDLK_c) {
+
+    }
+  }
+
+}
+
+int Level::update(const glm::mat4 &ProjMatrix) {
 
   // CAMERA TMP
   float _fPhi = -m_character->rotation().y;
@@ -132,17 +143,6 @@ int Level::update(const SDL_Event &event, const glm::mat4 &ProjMatrix) {
 
   if (isRunning)
     m_character->run();
-
-  // EVENT
-
-
-
-  if (event.type == SDL_KEYDOWN) {
-    if (event.key.keysym.sym == SDLK_c) {
-
-    }
-  }
-
 
   draw(ProjMatrix, ViewMatrix);
 

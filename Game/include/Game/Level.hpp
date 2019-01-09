@@ -20,6 +20,8 @@
 #include <Element/Character.hpp>
 #include <Element/FinishingLine.hpp>
 
+#include <Game/Camera.hpp>
+
 #include "AssetsManager.hpp"
 
 /**
@@ -38,6 +40,7 @@ protected:
   std::map<std::string, ObjectList> m_objects; /*!< map of all objects in the map, for the rendering */
   std::vector<Eigen::SparseMatrix<Object*>> m_grid; /*!< vector of sparse Matrix with all static object in the level */
   unsigned int m_score = 0; /*!< the score of the actual game */
+  Camera m_cam; /*!< the camera of the level */
 
 private:
   Level() = default;
@@ -67,12 +70,17 @@ public:
   void draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix = glm::mat4()) const;
 
   /**
+   * \brief modification of the level depending on the events
+   * \param event : SDL event
+   */
+  void eventManager(const SDL_Event &event);
+
+  /**
    * \brief update and draw the level, with character controller. Function called at each frame
-   * \param event : the sdl event
    * \param ProjMatrix : the projection matrice of the game
    * \return 1 if character win, 2 if loose and 0 otherwise
    */
-  int update(const SDL_Event &event, const glm::mat4 &ProjMatrix);
+  int update(const glm::mat4 &ProjMatrix);
 
   /**
    * \brief add a stone to the score
