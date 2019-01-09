@@ -101,6 +101,15 @@ public:
   int update(const glm::mat4 &ProjMatrix);
 
   /**
+   * \brief test if there is an obstacle in the requested direction related to the character (takes into account the size oh the character)
+   * \param x : the x position relative to character
+   * \param y : the y position relative to character
+   * \param z : the z position relative to character
+   * \return true is there is an obstacle, else false
+   */
+  bool isObstacle(int x, int y, int z) const;
+
+  /**
    * \brief add a stone to the score
    * \param stone : the stone 
    */

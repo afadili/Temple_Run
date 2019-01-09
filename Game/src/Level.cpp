@@ -138,47 +138,84 @@ void Level::eventManager(const SDL_Event &event) {
   // EVENT ON CAMERA
   m_cam.eventManager(event);
 
-  if (event.type == SDL_KEYDOWN) {
-    if (event.key.keysym.sym == SDLK_c) {
+  // UNDERNEATH OBSTACLES
+  Object * underObject = grid(m_character->gridPosition(0, -1, 0));
 
+  // CHARACTER EVENT
+  if (event.type == SDL_KEYDOWN) {
+    SDLKey key = event.key.keysym.sym;
+
+    // LEFT
+    if (key == SDLK_q || key == SDLK_LEFT) {
+      if (underObject && underObject->type() == "LeftTurn") { // TURN
+        m_character->turnLeft();
+      } else { // MOVE IF CAN
+        if (!isObstacle(1, 0, 0)) {
+          m_character->moveLeft();
+        }
+      }
+    }// RIGHT
+    else if (key == SDLK_d || key == SDLK_RIGHT) {
+      if (underObject && underObject->type() == "LeftRight") { // TURN
+        m_character->turnRight();
+      } else { // MOVE IF CAN
+        if (!isObstacle(-1, 0, 0)) {
+          m_character->moveRight();
+        }
+      }
+    }// JUMP
+    else if (key == SDLK_SPACE) {
+      if (!isObstacle(0, 1, 0))
+        m_character->jump();
     }
   }
-
 }
 
 int Level::update(const glm::mat4 &ProjMatrix) {
+  int state = 0; // state of the game (variable of return)
   bool isRunning = true; // if the character have to run or not
 
   // CAMERA UPDATE
   m_cam.update(m_character->position());
 
-  // FRONT OBSTACLES
-  int lowerY = 0, upperY = m_character->size().y;
+  // OBJECT ON CURRENT POSITION
   for (int i = 0; i <= m_character->size().y; i++) {
-    Object * frontObject = grid(m_character->gridPosition(0, i, 1));
-    if (frontObject) {
-      if (frontObject->type() == "Obstacle")
-        isRunning = false;
-      else if (frontObject->type() == "Stone")
-        addStone(frontObject);
-      else if (frontObject->type() == "FinishingLine")
-        return 1; // WIN
+    Object * currentObject = grid(m_character->gridPosition(0, i, 1));
+    if (currentObject) {
+      if (currentObject->type() == "Stone")
+        addStone(currentObject);
+      else if (currentObject->type() == "FinishingLine")
+        state = 1; // WIN
     }
   }
 
+  // FRONT OBSTACLES
+  isRunning = !isObstacle(0, 0, 1);
+
   // UNDERNEATH OBSTACLES
   Object * underObject = grid(m_character->gridPosition(0, -1, 0));
-  if (!underObject || underObject->type() == "Water" || underObject->type() == "Lava")
-    return 2; // LOSE
+  if (!m_character->isJumping() && (!underObject || underObject->type() == "Water" || underObject->type() == "Lava"))
+    state = 2; // LOSE
 
   // RUNNING
-  if (isRunning)
+  if (isRunning && state == 0)
     m_character->run();
 
   // DRAW
   draw(ProjMatrix, m_cam.getViewMatrix());
 
-  return 0;
+  return state;
+}
+
+bool Level::isObstacle(int x, int y, int z) const {
+  for (int i = 0; i <= m_character->size().y; i++) {
+    Object * frontObject = grid(m_character->gridPosition(x, i + y, z));
+    if (frontObject) {
+      if (frontObject->type() == "Obstacle")
+        return true;
+    }
+  }
+  return false;
 }
 
 void Level::addStone(Object * stone) {

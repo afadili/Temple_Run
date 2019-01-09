@@ -33,14 +33,30 @@ void Character::direction(const glm::vec3 &direction) {
   else
     rotation = (direction.z - 1) * M_PI / 2.;
 
-  std::cout << "rotation = " << rotation << std::endl;
   rotate(glm::vec3(0, rotation, 0));
 }
 
+void Character::moveLeft() {
+  translate(glm::vec3(1.f, 0.f, 0.f));
+}
+
+void Character::moveRight() {
+  translate(glm::vec3(-1.f, 0.f, 0.f));
+}
+
+void Character::turnLeft() {
+  
+}
+
+void Character::turnRight() {
+
+}
+
 void Character::jump() {
-  if (!m_isJumping)
+  /*if (!m_isJumping)
     std::abs(m_jumpSpeed);
-  m_isJumping = true;
+  m_isJumping = true;*/
+  translate(glm::vec3(0.f, 0.f, 0.f));
 }
 
 void Character::run() {
