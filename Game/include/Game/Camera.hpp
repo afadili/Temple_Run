@@ -91,13 +91,13 @@ private:
    * \brief to rotate left in third person
    * \param degrees
    */
-  void rotateLeftThirdPosition(const float &degrees);
+  void rotateLeftThirdPerson(const float &degrees);
 
   /**
    * \brief to rotate right in third person
    * \param degrees
    */
-  void rotateRightThirdPosition(const float &degrees);
+  void rotateRightThirdPerson(const float &degrees);
 
   /**
    * \brief to move forward in first person
@@ -127,6 +127,11 @@ private:
    * \brief direction vector calculator
    */
   void computeDirectionVectors();
+
+  template<typename T>
+  T clamp(const T &n, const T &lower, const T &upper){
+    return std::max(lower, std::min(n, upper));
+  }
 };
 
 #endif

@@ -5,11 +5,18 @@ const double HALF_PI = PI / 2;
 const float Camera::VIEW_WIDTH = 30.f;
 static const bool DEBUG = true;
 
+enum COORD
+{
+  X,
+  Y,
+  Z
+};
+
 Camera::Camera() : m_fDistance(-15.0f), m_fAngleX(0.0f), m_fAngleY(0.0f), m_center(0.f, 0.f, 0.f), m_currentCamera(1) {
   computeDirectionVectors();
 };
 
-void Camera::event(const SDL_Event &e){
+void Camera::eventManager(const SDL_Event &e){
 
   // Change the point of view
   if (e.type == SDL_KEYDOWN){
@@ -39,11 +46,11 @@ void Camera::event(const SDL_Event &e){
       float zoom = 1.0f;
       if (e.key.keysym.sym == SDLK_z || e.key.keysym.sym == SDLK_UP){
         //std::cout << "Z or UP pressed" << std::endl;
-        TPMoveFront(zoom);
+        moveForwardThirdPerson(zoom);
       }
       else if (e.key.keysym.sym == SDLK_s || e.key.keysym.sym == SDLK_DOWN){
         //std::cout << "S or DOWN pressed" << std::endl;
-        TPMoveFront(-zoom);
+        moveForwardThirdPerson(-zoom);
       }
     }
     break;
@@ -52,10 +59,10 @@ void Camera::event(const SDL_Event &e){
     {
       float speed = 1.f;
       if (e.motion.xrel != 0){
-        TPRotateRight(float(e.motion.xrel) * speed);
+        rotateRightThirdPerson(float(e.motion.xrel) * speed);
       }
       if (e.motion.yrel != 0){
-        TPRotateLeft(float(e.motion.yrel) * speed);
+        rotateLeftThirdPerson(float(e.motion.yrel) * speed);
       }
     }
     break;
@@ -114,11 +121,11 @@ void Camera::event(const SDL_Event &e){
       std::cout << e.motion.xrel << " | " << e.motion.yrel << " | Phi: " << m_fPhi << " | Theta: " << m_fTheta << std::endl;
       if (e.motion.xrel != 0)
       {
-        FPRotateFront(float(-e.motion.xrel) * speed);
+        rotateFrontFirstPerson(float(-e.motion.xrel) * speed);
       }
       if (e.motion.yrel != 0)
       {
-        FPRotateLeft(float(e.motion.yrel) * speed);
+        rotateLeftFirstPerson(float(e.motion.yrel) * speed);
       }
     }
     break;
@@ -135,18 +142,18 @@ void Camera::update(const glm::vec3 &center){
   if (m_currentCamera == 4){
     float speed = 0.1f;
     if (KEY_UP_PRESSED){
-      FPMoveFront(speed);
+      moveForwardFirstPerson(speed);
     }
     else if (KEY_DOWN_PRESSED){
-      FPMoveFront(-speed);
+      moveForwardFirstPerson(-speed);
     }
     else if (KEY_LEFT_PRESSED){
       KEY_LEFT_PRESSED = true;
-      FPMoveLeft(speed);
+      moveLeftFirstPerson(speed);
     }
     else if (KEY_RIGHT_PRESSED){
       KEY_RIGHT_PRESSED = true;
-      FPMoveLeft(-speed);
+      moveLeftFirstPerson(-speed);
     }
   }
   else if (m_currentCamera == 2){
@@ -194,7 +201,7 @@ void Camera::rotateLeftThirdPerson(const float &degrees){
   m_fAngleX += degrees;
 }
 
-void Camera::rotateRightThirdPosition(const float &degrees){
+void Camera::rotateRightThirdPerson(const float &degrees){
   m_fAngleY += degrees;
 }
 
@@ -212,7 +219,7 @@ void Camera::moveLeftFirstPerson(const float &t){
 void Camera::rotateFrontFirstPerson(const float &degrees){
   m_fPhi += glm::radians(degrees);
   if (m_currentCamera == 2){
-    m_fPhi = Utils::clamp(m_fPhi, glm::radians(-m_fAngleY - Camera::VIEW_WIDTH), glm::radians(-m_fAngleY + Camera::VIEW_WIDTH));
+    m_fPhi = clamp(m_fPhi, glm::radians(-m_fAngleY - Camera::VIEW_WIDTH), glm::radians(-m_fAngleY + Camera::VIEW_WIDTH));
   }
   m_frontVector = glm::vec3(std::cos(m_fTheta) * std::sin(m_fPhi), std::sin(m_fTheta), std::cos(m_fTheta) * std::cos(m_fPhi));
 
@@ -222,7 +229,7 @@ void Camera::rotateFrontFirstPerson(const float &degrees){
 void Camera::rotateLeftFirstPerson(const float &degrees){
   m_fTheta += glm::radians(degrees);
   if (m_currentCamera == 2){
-    m_fTheta = Utils::clamp(m_fTheta, glm::radians(-Camera::VIEW_WIDTH), glm::radians(Camera::VIEW_WIDTH));
+    m_fTheta = clamp(m_fTheta, glm::radians(-Camera::VIEW_WIDTH), glm::radians(Camera::VIEW_WIDTH));
   }
   m_frontVector = glm::vec3(std::cos(m_fTheta) * std::sin(m_fPhi), std::sin(m_fTheta), std::cos(m_fTheta) * std::cos(m_fPhi));
 
