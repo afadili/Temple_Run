@@ -76,19 +76,15 @@ std::map<std::string, float> Configuration::levelConfig(const Json::Value &confi
   std::map<std::string, float> configMap;
 
   // For most configurations, we make a loop
-  std::vector<std::string> confNames = {"viewDistanceX", "viewDistanceY", "jumpSpeed", "maxJump"};
+  std::vector<std::string> confNames = {"viewDistance", "jumpSpeed", "maxJump"};
   for (std::string const& name : confNames) {
     if (configJSON[name])
       configMap[name] = configJSON[name].asFloat();
   }
 
-
   // For more complicated configurations 
-  if (configJSON["viewTheta"]) // viewTheta = degrees to radian
-    configMap["viewTheta"] = configJSON["viewTheta"].asFloat() * M_PI / 180.0;
-
-  if (configJSON["speed"]) // viewTheta = degrees to radian
-    configMap["speed"] = configJSON["speed"].asFloat() / (float) m_fps ;
+  if (configJSON["speed"]) // convert speed/s per speed/frame
+    configMap["speed"] = configJSON["speed"].asFloat() / (float) m_fps;
 
   if (configJSON["startDirection"]) { // start direction is an array
     configMap["startDirection"] = 1; // boolean to say that a direction is configured 

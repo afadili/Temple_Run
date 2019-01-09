@@ -68,8 +68,7 @@ void Camera::eventManager(const SDL_Event &e) {
       default:
         break;
     }
-  }
-    //Handle the keys for the first person
+  }//Handle the keys for the first person
   else if (m_currentCamera == 2 || m_currentCamera == 4) {
     switch (e.type) {
         /* Touche clavier DOWN */
@@ -153,11 +152,10 @@ void Camera::update(const glm::vec3 &center) {
   }
 }
 
-void Camera::characterIntel(const float &scale, const glm::vec3 &angles) {
-  m_fDistance = scale * -10.0f;
+void Camera::rotate(const float &rotationY) {
   m_fAngleX = 10.f;
-  m_fAngleY = -angles[Y];
-  m_fPhi = glm::radians(m_fAngleY);
+  m_fAngleY = -rotationY * (180. / M_PI);
+  m_fPhi = m_fAngleY;
   m_fTheta = 0.f;
   computeDirectionVectors();
 }

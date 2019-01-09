@@ -6,10 +6,19 @@ Level::Level(const AssetsManager *assets, const glimac::FilePath &path, int nbFl
 }
 
 void Level::loadMap() {
+  // Load each floor
   for (int i = 0; i < m_nbFloor; i++) {
     std::string file("floor_" + std::to_string(i) + ".ppm");
     loadFloor(m_path + file, i);
   }
+
+  // If there is no character in the level
+  if (!m_character)
+    throw Error("No spawn point found in this level !", "LEVEL_ERROR", true);
+
+  // Initialize the camera
+  m_cam.distance() = -m_config["viewDistance"];
+  m_cam.rotate(m_character->rotation().y);
 }
 
 void Level::loadFloor(const glimac::FilePath &file, const int floor) {
@@ -119,36 +128,21 @@ void Level::eventManager(const SDL_Event &event) {
 
 int Level::update(const glm::mat4 &ProjMatrix) {
 
-  // CAMERA TMP
-  float _fPhi = -m_character->rotation().y;
-  glm::vec3 _FrontVector = glm::vec3(cos(0.) * sin(_fPhi), sin(0.), cos(0.) * cos(_fPhi));
-  glm::vec3 _LeftVector = glm::vec3(sin(_fPhi + M_PI / 2), 0, cos(_fPhi + M_PI / 2));
-  glm::vec3 _UpVector = glm::cross(_FrontVector, _LeftVector);
-  glm::vec3 pos = m_character->position();
-  glm::mat4 ViewMatrix = glm::lookAt(pos, pos + _FrontVector, _UpVector);
-  ViewMatrix = glm::translate(ViewMatrix, glm::vec3(m_config["viewDistanceX"], -m_config["viewDistanceY"], 0));
-
+  // CAMERA UPDATE
   m_cam.update(m_character->position());
-  m_cam.characterIntel(m_config["viewDistanceX"], glm::vec3());
 
-  ViewMatrix = m_cam.getViewMatrix();
-
+  // RUNNING OBSTACLES
   bool isRunning = true; // if the character have to run or not
-
-  // RUNNING OBSTACLES                                  G  T  F 
   Object *frontObject1 = grid(m_character->gridPosition(0, 0, 1));
   Object *frontObject2 = grid(m_character->gridPosition(0, 1, 1));
-  //Object *frontObject2 = grid(m_character->gridPosition(1, 1, 0));
 
   if (frontObject1) {
-    std::cout << "frontObect1 = " << frontObject1->type() << std::endl;
     if (frontObject1->type() == "Obstacle")
       isRunning = false;
     else if (frontObject1->type() == "Stone")
       addStone(frontObject1);
   }
   if (frontObject2) {
-    std::cout << "frontObject2 = " << frontObject2->type() << std::endl;
     if (frontObject2->type() == "Obstacle")
       isRunning = false;
   }
@@ -156,7 +150,7 @@ int Level::update(const glm::mat4 &ProjMatrix) {
   if (isRunning)
     m_character->run();
 
-  draw(ProjMatrix, ViewMatrix);
+  draw(ProjMatrix, m_cam.getViewMatrix());
 
   return 0;
 }

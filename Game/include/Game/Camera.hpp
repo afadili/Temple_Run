@@ -68,11 +68,28 @@ public:
   void update(const glm::vec3 &center);
 
   /**
-   * \brief 
-   * \param scale
-   * \param angles
+   * \brief Getter of distance
+   * \return m_fDistance
    */
-  void characterIntel(const float &scale, const glm::vec3 &angles);
+  inline
+  const float &distance() const {
+    return m_fDistance;
+  }
+
+  /**
+   * \brief Setter of distance
+   * \return m_fDistance
+   */
+  inline
+  float &distance() {
+    return m_fDistance;
+  }
+
+  /**
+   * \brief 
+   * \param rotationY in radian
+   */
+  void rotate(const float &rotationY);
 
   /**
    * \brief get view matrix

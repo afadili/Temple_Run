@@ -35,7 +35,7 @@ protected:
   std::map<std::string, float> m_config; /*!< level configuration variable */
   glimac::FilePath m_path; /*!< The level folder */
   const AssetsManager *m_assets; /*!< Pointer on the manager of all assets */
-  Character *m_character;
+  Character *m_character = nullptr;
   int m_nbFloor; /*!< floor number of the level (number of ppm files) */
   int m_width; /*!< width of the level */
   int m_height; /*!< height of the level */
@@ -54,7 +54,7 @@ public:
   Level(const AssetsManager *assets, const glimac::FilePath &path, int nbFloor, int width, int height);
 
   /**
-   * \brief create the map from all the levels of the decor
+   * \brief create the map from all the levels of the decor, throw an error if there is no characters in this level
    */
   void loadMap();
 
