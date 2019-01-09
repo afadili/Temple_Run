@@ -5,6 +5,11 @@ Level::Level(const AssetsManager *assets, const glimac::FilePath &path, int nbFl
     m_grid.push_back(Eigen::SparseMatrix<Object*>(width, height));
 }
 
+
+Level::~Level(){
+  clear();
+}
+
 void Level::loadMap() {
   // Load each floor
   for (int i = 0; i < m_nbFloor; i++) {
@@ -120,6 +125,7 @@ void Level::addObject(const std::string &meshName, int x, int y, int z) {
 void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const {
   for (auto const& mapObj : m_objects)
     mapObj.second.draw(ProjMatrix, ViewMatrix);
+
 }
 
 void Level::eventManager(const SDL_Event &event) {
@@ -171,7 +177,6 @@ int Level::update(const glm::mat4 &ProjMatrix) {
 
 void Level::addStone(Object * stone) {
   if (!stone)
-
     return;
   m_score++;
   removeObject(stone);
@@ -179,7 +184,17 @@ void Level::addStone(Object * stone) {
 
 void Level::removeObject(Object * obj) {
   std::vector<int> vec = obj->gridPosition(); // get obj position
-  std::cout << vec[0] << "  " << vec[1] << "  " << vec[2] << "  " << std::endl;
   removeGridObject(vec); // remove from the grid
   m_objects.at(obj->mesh()->name()).remove(obj);
+}
+
+void Level::clear() {
+  // Delete all objects
+  m_objects.clear();
+  m_character = nullptr;
+
+  // Clear grid
+  std::for_each(m_grid.begin(), m_grid.end(), [&](Eigen::SparseMatrix<Object*> &gridF) {
+    gridF.setZero();
+  });
 }

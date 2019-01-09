@@ -54,6 +54,11 @@ public:
   Level(const AssetsManager *assets, const glimac::FilePath &path, int nbFloor, int width, int height);
 
   /**
+   * \brief destructor
+   */
+  ~Level();
+
+  /**
    * \brief create the map from all the levels of the decor, throw an error if there is no characters in this level
    */
   void loadMap();
@@ -106,6 +111,11 @@ public:
   void removeObject(Object *obj);
 
   /**
+   * \brief Clean up the scene (remove all objects)
+   */
+  void clear();
+
+  /**
    * \brief getter for level configuration variable
    * \return level configuration variable
    */
@@ -155,13 +165,31 @@ public:
     return m_grid[y].coeff(x, z);
   }
 
-  /** \brief get an static object based on its position in the level
+  /** 
+   * \brief get an static object based on its position in the level
    * \param vec : the vector of position (size 3)
    * \return pointer on the object or null if empty position
    */
   inline
   Object* grid(const std::vector<int> &vec) const {
     return grid(vec[0], vec[1], vec[2]);
+  }
+
+  /** 
+   * \brief get the score
+   * \return m_score
+   */
+  inline
+  unsigned int score() const {
+    return m_score;
+  }
+
+  /** 
+   * \brief reset the score
+   */
+  inline
+  unsigned int resetScore() {
+    m_score = 0;
   }
 
 };
