@@ -19,6 +19,8 @@
 #include <Element/Stone.hpp>
 #include <Element/Character.hpp>
 #include <Element/FinishingLine.hpp>
+#include <Element/LeftTurn.hpp>
+#include <Element/RightTurn.hpp>
 
 #include <Game/Camera.hpp>
 

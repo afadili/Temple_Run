@@ -59,6 +59,12 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
         }// STONE
         else if (meshType == "Stone" || meshType == "stone") {
           obj = new Stone(mesh, glm::vec3(i, floor, -j));
+        }// TURN LEFT
+        else if (meshType == "LeftTurn" || meshType == "lefttrun") {
+          obj = new LeftTurn(mesh, glm::vec3(i, floor, -j));
+        }// TURN RIGHT
+        else if (meshType == "RightTurn" || meshType == "rightturn") {
+          obj = new RightTurn(mesh, glm::vec3(i, floor, -j));
         }// FINISHING LINE
         else if (meshType == "FinishingLine" || meshType == "finishingline") {
           obj = new FinishingLine(mesh, glm::vec3(i, floor, -j));
@@ -102,7 +108,7 @@ void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const
 void Level::eventManager(const SDL_Event &event) {
   // EVENT ON CAMERA
   m_cam.eventManager(event);
-          
+
   if (event.type == SDL_KEYDOWN) {
     if (event.key.keysym.sym == SDLK_c) {
 
@@ -121,10 +127,10 @@ int Level::update(const glm::mat4 &ProjMatrix) {
   glm::vec3 pos = m_character->position();
   glm::mat4 ViewMatrix = glm::lookAt(pos, pos + _FrontVector, _UpVector);
   ViewMatrix = glm::translate(ViewMatrix, glm::vec3(m_config["viewDistanceX"], -m_config["viewDistanceY"], 0));
-  
+
   m_cam.update(m_character->position());
-  m_cam.characterIntel(1., m_character->rotation());
-  
+  m_cam.characterIntel(m_config["viewDistanceX"], glm::vec3());
+
   ViewMatrix = m_cam.getViewMatrix();
 
   bool isRunning = true; // if the character have to run or not
@@ -142,7 +148,7 @@ int Level::update(const glm::mat4 &ProjMatrix) {
       addStone(frontObject1);
   }
   if (frontObject2) {
-   // std::cout << "frontObject2 = " << frontObject2->type() << std::endl;
+    // std::cout << "frontObject2 = " << frontObject2->type() << std::endl;
     if (frontObject2->type() == "Obstacle")
       isRunning = false;
   }
