@@ -28,6 +28,8 @@ private:
 
   float m_fPhi; /*!< spherical coordinates of the the vector F */
   float m_fTheta; /*!< sperical coordinates of the vector F */
+  float m_fMaxAngle; /*!< maximum angle where you can turn your head */
+
   glm::vec3 m_frontVector; /*!< Vector F */
   glm::vec3 m_leftVector; /*!< Vector L */
   glm::vec3 m_upVector; /*!< Vector U */
@@ -36,7 +38,6 @@ private:
 
 
 public:
-  static const float VIEW_WIDTH;
 
   /**
    * \brief constructor of Camera
@@ -53,8 +54,9 @@ public:
    * \param distance : distance from the center of the subject
    * \param angleY : angle around the Y-axis of the camera in radian 
    * \param eyesPosition : position of the "eyes" of the subject for the first person
+   * \param maxAngle : maximum angle where you can turn your head
    */
-  void initialization(const float &distance, const float &angleY = 0.f, const glm::vec3 &eyesPosition = glm::vec3());
+  void initialization(const float &distance, const float &angleY = 0.f, const glm::vec3 &eyesPosition = glm::vec3(), const float &maxAngle = 40.f);
 
   /**
    * \brief modification of the camera depending on the events

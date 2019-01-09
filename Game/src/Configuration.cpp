@@ -76,7 +76,7 @@ std::map<std::string, float> Configuration::levelConfig(const Json::Value &confi
   std::map<std::string, float> configMap;
 
   // For most configurations, we make a loop
-  std::vector<std::string> confNames = {"viewDistance", "jumpSpeed", "maxJump"};
+  std::vector<std::string> confNames = {"viewDistance", "jumpSpeed", "maxJump", "viewMaxAngle"};
   for (std::string const& name : confNames) {
     if (configJSON[name])
       configMap[name] = configJSON[name].asFloat();

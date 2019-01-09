@@ -1,21 +1,20 @@
 #include <Game/Camera.hpp>
 
-const float Camera::VIEW_WIDTH = 30.f;
-
 enum COORD {
   X,
   Y,
   Z
 };
 
-Camera::Camera() : m_fDistance(-5.0f), m_fAngleX(0.0f), m_fAngleY(0.0f), m_center(0.f, 0.f, 0.f), m_currentCamera(1) {
+Camera::Camera() : m_fDistance(-5.0f), m_fAngleX(0.0f), m_fAngleY(0.0f), m_center(0.f, 0.f, 0.f), m_currentCamera(1), m_fMaxAngle(40) {
   computeDirectionVectors();
 };
 
-void Camera::initialization(const float &distance, const float &angleY, const glm::vec3 &eyesPosition) {
+void Camera::initialization(const float &distance, const float &angleY, const glm::vec3 &eyesPosition, const float &maxAngle) {
   m_fDistance = distance;
   rotate(angleY);
   m_eyesPosition = eyesPosition;
+  m_fMaxAngle = maxAngle;
 }
 
 void Camera::eventManager(const SDL_Event &e) {
@@ -131,7 +130,7 @@ void Camera::moveLeftFirstPerson(const float &t) {
 void Camera::rotateFrontFirstPerson(const float &degrees) {
   m_fPhi += glm::radians(degrees);
   if (m_currentCamera == 2) {
-    m_fPhi = clamp(m_fPhi, glm::radians(-m_fAngleY - Camera::VIEW_WIDTH), glm::radians(-m_fAngleY + Camera::VIEW_WIDTH));
+    m_fPhi = clamp(m_fPhi, glm::radians(-m_fAngleY - m_fMaxAngle), glm::radians(-m_fAngleY + m_fMaxAngle));
   }
   m_frontVector = glm::vec3(std::cos(m_fTheta) * std::sin(m_fPhi), std::sin(m_fTheta), std::cos(m_fTheta) * std::cos(m_fPhi));
 
@@ -141,7 +140,7 @@ void Camera::rotateFrontFirstPerson(const float &degrees) {
 void Camera::rotateLeftFirstPerson(const float &degrees) {
   m_fTheta += glm::radians(degrees);
   if (m_currentCamera == 2) {
-    m_fTheta = clamp(m_fTheta, glm::radians(-Camera::VIEW_WIDTH), glm::radians(Camera::VIEW_WIDTH));
+    m_fTheta = clamp(m_fTheta, glm::radians(-m_fMaxAngle), glm::radians(m_fMaxAngle));
   }
   m_frontVector = glm::vec3(std::cos(m_fTheta) * std::sin(m_fPhi), std::sin(m_fTheta), std::cos(m_fTheta) * std::cos(m_fPhi));
 

@@ -18,7 +18,7 @@ void Level::loadMap() {
 
   // Initialize the camera
   glm::vec3 eyesPosition(0., m_character->size().y / 2., m_character->size().z / 2.);
-  m_cam.initialization(-m_config["viewDistance"], m_character->rotation().y, eyesPosition);
+  m_cam.initialization(-m_config["viewDistance"], m_character->rotation().y, eyesPosition, m_config["viewMaxAngle"]);
 }
 
 void Level::loadFloor(const glimac::FilePath &file, const int floor) {
