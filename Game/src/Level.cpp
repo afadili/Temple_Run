@@ -17,8 +17,8 @@ void Level::loadMap() {
     throw Error("No spawn point found in this level !", "LEVEL_ERROR", true);
 
   // Initialize the camera
-  m_cam.distance() = -m_config["viewDistance"];
-  m_cam.rotate(m_character->rotation().y);
+  glm::vec3 eyesPosition(0., m_character->size().y / 2., m_character->size().z / 2.);
+  m_cam.initialization(-m_config["viewDistance"], m_character->rotation().y, eyesPosition);
 }
 
 void Level::loadFloor(const glimac::FilePath &file, const int floor) {
@@ -60,7 +60,7 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
           m_objects.insert(std::make_pair(meshName, mesh));
 
         // Create the object
-        Object *obj;
+        Object * obj;
 
         // OBSTACLE
         if (meshType == "Obstacle" || meshType == "obstacle") {
@@ -96,6 +96,7 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
           obj = m_character;
         }// DEFAULT
         else {
+
           obj = new Object(mesh, glm::vec3(j, floor, -i));
         }
 
@@ -110,6 +111,7 @@ void Level::loadFloor(const glimac::FilePath &file, const int floor) {
 }
 
 void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const {
+
   for (auto const& mapObj : m_objects)
     mapObj.second.draw(ProjMatrix, ViewMatrix);
 }
@@ -150,7 +152,7 @@ int Level::update(const glm::mat4 &ProjMatrix) {
   Object * underObject = grid(m_character->gridPosition(0, -1, 0));
   if (!underObject || underObject->type() == "Water" || underObject->type() == "Lava")
     return 2; // LOSE
-  
+
   // RUNNING
   if (isRunning)
     m_character->run();
@@ -163,6 +165,7 @@ int Level::update(const glm::mat4 &ProjMatrix) {
 
 void Level::addStone(Object * stone) {
   if (!stone)
+
     return;
   m_score++;
   removeObject(stone);
