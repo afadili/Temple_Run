@@ -37,9 +37,9 @@ private:
   bool KEY_RIGHT_PRESSED = false; /*!< keyboard action*/
 
   unsigned int m_currentCamera; /*!< 1 = third person */
-                                /*!< 2 = first person */
-                                /*!< 3 = rotation */
-                                /*!< 4 = freefly camera */
+  /*!< 2 = first person */
+  /*!< 3 = rotation */
+  /*!< 4 = freefly camera */
 
 
 public:
@@ -129,7 +129,7 @@ private:
   void computeDirectionVectors();
 
   template<typename T>
-  T clamp(const T &n, const T &lower, const T &upper){
+  T clamp(const T &n, const T &lower, const T &upper) {
     return std::max(lower, std::min(n, upper));
   }
 };

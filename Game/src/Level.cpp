@@ -100,8 +100,9 @@ void Level::draw(const glm::mat4 &ProjMatrix, const glm::mat4 &ViewMatrix) const
 }
 
 void Level::eventManager(const SDL_Event &event) {
-
-
+  // EVENT ON CAMERA
+  m_cam.eventManager(event);
+          
   if (event.type == SDL_KEYDOWN) {
     if (event.key.keysym.sym == SDLK_c) {
 
@@ -120,6 +121,11 @@ int Level::update(const glm::mat4 &ProjMatrix) {
   glm::vec3 pos = m_character->position();
   glm::mat4 ViewMatrix = glm::lookAt(pos, pos + _FrontVector, _UpVector);
   ViewMatrix = glm::translate(ViewMatrix, glm::vec3(m_config["viewDistanceX"], -m_config["viewDistanceY"], 0));
+  
+  m_cam.update(m_character->position());
+  m_cam.characterIntel(1., m_character->rotation());
+  
+  ViewMatrix = m_cam.getViewMatrix();
 
   bool isRunning = true; // if the character have to run or not
 
@@ -129,14 +135,14 @@ int Level::update(const glm::mat4 &ProjMatrix) {
   //Object *frontObject2 = grid(m_character->gridPosition(1, 1, 0));
 
   if (frontObject1) {
-    std::cout << "frontObect1 = " << frontObject1->type() << std::endl;
+    //std::cout << "frontObect1 = " << frontObject1->type() << std::endl;
     if (frontObject1->type() == "Obstacle")
       isRunning = false;
     else if (frontObject1->type() == "Stone")
       addStone(frontObject1);
   }
   if (frontObject2) {
-    std::cout << "frontObject2 = " << frontObject2->type() << std::endl;
+   // std::cout << "frontObject2 = " << frontObject2->type() << std::endl;
     if (frontObject2->type() == "Obstacle")
       isRunning = false;
   }
