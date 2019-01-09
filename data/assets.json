@@ -35,23 +35,23 @@
       "src": "data/assets/textures/ground_1.jpg"
     },
     {
-      "name": "ground_2",
+      "name": "grass",
       "src": "data/assets/textures/ground_2.jpg"
     },
-    {
+    /*{
       "name": "wall_1_1",
       "src": "data/assets/textures/wall_1_1.jpg"
-    },
-    {
+    },*/
+    /*{
       "name": "wall_1_2",
       "src": "data/assets/textures/wall_1_2.jpg"
-    },
-    {
+    },*/
+    /*{
       "name": "wall_2_1",
       "src": "data/assets/textures/wall_2_1.jpg"
-    },
+    },*/
     {
-      "name": "wall_2_2",
+      "name": "wall_1",
       "src": "data/assets/textures/wall_2_2.jpg"
     },
     {
@@ -176,16 +176,25 @@
       "mesh": "Cube",
       "type": "Obstacle",
       "size": [1, 1, 1],
-      "texture": "ground_2",
+      "texture": "grass",
       "shader": "tex3D"
     },
     {
-      "name": "stonewall",
+      "name": "rightturn_1",
       "code": [78, 95, 74],
       "mesh": "Cube",
-      "type": "Obstacle",
+      "type": "RightTurn",
       "size": [1, 1, 1],
-      "texture": "wall_2_1",
+      "texture": "grass",
+      "shader": "tex3D"
+    },
+    {
+      "name": "leftturn_1",
+      "code": [81, 123, 71],
+      "mesh": "Cube",
+      "type": "LeftTurn",
+      "size": [1, 1, 1],
+      "texture": "grass",
       "shader": "tex3D"
     },
     {
@@ -194,7 +203,7 @@
       "mesh": "Cube",
       "type": "Obstacle",
       "size": [1, 1, 1],
-      "texture": "wall_2_2",
+      "texture": "wall_1",
       "shader": "tex3D"
     },
     {
