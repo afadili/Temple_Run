@@ -169,7 +169,7 @@ void Level::eventManager(const SDL_Event &event) {
         }
       }
     }// JUMP
-    else if (key == SDLK_SPACE) {
+    else if (key == SDLK_SPACE || key == SDLK_z || key == SDLK_UP) {
       if (!isObstacle(0, 1, 0))
         m_character->jump();
     }
