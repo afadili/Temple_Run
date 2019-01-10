@@ -44,4 +44,8 @@ Now that you started the game, the game character in running, here are the instr
 * To change from Character's view to General view : Press "C".
 * To be able to control the camera by turning around the character in General view : Press "V".
 
+## Documentation
+
+To see the documentation, open the file `doc/html/index.html` with with your favorite browser.
+
 ### A 3D arcade game created by Amina FADILI, Cécile ROUSSET and Nicolas SENECAL
