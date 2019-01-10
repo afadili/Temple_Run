@@ -26,6 +26,19 @@ Finally, to start the game, simply run the command:
 ```
 ./bin/TEMPLE_RUN_main
 ```
+To display the Menu, run the command : 
+```
+./bin/TEMPLE_RUN_menu
+```
+To display the Level Menu, run the command : 
+```
+./bin/TEMPLE_RUN_levelMenu
+```
+Now that you started the game, here are the instructions to play : 
+* To jump : Press "Z".
+* To move or turn left : Press "Q".
+* To bend down : Press "S".
+* To move or turn right : Press "D".
 
 ## Commands
 
