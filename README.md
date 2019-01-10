@@ -46,6 +46,6 @@ Now that you started the game, the game character in running, here are the instr
 
 ## Documentation
 
-To see the documentation, open the file `doc/html/index.html` with with your favorite browser.
+To see the documentation, open the file `doc/html/index.html` with your favorite browser.
 
 ### A 3D arcade game created by Amina FADILI, Cécile ROUSSET and Nicolas SENECAL
