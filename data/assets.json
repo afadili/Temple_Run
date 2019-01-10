@@ -229,7 +229,7 @@
             "name": "water",
             "code": [146, 218, 236],
             "mesh": "Cube",
-            "type": "Obstacle",
+            "type": "Hole",
             "size": [1, 0.80, 1],
             "texture": "water",
             "shader": "tex3D"

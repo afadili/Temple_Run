@@ -22,6 +22,7 @@
 #include <Element/LeftTurn.hpp>
 #include <Element/RightTurn.hpp>
 #include <Element/Skybox.hpp>
+#include <Element/Hole.hpp>
 
 #include <Game/Camera.hpp>
 

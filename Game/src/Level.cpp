@@ -92,6 +92,9 @@ void Level::addObject(const std::string &meshName, int x, int y, int z) {
   }// TURN RIGHT
   else if (meshType == "RightTurn" || meshType == "rightturn") {
     obj = new RightTurn(mesh, glm::vec3(x, y, z));
+  }// Hole
+  else if (meshType == "Hole" || meshType == "hole") {
+    obj = new Hole(mesh, glm::vec3(x, y, z));
   }// FINISHING LINE
   else if (meshType == "FinishingLine" || meshType == "finishingline") {
     obj = new FinishingLine(mesh, glm::vec3(x, y, z));
@@ -196,7 +199,7 @@ int Level::update(const glm::mat4 &ProjMatrix) {
 
   // UNDERNEATH OBSTACLES
   Object * underObject = grid(m_character->gridPosition(0, -1, 0));
-  if (!m_character->isJumping() && (!underObject || underObject->type() == "Water" || underObject->type() == "Lava"))
+  if (!m_character->isJumping() && (!underObject || underObject->type() == "Hole"))
     state = 2; // LOSE
 
   // RUNNING
