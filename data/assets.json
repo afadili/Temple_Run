@@ -21,6 +21,10 @@
         {
             "name": "galaxy1",
             "src": "data/assets/textures/galaxy1.png"
+        }, 
+        {
+            "name": "galaxy2",
+            "src": "data/assets/textures/galaxy2.jpg"
         },
         {
             "name": "cube",
@@ -126,6 +130,14 @@
             "type": "Skybox",
             "size": [1, 1, 1],
             "texture": "galaxy1",
+            "shader": "tex3D"
+        },
+        {
+            "name": "skybox2",
+            "mesh": "Cube",
+            "type": "Skybox",
+            "size": [1, 1, 1],
+            "texture": "galaxy2",
             "shader": "tex3D"
         },
         {
