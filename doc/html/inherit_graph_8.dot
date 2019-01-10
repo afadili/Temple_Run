@@ -1,0 +1,21 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="Object",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_object.html",tooltip="Mother class of the objects on the map. "];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="Character",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_character.html",tooltip="Mother class of the different characters. "];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="LeftTurn",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_left_turn.html",tooltip="Class of the blocs on the corner. "];
+  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Obstacle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_obstacle.html",tooltip="Mother class of all the different Obstacles. "];
+  Node0 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="RightTurn",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_right_turn.html",tooltip="Class of the blocs on the corner. "];
+  Node0 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Skybox",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_skybox.html",tooltip="Class of the blocs on the corner. "];
+  Node0 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Stone",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_stone.html",tooltip="Mother class of all the different stones. "];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="FinishingLine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_finishing_line.html",tooltip="class of the finishing line "];
+}

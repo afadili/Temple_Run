@@ -1,0 +1,33 @@
+digraph "Level"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="Level",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_cam" ,fontname="Helvetica"];
+  Node2 [label="Camera",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_camera.html",tooltip="Camera management. "];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_skybox" ,fontname="Helvetica"];
+  Node3 [label="Skybox",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_skybox.html",tooltip="Class of the blocs on the corner. "];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Object",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_object.html",tooltip="Mother class of the objects on the map. "];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_mesh" ,fontname="Helvetica"];
+  Node5 [label="Mesh",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_mesh.html",tooltip="mesh management (mesh = objects that can be rendered) "];
+  Node6 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_ibo" ,fontname="Helvetica"];
+  Node6 [label="IBO",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_i_b_o.html",tooltip="class defining a IBO and associated actions "];
+  Node7 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Render",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_render.html",tooltip="Mother class of rendering management. "];
+  Node8 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_shader" ,fontname="Helvetica"];
+  Node8 [label="ShaderManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_shader_manager.html",tooltip="manage the shaders program and their uniform variables "];
+  Node9 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_texture" ,fontname="Helvetica"];
+  Node9 [label="Texture",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_texture.html",tooltip="texture management class "];
+  Node10 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_vbo" ,fontname="Helvetica"];
+  Node10 [label="VBO",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_b_o.html",tooltip="class defining a VBO and associated actions "];
+  Node7 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_vao" ,fontname="Helvetica"];
+  Node11 [label="VAO",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_a_o.html",tooltip="class defining a VAO and associated actions "];
+  Node7 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_character" ,fontname="Helvetica"];
+  Node12 [label="Character",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_character.html",tooltip="Mother class of the different characters. "];
+  Node4 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_assets" ,fontname="Helvetica"];
+  Node13 [label="AssetsManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_assets_manager.html",tooltip="The manager of all assets. Make sure you have initialized your OpenGL context before. "];
+}

@@ -1,0 +1,7 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="ObjectList",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_object_list.html",tooltip="Management of a list of objects having a mesh (with a texture and a shader) in common. "];
+}
