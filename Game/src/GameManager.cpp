@@ -41,8 +41,10 @@ void GameManager::eventManager(const SDL_Event &event) {
 }
 
 void GameManager::update() {
-  // if a game is in progress
-  if (m_currentLevel != nullptr) {
+
+  // === GAME ===
+  if (m_currentLevel != nullptr) {// if a game is in progress
+
     // MATRICES de transformations
     glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f), m_config->defaultWidth() / float(m_config->defaultWidth() * 1. / m_config->ratio()), m_config->nearVision(), m_config->farVision());
     switch (m_currentLevel->update(ProjMatrix)) {
@@ -59,13 +61,17 @@ void GameManager::update() {
       default:
         break;
     }
-  } else {
+  }// === MENU ===
+  else {
 
-    // MENUUUUUUUUUUUUUUUU
+    // TO DO : Here should be the drawings of the menu
+   
+    /*
     Menu menu(m_assets);
-
     menu.drawMenu();
+    */
 
+    // TEMPORARY : we load a level, waiting for a functional menu
     loadLevel("level1");
 
   }
