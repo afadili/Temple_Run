@@ -1,7 +1,7 @@
 {
   "assetsFile": "data/assets.json",
   "fps": 60,
-  "defaultWidth": 800,
+  "defaultWidth": 1280,
   "nearVision": 0.1,
   "farVision": 100,
   "viewDistance": 2,

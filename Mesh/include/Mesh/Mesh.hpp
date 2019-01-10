@@ -1,6 +1,6 @@
 /**
- * \file:  Mesh.hpp
- * \brief Description: Decalaration of the class "Mesh"
+ * \file Mesh.hpp
+ * \brief Decalaration of the class "Mesh"
  */
 
 #ifndef __MESH__HPP
@@ -25,6 +25,10 @@
 #include <Render/ShaderManager.hpp>
 #include <Render/Texture.hpp>
 
+/**
+ * \class Mesh
+ * \brief mesh management (mesh = objects that can be rendered)
+ */
 class Mesh {
 protected:
   std::string m_name; /*!< Named of the mesh */
@@ -143,41 +147,65 @@ public:
    */
   void loadObj(const glimac::FilePath &objPath);
 
+  /**
+   * \brief Getter of vertice
+   */
   inline
   std::vector<ShapeVertex> vertices() const {
     return m_vertices;
   }
 
+  /**
+   * \brief Getter of index vertice
+   */
   inline
   std::vector<int> indexVer() const {
     return m_indexVer;
   }
 
+  /**
+   * \brief Getter of vbo
+   */
   inline
   VBO *vbo() const {
     return m_vbo;
   }
 
+  /**
+   * \brief Getter of vao
+   */
   inline
   VAO *vao() const {
     return m_vao;
   }
 
+  /**
+   * \brief Getter of ibo
+   */
   inline
   IBO *ibo() const {
     return m_ibo;
   }
 
+  /**
+   * \brief Getter of shader
+   */
   inline
   ShaderManager *shader() const {
     return m_shader;
   }
 
+  /**
+   * \brief Getter of texture
+   */
   inline
   Texture *texture() const {
     return m_texture;
   }
 
+  /**
+   * \brief Is the mesh have an IBO
+   */
   inline
   bool haveIBO() const {
     return m_indexVer.size() > 0 ? true : false;

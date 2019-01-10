@@ -1,5 +1,5 @@
 /**
- * \file:  Cube.hpp
+ * \file Cube.hpp
  * \brief Decalaration of the class "Cube"
  */
 
@@ -8,9 +8,12 @@
 
 #include "Mesh.hpp"
 
+/**
+ * \class Cube
+ * \brief create a cube-shaped mesh
+ */
 class Cube : public Mesh {
 protected:
-
 
 
 public:

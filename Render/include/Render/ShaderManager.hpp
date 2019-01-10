@@ -18,6 +18,10 @@
 
 #include <Error/Error.hpp>
 
+/**
+ * \class ShaderManager
+ * \brief manage the shaders program and their uniform variables 
+ */
 class ShaderManager {
 private:
   glimac::Program m_program;
@@ -46,46 +50,48 @@ public:
 
 
   /**
-   * \brief 
-   * \param name :
+   * \brief adding a uniform variable
+   * \param name : the name of the uniform variable
    */
   void addUniform(const std::string &name);
 
   /**
-   * \brief 
-   * \param name :
-   * \param value :
+   * \brief Sends a uniform variable of type Matrix4f
+   * \param name : the name of the uniform variable
+   * \param value : the value to send
    */
   void sendUniformMatrix4fv(std::string name, glm::mat4 value);
 
   /**
-   * \brief 
-   * \param name :
-   * \param value :
+   * \brief Sends a uniform variable of type vec3f
+   * \param name : the name of the uniform variable
+   * \param value : the value to send
    */
   void sendUniform3f(std::string name, glm::vec3 value);
 
   /**
-   * \brief 
-   * \param value :
-   * \param num :
+   * \brief Sends a uniform variable of type int
+   * \param name : the name of the uniform variable
+   * \param num : the value to send
    */
   void sendUniform1i(std::string name, int num);
 
   /**
-   * \brief 
-   * \param name :
-   * \param num :
+   * \brief Sends a uniform variable of type float
+   * \param name : the name of the uniform variable
+   * \param num : the value to send
    */
   void sendUniform1f(std::string name, float num);
 
   /**
-   * \brief 
+   * \brief use this shader
    */
   void use();
 
-  //GLuint getGLId() const;
-
+  /**
+   * \brief getter of the id
+   * \return the id of the program
+   */
   inline
   GLuint id() const {
     return m_program.getGLId();

@@ -19,6 +19,10 @@
 
 using namespace glimac;
 
+/**
+ * \class Texture
+ * \brief texture management class
+ */
 class Texture {
 private:
   FilePath m_path; /*!< Path of the file of the texture */
