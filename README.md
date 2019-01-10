@@ -26,9 +26,22 @@ Finally, to start the game, simply run the command:
 ```
 ./bin/TEMPLE_RUN_main
 ```
-
+To display the Menu, run the command : 
+```
+./bin/TEMPLE_RUN_menu
+```
+To display the Level Menu, run the command : 
+```
+./bin/TEMPLE_RUN_levelMenu
+```
 ## Commands
 
+Now that you started the game, the game character in running, here are the instructions to play : 
 
+* To jump : Press "Z" or "Space Key" or "Up key".
+* To move or turn left : Press "Q" or "Left Key".
+* To move or turn right : Press "D" or "Right Key".
+* To change from Character's view to General view : Press "C".
+* To be able to control the camera by turning around the character in General view : Press "V".
 
 ### A 3D arcade game created by Amina FADILI, Cécile ROUSSET and Nicolas SENECAL
