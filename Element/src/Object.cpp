@@ -44,9 +44,9 @@ float Object::lastUpdate() const {
 
 const std::vector<int> Object::gridPosition() const {
   std::vector<int> vec;
-  vec.push_back(m_position.x);
-  vec.push_back(m_position.y);
-  vec.push_back(m_position.z);
+  vec.push_back(std::floor(m_position.x));
+  vec.push_back(std::floor(m_position.y));
+  vec.push_back(std::floor(m_position.z));
   return vec;
 }
 

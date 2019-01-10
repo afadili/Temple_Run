@@ -177,8 +177,9 @@ public:
    * \param z : the z position of the grid
    * \return pointer on the object or null if empty position
    */
+  inline
   Object* grid(const int x, const int y, const int z) const {
-    if (x < 0, y < 0, z < 0) return nullptr;
+    if (x < 0 || y < 0 || z < 0 || y >= m_nbFloor) return nullptr;
     return m_grid[y].coeff(x, z);
   }
 
